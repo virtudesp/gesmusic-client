@@ -1,0 +1,19 @@
+<form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="filterForm" ng-controller="plistFilterspaController">
+    <select id="selectFilter" class="form-control" name="filter" style="width: 160px" ng-model="filter">
+        <option style="display:none">selecciona un campo</option>
+        <option ng-repeat="field in Fields"  value="{{field.name}}">{{field.longname}}</option>                                                                                               
+    </select>
+    <select id="selectFilteroperator" class="form-control" name="filteroperator" width="80" style="width: 200px" ng-model="filteroperator">
+        <option style="display:none">selecciona una operacion</option>
+        <option value="like" ng-selected="true">contiene</option>
+        <option value="notlike">no contiene</option>
+        <option value="equals">es igual a</option>
+        <option value="notequalto">es distinto de</option>
+        <option value="less">es menor que</option>
+        <option value="lessorequal">es menor o igual que</option>
+        <option value="greater">es mayor que</option>
+        <option value="greaterorequal">es mayor o igual que</option>
+    </select>
+    <input id="inputFiltervalue" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Valor" ng-model="filtervalue">
+    <input type="button" class="btn" id="btnFiltrar" name="btnFiltrar" value="Filtrar" ng-click="doFilterSelection()" />
+</form>

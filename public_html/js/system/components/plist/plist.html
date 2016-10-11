@@ -1,0 +1,115 @@
+<div class="row" ng-controller="plistController">
+    <div class="col-xs-12" ng-show="!status">
+        <div role="tabpanel">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a data-target="#pane0" aria-controls="pane0" role="tab" data-toggle="tab" aria-expanded="false">Consulta</a>
+                </li>
+                <li role="presentation"><a data-target="#pane1" aria-controls="pane1" role="tab" data-toggle="tab" aria-expanded="true">Campos visibles</a></li>
+                <li role="presentation"><a data-target="#pane2" aria-controls="pane2" role="tab" data-toggle="tab">Filtro de servidor</a></li>
+                <li role="presentation"><a data-target="#pane3" aria-controls="pane3" role="tab" data-toggle="tab">Filtro de cliente</a></li>
+                <li role="presentation"><a data-target="#pane4" aria-controls="pane4" role="tab" data-toggle="tab">Nuevo registro</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" id="pane0" class="tab-pane fade active in">
+                    <p></p>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12">                                                    
+                            <p>Mostrando una consulta de {{totalregisters}} registros.</p>
+                            <p ng-show="uorder.length == 0">Contenido no ordenado</p>
+                            <p ng-show="uorder.length > 0">Contenido ordenado: <span ng-repeat="obj in uorder">{{obj[0]}} ({{obj[1]}}); </span><a ng-click="resetorder()" id="linkQuitarOrden">(Quitar orden)</a></p>
+                            <p ng-show="ufilter.length == 0">Contenido no filtrado en servidor</p>
+                            <p ng-show="ufilter.length > 0">Contenido filtrado: ({{queryregisters}} registros)
+                                <span ng-repeat="obj in ufilter">{{obj[0]}} {{obj[1]}} {{obj[2]}}; </span>                                                            
+                                <a ng-click="resetfilter()" id="linkQuitarFiltro">(Quitar filtro)</a>                                                       
+                            </p>
+                            <p ng-show="searchText.length == 0">Contenido no filtrado en cliente</p>
+                            <p ng-show="searchText.length > 0">Contenido filtrado en cliente 
+                                <a ng-click="resetClientfilter()" id="linkQuitarFiltro">(Quitar filtro)</a>
+                            </p>
+                            <p></p>
+                        </div>
+                        <div class="col-lg-6  col-md-6 col-sm-8 text-center">
+                            <plistpagination></plistpagination>
+                        </div>
+                        <div class="col-lg-3  col-md-3 col-sm-4 text-center">
+                            <plistrpp></plistrpp>
+                        </div>
+                    </div>
+                    <p></p>
+                </div>
+                <div role="tabpanel" id="pane1" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p></p>   
+                            <plistvisiblefields></plistvisiblefields>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" id="pane2" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p></p>
+                            <table class="table table-striped table-condensed dataTable no-footer">
+                                <tr ng-repeat="obj in ufilterArray">                                                    
+                                    <td class="text-left">{{obj}}</td>
+                                    <td class="text-center">X</td>
+                                </tr>
+                            </table>
+                            <p></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p></p>
+                            <plistfilter></plistfilter>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" id="pane3" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p></p>
+                            <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
+                                <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Valor" ng-model="searchText">
+
+                            </form>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" id="pane4" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p><br>
+                                <a class="btn btn-primary" href="#/{{ob}}/new">Crear un nuevo {{ob}}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="datos" ng-show="!status">
+            <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
+                <thead plistheader></thead>
+                <tbody>
+                    <tr ng-repeat="obj in page| filter:searchText">
+                        <td ng-show="Fields[0].visible"  class="text-right">{{obj.id}}</td>
+                        <td ng-show="Fields[1].visible">{{obj.titulo}}</td>
+                        <td ng-show="Fields[2].visible">{{obj.contenido| clipString}}</td>
+                        <td ng-show="Fields[3].visible">{{obj.alta}}</td>
+                        <td ng-show="Fields[4].visible">{{obj.cambio}}</td>
+                        <td ng-show="Fields[5].visible" class="text-right">{{obj.hits}}</td>
+                        <td ng-show="Fields[6].visible"><a href="#/usuario/view/{{obj.id_usuario}}">{{obj.nombre + " " + obj.apellidos}}</a></td>
+                        <td ng-show="Fields[7].visible"><a href="#/tipodocumento/view/{{obj.id_tipodocumento}}">{{obj.descripcion}}</a></td>
+                        <td ng-show="Fields[8].visible">{{obj.etiquetas}}</td>
+                        <td ng-show="Fields[9].visible" class="text-center" ng-bind-html="obj.publicado | booleanizate"></td>
+                        <td ng-show="Fields[10].visible" class="text-center" ng-bind-html="obj.portada | booleanizate"></td>
+                        <td ng-show="Fields[11].visible" class="text-center" ng-bind-html="obj.destacado | booleanizate"></td>
+                        <td plistoperationbar></td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+    </div>                                
+</div>                            
