@@ -9,7 +9,7 @@
 
   * Instructions:
     * get started with Zylkanexy server
-    * clone the project and go
+    * clone the project and go against Zylkanexy server
 
 ## License
 
