@@ -108,7 +108,14 @@ moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInst
             $scope.rpp = data;
             getData();
         });
-
+        $scope.$on('resetOrderEvent', function (event) {
+            $scope.orderParams = null;
+            getData();
+        });
+        $scope.$on('resetFilterEvent', function (event) {
+            $scope.filterParams = null;
+            getData();
+        });
         $scope.ufilter = null;
         $scope.chooseOne = function (id) {
 

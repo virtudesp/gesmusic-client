@@ -12,13 +12,13 @@ moduloDirectivas.directive('plistinfospa', function () {
 moduloSistema.controller('plistInfoController', ['$scope', 'serverService', '$rootScope', '$location', function ($scope, serverService, $rootScope, $location) {
 
         $scope.doresetorder = function () {
-            $location.url($scope.ob + '/' + $scope.op + '/' + $scope.numpage + '/' + $scope.rpp).search('filter', $scope.filterParams).search('sfilter', $scope.sfilterParams);
+            $rootScope.$broadcast('resetOrderEvent');
             return false;
         };
 
 
         $scope.doresetfilter = function () {
-            $location.url($scope.ob + '/' + $scope.op + '/' + $scope.numpage + '/' + $scope.rpp).search('sfilter', $scope.sfilterParams).search('order', $routeParams.order);
+            $rootScope.$broadcast('resetFilterEvent');
             return false;
         };
 
