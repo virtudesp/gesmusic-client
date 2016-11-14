@@ -38,8 +38,8 @@ moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams'
             {name: "alta", shortname: "Alta", longname: "Fecha de alta", visible: false, type: "date"},
             {name: "cambio", shortname: "Cambio", longname: "Fecha de último cambio", visible: false, type: "date"},
             {name: "hits", shortname: "Hits", longname: "Visitas", visible: true, type: "integer"},
-            {name: "id_usuario", shortname: "Usuario", longname: "Usuario propietario", visible: true, type: "foreign", show: ""},
-            {name: "id_tipodocumento", shortname: "Tipo", longname: "Tipo de documento", visible: true, type: "foreign", show: ""},
+            {name: "id_usuario", shortname: "Usuario", longname: "Usuario propietario", visible: true, type: "foreign"},
+            {name: "id_tipodocumento", shortname: "Tipo", longname: "Tipo de documento", visible: true, type: "foreign"},
             {name: "etiquetas", shortname: "Etiquetas", longname: "Etiquetas", visible: false, type: "string"},
             {name: "publicado", shortname: "¿Publ.?", longname: "¿Publicado?", visible: true, type: "boolean"},
             {name: "portada", shortname: "¿Port.?", longname: "¿Portada?", visible: true, type: "boolean"},
@@ -47,9 +47,9 @@ moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams'
         ];
 
         $scope.ob = "documento";
-        $scope.op = "plist";        
+        $scope.op = "plist";
         $scope.title = "Listado de documentos";
-        $scope.icon = "fa-file-text-o";        
+        $scope.icon = "fa-file-text-o";
 
         $scope.numpage = $routeParams.page;
         $scope.rpp = $routeParams.rpp;
@@ -142,7 +142,7 @@ moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams'
 //        });
 
 
-     
+
 
 
 
