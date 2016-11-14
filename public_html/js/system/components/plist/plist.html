@@ -83,7 +83,7 @@
         <div id="datos" ng-show="!status">
             <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
                 <thead plistheader></thead>
-                <tbody>
+                <tbody ng-include="">
                     <!--
                     <tr ng-repeat="obj in page| filter:searchText">
                         <td ng-repeat="f in Fields" ng-show="f.visible && f.type != 'boolean'"  class="text-right">{{obj[f.name]}}</td>                       
@@ -93,7 +93,7 @@
                     </tr>
                     -->
 
-
+                    <>
                     <tr ng-repeat="obj in page| filter:searchText">
                         <td ng-show="Fields[0].visible"  class="text-right">{{obj.id}}</td>
                         <td ng-show="Fields[1].visible">{{obj.titulo}}</td>

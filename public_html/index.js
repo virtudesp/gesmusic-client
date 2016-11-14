@@ -1,4 +1,4 @@
-openAusias.controller('HeaderController', ['$scope', '$location', 'serverService', 'sessionService',
+openAusias.controller('IndexController', ['$scope', '$location', 'serverService', 'sessionService',
     function ($scope, $location, serverService, sessionService) {
         $scope.username = "";
         $scope.isActive = function (viewLocation) {
