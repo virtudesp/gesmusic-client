@@ -38,64 +38,41 @@ moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInst
             {name: "apellidos", shortname: "Apellidos", longname: "Apellidos", visible: true}
         ];
 
-
-        $scope.closeForm = function (id) {
-
-            $modalInstance.close(id);
-        };
-
-
-//        $scope.ok = function () {
-//
-//            $modalInstance.close(id);
-//        };
-
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        }
-
         $scope.ob = "usuario";
         $scope.op = "selection";
         $scope.title = "Selección de usuario";
         $scope.icon = "fa-user";
 
-
-
         $scope.rpp = rpp;
         $scope.numpage = numpage;
 
-//        //--
-//        if (!$routeParams.page) {
-//            $routeParams.page = 1;
-//        }
-//        if (!$routeParams.rpp) {
-//            $routeParams.rpp = 10;
-//        }
-//if (!$routeParams.rpp) {
-//        $scope.neighbourhood = 2;
-//    }
-        //-----
-//        $scope.ufilter = serverService.getParamArray($routeParams.filter);
-//        $scope.uorder = serverService.getParamArray($routeParams.order);
-        //-----
-//        $scope.filter = "id";
-//        $scope.filteroperator = "like";
-//        $scope.filtervalue = "";
+        $scope.order = "";
+        $scope.ordervalue = "";
 
+        $scope.filter = "id";
+        $scope.filteroperator = "like";
+        $scope.filtervalue = "";
 
+        $scope.orderParams = null;
+        $scope.filterParams = null;
 
+        $scope.closeForm = function (id) {
+            $modalInstance.close(id);
+        };
 
-        getData();
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        }
 
         function getData() {
-            serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
+            serverService.promise_getCount($scope.ob, $scope.filterParams).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;
                     $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
                     if ($scope.numpage > $scope.pages) {
                         $scope.numpage = $scope.pages;
                     }
-                    return serverService.promise_getPage($scope.ob, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
+                    return serverService.promise_getPage($scope.ob, $scope.rpp, $scope.numpage, $scope.filterParams, $scope.orderParams);
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }
@@ -112,18 +89,16 @@ moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInst
 
         }
 
-
-
         $scope.$on('filterSelectionEvent', function (event, data) {
-            $scope.ufilter = data;
+            $scope.filterParams = data;
             getData();
         });
         $scope.$on('orderSelectionEvent', function (event, data) {
-            $scope.uorder = data;
+            $scope.orderParams = data;
             getData();
         });
         $scope.$on('pageSelectionEvent', function (event, data) {
-            $scope.numpage = data;
+            $scope.numpage += data;
             getData();
         });
         $scope.$on('rppSelectionEvent', function (event, data) {
@@ -131,4 +106,12 @@ moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInst
             getData();
         });
 
+        $scope.ufilter = null;
+        $scope.chooseOne = function (id) {
+
+            $scope.closeForm(id);
+            return false;
+        }
+
+        getData();
     }]);

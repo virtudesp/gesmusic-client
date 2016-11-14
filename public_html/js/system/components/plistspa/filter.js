@@ -16,8 +16,25 @@ moduloSistema.controller('plistFilterspaController', ['$scope', 'serverService',
         $scope.filtervalue = "";
         $scope.doFilterSelection = function ()
         {
-            $scope.ufilter = [];
-            $scope.ufilter.push([$scope.filter, $scope.filteroperator, $scope.filtervalue])
-            $rootScope.$broadcast('filterSelectionEvent',$scope.ufilter);
+            
+              if ($scope.filter && $scope.filteroperator && $scope.filtervalue) {
+                if ($scope.filterParams) {
+                    $scope.filterExpression = $scope.filterParams + '+and,' + $scope.filter + ',' + $scope.filteroperator + ',' + $scope.filtervalue;
+                } else {
+                    $scope.filterExpression = 'and,' + $scope.filter + ',' + $scope.filteroperator + ',' + $scope.filtervalue;
+                }
+                $rootScope.$broadcast('filterSelectionEvent',$scope.filterExpression);
+                
+            }
+            return false;
+            
+            
         }
+        
+        
+        
+ 
+     
+        
+        
     }]);

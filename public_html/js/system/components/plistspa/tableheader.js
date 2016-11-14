@@ -15,8 +15,12 @@ moduloSistema.controller('plistheaderspaController', ['$scope', 'serverService',
 
         $scope.dosortSelection = function (field, mode)
         {
-            $scope.uorder = [];
-            $scope.uorder.push([field, mode])
+
+
+            //$scope.uorder = [];
+            //$scope.uorder = field + "".push([field, mode])
+
+            $scope.uorder = field + ',' + mode;
             $rootScope.$broadcast('orderSelectionEvent', $scope.uorder);
             return false;
         }
