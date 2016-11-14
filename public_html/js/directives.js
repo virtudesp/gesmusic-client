@@ -29,7 +29,15 @@
 
 moduloDirectivas
 
-
+        .directive('link', function () {
+            return {
+                restrict: 'E',
+                template: '{{obj.id}} - {{obj.login}} ({{obj.ciudad}})',
+                scope: {
+                    obj: "=source"
+                }
+            }
+        })
         .directive('linkusuario', function () {
             return {
                 restrict: 'E',

@@ -49,6 +49,56 @@ angular.module('Services', [])
             }
             ;
             return {
+                  ////////////////////////////////////////////////////////////////
+                getLoginPromise: function (username, password) {
+                    return $http.get(this.getAppUrl() + '?ob=usuario&op=login&user=' + username + '&pass=' + password, 'GET', '');
+                },
+                getLogoutPromise: function () {
+                    return $http.get(this.getAppUrl() + '?ob=usuario&op=logout', 'GET', '');
+                },
+                getSessionPromise: function () {
+                    return $http.get(this.getAppUrl() + '?ob=usuario&op=getsessionstatus', 'GET', '');
+                },
+                promise_getCount: function (strObject, filter) {
+                    if (filter) {
+                        filter = "&filter=" + filter;
+                    } else {
+                        filter = "";
+                    }
+                    return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getcount' + filter, 'GET', '');
+                },
+                promise_getPage: function (strObject, rpp, page, filter, order) {
+                    if (filter) {
+                        filter = "&filter=" + filter;
+                    } else {
+                        filter = "";
+                    }
+                    if (order) {
+                        order = "&order=" + order;
+                    } else {
+                        order = "";
+                    }
+                    return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getpage&page=' + page + "&rpp=" + rpp + filter + order, 'GET', '');
+                },
+                calculatePages: function (regsPerPage, totalRegisters) {
+                    var pages = Math.floor(totalRegisters / regsPerPage);
+                    var remainderPages = totalRegisters % regsPerPage;
+                    if (remainderPages > 0) {
+                        pages++;
+                    }
+                    return pages;
+                },
+                promise_getOne: function (strClass, id) {
+                    return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=get&id=' + id, 'GET', '');
+                },
+                promise_removeOne: function (strClass, id) {
+                    return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=remove&id=' + id, 'GET', '');
+                },
+                promise_setOne: function (strClass, jsonfile) {
+                    $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
+                    return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=set', {params: jsonfile});
+                },
+                ////////////////////////////////////////////////////////////////
                 getRangeArray: function (lowEnd, highEnd) {
                     var rangeArray = [];
                     for (var i = lowEnd; i <= highEnd; i++) {
@@ -141,7 +191,7 @@ angular.module('Services', [])
                     var strPath = window.location.pathname;
                     return strPath.substr(1, strPath.substr(1, strPath.length).indexOf('/'));
                 },
-                promise_getOne: function (strClass, id) {
+                old_promise_getOne: function (strClass, id) {
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=get&id=' + id, 'GET', '');
 //                                   return $http({
 //                        url: configuration.getAppUrl() + '?ob=' + strClass + '&op=getaggregateviewone&id=' + id,
@@ -226,13 +276,13 @@ angular.module('Services', [])
                 promise_getAll: function (strClass, filterParams, orderParams, systemfilterParams) {
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=getaggregateviewall' + filterParams + orderParams + systemfilterParams, 'GET', '');
                 },
-                promise_removeOne: function (strClass, id) {
+                old_promise_removeOne: function (strClass, id) {
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=remove&id=' + id, 'GET', '');
                 },
-                promise_getPromise: function (strClass, operation, params) {
+                old_promise_getPromise: function (strClass, operation, params) {
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=' + operation + params, 'GET', '');
                 },
-                promise_setOne: function (strClass, jsonfile) {
+                old_promise_setOne: function (strClass, jsonfile) {
                     $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=set', {params: jsonfile});
                 },

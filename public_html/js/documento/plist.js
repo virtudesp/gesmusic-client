@@ -32,54 +32,118 @@ moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams'
     function ($scope, $routeParams, serverService, $location) {
 
         $scope.Fields = [
-            {name: "id", shortname: "ID", longname: "Identificador", visible: true},
-            {name: "titulo", shortname: "Título", longname: "Título", visible: true},
-            {name: "contenido", shortname: "Contenido", longname: "Contenido", visible: false},
-            {name: "alta", shortname: "Alta", longname: "Fecha de alta", visible: false},
-            {name: "cambio", shortname: "Cambio", longname: "Fecha de último cambio", visible: false},
-            {name: "hits", shortname: "Hits", longname: "Visitas", visible: true},
-            {name: "id_usuario", shortname: "Usuario", longname: "Usuario propietario", visible: true},
-            {name: "id_tipodocumento", shortname: "Tipo", longname: "Tipo de documento", visible: true},
-            {name: "etiquetas", shortname: "Etiquetas", longname: "Etiquetas", visible: false},
-            {name: "publicado", shortname: "¿Publ.?", longname: "¿Publicado?", visible: true},
-            {name: "portada", shortname: "¿Port.?", longname: "¿Portada?", visible: true},
-            {name: "destacado", shortname: "¿Dest.?", longname: "¿Destacado?", visible: true}
+            {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "integer"},
+            {name: "titulo", shortname: "Título", longname: "Título", visible: true, type: "string"},
+            {name: "contenido", shortname: "Contenido", longname: "Contenido", visible: false, type: "string"},
+            {name: "alta", shortname: "Alta", longname: "Fecha de alta", visible: false, type: "date"},
+            {name: "cambio", shortname: "Cambio", longname: "Fecha de último cambio", visible: false, type: "date"},
+            {name: "hits", shortname: "Hits", longname: "Visitas", visible: true, type: "integer"},
+            {name: "id_usuario", shortname: "Usuario", longname: "Usuario propietario", visible: true, type: "foreign", show: ""},
+            {name: "id_tipodocumento", shortname: "Tipo", longname: "Tipo de documento", visible: true, type: "foreign", show: ""},
+            {name: "etiquetas", shortname: "Etiquetas", longname: "Etiquetas", visible: false, type: "string"},
+            {name: "publicado", shortname: "¿Publ.?", longname: "¿Publicado?", visible: true, type: "boolean"},
+            {name: "portada", shortname: "¿Port.?", longname: "¿Portada?", visible: true, type: "boolean"},
+            {name: "destacado", shortname: "¿Dest.?", longname: "¿Destacado?", visible: true, type: "boolean"}
         ];
 
         $scope.ob = "documento";
-        $scope.op = "plist";
-        //--
+        $scope.op = "plist";        
         $scope.title = "Listado de documentos";
-        $scope.icon = "fa-file-text-o";
-        //--
-        if (!$routeParams.page) {
-            $routeParams.page = 1;
-        }
-        if (!$routeParams.rpp) {
-            $routeParams.rpp = 10;
-        }
+        $scope.icon = "fa-file-text-o";        
+
         $scope.numpage = $routeParams.page;
         $scope.rpp = $routeParams.rpp;
         $scope.neighbourhood = 2;
-        //-----
-        $scope.ufilter = serverService.getParamArray($routeParams.filter);
-        $scope.uorder = serverService.getParamArray($routeParams.order);
-        //-----
+
+        if (!$routeParams.page || $routeParams.page < 1) {
+            $scope.numpage = 1;
+        } else {
+            $scope.numpage = $routeParams.page;
+        }
+
+        if (!$routeParams.rpp || $routeParams.rpp < 1) {
+            $scope.rpp = 10;
+        } else {
+            $scope.rpp = $routeParams.rpp;
+        }
+
+        $scope.order = "";
+        $scope.ordervalue = "";
+
         $scope.filter = "id";
         $scope.filteroperator = "like";
         $scope.filtervalue = "";
-        serverService.get('ob=maxi_documento&page=' + $scope.numpage + '&rpp=' + $scope.rpp + serverService.getParamString4AJAX($scope.ufilter, 'filter') + serverService.getParamString4AJAX($scope.uorder, 'order')).then(function (result) {
-            if (result) {
-                if (result.status == 200) {
-                    $scope.page = result.data.message.rows;
-                    $scope.queryregisters = result.data.message.queryregisters;
-                    $scope.totalregisters = result.data.message.totalregisters;
-                    $scope.pages = serverService.getNumPages($scope.queryregisters, $scope.rpp);
-                    $scope.status = "";
+
+        if ($routeParams.filter) {
+            $scope.filterParams = $routeParams.filter;
+        } else {
+            $scope.filterParams = null;
+        }
+
+        if ($routeParams.order) {
+            $scope.orderParams = $routeParams.order;
+        } else {
+            $scope.orderParams = null;
+        }
+
+        if ($routeParams.sfilter) {
+            $scope.sfilterParams = $routeParams.sfilter;
+        } else {
+            $scope.sfilterParams = null;
+        }
+
+        if ($routeParams.sfilter) {
+            $scope.filterExpression = $routeParams.filter + '+' + $routeParams.sfilter;
+        } else {
+            $scope.filterExpression = $routeParams.filter;
+        }
+
+        serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
+            if (response.status == 200) {
+                $scope.registers = response.data.message;
+                $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
+                if ($scope.numpage > $scope.pages) {
+                    $scope.numpage = $scope.pages;
                 }
+                return serverService.promise_getPage($scope.ob, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
             } else {
                 $scope.status = "Error en la recepción de datos del servidor";
             }
-        })
+        }).then(function (response) {
+            if (response.status == 200) {
+                $scope.page = response.data.message;
+                $scope.status = "";
+            } else {
+                $scope.status = "Error en la recepción de datos del servidor";
+            }
+        }).catch(function (data) {
+            $scope.status = "Error en la recepción de datos del servidor";
+        });
+
+
+
+
+//        $scope.$on('doFilter', function (event, data) {
+//            $scope.filter = data[0];
+//            $scope.filteroperator = data[1];
+//            $scope.filtervalue = data[2];
+//            if ($scope.filter && $scope.filteroperator && $scope.filtervalue) {
+//
+//
+//
+//                if ($routeParams.filter) {
+//                    $scope.filterExpression = $routeParams.filter + '+and,' + $scope.filter + ',' + $scope.filteroperator + ',' + $scope.filtervalue;
+//                } else {
+//                    $scope.filterExpression = 'and,' + $scope.filter + ',' + $scope.filteroperator + ',' + $scope.filtervalue;
+//                }
+//                $location.path($scope.ob + '/' + $scope.op + '/' + $scope.numpage + '/' + $scope.rpp).search('filter', $scope.filterExpression).search('sfilter', $routeParams.sfilter).search('order', $routeParams.order);
+//            }
+//            return false;
+//        });
+
+
+     
+
+
 
     }]);

@@ -7,7 +7,11 @@ moduloDirectivas.directive('plistheader', function () {
     };
 });
 
-moduloSistema.controller('plistheaderController', ['$scope', 'serverService', function ($scope, serverService) {
+moduloSistema.controller('plistheaderController', ['$scope', 'serverService', '$location', function ($scope, serverService, $location) {
 //        $scope.Fields = $scope.$parent.Fields;
 //        $scope.dosort = $scope.$parent.dosort;
+        $scope.doorder = function (orderField, ascDesc) {
+            $location.url($scope.ob + '/' + $scope.op + '/' + $scope.numpage + '/' + $scope.rpp).search('filter', $scope.filterParams).search('sfilter', $scope.sfilterParams).search('order', orderField + ',' + ascDesc);
+            return false;
+        };
     }]);

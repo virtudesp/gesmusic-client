@@ -46,6 +46,12 @@ var openAusias = angular.module('myApp', [
     'ngSanitize'
 ]);
 
+
+
+//openAusias.config(['$locationProvider', function ($locationProvider) {
+//        $locationProvider.html5Mode(true);
+//    }]);
+
 openAusias.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;
     }]);
@@ -62,7 +68,7 @@ openAusias.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/documento/new', {templateUrl: 'js/documento/newedit.html', controller: 'DocumentoNewController'});
         $routeProvider.when('/documento/edit/:id', {templateUrl: 'js/documento/newedit.html', controller: 'DocumentoEditController'});
         $routeProvider.when('/documento/remove/:id', {templateUrl: 'js/documento/remove.html', controller: 'DocumentoRemoveController'});
-        $routeProvider.when('/documento/plist/:page?/:rpp?/:filter?/:order?', {templateUrl: 'js/documento/plist.html', controller: 'DocumentoPListController'});
+        $routeProvider.when('/documento/plist/:page?/:rpp?', {templateUrl: 'js/documento/plist.html', controller: 'DocumentoPListController'});
         //------------
         $routeProvider.when('/usuario/view/:id', {templateUrl: 'js/usuario/view.html', controller: 'UsuarioViewController'});
         $routeProvider.when('/usuario/new/:id?', {templateUrl: 'js/usuario/newedit.html', controller: 'UsuarioNewController'});

@@ -82,23 +82,37 @@ moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInst
 //        $scope.filteroperator = "like";
 //        $scope.filtervalue = "";
 
+
+
+
         getData();
 
         function getData() {
-            serverService.get('ob=usuario&page=' + $scope.numpage + '&rpp=' + $scope.rpp + serverService.getParamString4AJAX($scope.ufilter, 'filter') + serverService.getParamString4AJAX($scope.uorder, 'order')).then(function (result) {
-                if (result) {
-                    if (result.status == 200) {
-                        $scope.page = result.data.message.rows;
-                        $scope.queryregisters = result.data.message.queryregisters;
-                        $scope.totalregisters = result.data.message.totalregisters;
-                        $scope.pages = serverService.getNumPages($scope.queryregisters, $scope.rpp);
-                        $scope.status = "";
+            serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
+                if (response.status == 200) {
+                    $scope.registers = response.data.message;
+                    $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
+                    if ($scope.numpage > $scope.pages) {
+                        $scope.numpage = $scope.pages;
                     }
+                    return serverService.promise_getPage($scope.ob, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }
-            })
+            }).then(function (response) {
+                if (response.status == 200) {
+                    $scope.page = response.data.message;
+                    $scope.status = "";
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor";
+            });
+
         }
+
+
 
         $scope.$on('filterSelectionEvent', function (event, data) {
             $scope.ufilter = data;
