@@ -31,7 +31,7 @@
 
 
 
-var openAusias = angular.module('myApp', [
+var klibiandox = angular.module('myApp', [
     'ngRoute',
     'Filters',
     'Services',
@@ -48,15 +48,15 @@ var openAusias = angular.module('myApp', [
 
 
 
-//openAusias.config(['$locationProvider', function ($locationProvider) {
+//klibiandox.config(['$locationProvider', function ($locationProvider) {
 //        $locationProvider.html5Mode(true);
 //    }]);
 
-openAusias.config(['$httpProvider', function ($httpProvider) {
+klibiandox.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;
     }]);
 
-openAusias.config(['$routeProvider', function ($routeProvider) {
+klibiandox.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
         //------------
         $routeProvider.when('/login', {templateUrl: 'js/system/login.html', controller: 'LoginController'});
@@ -91,7 +91,7 @@ openAusias.config(['$routeProvider', function ($routeProvider) {
     }]);
 
 
-openAusias.run(function ($rootScope, $location, serverService, sessionService) {
+klibiandox.run(function ($rootScope, $location, serverService, sessionService) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         //$rootScope.authenticated = false;
         sessionService.setSessionInactive();
