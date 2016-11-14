@@ -148,7 +148,21 @@ THE SOFTWARE.
                                                 <td ng-show="Fields[9].visible" class="text-center" ng-bind-html="obj.publicado | booleanizate"></td>
                                                 <td ng-show="Fields[10].visible" class="text-center" ng-bind-html="obj.portada | booleanizate"></td>
                                                 <td ng-show="Fields[11].visible" class="text-center" ng-bind-html="obj.destacado | booleanizate"></td>
-                                                <td plistoperationbar></td>
+                                                <td>
+                                                    <div class="btn-toolbar" role="toolbar">
+                                                        <div class="btn-group">
+                                                            <a class="btn btn-default btn-xs" href="#/{{ob}}/view/{{obj.id}}">
+                                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                                            </a>
+                                                            <a class="btn btn-default btn-xs" href="#/{{ob}}/edit/{{obj.id}}">
+                                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                            </a>
+                                                            <a class="btn btn-default btn-xs" href="#/{{ob}}/remove/{{obj.id}}">
+                                                                <span class="glyphicon glyphicon-remove"></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>            
