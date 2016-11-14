@@ -43,8 +43,11 @@ moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInst
         $scope.title = "Selección de usuario";
         $scope.icon = "fa-user";
 
-        $scope.rpp = rpp;
-        $scope.numpage = numpage;
+
+        $scope.numpage = 1;
+        $scope.rpp = 10;
+        $scope.neighbourhood = 1;
+
 
         $scope.order = "";
         $scope.ordervalue = "";
@@ -98,7 +101,7 @@ moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInst
             getData();
         });
         $scope.$on('pageSelectionEvent', function (event, data) {
-            $scope.numpage += data;
+            $scope.numpage = data;
             getData();
         });
         $scope.$on('rppSelectionEvent', function (event, data) {

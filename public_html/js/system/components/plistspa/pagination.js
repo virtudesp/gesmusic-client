@@ -10,8 +10,10 @@ moduloSistema.controller('plistPaginationspaController', ['$scope', 'serverServi
         $scope.getRangeArray = serverService.getRangeArray;
         $scope.evaluateMin = serverService.evaluateMin;
         $scope.evaluateMax = serverService.evaluateMax;
-        $scope.showPageSelection = function (numpage)
+        $scope.gotopage = function (numpage)
         {
             $rootScope.$broadcast('pageSelectionEvent', numpage);
+            return false;
         }
+
     }]);
