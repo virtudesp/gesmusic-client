@@ -5,7 +5,6 @@
   * Has a component-oriented design.
   * Because software development trends naturaly to be complex Klibiandox is intended to be easy and keep simple all the process. 
   * Klibiandox client is used to teach web application development to vocational students and to qualify them to join the workforce maket of developers in a tiny period of time. Klibiandox was designed to avoid spaghetti code and complexity as far as possible, and brings an aid in structurate code development by copy-paste and adapt learning techniques.
-  * Provides a layered J2EE environment to easy server web development. 
 
   * Instructions:
     * get started with Zylkanexy server
