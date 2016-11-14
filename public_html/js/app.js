@@ -1,10 +1,10 @@
 /*
  * Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  * 
- * openAUSIAS: The stunning micro-library that helps you to develop easily 
- *             AJAX web applications by using Java and jQuery
- * openAUSIAS is distributed under the MIT License (MIT)
- * Sources at https://github.com/rafaelaznar/openAUSIAS
+ * Klibiandox: The stunning micro-library that helps you to develop easily 
+ *             AJAX web applications by using Angular.js 1.x & zylkanexy
+ * Klibiandox is distributed under the MIT License (MIT)
+ * Sources at https://github.com/rafaelaznar/klibiandox
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
