@@ -42,6 +42,20 @@ moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', 
         $scope.obj.obj_tipodocumento = {"id": 0};
         $scope.obj.obj_usuario = {"id": 0};
 
+
+        if ($routeParams.id_usuario) {
+            serverService.promise_getOne('usuario', $routeParams.id_usuario).then(function (response) {
+                if (response.data.message.id != 0) {
+                    $scope.obj.obj_usuario = response.data.message;
+                    $scope.show_obj_usuario = false;
+                    $scope.title = "Nuevo documento del usuario " + $scope.obj.obj_usuario.nombre + ' ' + $scope.obj.obj_usuario.apellidos;
+                }
+            });
+        } else {
+            $scope.show_obj_usuario = true;
+        }
+
+
         if (sharedSpaceService.getFase() == 0) {
             if ($routeParams.tipodocumento && $routeParams.tipodocumento > 0) {
                 $scope.obj.obj_tipodocumento.id = $routeParams.tipodocumento;
