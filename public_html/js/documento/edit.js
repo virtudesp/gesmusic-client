@@ -28,7 +28,7 @@
 
 'use strict';
 moduloDocumento.controller('DocumentoEditController', ['$scope', '$uibModal', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter',
-    function ($scope, $modal, $routeParams, $location, serverService, sharedSpaceService, $filter) {
+    function ($scope, $uibModal, $routeParams, $location, serverService, sharedSpaceService, $filter) {
         $scope.obj = {};
         $scope.objRaw = null;
         $scope.id = $routeParams.id;
@@ -123,7 +123,7 @@ moduloDocumento.controller('DocumentoEditController', ['$scope', '$uibModal', '$
 //            id: 0
 //        };
         $scope.chooseOneTipodocumento = function (foreignObjectName, contollerName) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'js/' + foreignObjectName + '/selection.html',
                 controller: contollerName,
                 size: 'lg',

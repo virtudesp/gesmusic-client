@@ -27,8 +27,8 @@
  */
 
 'use strict';
-moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter',
-    function ($scope, $routeParams, $location, serverService, sharedSpaceService, $filter) {
+moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter','$uibModal',
+    function ($scope, $routeParams, $location, serverService, sharedSpaceService, $filter,$uibModal) {
 
         $scope.ob = 'documento';
         $scope.op = 'new';
@@ -68,12 +68,7 @@ moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', 
             sharedSpaceService.setFase(0);
         }
 
-        $scope.chooseOne = function (foreignObjectName) {
-            sharedSpaceService.setObject($scope.obj);
-            sharedSpaceService.setReturnLink('/' + $scope.ob + '/' + $scope.op);
-            sharedSpaceService.setFase(1);
-            $location.path('/' + foreignObjectName + '/selection/1/10');
-        }
+
 
         $scope.save = function () {
             var dateAltaAsString = $filter('date')($scope.obj.alta, "dd/MM/yyyy");
@@ -86,17 +81,32 @@ moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', 
             });
         };
 
-        $scope.$watch('obj.obj_tipodocumento.id', function () {
+       $scope.$watch('obj.obj_tipodocumento.id', function () {
             if ($scope.obj) {
-                serverService.getDataFromPromise(serverService.promise_getOne('tipodocumento', $scope.obj.obj_tipodocumento.id)).then(function (data2) {
-                    $scope.obj.obj_tipodocumento = data2.message;
+                serverService.promise_getOne('tipodocumento', $scope.obj.obj_tipodocumento.id).then(function (response) {
+                    var old_id = $scope.obj.obj_tipodocumento.id;
+                    $scope.obj.obj_tipodocumento = response.data.message;
+                    if (response.data.message.id != 0) {
+                        $scope.outerForm.obj_tipodocumento.$setValidity('exists', true);
+                    } else {
+                        $scope.outerForm.obj_tipodocumento.$setValidity('exists', false);
+                        $scope.obj.obj_tipodocumento.id = old_id;
+                    }
                 });
             }
         });
+
         $scope.$watch('obj.obj_usuario.id', function () {
             if ($scope.obj) {
-                serverService.getDataFromPromise(serverService.promise_getOne('usuario', $scope.obj.obj_usuario.id)).then(function (data2) {
-                    $scope.obj.obj_usuario = data2.message;
+                serverService.promise_getOne('usuario', $scope.obj.obj_usuario.id).then(function (response) {
+                    var old_id = $scope.obj.obj_usuario.id;
+                    $scope.obj.obj_usuario = response.data.message;
+                    if (response.data.message.id != 0) {
+                        $scope.outerForm.obj_usuario.$setValidity('exists', true);
+                    } else {
+                        $scope.outerForm.obj_usuario.$setValidity('exists', false);
+                        $scope.obj.obj_usuario.id = old_id;
+                    }
                 });
             }
         });
@@ -111,11 +121,7 @@ moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', 
             $location.path('/documento/plist');
         };
 
-        //datepickers
-        $scope.minDate = new Date(2016, 0, 1);
-        $scope.maxDate = new Date(2019, 11, 31);
-
-        //datepicker 1 (fecha de alta)
+        //datepicker 1
         $scope.open1 = function () {
             $scope.popup1.opened = true;
         };
@@ -127,7 +133,7 @@ moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', 
             startingDay: 1
         };
 
-        //datepicker 2 (fecha de alta)
+        //datepicker 2
         $scope.open2 = function () {
             $scope.popup2.opened = true;
         };
@@ -140,11 +146,24 @@ moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', 
         };
 
 
-//        $scope.disabled = function (date, mode) {
-//            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-//        };
+
+        $scope.chooseOne = function (foreignObjectName, contollerName) {
+            var modalInstance = $uibModal.open({
+                templateUrl: 'js/' + foreignObjectName + '/selection.html',
+                controller: contollerName,
+                size: 'lg'
+            }).result.then(function (modalResult) {
+                $scope.obj.obj_usuario.id = modalResult;               
+            });
+        };
 
 
-       
+
+
+
+
+   
+    
+
 
     }]);

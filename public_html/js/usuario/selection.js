@@ -28,8 +28,8 @@
 
 'use strict';
 
-moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService', 'numpage', 'rpp', 'neighbourhood', 'id_usuario',
-    function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService, numpage, rpp, neighbourhood, id_usuario) {
+moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService', 
+    function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService) {
 
 
         $scope.Fields = [
