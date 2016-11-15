@@ -41,7 +41,7 @@ angular.module('Filters').filter('showForeign', function ($filter)
         if (input == null) {
             return "";
         }
-        return input[0] +':'+ input[1];
+        return input[0] + ':' + input[1];
     };
 });
 angular.module('Filters').filter('clipString', function ($filter)
@@ -55,6 +55,8 @@ angular.module('Filters').filter('clipString', function ($filter)
         if (input.length > 14) {
             return input.substr(0, 10).trim() + " ...";
 
+        } else {
+            return input;
         }
 
     };
