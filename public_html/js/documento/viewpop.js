@@ -36,7 +36,7 @@ moduloDocumento.controller('DocumentoViewpopController', ['$scope', '$routeParam
         $scope.id = id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
-                if (response.bean.status == 200) {
+                if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
                 } else {
