@@ -37,8 +37,12 @@ moduloUsuario.controller('UsuarioViewpopController', ['$scope', '$routeParams', 
         $scope.id = id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
-                $scope.status = null;
-                $scope.bean = response.data.message;
+                if (response.bean.status == 200) {
+                    $scope.status = null;
+                    $scope.bean = response.data.message;
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor";
+                }
             } else {
                 $scope.status = "Error en la recepción de datos del servidor";
             }

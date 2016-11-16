@@ -9,7 +9,7 @@ moduloDirectivas.directive('plistinfospa', function () {
 //        }
     };
 });
-moduloSistema.controller('plistInfoController', ['$scope', 'serverService', '$rootScope', '$location', function ($scope, serverService, $rootScope, $location) {
+moduloSistema.controller('plistInfospaController', ['$scope', 'serverService', '$rootScope', '$location', function ($scope, serverService, $rootScope, $location) {
 
         $scope.doresetorder = function () {
             $rootScope.$broadcast('resetOrderEvent');
