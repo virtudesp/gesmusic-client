@@ -28,8 +28,8 @@
 
 'use strict';
 
-moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams', 'serverService', '$location',
-    function ($scope, $routeParams, serverService, $location) {
+moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModal',
+    function ($scope, $routeParams, serverService, $location, $uibModal) {
 
         $scope.Fields = [
             {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "integer"},
@@ -119,6 +119,23 @@ moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams'
         }).catch(function (data) {
             $scope.status = "Error en la recepción de datos del servidor";
         });
+
+
+        $scope.viewOne = function (id, foreignObjectName, contollerName) {
+            var modalInstance = $uibModal.open({
+                templateUrl: 'js/' + foreignObjectName + '/viewpop.html',
+                controller: contollerName,
+                size: 'lg',
+                resolve: {
+                    //id: id
+                    id: function () {
+                        return id;
+                    }
+                }
+            }).result.then(function (modalResult) {
+               // $scope.obj.obj_usuario.id = modalResult;
+            });
+        };
 
 
 
