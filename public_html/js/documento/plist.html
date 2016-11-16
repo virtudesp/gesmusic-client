@@ -142,8 +142,8 @@ THE SOFTWARE.
                                                 <td ng-show="Fields[3].visible">{{obj.alta}}</td>
                                                 <td ng-show="Fields[4].visible">{{obj.cambio}}</td>
                                                 <td ng-show="Fields[5].visible" class="text-right">{{obj.hits}}</td>
-                                                <td ng-show="Fields[6].visible"><a ng-click="viewOne(obj.obj_usuario.id_usuario,'usuario','UsuarioViewpopController')">{{obj.obj_usuario.nombre + " " + obj.obj_usuario.apellidos}}</a></td>
-                                                <td ng-show="Fields[7].visible"><a href="#/tipodocumento/view/{{obj.obj_tipodocumento.id_tipodocumento}}">{{obj.obj_tipodocumento.descripcion}}</a></td>
+                                                <td ng-show="Fields[6].visible"><a ng-click="viewOne(obj.obj_usuario.id,'usuario','UsuarioViewpopController')">{{obj.obj_usuario.id}} - {{obj.obj_usuario.nombre + " " + obj.obj_usuario.apellidos}}</a></td>
+                                                <td ng-show="Fields[7].visible"><a href="#/tipodocumento/view/{{obj.obj_tipodocumento.id}}">{{obj.obj_tipodocumento.descripcion}}</a></td>
                                                 <td ng-show="Fields[8].visible">{{obj.etiquetas}}</td>
                                                 <td ng-show="Fields[9].visible" class="text-center" ng-bind-html="obj.publicado | booleanizate"></td>
                                                 <td ng-show="Fields[10].visible" class="text-center" ng-bind-html="obj.portada | booleanizate"></td>
