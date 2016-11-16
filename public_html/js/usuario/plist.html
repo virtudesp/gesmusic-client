@@ -136,17 +136,17 @@ THE SOFTWARE.
                                             </tr>
                                             -->
                                             <tr ng-repeat="obj in page| filter:searchText">
-                                                <td ng-show="visibles.id" class="text-right">{{obj.id}}</td>
-                                                <td ng-show="visibles.nombre">{{obj.nombre}}</td>
-                                                <td ng-show="visibles.apellidos">{{obj.apellidos}}</td>
-                                                <td ng-show="visibles.email">{{obj.email}}</td>
-                                                <td ng-show="visibles.login">{{obj.login}}</td>
-                                                <td ng-show="visibles.password">{{obj.password}}</td>                                                       
-                                                <td ng-show="visibles.id_estado"><a href="#/estado/view/{{obj.obj_estado.id}}">{{obj.obj_estado.tipo}}</a></td>
-                                                <td ng-show="visibles.id_tipousuario"><a href="#/tipousuario/view/{{obj.obj_tipousuario.id}}">{{obj.obj_tipousuario.descripcion}}</a></td>
-                                                <td ng-show="visibles.ciudad">{{obj.ciudad}}</td>
-                                                <td ng-show="visibles.firma">{{obj.firma|clipString}}</td>
-                                                <td ng-show="visibles.skin">{{obj.skin}}</td>
+                                                <td ng-show="Fields[0].visible" class="text-right">{{obj.id}}</td>
+                                                <td ng-show="Fields[1].visible">{{obj.nombre}}</td>
+                                                <td ng-show="Fields[2].visible">{{obj.apellidos}}</td>
+                                                <td ng-show="Fields[3].visible">{{obj.email}}</td>
+                                                <td ng-show="Fields[4].visible">{{obj.login}}</td>
+                                                <td ng-show="Fields[5].visible">{{obj.password}}</td>                                                       
+                                                <td ng-show="Fields[6].visible"><a href="#/estado/view/{{obj.obj_estado.id}}">{{obj.obj_estado.tipo}}</a></td>
+                                                <td ng-show="Fields[7].visible"><a href="#/tipousuario/view/{{obj.obj_tipousuario.id}}">{{obj.obj_tipousuario.descripcion}}</a></td>
+                                                <td ng-show="Fields[8].visible">{{obj.ciudad}}</td>
+                                                <td ng-show="Fields[9].visible">{{obj.firma|clipString}}</td>
+                                                <td ng-show="Fields[10].visible">{{obj.skin}}</td>
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">

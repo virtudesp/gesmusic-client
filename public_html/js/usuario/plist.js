@@ -30,18 +30,18 @@
 moduloUsuario.controller('UsuarioPListController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModal',
     function ($scope, $routeParams, serverService, $location,$uibModal) {
 
-        $scope.visibles={};
-        $scope.visibles.id = true;
-        $scope.visibles.nombre = true;
-        $scope.visibles.apellidos = true;
-        $scope.visibles.email = true;
-        $scope.visibles.login = true;
-        $scope.visibles.password = true;
-        $scope.visibles.id_estado = true;
-        $scope.visibles.id_tipousuario = true;
-        $scope.visibles.ciudad = true;
-        $scope.visibles.firma = true;
-        $scope.visibles.skin = true;
+//        $scope.visibles={};
+//        $scope.visibles.id = true;
+//        $scope.visibles.nombre = true;
+//        $scope.visibles.apellidos = true;
+//        $scope.visibles.email = true;
+//        $scope.visibles.login = true;
+//        $scope.visibles.password = true;
+//        $scope.visibles.id_estado = true;
+//        $scope.visibles.id_tipousuario = true;
+//        $scope.visibles.ciudad = true;
+//        $scope.visibles.firma = true;
+//        $scope.visibles.skin = true;
 
 
         $scope.Fields = [
