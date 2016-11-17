@@ -1,5 +1,5 @@
 
-# escalamio client (warning: under development, only works autentication)
+# escalamio client (warning: under development)
 
   * escalamio is a client for Zylkanexy server and provides a template to easy build small and medium AJAX projects with Angular 1.x    
   * Has a component-oriented design.
