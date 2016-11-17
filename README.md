@@ -1,10 +1,10 @@
 
-# Klibiandox client (warning: under development, only works autentication)
+# escalamio client (warning: under development, only works autentication)
 
-  * Klibiandox is a client for Zylkanexy server and provides a template to easy build small and medium AJAX projects with Angular 1.x    
+  * escalamio is a client for Zylkanexy server and provides a template to easy build small and medium AJAX projects with Angular 1.x    
   * Has a component-oriented design.
-  * Because software development trends naturaly to be complex Klibiandox is intended to be easy and keep simple all the process. 
-  * Klibiandox client is used to teach web application development to vocational students and to qualify them to join the workforce maket of developers in a tiny period of time. Klibiandox was designed to avoid spaghetti code and complexity as far as possible, and brings an aid in structurate code development by copy-paste and adapt learning techniques.
+  * Because software development trends naturaly to be complex escalamio is intended to be easy and keep simple all the process. 
+  * escalamio client is used to teach web application development to vocational students and to qualify them to join the workforce maket of developers in a tiny period of time. escalamio was designed to avoid spaghetti code and complexity as far as possible, and brings an aid in structurate code development by copy-paste and adapt learning techniques.
 
   * Instructions:
     * get started with Zylkanexy server

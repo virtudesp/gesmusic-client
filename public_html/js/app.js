@@ -1,10 +1,10 @@
 /*
  * Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  * 
- * Klibiandox: The stunning micro-library that helps you to develop easily 
+ * escalamio: The stunning micro-library that helps you to develop easily 
  *             AJAX web applications by using Angular.js 1.x & zylkanexy
- * Klibiandox is distributed under the MIT License (MIT)
- * Sources at https://github.com/rafaelaznar/klibiandox
+ * escalamio is distributed under the MIT License (MIT)
+ * Sources at https://github.com/rafaelaznar/escalamio
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@
 
 
 
-var klibiandox = angular.module('myApp', [
+var escalamio = angular.module('myApp', [
     'ngRoute',
     'Filters',
     'Services',
@@ -48,15 +48,15 @@ var klibiandox = angular.module('myApp', [
 
 
 
-//klibiandox.config(['$locationProvider', function ($locationProvider) {
+//escalamio.config(['$locationProvider', function ($locationProvider) {
 //        $locationProvider.html5Mode(true);
 //    }]);
 
-klibiandox.config(['$httpProvider', function ($httpProvider) {
+escalamio.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;
     }]);
 
-klibiandox.config(['$routeProvider', function ($routeProvider) {
+escalamio.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
         //------------
         $routeProvider.when('/login', {templateUrl: 'js/system/login.html', controller: 'LoginController'});
@@ -91,7 +91,7 @@ klibiandox.config(['$routeProvider', function ($routeProvider) {
     }]);
 
 
-klibiandox.run(function ($rootScope, $location, serverService, sessionService) {
+escalamio.run(function ($rootScope, $location, serverService, sessionService) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         //$rootScope.authenticated = false;
         sessionService.setSessionInactive();
