@@ -84,6 +84,7 @@ escalamio.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/tipousuario/view/:id', {templateUrl: 'js/tipousuario/view.html', controller: 'TipousuarioViewController'});
         //------------
         $routeProvider.when('/estado/selection/:page?/:rpp?', {templateUrl: 'js/estado/selection.html', controller: 'EstadoSelectionController'});
+        $routeProvider.when('/estado/view/:id', {templateUrl: 'js/estado/view.html', controller: 'EstadoViewController'});
         //------------
         $routeProvider.otherwise({redirectTo: '/'});
 
