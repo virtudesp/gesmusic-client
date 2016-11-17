@@ -27,8 +27,8 @@
  */
 
 'use strict';
-moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter','$uibModal',
-    function ($scope, $routeParams, $location, serverService, sharedSpaceService, $filter,$uibModal) {
+moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, sharedSpaceService, $filter, $uibModal) {
 
         $scope.ob = 'documento';
         $scope.op = 'new';
@@ -56,32 +56,19 @@ moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', 
         }
 
 
-        if (sharedSpaceService.getFase() == 0) {
-            if ($routeParams.tipodocumento && $routeParams.tipodocumento > 0) {
-                $scope.obj.obj_tipodocumento.id = $routeParams.tipodocumento;
-            }
-            if ($routeParams.usuario && $routeParams.usuario > 0) {
-                $scope.obj.obj_usuario.id = $routeParams.usuario;
-            }
-        } else {
-            $scope.obj = sharedSpaceService.getObject();
-            sharedSpaceService.setFase(0);
-        }
-
-
 
         $scope.save = function () {
             var dateAltaAsString = $filter('date')($scope.obj.alta, "dd/MM/yyyy");
             var dateCambioAsString = $filter('date')($scope.obj.cambio, "dd/MM/yyyy");
             $scope.obj.alta = dateAltaAsString;
             $scope.obj.cambio = dateCambioAsString;
-            //console.log({json: JSON.stringify(serverService.array_identificarArray($scope.obj))});            
-            serverService.getDataFromPromise(serverService.promise_setOne($scope.ob, {json: JSON.stringify(serverService.array_identificarArray($scope.obj))})).then(function (data) {
-                $scope.result = data;
+            var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.obj))};
+            serverService.promise_setOne($scope.ob, jsonToSend).then(function (data) {
+                $scope.result = data.data;
             });
         };
 
-       $scope.$watch('obj.obj_tipodocumento.id', function () {
+        $scope.$watch('obj.obj_tipodocumento.id', function () {
             if ($scope.obj) {
                 serverService.promise_getOne('tipodocumento', $scope.obj.obj_tipodocumento.id).then(function (response) {
                     var old_id = $scope.obj.obj_tipodocumento.id;
@@ -145,25 +132,16 @@ moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', 
             startingDay: 1
         };
 
-
-
         $scope.chooseOne = function (foreignObjectName, contollerName) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'js/' + foreignObjectName + '/selection.html',
                 controller: contollerName,
                 size: 'lg'
             }).result.then(function (modalResult) {
-                $scope.obj.obj_usuario.id = modalResult;               
+                $scope.obj.obj_usuario.id = modalResult;
             });
         };
 
-
-
-
-
-
-   
-    
 
 
     }]);
