@@ -28,7 +28,7 @@
 'use strict';
 
 
-moduloUsuario.controller('TipodocumentoViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
+moduloTipodocumento.controller('TipodocumentoViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, $location, $uibModalInstance, id) {
         $scope.status = null;
         $scope.title = "Vista de tipo de documento";

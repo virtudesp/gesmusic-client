@@ -28,7 +28,7 @@
 
 'use strict';
 
-moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService', 
+moduloUser.controller('UserSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService', 
     function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService) {
 
 
@@ -38,7 +38,7 @@ moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInst
             {name: "apellidos", shortname: "Apellidos", longname: "Apellidos", visible: true}
         ];
 
-        $scope.ob = "usuario";
+        $scope.ob = "user";
         $scope.op = "selection";
         $scope.title = "Selección de usuario";
         $scope.icon = "fa-user";

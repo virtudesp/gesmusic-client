@@ -12,44 +12,38 @@ moduloSistema.controller('LoginController', ['$scope', '$routeParams', '$locatio
 
 
         $scope.login = function () {
-            serverService.patch('op=login&user=' + $scope.user.username + '&pass=' + $scope.user.password ).then(function (result) {
-                //Data.toast(results);
-                if (result) {
-                    if (result.status == 200) {
-                        //$rootScope.authenticated = true;
-                        //$rootScope.username = "rafa";
-                        sessionService.setSessionActive();
-                        sessionService.setUsername('rafa');
-                        console.log('---> login: ')
-                        console.log('session: ' + sessionService.isSessionActive())
-                        console.log('username: ' + sessionService.getUsername())
-                        $location.path('home');
-                    }
+
+            serverService.getLoginPromise($scope.user.username, $scope.user.password).then(function (response) {
+                if (response.status == 200) {                    
+                    sessionService.setSessionActive();
+                    sessionService.setUsername(response.data.message);
+                    $location.path('home');
                 } else {
+                    console.log("patch <>200");
                     sessionService.setSessionInactive();
                     sessionService.setUsername('');
-                    //$rootScope.username = "";
-                    //$rootScope.authenticated = false;
+                    return false;
                 }
+            }, function errorCallback(response, status) {
+                sessionService.setSessionInactive();
+                sessionService.setUsername('');
+                console.log("patch error" + status);
+                return false;
             });
 
 
-//            serverService.getDataFromPromise(
-//                    serverService.promise_patch('ob=usuario&op=login&user=' + $scope.user.username + '&pass=' + $scope.user.password + '&db=scroom')).then(
-//                    function successCallback(response) {
-//                        if (response.code == 200) {
-//                            sessionService.setObject($scope.user);
-//                            alert('ok..');
-//                            $("#infoPanel").html($scope.user.username); //poner el nombre del user
-//                            //obtener datos del usuario
-//                        }
-//                        // this callback will be called asynchronously
-//                        // when the response is available
-//                    }, function errorCallback(response, status) {
-//                console.log("HTTP ERROR STATUS: " + $scope.data.error.status);
-//                alert('error..');
+
+
+//            if (response) {
+//                sessionService.setSessionActive();
+//                sessionService.setUsername(response.message);
+//                $location.path('home');
+//            } else {
+//                sessionService.setSessionInactive();
+//                sessionService.setUsername('');
+//            }
 //            });
-        }
+        };
 
     }
 ]

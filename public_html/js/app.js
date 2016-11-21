@@ -38,7 +38,7 @@ var dolity = angular.module('myApp', [
     'Directives',
     'systemControllers',
     'documentoControllers',
-    'usuarioControllers',
+    'userControllers',
     'tipodocumentoControllers',
     'tipousuarioControllers',
     'estadoControllers',
@@ -70,15 +70,15 @@ dolity.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/documento/remove/:id', {templateUrl: 'js/documento/remove.html', controller: 'DocumentoRemoveController'});
         $routeProvider.when('/documento/plist/:page?/:rpp?', {templateUrl: 'js/documento/plist.html', controller: 'DocumentoPListController'});
         //------------
-        $routeProvider.when('/usuario/view/:id', {templateUrl: 'js/usuario/view.html', controller: 'UsuarioViewController'});
-        $routeProvider.when('/usuario/new/:id?', {templateUrl: 'js/usuario/newedit.html', controller: 'UsuarioNewController'});
-        $routeProvider.when('/usuario/edit/:id', {templateUrl: 'js/usuario/newedit.html', controller: 'UsuarioEditController'});
-        $routeProvider.when('/usuario/remove/:id', {templateUrl: 'js/usuario/remove.html', controller: 'UsuarioRemoveController'});
-        $routeProvider.when('/usuario/plist/:page?/:rpp?', {templateUrl: 'js/usuario/plist.html', controller: 'UsuarioPListController'});
-        $routeProvider.when('/usuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'UsuarioSelectionController'});
+        $routeProvider.when('/user/view/:id', {templateUrl: 'js/user/view.html', controller: 'UserViewController'});
+        $routeProvider.when('/user/new/:id?', {templateUrl: 'js/user/newedit.html', controller: 'UserNewController'});
+        $routeProvider.when('/user/edit/:id', {templateUrl: 'js/user/newedit.html', controller: 'UserEditController'});
+        $routeProvider.when('/user/remove/:id', {templateUrl: 'js/user/remove.html', controller: 'UserRemoveController'});
+        $routeProvider.when('/user/plist/:page?/:rpp?', {templateUrl: 'js/user/plist.html', controller: 'UserPListController'});
+        $routeProvider.when('/user/selection/:page?/:rpp?', {templateUrl: 'js/user/selection.html', controller: 'UserSelectionController'});
         //------------
-        $routeProvider.when('/tipodocumento/view/:id', {templateUrl: 'js/tipodocumento/view.html', controller: 'TipodocumentoViewController'});
-        $routeProvider.when('/tipodocumento/selection/:page?/:rpp?', {templateUrl: 'js/tipodocumento/selection.html', controller: 'TipodocumentoSelectionController'});
+        $routeProvider.when('/usertype/view/:id', {templateUrl: 'js/usertype/view.html', controller: 'UsertypeViewController'});
+        $routeProvider.when('/usertype/plist/:page?/:rpp?', {templateUrl: 'js/usertype/selection.html', controller: 'UsertypeSelectionController'});
         //------------
         $routeProvider.when('/tipousuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});
         $routeProvider.when('/tipousuario/view/:id', {templateUrl: 'js/tipousuario/view.html', controller: 'TipousuarioViewController'});
@@ -94,22 +94,12 @@ dolity.config(['$routeProvider', function ($routeProvider) {
 
 dolity.run(function ($rootScope, $location, serverService, sessionService) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
-        //$rootScope.authenticated = false;
         sessionService.setSessionInactive();
         sessionService.setUsername('');
-        serverService.patch('op=getsessionstatus').then(function (result) {
-            //console.log("--> $routeChangeStart:result= " + result);
-            if (result) {
-                //$rootScope.authenticated = true;
+        serverService.getSessionPromise().then(function (response) {
+            if (response['status'] == 200) {
                 sessionService.setSessionActive();
-                sessionService.setUsername('rafa');
-                //console.log('---> app.run: ')
-                //console.log('session: ' + sessionService.isSessionActive())
-                //console.log('username: ' + sessionService.getUsername())
-                //$location.path("/home");
-                //$rootScope.uid = results.uid;
-                //$rootScope.name = results.name;
-                //$rootScope.email = results.email;
+                sessionService.setUsername(response.data.message);
             } else {
                 sessionService.setSessionInactive();
                 sessionService.setUsername('');
@@ -120,12 +110,21 @@ dolity.run(function ($rootScope, $location, serverService, sessionService) {
                     $location.path("/login");
                 }
             }
+        }).catch(function (data) {
+            sessionService.setSessionInactive();
+            sessionService.setUsername('');
+            var nextUrl = next.$$route.originalPath;
+            if (nextUrl == '/home' || nextUrl == '/login' || nextUrl == '/license') {
+
+            } else {
+                $location.path("/login");
+            }
         });
     });
 });
 
 var moduloSistema = angular.module('systemControllers', []);
-var moduloUsuario = angular.module('usuarioControllers', []);
+var moduloUser = angular.module('userControllers', []);
 var moduloDocumento = angular.module('documentoControllers', []);
 var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);

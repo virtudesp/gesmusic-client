@@ -51,13 +51,14 @@ angular.module('Services', [])
             return {
                   ////////////////////////////////////////////////////////////////
                 getLoginPromise: function (username, password) {
-                    return $http.get(this.getAppUrl() + '?ob=usuario&op=login&user=' + username + '&pass=' + password, 'GET', '');
+                    password = forge_sha256(password).toUpperCase();
+                    return $http.get(this.getAppUrl() + '?ob=user&op=login&user=' + username + '&pass=' + password, 'GET', '');
                 },
                 getLogoutPromise: function () {
-                    return $http.get(this.getAppUrl() + '?ob=usuario&op=logout', 'GET', '');
+                    return $http.get(this.getAppUrl() + '?ob=user&op=logout', 'GET', '');
                 },
                 getSessionPromise: function () {
-                    return $http.get(this.getAppUrl() + '?ob=usuario&op=getsessionstatus', 'GET', '');
+                    return $http.get(this.getAppUrl() + '?ob=user&op=getsessionstatus', 'GET', '');
                 },
                 promise_getCount: function (strObject, filter) {
                     if (filter) {
@@ -184,7 +185,7 @@ angular.module('Services', [])
 //                    return location.protocol + '//' + location.hostname + ':' + location.port + '/' + this.getAppName();
 //                },
                 getAppUrl: function () {
-                    return "http://localhost:8081/zylkanexy/json";
+                    return "http://localhost:8081/bauxer/json";
                     //return location.protocol + '//' + location.hostname + ':' + location.port + '/' + this.getAppName() + '/index.php';
                 },
                 getAppName: function () {
