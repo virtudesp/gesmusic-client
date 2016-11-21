@@ -1,4 +1,4 @@
-escalamio.controller('IndexController', ['$scope', '$location', 'serverService', 'sessionService',
+dolity.controller('IndexController', ['$scope', '$location', 'serverService', 'sessionService',
     function ($scope, $location, serverService, sessionService) {
         $scope.username = "";
         $scope.isActive = function (viewLocation) {

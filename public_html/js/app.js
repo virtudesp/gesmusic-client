@@ -1,10 +1,10 @@
 /*
  * Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  * 
- * escalamio: The stunning micro-library that helps you to develop easily 
+ * dolity: The stunning micro-library that helps you to develop easily 
  *             AJAX web applications by using Angular.js 1.x & zylkanexy
- * escalamio is distributed under the MIT License (MIT)
- * Sources at https://github.com/rafaelaznar/escalamio
+ * dolity is distributed under the MIT License (MIT)
+ * Sources at https://github.com/rafaelaznar/dolity
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@
 
 
 
-var escalamio = angular.module('myApp', [
+var dolity = angular.module('myApp', [
     'ngRoute',
     'Filters',
     'Services',
@@ -48,15 +48,15 @@ var escalamio = angular.module('myApp', [
 
 
 
-//escalamio.config(['$locationProvider', function ($locationProvider) {
+//dolity.config(['$locationProvider', function ($locationProvider) {
 //        $locationProvider.html5Mode(true);
 //    }]);
 
-escalamio.config(['$httpProvider', function ($httpProvider) {
+dolity.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;
     }]);
 
-escalamio.config(['$routeProvider', function ($routeProvider) {
+dolity.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
         //------------
         $routeProvider.when('/login', {templateUrl: 'js/system/login.html', controller: 'LoginController'});
@@ -92,7 +92,7 @@ escalamio.config(['$routeProvider', function ($routeProvider) {
     }]);
 
 
-escalamio.run(function ($rootScope, $location, serverService, sessionService) {
+dolity.run(function ($rootScope, $location, serverService, sessionService) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         //$rootScope.authenticated = false;
         sessionService.setSessionInactive();
