@@ -85,7 +85,21 @@ moduloServicios
                 getSessionPromise: function () {
                     return $http.get(this.getAppUrl() + '?ob=user&op=getsessionstatus', 'GET', '');
                 },
-                //------------------------------------------------
+                //--------ok----------------------------------------
+                array_identificarArray: function (arr) {
+                    var newObj = {};
+                    for (var property in arr) {
+                        if (arr.hasOwnProperty(property)) {
+                            if (property.match("^obj_")) {
+                                newObj[property.replace("obj_", "id_")] = arr[property].id;
+                            } else {
+                                newObj[property] = arr[property];
+                            }
+                        }
+                    }
+                    return newObj;
+                },
+                //----------------------------
                 promise_getCount: function (strObject, filter) {
                     if (filter) {
                         filter = "&filter=" + filter;
@@ -364,20 +378,7 @@ moduloServicios
                         method: "GET",
                         params: jsonfile
                     });
-                },
-                array_identificarArray: function (arr) {
-                    var newObj = {};
-                    for (var property in arr) {
-                        if (arr.hasOwnProperty(property)) {
-                            if (property.match("^obj_")) {
-                                newObj[property.replace("obj_", "id_")] = arr[property].id;
-                            } else {
-                                newObj[property] = arr[property];
-                            }
-                        }
-                    }
-                    return newObj;
-                },
+                },                
                 getPaginationBar: function (objeto, accion, page_number, total_pages, neighborhood, nrpp) {
                     page_number = parseInt(page_number);
                     total_pages = parseInt(total_pages);

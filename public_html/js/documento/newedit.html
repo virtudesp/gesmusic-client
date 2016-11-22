@@ -32,16 +32,13 @@ THE SOFTWARE.
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="panel-body" ng-cloak>
-                        <form name="outerForm" class="form-horizontal" ng-show="result == null">
-                            
+                        <form name="outerForm" class="form-horizontal" ng-show="result == null">                            
                             <div id="id-group" class="form-group">
                                 <label class="col-sm-2 control-label" for="id">Identificador:</label>
                                 <div class="control col-sm-3">
                                     <input ng-model="obj.id" type="text" id="id" class="form-control" name="id" size="15" placeholder="id" disabled="disabled">
                                 </div>
-                            </div>
-                            
-                            
+                            </div>                                                        
                             <div id="titulo-group" class="form-group" 
                                  ng-class="{'has-error': (outerForm.titulo.$error.required || outerForm.titulo.$error.minlength) && !outerForm.titulo.$pristine}">
                                 <label class="col-sm-2 control-label" for="titulo">Título:</label>
@@ -59,9 +56,7 @@ THE SOFTWARE.
                                     <span class="help-block" ng-show="!outerForm.titulo.$pristine && outerForm.titulo.$error.required">El campo titulo es obligatorio</span>
                                     <span class="help-block" ng-show="!outerForm.titulo.$pristine && outerForm.titulo.$error.minlength">El campo titulo debe tener al menos 10 caracteres</span>
                                     <span class="help-block" ng-show="!outerForm.titulo.$pristine && outerForm.titulo.$error.maxlength">El campo titulo debe tener como máximo 200 caracteres</span>
-
                                 </div>
-
                             </div>
 
 
