@@ -26,30 +26,55 @@
  */
 
 'use strict';
-angular.module('Services', [])
+moduloServicios
         .factory('serverService', function ($http) {
-            function getFilter(filter, filteroperator, filtervalue) {
-                var filterParams;
-                if (filter) {
-                    filterParams = "&filter=" + filter + "&filteroperator=" + filteroperator + "&filtervalue=" + filtervalue;
-                } else {
-                    filterParams = "";
-                }
-                return filterParams;
-            }
-            ;
-            function getOrder(order, ordervalue) {
-                var orderParams;
-                if (order) {
-                    orderParams = '&order=' + order + '&ordervalue=' + ordervalue;
-                } else {
-                    orderParams = "";
-                }
-                return orderParams;
-            }
-            ;
+//            function getFilter(filter, filteroperator, filtervalue) {
+//                var filterParams;
+//                if (filter) {
+//                    filterParams = "&filter=" + filter + "&filteroperator=" + filteroperator + "&filtervalue=" + filtervalue;
+//                } else {
+//                    filterParams = "";
+//                }
+//                return filterParams;
+//            }
+//            ;
+//            function getOrder(order, ordervalue) {
+//                var orderParams;
+//                if (order) {
+//                    orderParams = '&order=' + order + '&ordervalue=' + ordervalue;
+//                } else {
+//                    orderParams = "";
+//                }
+//                return orderParams;
+//            }
+//            ;
             return {
-                  ////////////////////////////////////////////////////////////////
+                //---- OK ----
+                checkDefault: function (defaultValue, checkedVariable) {
+                    if (!checkedVariable || checkedVariable < 1) {
+                        return defaultValue;
+                    } else {
+                        return checkedVariable;
+                    }
+                },
+                checkNull: function (checkedVariable) {
+                    if (checkedVariable) {
+                        return checkedVariable;
+                    } else {
+                        return null;
+                    }
+                },
+                checkEmptyString: function (checkedVariable) {
+                    if (checkedVariable) {
+                        return checkedVariable;
+                    } else {
+                        return "";
+                    }
+                },
+                getGlobalNeighbourhood: function () {
+                    return 2;
+                },
+                //---------OK ------------------------------
                 getLoginPromise: function (username, password) {
                     password = forge_sha256(password).toUpperCase();
                     return $http.get(this.getAppUrl() + '?ob=user&op=login&user=' + username + '&pass=' + password, 'GET', '');
@@ -60,6 +85,7 @@ angular.module('Services', [])
                 getSessionPromise: function () {
                     return $http.get(this.getAppUrl() + '?ob=user&op=getsessionstatus', 'GET', '');
                 },
+                //------------------------------------------------
                 promise_getCount: function (strObject, filter) {
                     if (filter) {
                         filter = "&filter=" + filter;
@@ -231,7 +257,7 @@ angular.module('Services', [])
                                 console.log("patch error" + status);
                                 return false;
                             })
-                },                
+                },
                 //----------------------
                 get: function (strParams) {
                     console.log("get " + this.getAppUrl() + '?' + strParams);

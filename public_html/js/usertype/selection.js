@@ -29,7 +29,7 @@
 
 'use strict';
 
-moduloTipousuario.controller('TipousuarioSelectionController', ['$scope', '$routeParams', 'serverService', '$location', 'sharedSpaceService',
+moduloUsertype.controller('UsertypeSelectionController', ['$scope', '$routeParams', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $routeParams, serverService, $location, sharedSpaceService) {
 
 

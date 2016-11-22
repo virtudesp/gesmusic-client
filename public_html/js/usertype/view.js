@@ -31,20 +31,21 @@
 
 
 
-moduloTipousuario.controller('TipousuarioViewController', ['$scope', '$routeParams', 'serverService','$location',
-    function ($scope, $routeParams, serverService,$location) {
-        $scope.title = "Vista de tipo de usuario";
+moduloUsertype.controller('UsertypeViewController', ['$scope', '$routeParams', 'serverService', '$location',
+    function ($scope, $routeParams, serverService, $location) {
+        $scope.obtitle = 'tipo de usuario';
+        $scope.title = "Vista de " + $scope.obtitle;
         $scope.icon = "fa-male";
-        $scope.ob = 'tipousuario';
+        $scope.ob = 'usertype';
         $scope.id = $routeParams.id;
-        serverService.getDataFromPromise(serverService.promise_getOne($scope.ob, $scope.id)).then(function (data) {
-            $scope.bean = data.message;
+        serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
+            $scope.bean = response.data.message;
         });
         $scope.close = function () {
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/tipousuario/plist');
+            $location.path('/' + $scope.ob + '/plist');
         };
         $scope.back = function () {
             window.history.back();

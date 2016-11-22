@@ -28,7 +28,7 @@
 
 'use strict';
 
-moduloDocumento.controller('DocumentoPListController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModal',
+moduloUsertype.controller('UsertypePListController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModal',
     function ($scope, $routeParams, serverService, $location, $uibModal) {
 
        $scope.Fields = [

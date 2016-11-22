@@ -28,45 +28,29 @@
 
 'use strict';
 
-moduloUser.controller('UserSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService', 
+moduloUser.controller('UserSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService) {
-
-
-        $scope.Fields = [
-            {name: "id", shortname: "ID", longname: "Identificador", visible: true},
-            {name: "nombre", shortname: "Nombre", longname: "Nombre", visible: true},
-            {name: "apellidos", shortname: "Apellidos", longname: "Apellidos", visible: true}
-        ];
-
-        $scope.ob = "user";
+        $scope.fields = userService.getFields();
+        $scope.obtitle = userService.getObTitle();
+        $scope.icon = userService.getIcon();
+        $scope.ob = userService.getTitle();
         $scope.op = "selection";
-        $scope.title = "Selección de usuario";
-        $scope.icon = "fa-user";
-
-
         $scope.numpage = 1;
         $scope.rpp = 10;
         $scope.neighbourhood = 1;
-
-
         $scope.order = "";
         $scope.ordervalue = "";
-
         $scope.filter = "id";
         $scope.filteroperator = "like";
         $scope.filtervalue = "";
-
         $scope.orderParams = null;
-        $scope.filterParams = null;
-
+        $scope.filterParams = null;        
         $scope.closeForm = function (id) {
             $modalInstance.close(id);
         };
-
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
         }
-
         function getData() {
             serverService.promise_getCount($scope.ob, $scope.filterParams).then(function (response) {
                 if (response.status == 200) {
@@ -91,7 +75,6 @@ moduloUser.controller('UserSelectionController', ['$scope', '$uibModalInstance',
             });
 
         }
-
         $scope.$on('filterSelectionEvent', function (event, data) {
             $scope.filterParams = data;
             getData();
@@ -116,12 +99,9 @@ moduloUser.controller('UserSelectionController', ['$scope', '$uibModalInstance',
             $scope.filterParams = null;
             getData();
         });
-        $scope.ufilter = null;
         $scope.chooseOne = function (id) {
-
             $scope.closeForm(id);
             return false;
         }
-
         getData();
     }]);

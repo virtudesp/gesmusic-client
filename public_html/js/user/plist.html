@@ -40,7 +40,6 @@ THE SOFTWARE.
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-xs-12" ng-show="!status">
                                 <div role="tabpanel">
@@ -51,7 +50,7 @@ THE SOFTWARE.
                                         <li role="presentation"><a data-target="#pane1" aria-controls="pane1" role="tab" data-toggle="tab" aria-expanded="true">Campos visibles</a></li>
                                         <li role="presentation"><a data-target="#pane2" aria-controls="pane2" role="tab" data-toggle="tab">Filtro de servidor</a></li>
                                         <li role="presentation"><a data-target="#pane3" aria-controls="pane3" role="tab" data-toggle="tab">Filtro de cliente</a></li>
-                                        <li role="presentation"><a data-target="#pane4" aria-controls="pane4" role="tab" data-toggle="tab">Nuevo registro</a></li>
+                                        <li role="presentation"><a data-target="#pane4" aria-controls="pane4" role="tab" data-toggle="tab">Nuevo {{obtitle}}</a></li>
                                     </ul>
                                     <div class="tab-content">
                                         <div role="tabpanel" id="pane0" class="tab-pane fade active in">
@@ -80,19 +79,7 @@ THE SOFTWARE.
                                             </div>
                                         </div>
                                         <div role="tabpanel" id="pane2" class="tab-pane fade">
-                                            <div class="row">
-                                                <!--
-                                                <div class="col-md-6">
-                                                    <p></p>
-                                                    <table class="table table-striped table-condensed dataTable no-footer">
-                                                        <tr ng-repeat="obj in ufilterArray">                                                    
-                                                            <td class="text-left">{{obj}}</td>
-                                                            <td class="text-center">X</td>
-                                                        </tr>
-                                                    </table>
-                                                    <p></p>
-                                                </div>
-                                                -->
+                                            <div class="row">  
                                                 <div class="col-md-12">
                                                     <p></p>
                                                     <plistfilter></plistfilter>
@@ -105,7 +92,6 @@ THE SOFTWARE.
                                                     <p></p>
                                                     <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
                                                         <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Valor" ng-model="searchText">
-
                                                     </form>
                                                     <p></p>
                                                 </div>
@@ -115,7 +101,7 @@ THE SOFTWARE.
                                             <div class="row">
                                                 <div class="col-md-12 text-center">
                                                     <p><br>
-                                                        <a class="btn btn-primary" href="#/{{ob}}/new">Crear un nuevo {{ob}}</a>
+                                                        <a class="btn btn-primary" href="#/{{ob}}/new">Crear un nuevo {{obtitle}}</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -127,28 +113,20 @@ THE SOFTWARE.
                                     <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
                                         <thead plistheader></thead>
                                         <tbody>
-                                            <!--
                                             <tr ng-repeat="obj in page| filter:searchText">
-                                                <td ng-repeat="f in Fields" ng-show="f.visible && f.type != 'boolean' && f.type != 'foreign'" class="text-right">{{obj[f.name]}}</td>
-                                                <td ng-repeat="f in Fields" ng-show="f.visible && f.type == 'boolean'"  class="text-center" ng-bind-html="obj[f.name] | booleanizate"></td> 
-                                                <td ng-repeat="f in Fields" ng-show="f.visible && f.type == 'foreign'"  class="text-right"><a ng-href="{{f.href}}+{{obj.id}}">{{f.show}}</a></td>                         
-                                                <td plistoperationbar></td>
-                                            </tr>
-                                            -->
-                                            <tr ng-repeat="obj in page| filter:searchText">
-                                                <td ng-show="Fields[0].visible" class="text-right">{{obj.id}}</td>
-                                                <td ng-show="Fields[1].visible">{{obj.name}}</td>
-                                                <td ng-show="Fields[2].visible">{{obj.surname}}</td>
-                                                <td ng-show="Fields[3].visible">{{obj.login}}</td>
-                                                <td ng-show="Fields[4].visible">{{obj.password}}</td> 
-                                                <td ng-show="Fields[5].visible">{{obj.address}}</td>
-                                                <td ng-show="Fields[6].visible">{{obj.city}}</td>
-                                                <td ng-show="Fields[7].visible">{{obj.zip}}</td>
-                                                <td ng-show="Fields[8].visible">{{obj.state}}</td>
-                                                <td ng-show="Fields[9].visible">{{obj.country}}</td>                                                
-                                                <td ng-show="Fields[10].visible">{{obj.email}}</td>
-                                                <td ng-show="Fields[11].visible">{{obj.phone}}</td>
-                                                <td ng-show="Fields[12].visible"><a href="#/usertype/view/{{obj.obj_usertype.id}}">{{obj.obj_usertype.description}}</a></td>
+                                                <td ng-show="fields[0].visible" class="text-right">{{obj.id}}</td>
+                                                <td ng-show="fields[1].visible">{{obj.name}}</td>
+                                                <td ng-show="fields[2].visible">{{obj.surname}}</td>
+                                                <td ng-show="fields[3].visible">{{obj.login}}</td>
+                                                <td ng-show="fields[4].visible">{{obj.password}}</td> 
+                                                <td ng-show="fields[5].visible">{{obj.address}}</td>
+                                                <td ng-show="fields[6].visible">{{obj.city}}</td>
+                                                <td ng-show="fields[7].visible">{{obj.zip}}</td>
+                                                <td ng-show="fields[8].visible">{{obj.state}}</td>
+                                                <td ng-show="fields[9].visible">{{obj.country}}</td>                                                
+                                                <td ng-show="fields[10].visible">{{obj.email}}</td>
+                                                <td ng-show="fields[11].visible">{{obj.phone}}</td>
+                                                <td ng-show="fields[12].visible"><a href="#/usertype/view/{{obj.obj_usertype.id}}">{{obj.obj_usertype.description}}</a></td>
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">

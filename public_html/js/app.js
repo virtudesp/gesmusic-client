@@ -40,7 +40,7 @@ var dolity = angular.module('myApp', [
     'documentoControllers',
     'userControllers',
     'tipodocumentoControllers',
-    'tipousuarioControllers',
+    'usertypeControllers',
     'estadoControllers',
     'ui.bootstrap',
     'ngSanitize'
@@ -122,12 +122,13 @@ dolity.run(function ($rootScope, $location, serverService, sessionService) {
         });
     });
 });
-
+//----modulos controladores----
 var moduloSistema = angular.module('systemControllers', []);
 var moduloUser = angular.module('userControllers', []);
 var moduloDocumento = angular.module('documentoControllers', []);
 var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
-var moduloTipousuario = angular.module('tipousuarioControllers', []);
+var moduloUsertype = angular.module('usertypeControllers', []);
 var moduloEstado = angular.module('estadoControllers', []);
-
+//----otros modulos----
 var moduloDirectivas = angular.module('Directives', []);
+var moduloServicios = angular.module('Services', []);

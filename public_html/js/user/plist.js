@@ -27,78 +27,26 @@
  */
 
 'use strict';
-moduloUser.controller('UserPListController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModal',
-    function ($scope, $routeParams, serverService, $location,$uibModal) {
-
-
-        $scope.Fields = [
-            {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "integer"},
-            {name: "name", shortname: "Nombre", longname: "Nombre", visible: true, type: "string"},
-            {name: "surname", shortname: "Apellidos", longname: "Apellidos", visible: true, type: "string"},
-            {name: "login", shortname: "Login", longname: "Login", visible: true, type: "string"},
-            {name: "password", shortname: "Password", longname: "Password", visible: false, type: "string"},
-            {name: "address", shortname: "Dirección", longname: "Dirección", visible: false, type: "string"},
-            {name: "city", shortname: "Ciudad", longname: "Ciudad", visible: false, type: "string"},
-            {name: "zip", shortname: "Cód.Postal", longname: "Cód.Postal", visible: false, type: "string"},
-            {name: "state", shortname: "Provincia", longname: "Provincia", visible: false, type: "string"},
-            {name: "country", shortname: "País", longname: "País", visible: false, type: "string"},
-            {name: "email", shortname: "Email", longname: "Email", visible: false, type: "string"},
-            {name: "phone", shortname: "Teléfono", longname: "Teléfono", visible: false, type: "string"},
-            {name: "id_usertype", shortname: "Tipo", longname: "Tipo de usuario", visible: true, type: "foreign"}
-        ];
-
-        $scope.ob = "user";
+moduloUser.controller('UserPListController', ['$scope', '$routeParams', '$location', 'serverService', 'userService', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, userService, $uibModal) {
+        $scope.fields = userService.getFields();
+        $scope.obtitle = userService.getObTitle();        
+        $scope.icon = userService.getIcon();
+        $scope.ob = userService.getTitle();
+        $scope.title = "Listado de " + $scope.obtitle;
         $scope.op = "plist";
-        $scope.title = "Listado de usuario";
-        $scope.icon = "fa-file-text-o";
-
-        $scope.numpage = $routeParams.page;
-        $scope.rpp = $routeParams.rpp;
-        $scope.neighbourhood = 2;
-
-        if (!$routeParams.page || $routeParams.page < 1) {
-            $scope.numpage = 1;
-        } else {
-            $scope.numpage = $routeParams.page;
-        }
-
-        if (!$routeParams.rpp || $routeParams.rpp < 1) {
-            $scope.rpp = 10;
-        } else {
-            $scope.rpp = $routeParams.rpp;
-        }
-
+        $scope.numpage = serverService.checkDefault(1, $routeParams.page);
+        $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
+        $scope.neighbourhood = serverService.getGlobalNeighbourhood();
         $scope.order = "";
         $scope.ordervalue = "";
-
         $scope.filter = "id";
         $scope.filteroperator = "like";
         $scope.filtervalue = "";
-
-        if ($routeParams.filter) {
-            $scope.filterParams = $routeParams.filter;
-        } else {
-            $scope.filterParams = null;
-        }
-
-        if ($routeParams.order) {
-            $scope.orderParams = $routeParams.order;
-        } else {
-            $scope.orderParams = null;
-        }
-
-        if ($routeParams.sfilter) {
-            $scope.sfilterParams = $routeParams.sfilter;
-        } else {
-            $scope.sfilterParams = null;
-        }
-
-        if ($routeParams.sfilter) {
-            $scope.filterExpression = $routeParams.filter + '+' + $routeParams.sfilter;
-        } else {
-            $scope.filterExpression = $routeParams.filter;
-        }
-
+        $scope.filterParams = serverService.checkNull($routeParams.filter)
+        $scope.orderParams = serverService.checkNull($routeParams.order)
+        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
+        $scope.filterExpression = serverService.checkEmptyString($routeParams.filter) + '+' + serverService.checkEmptyString($routeParams.sfilter);
         serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
             if (response.status == 200) {
                 $scope.registers = response.data.message;
@@ -120,9 +68,6 @@ moduloUser.controller('UserPListController', ['$scope', '$routeParams', 'serverS
         }).catch(function (data) {
             $scope.status = "Error en la recepción de datos del servidor";
         });
-
-
-
     }]);
 
 
