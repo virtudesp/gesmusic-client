@@ -26,19 +26,17 @@
  * 
  */
 
-
 'use strict';
 
-
-
-
-
-moduloUser.controller('UserViewController', ['$scope', '$routeParams', 'serverService','$location',
-    function ($scope, $routeParams, serverService, $location) {
-  $scope.title = "Vista de usuario";
-        $scope.icon = "fa-file-text-o";
-        $scope.ob = 'usuario';
+moduloUser.controller('UserViewController', ['$scope', '$routeParams', 'serverService', 'userService', '$location',
+    function ($scope, $routeParams, serverService, userService, $location) {
+        $scope.fields = userService.getFields();
+        $scope.obtitle = userService.getObTitle();
+        $scope.icon = userService.getIcon();
+        $scope.ob = userService.getTitle();
+        $scope.title = "Vista de " + $scope.obtitle;
         $scope.id = $routeParams.id;
+        $scope.status = null;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             $scope.bean = response.data.message;
         });

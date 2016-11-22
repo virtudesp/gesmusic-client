@@ -30,10 +30,11 @@
 
 moduloUser.controller('UserViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, $location, $uibModalInstance, id) {
-        $scope.status = null;
-        $scope.title = "Vista de usuario";
-        $scope.icon = "fa-file-text-o";
-        $scope.ob = 'usuario';
+        $scope.fields = userService.getFields();
+        $scope.obtitle = userService.getObTitle();
+        $scope.icon = userService.getIcon();
+        $scope.ob = userService.getTitle();
+        $scope.title = "Vista de " + $scope.obtitle;
         $scope.id = id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
@@ -52,5 +53,4 @@ moduloUser.controller('UserViewpopController', ['$scope', '$routeParams', 'serve
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         }
-
     }]);

@@ -44,7 +44,8 @@ moduloUser.controller('UserSelectionController', ['$scope', '$uibModalInstance',
         $scope.filteroperator = "like";
         $scope.filtervalue = "";
         $scope.orderParams = null;
-        $scope.filterParams = null;        
+        $scope.filterParams = null;
+        $scope.status = null;
         $scope.closeForm = function (id) {
             $modalInstance.close(id);
         };

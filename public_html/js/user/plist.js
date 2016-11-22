@@ -27,14 +27,16 @@
  */
 
 'use strict';
+
 moduloUser.controller('UserPListController', ['$scope', '$routeParams', '$location', 'serverService', 'userService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, userService, $uibModal) {
         $scope.fields = userService.getFields();
-        $scope.obtitle = userService.getObTitle();        
+        $scope.obtitle = userService.getObTitle();
         $scope.icon = userService.getIcon();
         $scope.ob = userService.getTitle();
         $scope.title = "Listado de " + $scope.obtitle;
         $scope.op = "plist";
+        $scope.status = null;
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
