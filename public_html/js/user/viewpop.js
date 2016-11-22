@@ -36,6 +36,7 @@ moduloUser.controller('UserViewpopController', ['$scope', '$routeParams', 'serve
         $scope.ob = userService.getTitle();
         $scope.title = "Vista de " + $scope.obtitle;
         $scope.id = id;
+        $scope.status = null;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {

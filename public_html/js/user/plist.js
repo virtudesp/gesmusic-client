@@ -36,7 +36,6 @@ moduloUser.controller('UserPListController', ['$scope', '$routeParams', '$locati
         $scope.ob = userService.getTitle();
         $scope.title = "Listado de " + $scope.obtitle;
         $scope.op = "plist";
-        $scope.status = null;
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
@@ -49,6 +48,7 @@ moduloUser.controller('UserPListController', ['$scope', '$routeParams', '$locati
         $scope.orderParams = serverService.checkNull($routeParams.order)
         $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
         $scope.filterExpression = serverService.checkEmptyString($routeParams.filter) + '+' + serverService.checkEmptyString($routeParams.sfilter);
+        $scope.status = null;
         serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
             if (response.status == 200) {
                 $scope.registers = response.data.message;
