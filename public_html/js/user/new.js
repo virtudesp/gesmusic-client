@@ -27,6 +27,7 @@
  */
 
 'use strict';
+
 moduloUser.controller('UserNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter',
     function ($scope, $routeParams, $location, serverService, sharedSpaceService, $filter) {
         $scope.fields = userService.getFields();
@@ -39,11 +40,11 @@ moduloUser.controller('UserNewController', ['$scope', '$routeParams', '$location
         $scope.obj = {};
         $scope.obj.obj_usertype = {"id": 0};
         if ($routeParams.id_usertype) {
-            serverService.promise_getOne('usertype', $routeParams.id_usuario).then(function (response) {
+            serverService.promise_getOne('usertype', $routeParams.id_usertype).then(function (response) {
                 if (response.data.message.id != 0) {
                     $scope.obj.obj_usertype = response.data.message;
                     $scope.show_obj_usertype = false;
-                    $scope.title = "Nuevo usuario de tipo " + $scope.obj.obj_usertype.description;
+                    $scope.title = "Nuevo usuario del tipo" + $scope.obj.obj_usertype.description;
                 }
             });
         } else {
@@ -52,43 +53,21 @@ moduloUser.controller('UserNewController', ['$scope', '$routeParams', '$location
         $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.obj))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (data) {
-                $scope.result = data.data;
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.obj = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor";
+                }
             }).catch(function (data) {
                 $scope.status = "Error en la recepción de datos del servidor";
             });
             ;
         };
-
-        $scope.$watch('obj.obj_tipodocumento.id', function () {
-            if ($scope.obj) {
-                serverService.promise_getOne('tipodocumento', $scope.obj.obj_tipodocumento.id).then(function (response) {
-                    var old_id = $scope.obj.obj_tipodocumento.id;
-                    $scope.obj.obj_tipodocumento = response.data.message;
-                    if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_tipodocumento.$setValidity('exists', true);
-                    } else {
-                        $scope.outerForm.obj_tipodocumento.$setValidity('exists', false);
-                        $scope.obj.obj_tipodocumento.id = old_id;
-                    }
-                });
-            }
-        });
-
-        $scope.$watch('obj.obj_usuario.id', function () {
-            if ($scope.obj) {
-                serverService.promise_getOne('usuario', $scope.obj.obj_usuario.id).then(function (response) {
-                    var old_id = $scope.obj.obj_usuario.id;
-                    $scope.obj.obj_usuario = response.data.message;
-                    if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_usuario.$setValidity('exists', true);
-                    } else {
-                        $scope.outerForm.obj_usuario.$setValidity('exists', false);
-                        $scope.obj.obj_usuario.id = old_id;
-                    }
-                });
-            }
-        });
-
         $scope.back = function () {
             window.history.back();
         };
@@ -96,33 +75,8 @@ moduloUser.controller('UserNewController', ['$scope', '$routeParams', '$location
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/documento/plist');
+            $location.path('/' + $scope.ob + '/plist');
         };
-
-        //datepicker 1
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
-        $scope.dateOptions1 = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
-
-        //datepicker 2
-        $scope.open2 = function () {
-            $scope.popup2.opened = true;
-        };
-        $scope.popup2 = {
-            opened: false
-        };
-        $scope.dateOptions2 = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
-
         $scope.chooseOne = function (foreignObjectName, contollerName) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'js/' + foreignObjectName + '/selection.html',
@@ -132,7 +86,19 @@ moduloUser.controller('UserNewController', ['$scope', '$routeParams', '$location
                 $scope.obj.obj_usuario.id = modalResult;
             });
         };
-
-
+        $scope.$watch('obj.obj_usertype.id', function () {
+            if ($scope.obj) {
+                serverService.promise_getOne('usertype', $scope.obj.obj_usertype.id).then(function (response) {
+                    var old_id = $scope.obj.obj_usertype.id;
+                    $scope.obj.obj_usertype = response.data.message;
+                    if (response.data.message.id != 0) {
+                        $scope.outerForm.obj_usertype.$setValidity('exists', true);
+                    } else {
+                        $scope.outerForm.obj_usertype.$setValidity('exists', false);
+                        $scope.obj.obj_usertype.id = old_id;
+                    }
+                });
+            }
+        });
     }]);
 

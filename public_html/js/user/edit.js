@@ -27,48 +27,37 @@
  */
 
 'use strict';
+
 moduloUser.controller('UserEditController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter',
     function ($scope, $routeParams, $location, serverService, sharedSpaceService, $filter) {
-        $scope.obj = null;
-        $scope.id = $routeParams.id;
-        $scope.ob = 'usuario';
-        $scope.op = 'edit';
+        $scope.fields = userService.getFields();
+        $scope.obtitle = userService.getObTitle();
+        $scope.icon = userService.getIcon();
+        $scope.ob = userService.getTitle();
+        $scope.title = "Creando un nuevo " + $scope.obtitle;
+        $scope.op = "plist";
         $scope.result = null;
-        $scope.title = "Edición de usuario";
-        $scope.icon = "fa-file-text-o";
-        if (sharedSpaceService.getFase() == 0) {
-            serverService.getDataFromPromise(serverService.promise_getOne($scope.ob, $scope.id)).then(function (data) {
-                $scope.obj = data.message;
-            });
-        } else {
-            $scope.obj = sharedSpaceService.getObject();
-            sharedSpaceService.setFase(0);
-        }
-        $scope.chooseOne = function (foreignObjectName) {
-            sharedSpaceService.setObject($scope.obj);
-            sharedSpaceService.setReturnLink('/' + $scope.ob + '/' + $scope.op + '/' + $scope.id);
-            sharedSpaceService.setFase(1);
-            $location.path('/' + foreignObjectName + '/selection/1/10');
-        }
+        $scope.obj = {};
+        $scope.obj.obj_usertype = {"id": 0};
+        $scope.show_obj_usertype = true;
         $scope.save = function () {
-            serverService.getDataFromPromise(serverService.promise_setOne($scope.ob, {json: JSON.stringify(serverService.array_identificarArray($scope.obj))})).then(function (data) {
-                $scope.result = data;
+            var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.obj))};
+            serverService.promise_setOne($scope.ob, jsonToSend).then(function (data) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.obj = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor";
             });
+            ;
         };
-        $scope.$watch('obj.obj_tipousuario.id', function () {
-            if ($scope.obj) {
-                serverService.getDataFromPromise(serverService.promise_getOne('tipousuario', $scope.obj.obj_tipousuario.id)).then(function (data2) {
-                    $scope.obj.obj_tipousuario = data2.message;
-                });
-            }
-        });
-        $scope.$watch('obj.obj_estado.id', function () {
-            if ($scope.obj) {
-                serverService.getDataFromPromise(serverService.promise_getOne('estado', $scope.obj.obj_estado.id)).then(function (data2) {
-                    $scope.obj.obj_estado = data2.message;
-                });
-            }
-        });
         $scope.back = function () {
             window.history.back();
         };
@@ -76,9 +65,29 @@ moduloUser.controller('UserEditController', ['$scope', '$routeParams', '$locatio
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/usuario/plist');
+            $location.path('/' + $scope.ob + '/plist');
         };
-
-
-
+        $scope.chooseOne = function (foreignObjectName, contollerName) {
+            var modalInstance = $uibModal.open({
+                templateUrl: 'js/' + foreignObjectName + '/selection.html',
+                controller: contollerName,
+                size: 'lg'
+            }).result.then(function (modalResult) {
+                $scope.obj.obj_usuario.id = modalResult;
+            });
+        };
+        $scope.$watch('obj.obj_usertype.id', function () {
+            if ($scope.obj) {
+                serverService.promise_getOne('usertype', $scope.obj.obj_usertype.id).then(function (response) {
+                    var old_id = $scope.obj.obj_usertype.id;
+                    $scope.obj.obj_usertype = response.data.message;
+                    if (response.data.message.id != 0) {
+                        $scope.outerForm.obj_usertype.$setValidity('exists', true);
+                    } else {
+                        $scope.outerForm.obj_usertype.$setValidity('exists', false);
+                        $scope.obj.obj_usertype.id = old_id;
+                    }
+                });
+            }
+        });
     }]);
