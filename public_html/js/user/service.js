@@ -15,7 +15,7 @@ moduloServicios.factory('userService', function () {
                 {name: "country", shortname: "País", longname: "País", visible: false},
                 {name: "email", shortname: "Email", longname: "Email", visible: false},
                 {name: "phone", shortname: "Teléfono", longname: "Teléfono", visible: false},
-                {name: "id_usertype", shortname: "Tipo", longname: "Tipo de usuario", visible: true}
+                {name: "obj_usertype", shortname: "Tipo", longname: "Tipo de usuario", visible: true, reference: "usertype", description: "description"}
             ];
         },
         getIcon: function () {

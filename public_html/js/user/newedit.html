@@ -34,21 +34,23 @@ THE SOFTWARE.
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="panel-body" ng-cloak>
                         <form name="outerForm" class="form-horizontal" ng-show="result == null">
-                            <div id="id-group" class="form-group">
+                            
+                            <div id="{{fields[1]}}-group" class="form-group">
                                 <label class="col-sm-2 control-label" for="id">Identificador:</label>
                                 <div class="control col-sm-3">
-                                    <input ng-model="obj.id" type="text" id="id" class="form-control" name="id" size="15" placeholder="id" disabled="disabled">
+                                    <input ng-model="bean.id" type="text" id="id" class="form-control" name="id" size="15" placeholder="id" disabled="disabled">
                                 </div>
                             </div>
                             <!------------------------------------------------->
-                            <div id="nombre-group" class="form-group" 
+                            
+                            <div id="{{fields[1]}}-group" class="form-group" 
                                  ng-class="{'has-error': (
                                                      outerForm.nombre.$error.required ||
                                                      outerForm.nombre.$error.minlength) &&
                                                      !outerForm.nombre.$pristine}">
                                 <label class="col-sm-2 control-label" for="nombre">Nombre:</label>
                                 <div class="control col-sm-8">
-                                    <input ng-model="obj.name"
+                                    <input ng-model="bean.name"
                                            type="text"
                                            id="nombre"
                                            class="form-control"
@@ -71,7 +73,7 @@ THE SOFTWARE.
                                                      !outerForm.apellidos.$pristine}">
                                 <label class="col-sm-2 control-label" for="apellidos">Nombre:</label>
                                 <div class="control col-sm-8">
-                                    <input ng-model="obj.surname"
+                                    <input ng-model="bean.surname"
                                            type="text"
                                            id="apellidos"
                                            class="form-control"
@@ -103,7 +105,7 @@ THE SOFTWARE.
                                         <input type="text" 
                                                ng-model-options="{debounce: 1000}" 
                                                ng-change="obj_usertype_change" 
-                                               ng-model="obj.obj_usertype.id" 
+                                               ng-model="bean.obj_usertype.id" 
                                                validatemin="1" 
                                                ng-required="true"  
                                                aria-describedby="basic-addon2" 
@@ -113,7 +115,7 @@ THE SOFTWARE.
                                                size="5" 
                                                maxlength="5">                                        
                                         <span class="input-group-addon">
-                                            <span>{{obj.obj_usertype.description}}</span>
+                                            <span>{{bean.obj_usertype.description}}</span>
                                         </span>                                       
                                     </div>
                                     <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_usertype.$error.required">El tipo de usuario es obligatorio</span>

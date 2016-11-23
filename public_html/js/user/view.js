@@ -38,7 +38,18 @@ moduloUser.controller('UserViewController', ['$scope', '$routeParams', 'serverSe
         $scope.id = $routeParams.id;
         $scope.status = null;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
-            $scope.bean = response.data.message;
+            if (response.status == 200) {
+                if (response.data.status == 200) {
+                    $scope.status = null;
+                    $scope.bean = response.data.message;
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor";
+                }
+            } else {
+                $scope.status = "Error en la recepción de datos del servidor";
+            }
+        }).catch(function (data) {
+            $scope.status = "Error en la recepción de datos del servidor";
         });
         $scope.close = function () {
             $location.path('/home');

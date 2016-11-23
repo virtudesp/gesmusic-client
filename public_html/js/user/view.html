@@ -44,25 +44,15 @@ THE SOFTWARE.
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr><td>id</td><td>{{bean.id}}</td></tr>       
-                                        <tr><td>login</td><td>{{bean.login}}</td></tr> 
-                                        <tr><td>password</td><td>{{bean.password}}</td></tr> 
-
-                                        <tr>
-                                            <td>estado del usuario</td>
-                                            <td>
-                                                <a href="#/tipousuario/view/{{bean.obj_estado.id}}">{{bean.obj_estado.tipo}}</a>
-                                            </td>
-                                        </tr> 
-                                        <tr>
-                                            <td>tipo de usuario</td>
-                                            <td>
-                                                <a href="#/tipousuario/view/{{bean.obj_tipousuario.id}}">{{bean.obj_tipousuario.descripcion}}</a>
-                                            </td>
-                                        </tr> 
-                                        <tr><td>ciudad</td><td>{{bean.ciudad}}</td></tr> 
-                                        <tr><td>firma</td><td>{{bean.firma}}</td></tr> 
-                                        <tr><td>skin</td><td>{{bean.skin}}</td></tr> 
+                                        <tr ng-repeat="f in fields" class="text-left">
+                                            <td>{{f.longname}}</td>
+                                            <td ng-show="!f.name.startsWith('obj_')">{{bean[f.name]}}</td>    
+                                            <td ng-show="f.name.startsWith('obj_')">
+                                                <a href="#/{{f.reference}}/view/{{bean[f.name]['id']}}">
+                                                    {{bean[f.name][f.description]}}
+                                                </a>
+                                            </td>                                                
+                                        </tr>
                                     </tbody>
                                 </table>  
                                 <div class="text-right" > 

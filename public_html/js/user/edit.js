@@ -29,24 +29,39 @@
 'use strict';
 
 moduloUser.controller('UserEditController', ['$scope', '$routeParams', '$location', 'serverService', 'userService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, userService, sharedSpaceService, $filter , $uibModal) {
+    function ($scope, $routeParams, $location, serverService, userService, sharedSpaceService, $filter, $uibModal) {
         $scope.fields = userService.getFields();
         $scope.obtitle = userService.getObTitle();
         $scope.icon = userService.getIcon();
         $scope.ob = userService.getTitle();
-        $scope.title = "Creando un nuevo " + $scope.obtitle;
+        $scope.title = "Editando un " + $scope.obtitle;
         $scope.op = "plist";
         $scope.result = null;
-        $scope.obj = {};
-        $scope.obj.obj_usertype = {"id": 0};
+        $scope.bean = {};
+        $scope.bean.obj_usertype = {"id": 0};
         $scope.show_obj_usertype = true;
+        $scope.id = $routeParams.id;
+        serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
+            if (response.status == 200) {
+                if (response.data.status == 200) {
+                    $scope.status = null;
+                    $scope.bean = response.data.message;
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor";
+                }
+            } else {
+                $scope.status = "Error en la recepción de datos del servidor";
+            }
+        }).catch(function (data) {
+            $scope.status = "Error en la recepción de datos del servidor";
+        });
         $scope.save = function () {
-            var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.obj))};
+            var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (data) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         $scope.status = null;
-                        $scope.obj = response.data.message;
+                        $scope.bean = response.data.message;
                     } else {
                         $scope.status = "Error en la recepción de datos del servidor";
                     }
@@ -73,19 +88,19 @@ moduloUser.controller('UserEditController', ['$scope', '$routeParams', '$locatio
                 controller: contollerName,
                 size: 'lg'
             }).result.then(function (modalResult) {
-                $scope.obj.obj_usuario.id = modalResult;
+                $scope.bean.obj_usuario.id = modalResult;
             });
         };
-        $scope.$watch('obj.obj_usertype.id', function () {
-            if ($scope.obj) {
-                serverService.promise_getOne('usertype', $scope.obj.obj_usertype.id).then(function (response) {
-                    var old_id = $scope.obj.obj_usertype.id;
-                    $scope.obj.obj_usertype = response.data.message;
+        $scope.$watch('bean.obj_usertype.id', function () {
+            if ($scope.bean) {
+                serverService.promise_getOne('usertype', $scope.bean.obj_usertype.id).then(function (response) {
+                    var old_id = $scope.bean.obj_usertype.id;
+                    $scope.bean.obj_usertype = response.data.message;
                     if (response.data.message.id != 0) {
                         $scope.outerForm.obj_usertype.$setValidity('exists', true);
                     } else {
                         $scope.outerForm.obj_usertype.$setValidity('exists', false);
-                        $scope.obj.obj_usertype.id = old_id;
+                        $scope.bean.obj_usertype.id = old_id;
                     }
                 });
             }
