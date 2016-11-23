@@ -28,8 +28,8 @@
 
 'use strict';
 
-moduloUser.controller('UserNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sharedSpaceService', '$filter',
-    function ($scope, $routeParams, $location, serverService, sharedSpaceService, $filter) {
+moduloUser.controller('UserNewController', ['$scope', '$routeParams', '$location', 'serverService', 'userService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, userService, sharedSpaceService, $filter, $uibModal) {
         $scope.fields = userService.getFields();
         $scope.obtitle = userService.getObTitle();
         $scope.icon = userService.getIcon();

@@ -28,8 +28,8 @@
 'use strict';
 
 
-moduloUser.controller('UserViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
-    function ($scope, $routeParams, serverService, $location, $uibModalInstance, id) {
+moduloUser.controller('UserViewpopController', ['$scope', '$routeParams', 'serverService', 'userService', '$location', '$uibModalInstance', 'id',
+    function ($scope, $routeParams, serverService, userService, $location, $uibModalInstance, id) {
         $scope.fields = userService.getFields();
         $scope.obtitle = userService.getObTitle();
         $scope.icon = userService.getIcon();
