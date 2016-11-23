@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
 Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
 
@@ -56,17 +55,29 @@ THE SOFTWARE.
                                     </tbody>
                                 </table>  
                                 <div class="text-right"> 
-                                    <a class="btn btn-primary" href="#/{{ob}}/edit/{{bean.id}}">Editar</a>
-                                    <a class="btn btn-danger" href="#/{{ob}}/remove/{{bean.id}}">Borrar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de documentos</a>
-                                    <a class="btn btn-default" ng-click="close()">Cerrar</a>
-                                </div>
+                                    <div>¿Está seguro de que desea borrar el registro?</div>
+                                    <a class="btn btn-danger" ng-click="remove()">Si</a>
+                                    <a class="btn btn-default" ng-click="back()">No</a>
+                                </div>     
+                            </div>
+                            <div ng-show="result.status != null">
+                                <br>
+                                <h2  ng-show="result.message == 0" class="alert alert-success">No se ha podido eliminar el registro</h2>
+                                <h2  ng-show="result.message == 1" class="alert alert-success">Se ha eliminado el registro</h2>
+                                <a class="btn btn-default" ng-click="back()">Volver</a>
+                            </div>
+                            <div ng-show="result.status && !result.status == 200">
+                                <br>
+                                <h2>Error al eliminar el registro</h2>
                             </div>
                         </div>
                     </div>
-                    <div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
                 </div>
+                <div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
             </div>
         </div>
-    </div>     
+    </div>
+</div>     
 </div>
+
+
