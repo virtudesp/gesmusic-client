@@ -41,12 +41,11 @@ THE SOFTWARE.
                                 </div>
                             </div>
                             <!------------------------------------------------->                            
-                            <div id="{{fields[1].name}}-group" class="form-group" 
-                                 ng-class="{'has-error': (
-                                                     outerForm[fields[1].name].$error.required ||
-                                                     outerForm[fields[1].name].$error.minlength) &&
-                                                     !outerForm[fields[1].name].$pristine}">
+                            <div id="{{fields[1].name}}-group" 
+                                 class="form-group" 
+                                 ng-class="{'has-error': (outerForm[fields[1].name].$error.required && !outerForm[fields[1].name].$pristine)}">
                                 <label class="col-sm-2 control-label" for="{{fields[1].name}}">
+                                    <span ng-show="{{fields[1].required}}">*</span>
                                     {{fields[1].longname}}:
                                 </label>
                                 <div class="control col-sm-8">
@@ -55,14 +54,10 @@ THE SOFTWARE.
                                            class="form-control"                                           
                                            id="{{fields[1].name}}"
                                            name="{{fields[1].name}}"                                           
-                                           placeholder="{{fields[1].name}}"
-                                           size="15"
-                                           minlength="3"
-                                           maxlength="255"
+                                           placeholder="{{fields[1].name}}"                                                                                     
+                                           maxlength="{{fields[1].maxlength}}"
                                            required>
                                     <span class="help-block" ng-show="!outerForm[fields[1].name].$pristine && outerForm[fields[1].name].$error.required">El campo es obligatorio</span>
-                                    <span class="help-block" ng-show="!outerForm[fields[1].name].$pristine && outerForm[fields[1].name].$error.minlength">El campo debe tener al menos 3 caracteres</span>
-                                    <span class="help-block" ng-show="!outerForm[fields[1].name].$pristine && outerForm[fields[1].name].$error.maxlength">El campo debe tener como máximo 255 caracteres</span>
                                 </div>
                             </div>
                             <!------------------------------------------------->
