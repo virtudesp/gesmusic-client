@@ -33,36 +33,36 @@ THE SOFTWARE.
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="panel-body" ng-cloak>
-                        <form name="outerForm" class="form-horizontal" ng-show="result == null">
-                            
-                            <div id="{{fields[1]}}-group" class="form-group">
-                                <label class="col-sm-2 control-label" for="id">Identificador:</label>
+                        <form name="outerForm" class="form-horizontal" ng-show="result == null">                            
+                            <div id="{{fields[0].name}}-group" class="form-group">
+                                <label class="col-sm-2 control-label" for="id">{{fields[0].longname}}:</label>
                                 <div class="control col-sm-3">
-                                    <input ng-model="bean.id" type="text" id="id" class="form-control" name="id" size="15" placeholder="id" disabled="disabled">
+                                    <input ng-model="bean[fields[0].name]" type="text" id="id" class="form-control" name="id" size="15" placeholder="id" disabled="disabled">
                                 </div>
                             </div>
-                            <!------------------------------------------------->
-                            
-                            <div id="{{fields[1]}}-group" class="form-group" 
+                            <!------------------------------------------------->                            
+                            <div id="{{fields[1].name}}-group" class="form-group" 
                                  ng-class="{'has-error': (
-                                                     outerForm.nombre.$error.required ||
-                                                     outerForm.nombre.$error.minlength) &&
-                                                     !outerForm.nombre.$pristine}">
-                                <label class="col-sm-2 control-label" for="nombre">Nombre:</label>
+                                                     outerForm[fields[1].name].$error.required ||
+                                                     outerForm[fields[1].name].$error.minlength) &&
+                                                     !outerForm[fields[1].name].$pristine}">
+                                <label class="col-sm-2 control-label" for="{{fields[1].name}}">
+                                    {{fields[1].longname}}:
+                                </label>
                                 <div class="control col-sm-8">
-                                    <input ng-model="bean.name"
+                                    <input ng-model="bean[fields[1].name]"
                                            type="text"
-                                           id="nombre"
-                                           class="form-control"
-                                           name="nombre"
+                                           class="form-control"                                           
+                                           id="{{fields[1].name}}"
+                                           name="{{fields[1].name}}"                                           
+                                           placeholder="{{fields[1].name}}"
                                            size="15"
-                                           placeholder="nombre"
                                            minlength="3"
                                            maxlength="255"
                                            required>
-                                    <span class="help-block" ng-show="!outerForm.nombre.$pristine && outerForm.nombre.$error.required">El campo es obligatorio</span>
-                                    <span class="help-block" ng-show="!outerForm.nombre.$pristine && outerForm.nombre.$error.minlength">El campo debe tener al menos 3 caracteres</span>
-                                    <span class="help-block" ng-show="!outerForm.nombre.$pristine && outerForm.nombre.$error.maxlength">El campo debe tener como máximo 255 caracteres</span>
+                                    <span class="help-block" ng-show="!outerForm[fields[1].name].$pristine && outerForm[fields[1].name].$error.required">El campo es obligatorio</span>
+                                    <span class="help-block" ng-show="!outerForm[fields[1].name].$pristine && outerForm[fields[1].name].$error.minlength">El campo debe tener al menos 3 caracteres</span>
+                                    <span class="help-block" ng-show="!outerForm[fields[1].name].$pristine && outerForm[fields[1].name].$error.maxlength">El campo debe tener como máximo 255 caracteres</span>
                                 </div>
                             </div>
                             <!------------------------------------------------->
