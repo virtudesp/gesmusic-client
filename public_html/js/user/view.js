@@ -55,7 +55,7 @@ moduloUser.controller('UserViewController', ['$scope', '$routeParams', 'serverSe
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/usuario/plist');
+            $location.path('/' + $scope.ob + '/plist');
         };
         $scope.back = function () {
             window.history.back();

@@ -28,7 +28,7 @@
 'use strict';
 
 
-moduloUser.controller('UserViewpopController', ['$scope', '$routeParams', 'serverService', 'userService', '$location', '$uibModalInstance', 'id',
+moduloUser.controller('UserRemovepopController', ['$scope', '$routeParams', 'serverService', 'userService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, userService, $location, $uibModalInstance, id) {
         $scope.fields = userService.getFields();
         $scope.obtitle = userService.getObTitle();
@@ -60,7 +60,8 @@ moduloUser.controller('UserViewpopController', ['$scope', '$routeParams', 'serve
                     if (response.data.status == 200) {
                         if (response.data.message == 1) {
                             $scope.status = "El registro ha sido borrado.";
-                            $scope.cancel();
+                            $uibModalInstance.close(true);
+                            return false;
                         } else {
                             $scope.status = "Error en el borrado de datos del servidor";
                         }

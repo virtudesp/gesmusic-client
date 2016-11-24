@@ -28,8 +28,8 @@
 
 'use strict';
 
-moduloUser.controller('UserRemoveController', ['$scope', '$routeParams', 'serverService', 'userService',
-    function ($scope, $routeParams, serverService, userService) {
+moduloUser.controller('UserRemoveController', ['$scope', '$routeParams', '$location', 'serverService', 'userService',
+    function ($scope, $routeParams, $location, serverService, userService) {
         $scope.fields = userService.getFields();
         $scope.obtitle = userService.getObTitle();
         $scope.icon = userService.getIcon();
@@ -56,7 +56,7 @@ moduloUser.controller('UserRemoveController', ['$scope', '$routeParams', 'server
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         if (response.data.message == 1) {
-                            $scope.status = "El registro ha sido borrado.";                            
+                            $scope.status = "El registro ha sido borrado.";
                         } else {
                             $scope.status = "Error en el borrado de datos del servidor";
                         }
@@ -72,5 +72,8 @@ moduloUser.controller('UserRemoveController', ['$scope', '$routeParams', 'server
         }
         $scope.back = function () {
             window.history.back();
+        };
+        $scope.close = function () {
+            $location.path('/home');
         };
     }]);
