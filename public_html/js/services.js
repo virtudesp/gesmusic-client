@@ -50,6 +50,9 @@ moduloServicios
 //            ;
             return {
                 //---- OK ----
+                debugging:function(){
+                    return true;
+                },
                 checkDefault: function (defaultValue, checkedVariable) {
                     if (!checkedVariable || checkedVariable < 1) {
                         return defaultValue;

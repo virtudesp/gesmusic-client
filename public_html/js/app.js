@@ -112,7 +112,6 @@ dolity.run(function ($rootScope, $location, serverService, sessionService) {
             sessionService.setUsername('');
             var nextUrl = next.$$route.originalPath;
             if (nextUrl == '/home' || nextUrl == '/login' || nextUrl == '/license') {
-
             } else {
                 $location.path("/login");
             }
