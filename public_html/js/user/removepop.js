@@ -25,17 +25,17 @@
  * THE SOFTWARE.
  * 
  */
-
 'use strict';
 
-moduloUser.controller('UserRemoveController', ['$scope', '$routeParams', 'serverService', 'userService',
-    function ($scope, $routeParams, serverService, userService) {
+
+moduloUser.controller('UserViewpopController', ['$scope', '$routeParams', 'serverService', 'userService', '$location', '$uibModalInstance', 'id',
+    function ($scope, $routeParams, serverService, userService, $location, $uibModalInstance, id) {
         $scope.fields = userService.getFields();
         $scope.obtitle = userService.getObTitle();
         $scope.icon = userService.getIcon();
         $scope.ob = userService.getTitle();
-        $scope.title = "Vista de " + $scope.obtitle;
-        $scope.id = $routeParams.id;
+        $scope.title = "Borrado de " + $scope.obtitle;
+        $scope.id = id;
         $scope.status = null;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
@@ -51,12 +51,16 @@ moduloUser.controller('UserRemoveController', ['$scope', '$routeParams', 'server
         }).catch(function (data) {
             $scope.status = "Error en la recepción de datos del servidor";
         });
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        }
         $scope.remove = function () {
             serverService.promise_removeOne($scope.ob, $scope.id).then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         if (response.data.message == 1) {
-                            $scope.status = "El registro ha sido borrado.";                            
+                            $scope.status = "El registro ha sido borrado.";
+                            $scope.cancel();
                         } else {
                             $scope.status = "Error en el borrado de datos del servidor";
                         }
@@ -70,7 +74,4 @@ moduloUser.controller('UserRemoveController', ['$scope', '$routeParams', 'server
                 $scope.status = "Error en la recepción de datos del servidor";
             });
         }
-        $scope.back = function () {
-            window.history.back();
-        };
     }]);
