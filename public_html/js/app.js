@@ -26,11 +26,7 @@
  */
 
 'use strict';
-
-//var appName = 'AjaxStockNg';
-
-
-
+//-------------
 var dolity = angular.module('myApp', [
     'ngRoute',
     'Filters',
@@ -45,17 +41,19 @@ var dolity = angular.module('myApp', [
     'ui.bootstrap',
     'ngSanitize'
 ]);
-
-
-
+//-------------
+//---html5 mode off; setting up pushState needs server urlrewritting-------
 //dolity.config(['$locationProvider', function ($locationProvider) {
-//        $locationProvider.html5Mode(true);
+//        $locationProvider.html5Mode({
+//            //requireBase: false,
+//            enabled: true            
+//        });
 //    }]);
-
+//-------------
 dolity.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;
     }]);
-
+//-------------
 dolity.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
         //------------
@@ -90,8 +88,7 @@ dolity.config(['$routeProvider', function ($routeProvider) {
 
 
     }]);
-
-
+//-------------
 dolity.run(function ($rootScope, $location, serverService, sessionService) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         sessionService.setSessionInactive();
@@ -122,13 +119,13 @@ dolity.run(function ($rootScope, $location, serverService, sessionService) {
         });
     });
 });
-//----modulos controladores----
+//-------------
 var moduloSistema = angular.module('systemControllers', []);
 var moduloUser = angular.module('userControllers', []);
 var moduloDocumento = angular.module('documentoControllers', []);
 var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
 var moduloUsertype = angular.module('usertypeControllers', []);
 var moduloEstado = angular.module('estadoControllers', []);
-//----otros modulos----
+//-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);
