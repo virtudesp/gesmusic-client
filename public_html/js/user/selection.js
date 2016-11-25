@@ -46,6 +46,7 @@ moduloUser.controller('UserSelectionController', ['$scope', '$uibModalInstance',
         $scope.orderParams = null;
         $scope.filterParams = null;
         $scope.status = null;
+        $scope.debugging=serverService.debugging();
         $scope.closeForm = function (id) {
             $modalInstance.close(id);
         };

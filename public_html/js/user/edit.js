@@ -36,7 +36,9 @@ moduloUser.controller('UserEditController', ['$scope', '$routeParams', '$locatio
         $scope.ob = userService.getTitle();
         $scope.title = "Editando un " + $scope.obtitle;
         $scope.op = "plist";
-        $scope.result = null;
+        $scope.status = null;
+        $scope.error = true;
+        $scope.debugging = serverService.debugging();
         $scope.bean = {};
         $scope.bean.obj_usertype = {"id": 0};
         $scope.show_obj_usertype = true;
@@ -60,8 +62,8 @@ moduloUser.controller('UserEditController', ['$scope', '$routeParams', '$locatio
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (data) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
-                        $scope.status = null;
-                        $scope.bean = response.data.message;
+                        $scope.error = false;
+                        $scope.status = "El registro " + obtitle + " se ha modificado.";
                     } else {
                         $scope.status = "Error en la recepción de datos del servidor";
                     }
@@ -82,24 +84,26 @@ moduloUser.controller('UserEditController', ['$scope', '$routeParams', '$locatio
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        $scope.chooseOne = function (foreignObjectName, contollerName) {
+        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'js/' + foreignObjectName + '/selection.html',
                 controller: contollerName,
                 size: 'lg'
             }).result.then(function (modalResult) {
-                $scope.bean.obj_usuario.id = modalResult;
+                $scope.bean[nameForeign].id = modalResult;
             });
         };
         $scope.$watch('bean.obj_usertype.id', function () {
             if ($scope.bean) {
                 serverService.promise_getOne('usertype', $scope.bean.obj_usertype.id).then(function (response) {
                     var old_id = $scope.bean.obj_usertype.id;
-                    $scope.bean.obj_usertype = response.data.message;
+
                     if (response.data.message.id != 0) {
                         $scope.outerForm.obj_usertype.$setValidity('exists', true);
+                        $scope.bean.obj_usertype = response.data.message;
                     } else {
                         $scope.outerForm.obj_usertype.$setValidity('exists', false);
+                        //$scope.bean.obj_usertype.id = 0;
                         $scope.bean.obj_usertype.id = old_id;
                     }
                 });

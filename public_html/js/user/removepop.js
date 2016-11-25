@@ -37,6 +37,7 @@ moduloUser.controller('UserRemovepopController', ['$scope', '$routeParams', 'ser
         $scope.title = "Borrado de " + $scope.obtitle;
         $scope.id = id;
         $scope.status = null;
+        $scope.debugging=serverService.debugging();
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {
@@ -59,7 +60,7 @@ moduloUser.controller('UserRemovepopController', ['$scope', '$routeParams', 'ser
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         if (response.data.message == 1) {
-                            $scope.status = "El registro ha sido borrado.";
+                            $scope.status = "El registro " +  obtitle + " se ha eliminado." ;  
                             $uibModalInstance.close(true);
                             return false;
                         } else {

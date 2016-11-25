@@ -69,8 +69,8 @@ dolity.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/documento/plist/:page?/:rpp?', {templateUrl: 'js/documento/plist.html', controller: 'DocumentoPListController'});
         //------------
         $routeProvider.when('/user/view/:id', {templateUrl: 'js/user/view.html', controller: 'UserViewController'});
-        $routeProvider.when('/user/new/:id?', {templateUrl: 'js/user/newedit.html', controller: 'UserNewController'});
-        $routeProvider.when('/user/edit/:id', {templateUrl: 'js/user/newedit.html', controller: 'UserEditController'});
+        $routeProvider.when('/user/new/:id?', {templateUrl: 'js/user/neweditg.html', controller: 'UserNewController'});
+        $routeProvider.when('/user/edit/:id', {templateUrl: 'js/user/neweditg.html', controller: 'UserEditController'});
         $routeProvider.when('/user/remove/:id', {templateUrl: 'js/user/remove.html', controller: 'UserRemoveController'});
         $routeProvider.when('/user/plist/:page?/:rpp?', {templateUrl: 'js/user/plist.html', controller: 'UserPListController'});
         $routeProvider.when('/user/selection/:page?/:rpp?', {templateUrl: 'js/user/selection.html', controller: 'UserSelectionController'});
