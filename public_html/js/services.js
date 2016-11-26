@@ -50,7 +50,46 @@ moduloServicios
 //            ;
             return {
                 //---- OK ----
-                debugging:function(){
+                getRegExpr: function (reg) {
+                    switch (reg) {
+                        case "nombre":
+                            return /^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/;
+                            break;
+                        case "coodigopostal":
+                            return /^\d{4,5}$/;
+                            break;
+                        case "email":
+                            return  /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+                            break;
+                        case "telefono":
+                            return  /^[\d]{3}[-]*([\d]{2}[-]*){2}[\d]{2}$/;
+                            break;
+                        case "login":
+                            return  /^[a-z0-9_-]{5,16}$/;
+                            break;
+                        case "password":
+                            return  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+                            break;
+                        case "integer":
+                            return new RegExp("-?[0-9]+", "g");
+                            break;
+                        case "decimal":
+                            return new RegExp("-?\d+\.\d+", "g");
+                            break;
+                        case "alpha-numeric":
+                            return new RegExp("^[a-zA-Z0-9]+$", "g");
+                            break;
+                        case "email":
+                            return new RegExp("([\w-\.]+@[\w\.]+\.{1}[\w]+)", "g");
+                            break;
+                        case "url":
+                            return new RegExp("(http://|ftp://)([\w-\.)(\.)([a-zA-Z]+)", "g");
+                            break;
+                        default:
+                            return null;
+                    }
+                },
+                debugging: function () {
                     return true;
                 },
                 checkDefault: function (defaultValue, checkedVariable) {
@@ -381,7 +420,7 @@ moduloServicios
                         method: "GET",
                         params: jsonfile
                     });
-                },                
+                },
                 getPaginationBar: function (objeto, accion, page_number, total_pages, neighborhood, nrpp) {
                     page_number = parseInt(page_number);
                     total_pages = parseInt(total_pages);

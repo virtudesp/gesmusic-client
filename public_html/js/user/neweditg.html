@@ -59,7 +59,8 @@ THE SOFTWARE.
                                 <div ng-show="f.type == 'text'" 
                                      id="{{f.name}}-group" 
                                      class="form-group" 
-                                     ng-class="{'has-error': (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
+                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) || 
+                                                 (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
                                         <span ng-show="{{f.required}}">*</span>
                                         {{f.longname}}:
@@ -69,12 +70,14 @@ THE SOFTWARE.
                                                type="text"
                                                class="form-control"                                           
                                                id="{{f.name}}"
-                                               name="{{f.name}}"                                           
+                                               name="{{f.name}}"     
+                                               ng-pattern="f.pattern"
                                                placeholder="{{f.name}}"                                             
                                                maxlength="{{f.maxlength}}"                                                                                               
                                                ng-required="{{f.required}}"                                                
                                                />
                                         <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
