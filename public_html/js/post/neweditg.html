@@ -190,13 +190,13 @@ THE SOFTWARE.
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>
-                        </form>
+                        </form>               
                         <div ng-show="status">                        
-                            <div class="alert alert-success" ng-show="result.status == 200">
+                            <div class="alert alert-success" ng-show="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a ng-href="#/{{ob}}/view/{{id}}">Ver el {{obtitle}}</a>
+                                <a ng-href="#/{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
                             </div>
-                            <div class="alert alert-danger" ng-show="result.status != 200">
+                            <div class="alert alert-danger" ng-show="response.status != 200">
                                 <h2>{{status}}</h2>                             
                             </div>
                         </div>

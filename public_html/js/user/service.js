@@ -15,7 +15,7 @@ moduloServicios.factory('userService', ['serverService', function (serverService
                     {name: "country", shortname: "País", longname: "País", visible: false, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},
                     {name: "email", shortname: "Email", longname: "Email", visible: false, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("email"), help: serverService.getRegExpl("email")},
                     {name: "phone", shortname: "Teléfono", longname: "Teléfono", visible: false, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("telefono"), help: serverService.getRegExpl("telefono")},
-                    {name: "obj_usertype", shortname: "Tipo", longname: "Tipo de usuario", visible: true, type: "specific"}
+                    {name: "obj_usertype", shortname: "Tipo", longname: "Tipo de usuario", visible: true, type: "specific", reference: "usertype"}
                 ];
             },
             getIcon: function () {

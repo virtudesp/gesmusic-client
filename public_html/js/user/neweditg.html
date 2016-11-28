@@ -37,8 +37,8 @@ THE SOFTWARE.
                             <h4>Debug:</h4>
                             {{bean|json}}
                         </div>                   
-                        <form name="outerForm" class="form-horizontal text-left">
-                            <div ng-repeat="f in fields" ng-show="!status">
+                        <form name="outerForm" class="form-horizontal text-left"  ng-show="!status">
+                            <div ng-repeat="f in fields">
                                 <!------------------------------------------------->       
                                 <div ng-show="f.type == 'id'" 
                                      id="{{f.name}}-group" 
@@ -59,8 +59,8 @@ THE SOFTWARE.
                                 <div ng-show="f.type == 'text'" 
                                      id="{{f.name}}-group" 
                                      class="form-group" 
-                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) || 
-                                                 (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
+                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
+                                                             (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
                                         <span ng-show="{{f.required}}">*</span>
                                         {{f.longname}}:
@@ -119,24 +119,21 @@ THE SOFTWARE.
                                 <!------------------------------------------------->
 
                             </div>
+                            <div class="control-group text-right">
+                                <div class="controls">
+                                    <a class="btn btn-primary" ng-click="save()">Guardar</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de usuarios</a>
+                                    <a class="btn btn-default" ng-click="close()">Cerrar</a>
+                                </div>
+                            </div>
                         </form>
-                        <div class="control-group text-right">
-                            <div class="controls">
-                                <a class="btn btn-primary" ng-click="save()">Guardar</a>
-                                <a class="btn btn-default" ng-click="plist()">Ir al listado de usuarios</a>
-                                <a class="btn btn-default" ng-click="close()">Cerrar</a>
+                        <div ng-show="status">                        
+                            <div class="alert alert-success" ng-show="response.status == 200">
+                                <h2>{{status}}</h2>
+                                <a ng-href="#/{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
                             </div>
-                        </div>
-
-                        <div ng-show="result != null">    
-                            <div class="alert alert-success" ng-show="result.status == 200">
-                                <h2>Se ha modificado {{obtitle}}</h2>
-                                <a ng-href="#/{{ob}}/view/{{id}}">Ver el {{obtitle}} modificado</a>
-                            </div>
-                            <div class="alert alert-danger" ng-show="result.status != 200">
-                                <h2>Error al modificar {{obtitle}}: no se ha modificado.</h2>
-                                <h3>Código: {{result.status}}</h3>
-                                <h3>Mensaje: {{result.message}}</h3>             
+                            <div class="alert alert-danger" ng-show="response.status != 200">
+                                <h2>{{status}}</h2>                             
                             </div>
                         </div>
                     </div>
