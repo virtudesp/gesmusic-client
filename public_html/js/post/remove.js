@@ -34,7 +34,7 @@ moduloPost.controller('PostRemoveController', ['$scope', '$routeParams', '$locat
         $scope.obtitle = postService.getObTitle();
         $scope.icon = postService.getIcon();
         $scope.ob = postService.getTitle();
-        $scope.title = "Vista de " + $scope.obtitle;
+        $scope.title = "Borrado de " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;
         $scope.debugging=serverService.debugging();
@@ -57,7 +57,7 @@ moduloPost.controller('PostRemoveController', ['$scope', '$routeParams', '$locat
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         if (response.data.message == 1) {
-                            $scope.status = "El registro " +  obtitle + " se ha eliminado." ;  
+                            $scope.status = "El registro " +  $scope.obtitle + " se ha eliminado." ;  
                         } else {
                             $scope.status = "Error en el borrado de datos del servidor";
                         }
