@@ -102,7 +102,19 @@ THE SOFTWARE.
                                     <thead plistheaderspa></thead>
                                     <tbody>
                                         <tr ng-repeat="obj in page| filter:searchText">
-                                            <td ng-repeat="f in fields" ng-show="f.visible"  class="text-right">{{obj[f.name]}}</td>                       
+                                            <td ng-repeat="f in fields" ng-show="f.visible" class="text-right">                   
+
+                                                <div ng-show="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
+                                                <div ng-show="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
+                                                <div ng-show="f.visible && f.type == 'integer'" class="text-center">{{obj[f.name]}}</div>
+                                                <div ng-show="f.visible && f.type == 'decimal'" class="text-center">{{obj[f.name]}}</div>
+                                                <div ng-show="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
+                                                <div ng-show="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
+                                                <!------------------------------------------------>
+                                                <div ng-show="f.visible && f.name == 'obj_usertype'" class="text-center">{{obj.obj_usertype.description}}</div>
+
+                                            </td>   
+
                                             <td plistoperationbarspa></tdspa>
                                                 <button ng-click="count = count + 1;alert(count)" ng-init="count = 0">
                                         </tr>

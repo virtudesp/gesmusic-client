@@ -34,7 +34,7 @@ moduloPost.controller('PostEditController', ['$scope', '$routeParams', '$locatio
         $scope.obtitle = postService.getObTitle();
         $scope.icon = postService.getIcon();
         $scope.ob = postService.getTitle();
-        $scope.title = "Editando un " + $scope.obtitle;
+        $scope.title = "Editando " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
         $scope.error = true;
@@ -59,7 +59,7 @@ moduloPost.controller('PostEditController', ['$scope', '$routeParams', '$locatio
         });
         $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
-            serverService.promise_setOne($scope.ob, jsonToSend).then(function (data) {
+            serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         $scope.error = false;
@@ -93,20 +93,38 @@ moduloPost.controller('PostEditController', ['$scope', '$routeParams', '$locatio
                 $scope.bean[nameForeign].id = modalResult;
             });
         };
-        $scope.$watch('bean.obj_usertype.id', function () {
+        $scope.$watch('bean.obj_user.id', function () {
             if ($scope.bean) {
-                serverService.promise_getOne('usertype', $scope.bean.obj_usertype.id).then(function (response) {
-                    var old_id = $scope.bean.obj_usertype.id;
-
+                serverService.promise_getOne('user', $scope.bean.obj_user.id).then(function (response) {
+                    var old_id = $scope.bean.obj_user.id;
+                    $scope.bean.obj_user = response.data.message;
                     if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_usertype.$setValidity('exists', true);
-                        $scope.bean.obj_usertype = response.data.message;
+                        $scope.outerForm.obj_user.$setValidity('exists', true);
                     } else {
-                        $scope.outerForm.obj_usertype.$setValidity('exists', false);
-                        //$scope.bean.obj_usertype.id = 0;
-                        $scope.bean.obj_usertype.id = old_id;
+                        $scope.outerForm.obj_user.$setValidity('exists', false);
+                        $scope.bean.obj_user.id = old_id;
                     }
                 });
             }
         });
+        $scope.dateOptions = {
+            formatYear: 'yyyy',
+            startingDay: 1
+        };
+        //datepicker 1
+        $scope.open1 = function () {
+            $scope.popup1.opened = true;
+            $scope.outerForm.creation.$pristine = false;
+        };
+        $scope.popup1 = {
+            opened: false
+        };
+        //datepicker 2
+        $scope.open2 = function () {
+            $scope.popup2.opened = true;
+            $scope.outerForm.modification.$pristine = false;
+        };
+        $scope.popup2 = {
+            opened: false
+        };
     }]);

@@ -53,7 +53,7 @@ moduloUser.controller('UserNewController', ['$scope', '$routeParams', '$location
         }
         $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
-            serverService.promise_setOne($scope.ob, jsonToSend).then(function (data) {
+            serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         $scope.status = "El registro " + obtitle + " se ha creado.";

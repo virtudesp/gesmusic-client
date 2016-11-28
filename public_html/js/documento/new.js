@@ -108,6 +108,25 @@ moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', 
             $location.path('/documento/plist');
         };
 
+
+
+        //datepicker 1
+        $scope.open = function (nombre) {
+            $scope[nombre].opened = true;
+        };
+        $scope.isOpen = function (nombre) {
+            return $scope[nombre].opened;
+        };
+        
+        $scope.popup1 = {
+            opened: false
+        };
+        $scope.dateOptions = {
+            formatYear: 'yyyy',
+            startingDay: 1
+        };
+
+
         //datepicker 1
         $scope.open1 = function () {
             $scope.popup1.opened = true;

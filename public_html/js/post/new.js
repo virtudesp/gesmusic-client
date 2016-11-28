@@ -34,29 +34,33 @@ moduloPost.controller('PostNewController', ['$scope', '$routeParams', '$location
         $scope.obtitle = postService.getObTitle();
         $scope.icon = postService.getIcon();
         $scope.ob = postService.getTitle();
-        $scope.title = "Creando un nuevo " + $scope.obtitle;
+        $scope.title = "Creando " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
-        $scope.bean.obj_usertype = {"id": 0};
-        if ($routeParams.id_usertype) {
-            serverService.promise_getOne('usertype', $routeParams.id_usertype).then(function (response) {
+        $scope.bean.obj_user = {"id": 0};
+        //----
+        if ($routeParams.id_user) {
+            serverService.promise_getOne('user', $routeParams.id_user).then(function (response) {
                 if (response.data.message.id != 0) {
-                    $scope.bean.obj_usertype = response.data.message;
-                    $scope.show_obj_usertype = false;
-                    $scope.title = "Nuevo usuario del tipo" + $scope.bean.obj_usertype.description;
+                    $scope.bean.obj_user = response.data.message;
+                    $scope.show_obj_user = false;
+                    $scope.title = "Nuevo post del usuario " + $scope.bean.obj_user.description;
                 }
             });
         } else {
-            $scope.show_obj_usertype = true;
+            $scope.show_obj_user = true;
         }
         $scope.save = function () {
+            $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
+            $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
-            serverService.promise_setOne($scope.ob, jsonToSend).then(function (data) {
+            serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
-                        $scope.status = "El registro " + obtitle + " se ha creado.";
+                        $scope.response = response;
+                        $scope.status = "El registro " + $scope.obtitle + " se ha creado con id = " + response.data.message;                         
                         $scope.bean.id = response.data.message;
                     } else {
                         $scope.status = "Error en la recepción de datos del servidor";
@@ -87,19 +91,39 @@ moduloPost.controller('PostNewController', ['$scope', '$routeParams', '$location
                 $scope.bean[nameForeign].id = modalResult;
             });
         };
-        $scope.$watch('bean.obj_usertype.id', function () {
+        $scope.$watch('bean.obj_user.id', function () {
             if ($scope.bean) {
-                serverService.promise_getOne('usertype', $scope.bean.obj_usertype.id).then(function (response) {
-                    var old_id = $scope.bean.obj_usertype.id;
-                    $scope.bean.obj_usertype = response.data.message;
+                serverService.promise_getOne('user', $scope.bean.obj_user.id).then(function (response) {
+                    var old_id = $scope.bean.obj_user.id;
+                    $scope.bean.obj_user = response.data.message;
                     if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_usertype.$setValidity('exists', true);
+                        $scope.outerForm.obj_user.$setValidity('exists', true);
                     } else {
-                        $scope.outerForm.obj_usertype.$setValidity('exists', false);
-                        $scope.bean.obj_usertype.id = old_id;
+                        $scope.outerForm.obj_user.$setValidity('exists', false);
+                        $scope.bean.obj_user.id = old_id;
                     }
                 });
             }
         });
+        $scope.dateOptions = {
+            formatYear: 'yyyy',
+            startingDay: 1
+        };
+        //datepicker 1
+        $scope.open1 = function () {
+            $scope.popup1.opened = true;
+            $scope.outerForm.creation.$pristine = false;
+        };
+        $scope.popup1 = {
+            opened: false
+        };
+        //datepicker 2
+        $scope.open2 = function () {
+            $scope.popup2.opened = true;
+            $scope.outerForm.modification.$pristine = false;
+        };
+        $scope.popup2 = {
+            opened: false
+        };
     }]);
 

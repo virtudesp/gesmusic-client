@@ -28,8 +28,8 @@
 
 'use strict';
 
-moduloUser.controller('UserEditController', ['$scope', '$routeParams', '$location', 'serverService', 'userService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, userService, sharedSpaceService, $filter, $uibModal) {
+moduloUser.controller('UserEditController', ['$scope', '$routeParams', '$location', 'serverService', 'postService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, postService, sharedSpaceService, $filter, $uibModal) {
         $scope.fields = userService.getFields();
         $scope.obtitle = userService.getObTitle();
         $scope.icon = userService.getIcon();
@@ -59,7 +59,7 @@ moduloUser.controller('UserEditController', ['$scope', '$routeParams', '$locatio
         });
         $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
-            serverService.promise_setOne($scope.ob, jsonToSend).then(function (data) {
+            serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         $scope.error = false;

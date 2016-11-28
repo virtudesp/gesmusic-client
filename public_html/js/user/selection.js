@@ -28,11 +28,12 @@
 
 'use strict';
 
-moduloUser.controller('UserSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService',
-    function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService) {
+moduloUser.controller('UserSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'userService', 'serverService', '$location', 'sharedSpaceService',
+    function ($scope, $modalInstance, $routeParams, userService, serverService, $location, sharedSpaceService) {
         $scope.fields = userService.getFields();
         $scope.obtitle = userService.getObTitle();
         $scope.icon = userService.getIcon();
+        $scope.title = "Selección de " + $scope.obtitle;
         $scope.ob = userService.getTitle();
         $scope.op = "selection";
         $scope.numpage = 1;
@@ -46,7 +47,7 @@ moduloUser.controller('UserSelectionController', ['$scope', '$uibModalInstance',
         $scope.orderParams = null;
         $scope.filterParams = null;
         $scope.status = null;
-        $scope.debugging=serverService.debugging();
+        $scope.debugging = serverService.debugging();
         $scope.closeForm = function (id) {
             $modalInstance.close(id);
         };
