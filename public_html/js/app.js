@@ -73,6 +73,13 @@ dolity.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/post/plist/:page?/:rpp?', {templateUrl: 'js/post/plist.html', controller: 'PostPListController'});
         $routeProvider.when('/post/selection/:page?/:rpp?', {templateUrl: 'js/post/selection.html', controller: 'PostSelectionController'});      
         //------------
+         $routeProvider.when('/usertype/view/:id', {templateUrl: 'js/usertype/view.html', controller: 'UsertypeViewController'});
+        $routeProvider.when('/usertype/new/:id?', {templateUrl: 'js/usertype/neweditg.html', controller: 'UsertypeNewController'});
+        $routeProvider.when('/usertype/edit/:id', {templateUrl: 'js/usertype/neweditg.html', controller: 'UsertypeEditController'});
+        $routeProvider.when('/usertype/remove/:id', {templateUrl: 'js/usertype/remove.html', controller: 'UsertypeRemoveController'});
+        $routeProvider.when('/usertype/plist/:page?/:rpp?', {templateUrl: 'js/usertype/plist.html', controller: 'UsertypePListController'});
+        $routeProvider.when('/usertype/selection/:page?/:rpp?', {templateUrl: 'js/usertype/selection.html', controller: 'UsertypeSelectionController'});      
+        //------------
         $routeProvider.otherwise({redirectTo: '/'});
 
 
@@ -111,6 +118,7 @@ dolity.run(function ($rootScope, $location, serverService, sessionService) {
 var moduloSistema = angular.module('systemControllers', []);
 var moduloUser = angular.module('userControllers', []);
 var moduloPost = angular.module('postControllers', []);
+var moduloUsertype = angular.module('usertypeControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);

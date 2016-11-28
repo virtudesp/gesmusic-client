@@ -35,13 +35,10 @@ THE SOFTWARE.
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12" ng-cloak>          
-                    <div class="row-fluid"  ng-show="status">
-                        <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12" ng-show="status">
                             <div class="alert alert-danger" role="alert">
-                                <br>
-                                <h3 class="bg-danger">{{status}}</h3>    
-                                <br>
-                                <a class="btn btn-default" ng-click="cancel()">Volver</a>
+                                <h3 class="bg-danger">{{status}}</h3>                                
                             </div>
                         </div>
                     </div>
@@ -56,26 +53,19 @@ THE SOFTWARE.
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="f in fields" class="text-left">
-                                      <td>{{f.longname}}</td>
-                                            <td ng-show="f.type == 'id'"><b>{{bean[f.name]}}</b></td>
-                                            <td ng-show="f.type == 'date'">{{bean[f.name]}}</td>
-                                            <td ng-show="f.type == 'integer'">{{bean[f.name]}}</td>
-                                            <td ng-show="f.type == 'decimal'">{{bean[f.name]}}</td>
-                                            <td ng-show="f.type == 'text'">{{bean[f.name]}}</td>
-                                            <td ng-show="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td> 
-                                            <td ng-show="f.name.startsWith('obj_')">
-                                                <a href="#/{{f.reference}}/view/{{bean[f.name]['id']}}">
-                                                    {{bean[f.name]["description"]}}
-                                                </a>
-                                            </td>                           
-                                    </tr>
+                                        <td>{{f.longname}}</td>
+                                        <!-- ----------------------------- -->
+                                        <td ng-show="f.type == 'id'"><b>{{bean[f.name]}}</b></td>
+                                        <td ng-show="f.type == 'date'">{{bean[f.name]}}</td>
+                                        <td ng-show="f.type == 'integer'">{{bean[f.name]}}</td>
+                                        <td ng-show="f.type == 'decimal'">{{bean[f.name]}}</td>
+                                        <td ng-show="f.type == 'text'">{{bean[f.name]}}</td>
+                                        <td ng-show="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td>
+                                        <!-- ----------------------------- -->
+
+                                    </tr>                                                                                                           
                                 </tbody>
                             </table>  
-                            <div class="text-right"> 
-                                <div>¿Está seguro de que desea borrar el registro?</div>
-                                <a class="btn btn-danger" ng-click="remove()">Si</a>
-                                <a class="btn btn-default" ng-click="cancel()">No</a>
-                            </div>     
                         </div>
                     </div>
                 </div>                
