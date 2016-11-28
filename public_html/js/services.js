@@ -50,16 +50,53 @@ moduloServicios
 //            ;
             return {
                 //---- OK ----
+                getRegExpl: function (reg) {
+                    switch (reg) {
+                        case "nombre":
+                            return "Las palabras deben comenzar con mayúsculas";
+                            break;
+                        case "codigopostal":
+                            return "Se requieren 4 o 5 dígitos";
+                            break;
+                        case "email":
+                            return  "Introduzca un email válido";
+                            break;
+                        case "telefono":
+                            return  "Introduzca un número de 9 dígitos";
+                            break;
+                        case "login":
+                            return  "Introduza una palabra de 5 a 16 caracteres alfanuméricos";
+                            break;
+                        case "password":
+                            return  "Introduzca palabra de al menos 8 caracteres con numeros y letras mayúsculas y minúsculas";
+                            break;
+                        case "integer":
+                            return "Introduzca un número entero";
+                            break;
+                        case "decimal":
+                            return "Introduzca un número decimal";
+                            break;
+                        case "alpha-numeric":
+                            return "Introduzca una cadena de números y letras";
+                            break;
+                        case "url":
+                            return "Introduza una URL válida";
+                            break;
+                        default:
+                            return null;
+                    }
+                },
                 getRegExpr: function (reg) {
                     switch (reg) {
                         case "nombre":
                             return /^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/;
                             break;
-                        case "coodigopostal":
+                        case "codigopostal":
                             return /^\d{4,5}$/;
                             break;
                         case "email":
                             return  /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+                            //return new RegExp("([\w-\.]+@[\w\.]+\.{1}[\w]+)", "g");
                             break;
                         case "telefono":
                             return  /^[\d]{3}[-]*([\d]{2}[-]*){2}[\d]{2}$/;
@@ -78,9 +115,6 @@ moduloServicios
                             break;
                         case "alpha-numeric":
                             return new RegExp("^[a-zA-Z0-9]+$", "g");
-                            break;
-                        case "email":
-                            return new RegExp("([\w-\.]+@[\w\.]+\.{1}[\w]+)", "g");
                             break;
                         case "url":
                             return new RegExp("(http://|ftp://)([\w-\.)(\.)([a-zA-Z]+)", "g");

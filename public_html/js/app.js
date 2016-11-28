@@ -32,12 +32,9 @@ var dolity = angular.module('myApp', [
     'Filters',
     'Services',
     'Directives',
-    'systemControllers',
-    'documentoControllers',
+    'systemControllers',   
     'userControllers',
-    'tipodocumentoControllers',
-    'usertypeControllers',
-    'estadoControllers',
+    'postControllers',  
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -61,13 +58,7 @@ dolity.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/logout', {templateUrl: 'js/system/logout.html', controller: 'LogoutController'});
         $routeProvider.when('/home', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
         $routeProvider.when('/license', {templateUrl: 'js/system/license.html', controller: 'LicenseController'});
-        //------------
-        $routeProvider.when('/documento/view/:id', {templateUrl: 'js/documento/view.html', controller: 'DocumentoViewController'});
-        $routeProvider.when('/documento/new', {templateUrl: 'js/documento/newedit.html', controller: 'DocumentoNewController'});
-        $routeProvider.when('/documento/edit/:id', {templateUrl: 'js/documento/newedit.html', controller: 'DocumentoEditController'});
-        $routeProvider.when('/documento/remove/:id', {templateUrl: 'js/documento/remove.html', controller: 'DocumentoRemoveController'});
-        $routeProvider.when('/documento/plist/:page?/:rpp?', {templateUrl: 'js/documento/plist.html', controller: 'DocumentoPListController'});
-        //------------
+        //------------       
         $routeProvider.when('/user/view/:id', {templateUrl: 'js/user/view.html', controller: 'UserViewController'});
         $routeProvider.when('/user/new/:id?', {templateUrl: 'js/user/neweditg.html', controller: 'UserNewController'});
         $routeProvider.when('/user/edit/:id', {templateUrl: 'js/user/neweditg.html', controller: 'UserEditController'});
@@ -75,14 +66,12 @@ dolity.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/user/plist/:page?/:rpp?', {templateUrl: 'js/user/plist.html', controller: 'UserPListController'});
         $routeProvider.when('/user/selection/:page?/:rpp?', {templateUrl: 'js/user/selection.html', controller: 'UserSelectionController'});
         //------------
-        $routeProvider.when('/usertype/view/:id', {templateUrl: 'js/usertype/view.html', controller: 'UsertypeViewController'});
-        $routeProvider.when('/usertype/plist/:page?/:rpp?', {templateUrl: 'js/usertype/selection.html', controller: 'UsertypeSelectionController'});
-        //------------
-        $routeProvider.when('/tipousuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});
-        $routeProvider.when('/tipousuario/view/:id', {templateUrl: 'js/tipousuario/view.html', controller: 'TipousuarioViewController'});
-        //------------
-        $routeProvider.when('/estado/selection/:page?/:rpp?', {templateUrl: 'js/estado/selection.html', controller: 'EstadoSelectionController'});
-        $routeProvider.when('/estado/view/:id', {templateUrl: 'js/estado/view.html', controller: 'EstadoViewController'});
+        $routeProvider.when('/post/view/:id', {templateUrl: 'js/post/view.html', controller: 'PostViewController'});
+        $routeProvider.when('/post/new/:id?', {templateUrl: 'js/post/neweditg.html', controller: 'PostNewController'});
+        $routeProvider.when('/post/edit/:id', {templateUrl: 'js/post/neweditg.html', controller: 'PostEditController'});
+        $routeProvider.when('/post/remove/:id', {templateUrl: 'js/post/remove.html', controller: 'PostRemoveController'});
+        $routeProvider.when('/post/plist/:page?/:rpp?', {templateUrl: 'js/post/plist.html', controller: 'PostPListController'});
+        $routeProvider.when('/post/selection/:page?/:rpp?', {templateUrl: 'js/post/selection.html', controller: 'PostSelectionController'});      
         //------------
         $routeProvider.otherwise({redirectTo: '/'});
 
@@ -121,10 +110,7 @@ dolity.run(function ($rootScope, $location, serverService, sessionService) {
 //-------------
 var moduloSistema = angular.module('systemControllers', []);
 var moduloUser = angular.module('userControllers', []);
-var moduloDocumento = angular.module('documentoControllers', []);
-var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
-var moduloUsertype = angular.module('usertypeControllers', []);
-var moduloEstado = angular.module('estadoControllers', []);
+var moduloPost = angular.module('postControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);

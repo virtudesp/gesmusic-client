@@ -25,16 +25,19 @@
  * THE SOFTWARE.
  * 
  */
+
 'use strict';
 
-
-moduloTipodocumento.controller('TipodocumentoViewpopController', ['$scope', '$routeParams', 'serverService', '$location', '$uibModalInstance', 'id',
-    function ($scope, $routeParams, serverService, $location, $uibModalInstance, id) {
+moduloPost.controller('PostViewController', ['$scope', '$routeParams', 'serverService', 'postService', '$location',
+    function ($scope, $routeParams, serverService, postService, $location) {
+        $scope.fields = postService.getFields();
+        $scope.obtitle = postService.getObTitle();
+        $scope.icon = postService.getIcon();
+        $scope.ob = postService.getTitle();
+        $scope.title = "Vista de " + $scope.obtitle;
+        $scope.id = $routeParams.id;
         $scope.status = null;
-        $scope.title = "Vista de tipo de documento";
-        $scope.icon = "fa-file-text-o";
-        $scope.ob = 'tipodocumento';
-        $scope.id = id;
+        $scope.debugging=serverService.debugging();
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {
@@ -49,8 +52,13 @@ moduloTipodocumento.controller('TipodocumentoViewpopController', ['$scope', '$ro
         }).catch(function (data) {
             $scope.status = "Error en la recepción de datos del servidor";
         });
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        }
-
+        $scope.close = function () {
+            $location.path('/home');
+        };
+        $scope.plist = function () {
+            $location.path('/' + $scope.ob + '/plist');
+        };
+        $scope.back = function () {
+            window.history.back();
+        };
     }]);
