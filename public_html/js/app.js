@@ -34,6 +34,7 @@ var dolity = angular.module('myApp', [
     'Directives',
     'systemControllers',   
     'userControllers',
+    'usertypeControllers',
     'postControllers',  
     'ui.bootstrap',
     'ngSanitize'
