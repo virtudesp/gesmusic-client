@@ -27,57 +27,55 @@
 
 'use strict';
 
-angular.module('Filters', []).
-        filter('interpolate', ['version', function (version) {
+moduloFiltros
+        .filter('interpolate', ['version', function (version) {
                 return function (text) {
                     return String(text).replace(/\%VERSION\%/mg, version);
                 }
-            }]);
+            }])
+        .filter('showForeign', function ($filter)
+        {
+            return function (input)
+            {
+                if (input == null) {
+                    return "";
+                }
+                return input[0] + ':' + input[1];
+            };
+        })
+        .filter('clipString', function ($filter)
+        {
+            return function (input)
+            {
+                if (input == null) {
+                    return "";
+                }
 
-angular.module('Filters').filter('showForeign', function ($filter)
-{
-    return function (input)
-    {
-        if (input == null) {
-            return "";
-        }
-        return input[0] + ':' + input[1];
-    };
-});
-angular.module('Filters').filter('clipString', function ($filter)
-{
-    return function (input)
-    {
-        if (input == null) {
-            return "";
-        }
+                if (input.length > 50) {
+                    return input.substr(0, 40).trim() + " ...";
 
-        if (input.length > 20) {
-            return input.substr(0, 15).trim() + " ...";
+                } else {
+                    return input;
+                }
 
-        } else {
-            return input;
-        }
+            };
+        })
+        .filter('booleanizate', function ($filter)
+        {
+            return function (input)
+            {
+                if (input == null) {
+                    return "";
+                }
 
-    };
-});
+                if (input == true) {
+                    return '<i class="fa fa-check"></i>';
+                } else {
+                    return '<i class="fa fa-times"></i>';
+                }
 
-angular.module('Filters').filter('booleanizate', function ($filter)
-{
-    return function (input)
-    {
-        if (input == null) {
-            return "";
-        }
-
-        if (input == true) {
-            return '<i class="fa fa-check"></i>';
-        } else {
-            return '<i class="fa fa-times"></i>';
-        }
-
-    };
-});
+            };
+        });
 
 //angular.module('Filters').filter('uppercaseo', function ($filter)
 //{

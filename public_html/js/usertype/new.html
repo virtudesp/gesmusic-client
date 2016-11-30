@@ -55,7 +55,9 @@ THE SOFTWARE.
                                                disabled="disabled" />
                                     </div>
                                 </div>
-                                <!------------------------------------------------->                            
+                                <!------------------------------------------------->  
+                                {{outerForm[f.name].$error.pattern }}
+                                {{outerForm[f.name].$error.required}}
                                 <div ng-show="f.type == 'text'" 
                                      id="{{f.name}}-group" 
                                      class="form-group" 
@@ -120,8 +122,9 @@ THE SOFTWARE.
 
                             </div>
                             <div class="control-group text-right">
+                                {{outerForm.$valid}}
                                 <div class="controls">
-                                    <a class="btn btn-primary" ng-click="save()">Guardar</a>
+                                    <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
                                     <a class="btn btn-default" ng-click="plist()">Ir al listado de usuarios</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>

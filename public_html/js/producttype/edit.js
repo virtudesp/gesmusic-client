@@ -27,18 +27,19 @@
  */
 
 'use strict';
-moduloUsertype.controller('UsertypeEditController', ['$scope', '$routeParams', '$location', 'usertypeService', 'serverService', 'postService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, usertypeService, serverService, postService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = usertypeService.getFields();
-        $scope.obtitle = usertypeService.getObTitle();
-        $scope.icon = usertypeService.getIcon();
-        $scope.ob = usertypeService.getTitle();
+
+moduloProducttype.controller('ProducttypeEditController', ['$scope', '$routeParams', '$location', 'producttypeService', 'serverService', 'postService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, producttypeService, serverService, postService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = producttypeService.getFields();
+        $scope.obtitle = producttypeService.getObTitle();
+        $scope.icon = producttypeService.getIcon();
+        $scope.ob = producttypeService.getTitle();
         $scope.title = "Editando un " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
         $scope.error = true;
         $scope.debugging = serverService.debugging();
-        $scope.bean = {};
+        $scope.bean = {id: 0};
         $scope.id = $routeParams.id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
@@ -92,5 +93,6 @@ moduloUsertype.controller('UsertypeEditController', ['$scope', '$routeParams', '
             }).result.then(function (modalResult) {
                 $scope.bean[nameForeign].id = modalResult;
             });
-        };       
+        };
+
     }]);

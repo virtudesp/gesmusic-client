@@ -37,7 +37,20 @@ moduloProduct.controller('ProductNewController', ['$scope', '$routeParams', '$lo
         $scope.title = "Creando un nuevo " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
-        $scope.debugging = serverService.debugging();       
+        $scope.debugging = serverService.debugging();
+        $scope.bean = {id: 0};
+        $scope.bean.obj_producttype = {"id": 0};
+        if ($routeParams.id_producttype) {
+            serverService.promise_getOne('producttype', $routeParams.id_producttype).then(function (response) {
+                if (response.data.message.id != 0) {
+                    $scope.bean.obj_producttype = response.data.message;
+                    $scope.show_obj_producttype = false;
+                    $scope.title = "Nuevo producto del tipo " + $scope.bean.obj_producttype.description;
+                }
+            });
+        } else {
+            $scope.show_obj_producttype = true;
+        }
         $scope.save = function () {
             $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
             $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
@@ -78,19 +91,6 @@ moduloProduct.controller('ProductNewController', ['$scope', '$routeParams', '$lo
             });
         };
         //-----------------specific---------------------------------------------
-        $scope.bean = {};
-        $scope.bean.obj_producttype = {"id": 0};
-         if ($routeParams.id_producttype) {
-            serverService.promise_getOne('producttype', $routeParams.id_producttype).then(function (response) {
-                if (response.data.message.id != 0) {
-                    $scope.bean.obj_producttype = response.data.message;
-                    $scope.show_obj_producttype = false;
-                    $scope.title = "Nuevo producto del tipo " + $scope.bean.obj_producttype.description;
-                }
-            });
-        } else {
-            $scope.show_obj_producttype = true;
-        }        
         $scope.$watch('bean.obj_producttype.id', function () {
             if ($scope.bean) {
                 serverService.promise_getOne('producttype', $scope.bean.obj_producttype.id).then(function (response) {

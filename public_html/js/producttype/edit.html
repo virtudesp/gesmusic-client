@@ -59,8 +59,8 @@ THE SOFTWARE.
                                 <div ng-show="f.type == 'text'" 
                                      id="{{f.name}}-group" 
                                      class="form-group" 
-                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
-                                                             (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
+                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern) ||
+                                                             (outerForm[f.name].$error.required)}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
                                         <span ng-show="{{f.required}}">*</span>
                                         {{f.longname}}:
@@ -76,52 +76,16 @@ THE SOFTWARE.
                                                maxlength="{{f.maxlength}}"                                                                                               
                                                ng-required="{{f.required}}"                                                
                                                />
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
+                                        <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
                                 </div>
+                                <!------------------------------------------------->                                
                                 <!------------------------------------------------->
-                                <div class="form-group"                                 
-                                     ng-show="show_obj_usertype && (f.name == 'obj_usertype')"
-                                     ng-class="{'has-error': (outerForm.obj_usertype.$error.required ||
-                                                             outerForm.obj_usertype.$error.exists ||
-                                                             outerForm.obj_usertype.$error.validatemin)
-                                                             && !outerForm.obj_usertype.$pristine}"
-                                     ng-show="show_obj_usertype">                                                                                                                                   
-                                    <label class="col-sm-2 control-label" for="obj_usertype">Tipo de Usuario:</label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_usertype_group">
-                                            <span class="input-group-addon" id="obj_usertype_button" ng-click="chooseOne('obj_usertype', 'usertype', 'UsertypeSelectionController')">
-                                                <span class="glyphicon glyphicon-search">
-                                                </span>
-                                            </span>                                        
-                                            <input type="text" 
-                                                   ng-model-options="{debounce: 1000}" 
-                                                   ng-change="obj_usertype_change" 
-                                                   ng-model="bean.obj_usertype.id" 
-                                                   validatemin="1" 
-                                                   ng-required="true"  
-                                                   aria-describedby="basic-addon2" 
-                                                   class="form-control" 
-                                                   id="obj_usuario" 
-                                                   name="obj_usertype"
-                                                   size="5" 
-                                                   maxlength="5">                                        
-                                            <span class="input-group-addon">
-                                                <span>{{bean.obj_usertype.description}}</span>
-                                            </span>                                       
-                                        </div>
-                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_usertype.$error.required">El tipo de usuario es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_usertype.$error.validatemin">Debes elegir un tipo de usuario</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_usertype.$error.exists">El tipo de usuario no existe</span>
-                                    </div>
-                                </div> 
-                                <!------------------------------------------------->
-
                             </div>
-                            <div class="control-group text-right">
+                            <div class="control-group text-right">                             
                                 <div class="controls">
-                                    <a class="btn btn-primary" ng-click="save()">Guardar</a>
+                                    <a class="btn btn-primary" ng-click="save()" ng-disabled="outerForm.$invalid">Guardar</a>
                                     <a class="btn btn-default" ng-click="plist()">Ir al listado de usuarios</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>

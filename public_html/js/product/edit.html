@@ -59,8 +59,8 @@ THE SOFTWARE.
                                 <div ng-show="f.type == 'text'" 
                                      id="{{f.name}}-group" 
                                      class="form-group" 
-                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
-                                                             (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
+                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern) ||
+                                                             (outerForm[f.name].$error.required)}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
                                         <span ng-show="{{f.required}}">*</span>
                                         {{f.longname}}:
@@ -76,8 +76,8 @@ THE SOFTWARE.
                                                maxlength="{{f.maxlength}}"                                                                                               
                                                ng-required="{{f.required}}"                                                
                                                />
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
+                                        <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
@@ -85,8 +85,7 @@ THE SOFTWARE.
                                      ng-show="show_obj_producttype && (f.name == 'obj_producttype')"
                                      ng-class="{'has-error': (outerForm.obj_producttype.$error.required ||
                                                              outerForm.obj_producttype.$error.exists ||
-                                                             outerForm.obj_producttype.$error.validatemin)
-                                                             && !outerForm.obj_producttype.$pristine}">                                                                                                                                   
+                                                             outerForm.obj_producttype.$error.validatemin)}">                                                                                                                                   
                                     <label class="col-sm-2 control-label" for="obj_producttype">Tipo de Producto:</label>
                                     <div class="control col-sm-3">
                                         <div class="input-group foreign" id="obj_producttype_group">
@@ -110,9 +109,9 @@ THE SOFTWARE.
                                                 <span>{{bean.obj_producttype.description}}</span>
                                             </span>                                       
                                         </div>
-                                        <span class="help-block" ng-show="!outerForm.obj_producttype.$pristine && outerForm.obj_producttype.$error.required">El tipo de producto es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_producttype.$pristine && outerForm.obj_producttype.$error.validatemin">Debes elegir un tipo de producto</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_producttype.$pristine && outerForm.obj_producttype.$error.exists">El tipo de producto no existe</span>
+                                        <span class="help-block" ng-show="outerForm.obj_producttype.$error.required">El tipo de producto es obligatorio</span>
+                                        <span class="help-block" ng-show="outerForm.obj_producttype.$error.validatemin">Debes elegir un tipo de producto</span>
+                                        <span class="help-block" ng-show="outerForm.obj_producttype.$error.exists">El tipo de producto no existe</span>
                                     </div>
                                 </div> 
                                 <!------------------------------------------------->
@@ -120,7 +119,7 @@ THE SOFTWARE.
                             </div>
                             <div class="control-group text-right">
                                 <div class="controls">
-                                    <a class="btn btn-primary" ng-click="save()">Guardar</a>
+                                    <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
                                     <a class="btn btn-default" ng-click="plist()">Ir al listado de usuarios</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>

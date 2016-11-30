@@ -28,46 +28,37 @@
 
 'use strict';
 
-moduloUsertype.controller('UsertypeNewController', ['$scope', '$routeParams', '$location', 'serverService', 'usertypeService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, usertypeService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = usertypeService.getFields();
-        $scope.obtitle = usertypeService.getObTitle();
-        $scope.icon = usertypeService.getIcon();
-        $scope.ob = usertypeService.getTitle();
-        $scope.title = "Creando un nuevo " + $scope.obtitle;
-        $scope.op = "plist";
+moduloProducttype.controller('ProducttypeViewController', ['$scope', '$routeParams', 'serverService', 'producttypeService', '$location',
+    function ($scope, $routeParams, serverService, producttypeService, $location) {
+        $scope.fields = producttypeService.getFields();
+        $scope.obtitle = producttypeService.getObTitle();
+        $scope.icon = producttypeService.getIcon();
+        $scope.ob = producttypeService.getTitle();
+        $scope.title = "Vista de " + $scope.obtitle;
+        $scope.id = $routeParams.id;
         $scope.status = null;
-        $scope.debugging = serverService.debugging();
-        $scope.bean = {};
-        $scope.bean.id = 0;
-        $scope.save = function () {         
-            var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
-            serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
-                if (response.status == 200) {
-                    if (response.data.status == 200) {
-                        $scope.response = response;
-                        $scope.status = "El registro " + $scope.obtitle + " se ha creado con id = " + response.data.message;
-                        $scope.bean.id = response.data.message;
-                    } else {
-                        $scope.status = "Error en la recepción de datos del servidor";
-                    }
+        $scope.debugging=serverService.debugging();
+        serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
+            if (response.status == 200) {
+                if (response.data.status == 200) {
+                    $scope.status = null;
+                    $scope.bean = response.data.message;
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }
-            }).catch(function (data) {
+            } else {
                 $scope.status = "Error en la recepción de datos del servidor";
-            });
-            ;
-        };
-        $scope.back = function () {
-            window.history.back();
-        };
+            }
+        }).catch(function (data) {
+            $scope.status = "Error en la recepción de datos del servidor";
+        });
         $scope.close = function () {
             $location.path('/home');
         };
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-       
+        $scope.back = function () {
+            window.history.back();
+        };
     }]);
-

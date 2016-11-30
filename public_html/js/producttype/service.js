@@ -1,5 +1,5 @@
 'use strict';
-moduloUsertype.factory('usertypeService', ['serverService', function (serverService) {
+moduloProducttype.factory('producttypeService', ['serverService', function (serverService) {
         return {
             getFields: function () {
                 return [
@@ -9,13 +9,13 @@ moduloUsertype.factory('usertypeService', ['serverService', function (serverServ
                 ];
             },
             getIcon: function () {
-                return "fa-user-o";
+                return "fa-shopping-basket";
             },
             getObTitle: function () {
-                return "tipo de usuario";
+                return "tipo de producto";
             },
             getTitle: function () {
-                return "usertype";
+                return "producttype";
             }
         };
     }]);

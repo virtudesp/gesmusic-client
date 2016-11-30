@@ -1,5 +1,5 @@
 'use strict';
-moduloServicios.factory('postService', ['serverService', function (serverService) {
+moduloPost.factory('postService', ['serverService', function (serverService) {
         return {
             getFields: function () {
                 return [
@@ -9,11 +9,11 @@ moduloServicios.factory('postService', ['serverService', function (serverService
                     {name: "creation", shortname: "F.creación", longname: "Fecha de creación", visible: true, type: "date", required: true, maxlength: 255, pattern: ""},
                     {name: "modification", shortname: "F.modificación", longname: "Fecha de modificación", visible: false, type: "date", required: true, maxlength: 255, pattern: ""},
                     {name: "hits", shortname: "Impactos", longname: "Impactos", visible: false, type: "integer", required: false, maxlength: 255, pattern: serverService.getRegExpr("integer"), help: serverService.getRegExpl("integer")},
-                    {name: "obj_user", shortname: "Usuario", longname: "Usuario", visible: true, type: "specific",reference:"user"},
+                    {name: "obj_user", shortname: "Usuario", longname: "Usuario", visible: true, type: "specific", required: true, reference:"user"},
                     {name: "labels", shortname: "Etiquetas", longname: "Etiquetas", visible: false, type: "text", required: false, maxlength: 255, pattern: ""},
-                    {name: "published", shortname: "¿Publicado?", longname: "¿Publicado?", visible: true, type: "boolean", required: true, maxlength: 255, pattern: ""},
-                    {name: "frontpaged", shortname: "¿Primera página?", longname: "¿Primera página?", visible: true, type: "boolean", required: true, maxlength: 255, pattern: ""},
-                    {name: "emphasized", shortname: "¿Destacado?", longname: "¿Destacado?", visible: true, type: "boolean", required: true, maxlength: 255, pattern: ""},
+                    {name: "published", shortname: "¿Publicado?", longname: "¿Publicado?", visible: true, type: "boolean", required: false, maxlength: 255, pattern: ""},
+                    {name: "frontpaged", shortname: "¿Primera página?", longname: "¿Primera página?", visible: true, type: "boolean", required: false, maxlength: 255, pattern: ""},
+                    {name: "emphasized", shortname: "¿Destacado?", longname: "¿Destacado?", visible: true, type: "boolean", required: false, maxlength: 255, pattern: ""},
                 ];
             },
             getIcon: function () {

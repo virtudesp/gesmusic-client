@@ -32,16 +32,17 @@ var dolity = angular.module('myApp', [
     'Filters',
     'Services',
     'Directives',
-    'systemControllers',   
+    'systemControllers',
     'userControllers',
     'usertypeControllers',
-    'postControllers',  
-    'productControllers',  
+    'postControllers',
+    'productControllers',
+    'producttypeControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
 //-------------
-//---html5 mode off; setting up pushState needs server urlrewritting-------
+//---html5 mode off; setting up pushState needs server urlrewritting, so quitting...-------
 //dolity.config(['$locationProvider', function ($locationProvider) {
 //        $locationProvider.html5Mode({
 //            //requireBase: false,
@@ -62,32 +63,39 @@ dolity.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/license', {templateUrl: 'js/system/license.html', controller: 'LicenseController'});
         //------------       
         $routeProvider.when('/user/view/:id', {templateUrl: 'js/user/view.html', controller: 'UserViewController'});
-        $routeProvider.when('/user/new/:id?', {templateUrl: 'js/user/neweditg.html', controller: 'UserNewController'});
-        $routeProvider.when('/user/edit/:id', {templateUrl: 'js/user/neweditg.html', controller: 'UserEditController'});
+        $routeProvider.when('/user/new/:id?', {templateUrl: 'js/user/new.html', controller: 'UserNewController'});
+        $routeProvider.when('/user/edit/:id', {templateUrl: 'js/user/edit.html', controller: 'UserEditController'});
         $routeProvider.when('/user/remove/:id', {templateUrl: 'js/user/remove.html', controller: 'UserRemoveController'});
         $routeProvider.when('/user/plist/:page?/:rpp?', {templateUrl: 'js/user/plist.html', controller: 'UserPListController'});
         $routeProvider.when('/user/selection/:page?/:rpp?', {templateUrl: 'js/user/selection.html', controller: 'UserSelectionController'});
         //------------
         $routeProvider.when('/post/view/:id', {templateUrl: 'js/post/view.html', controller: 'PostViewController'});
-        $routeProvider.when('/post/new/:id?', {templateUrl: 'js/post/neweditg.html', controller: 'PostNewController'});
-        $routeProvider.when('/post/edit/:id', {templateUrl: 'js/post/neweditg.html', controller: 'PostEditController'});
+        $routeProvider.when('/post/new/:id?', {templateUrl: 'js/post/new.html', controller: 'PostNewController'});
+        $routeProvider.when('/post/edit/:id', {templateUrl: 'js/post/edit.html', controller: 'PostEditController'});
         $routeProvider.when('/post/remove/:id', {templateUrl: 'js/post/remove.html', controller: 'PostRemoveController'});
         $routeProvider.when('/post/plist/:page?/:rpp?', {templateUrl: 'js/post/plist.html', controller: 'PostPListController'});
-        $routeProvider.when('/post/selection/:page?/:rpp?', {templateUrl: 'js/post/selection.html', controller: 'PostSelectionController'});      
+        $routeProvider.when('/post/selection/:page?/:rpp?', {templateUrl: 'js/post/selection.html', controller: 'PostSelectionController'});
         //------------
-         $routeProvider.when('/usertype/view/:id', {templateUrl: 'js/usertype/view.html', controller: 'UsertypeViewController'});
-        $routeProvider.when('/usertype/new/:id?', {templateUrl: 'js/usertype/neweditg.html', controller: 'UsertypeNewController'});
-        $routeProvider.when('/usertype/edit/:id', {templateUrl: 'js/usertype/neweditg.html', controller: 'UsertypeEditController'});
+        $routeProvider.when('/usertype/view/:id', {templateUrl: 'js/usertype/view.html', controller: 'UsertypeViewController'});
+        $routeProvider.when('/usertype/new/:id?', {templateUrl: 'js/usertype/new.html', controller: 'UsertypeNewController'});
+        $routeProvider.when('/usertype/edit/:id', {templateUrl: 'js/usertype/edit.html', controller: 'UsertypeEditController'});
         $routeProvider.when('/usertype/remove/:id', {templateUrl: 'js/usertype/remove.html', controller: 'UsertypeRemoveController'});
         $routeProvider.when('/usertype/plist/:page?/:rpp?', {templateUrl: 'js/usertype/plist.html', controller: 'UsertypePListController'});
-        $routeProvider.when('/usertype/selection/:page?/:rpp?', {templateUrl: 'js/usertype/selection.html', controller: 'UsertypeSelectionController'});      
+        $routeProvider.when('/usertype/selection/:page?/:rpp?', {templateUrl: 'js/usertype/selection.html', controller: 'UsertypeSelectionController'});
         //------------
         $routeProvider.when('/product/view/:id', {templateUrl: 'js/product/view.html', controller: 'ProductViewController'});
-        $routeProvider.when('/product/new/:id?', {templateUrl: 'js/product/neweditg.html', controller: 'ProductNewController'});
-        $routeProvider.when('/product/edit/:id', {templateUrl: 'js/product/neweditg.html', controller: 'ProductEditController'});
+        $routeProvider.when('/product/new/:id?', {templateUrl: 'js/product/new.html', controller: 'ProductNewController'});
+        $routeProvider.when('/product/edit/:id', {templateUrl: 'js/product/edit.html', controller: 'ProductEditController'});
         $routeProvider.when('/product/remove/:id', {templateUrl: 'js/product/remove.html', controller: 'ProductRemoveController'});
         $routeProvider.when('/product/plist/:page?/:rpp?', {templateUrl: 'js/product/plist.html', controller: 'ProductPListController'});
         $routeProvider.when('/product/selection/:page?/:rpp?', {templateUrl: 'js/product/selection.html', controller: 'ProductSelectionController'});
+        //------------
+        $routeProvider.when('/producttype/view/:id', {templateUrl: 'js/producttype/view.html', controller: 'ProducttypeViewController'});
+        $routeProvider.when('/producttype/new/:id?', {templateUrl: 'js/producttype/new.html', controller: 'ProducttypeNewController'});
+        $routeProvider.when('/producttype/edit/:id', {templateUrl: 'js/producttype/edit.html', controller: 'ProducttypeEditController'});
+        $routeProvider.when('/producttype/remove/:id', {templateUrl: 'js/producttype/remove.html', controller: 'ProducttypeRemoveController'});
+        $routeProvider.when('/producttype/plist/:page?/:rpp?', {templateUrl: 'js/producttype/plist.html', controller: 'ProducttypePListController'});
+        $routeProvider.when('/producttype/selection/:page?/:rpp?', {templateUrl: 'js/producttype/selection.html', controller: 'ProducttypeSelectionController'});
         //------------
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
@@ -127,6 +135,8 @@ var moduloUser = angular.module('userControllers', []);
 var moduloPost = angular.module('postControllers', []);
 var moduloUsertype = angular.module('usertypeControllers', []);
 var moduloProduct = angular.module('productControllers', []);
+var moduloProducttype = angular.module('producttypeControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);
+var moduloFiltros = angular.module('Filters', []);

@@ -38,7 +38,7 @@ moduloPost.controller('PostNewController', ['$scope', '$routeParams', '$location
         $scope.op = "plist";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        $scope.bean = {};
+        $scope.bean = {id: 0};
         $scope.bean.obj_user = {"id": 0};
         //----
         if ($routeParams.id_user) {
@@ -60,7 +60,7 @@ moduloPost.controller('PostNewController', ['$scope', '$routeParams', '$location
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         $scope.response = response;
-                        $scope.status = "El registro " + $scope.obtitle + " se ha creado con id = " + response.data.message;                         
+                        $scope.status = "El registro " + $scope.obtitle + " se ha creado con id = " + response.data.message;
                         $scope.bean.id = response.data.message;
                     } else {
                         $scope.status = "Error en la recepción de datos del servidor";

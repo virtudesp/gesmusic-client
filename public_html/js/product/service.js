@@ -1,5 +1,5 @@
 'use strict';
-moduloServicios.factory('productService', ['serverService', function (serverService) {
+moduloProduct.factory('productService', ['serverService', function (serverService) {
         return {
             getFields: function () {
                 return [

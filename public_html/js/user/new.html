@@ -37,7 +37,7 @@ THE SOFTWARE.
                             <h4>Debug:</h4>
                             {{bean|json}}
                         </div>                   
-                        <form name="outerForm" class="form-horizontal text-left" ng-show="!status">
+                        <form name="outerForm" class="form-horizontal text-left"  ng-show="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->       
                                 <div ng-show="f.type == 'id'" 
@@ -81,116 +81,52 @@ THE SOFTWARE.
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'boolean'"  id="{{f.name}}-group" class="form-group">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">{{f.longname}}:</label>
-                                    <div class="control col-sm-1">
-                                        <input  ng-model="bean[f.name]" type="checkbox" id="destacado" name="destacado" value="true" checked="checked">
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->
-                                <div class="form-group"   
-                                     ng-show="f.name == 'creation'"
-                                     id="creation-group" 
-                                     ng-class="{'has-error': (outerForm.creation.$error.required && !outerForm.creation.$pristine) ||
-                                                             (!bean.creation && !outerForm.creation.$pristine)}">
-                                    <label class="col-sm-2 control-label" for="creation">{{f.longname}}</label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group date" id="creation_group">
-                                            <input type="text" 
-                                                   class="form-control" 
-                                                   placeholder="{{f.longname}}"
-                                                   uib-datepicker-popup="dd/MM/yyyy" 
-                                                   ng-model="bean.creation" 
-                                                   is-open="popup1.opened" 
-                                                   datepicker-options="dateOptions" 
-                                                   ng-required="true" 
-                                                   close-text="Cerrar"
-                                                   id="creation"
-                                                   name="creation"                                      
-                                                   />                               
-                                            <span class="input-group-addon" ng-click="open1()">
-                                                <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>                                                                                    
-                                        </div>
-                                        <span class="help-block" ng-show="!outerForm.creation.$pristine && outerForm.creation.$error.required">El campo fecha de creación es obligatorio</span>
-                                        <em>{{bean.creation| date:'fullDate' }}</em>
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->
-                                <div class="form-group"   
-                                     ng-show="f.name == 'modification'"
-                                     id="modification-group" 
-                                     ng-class="{'has-error': (outerForm.modification.$error.required && !outerForm.modification.$pristine) ||
-                                                             (!bean.modification && !outerForm.modification.$pristine)}">
-                                    <label class="col-sm-2 control-label" for="modification">{{f.longname}}</label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group date" id="modification_group">
-                                            <input type="text" 
-                                                   class="form-control" 
-                                                   placeholder="{{f.longname}}"
-                                                   uib-datepicker-popup="dd/MM/yyyy" 
-                                                   ng-model="bean.modification" 
-                                                   is-open="popup2.opened" 
-                                                   datepicker-options="dateOptions" 
-                                                   ng-required="true" 
-                                                   close-text="Cerrar"
-                                                   id="modification"
-                                                   name="modification"                                      
-                                                   />                               
-                                            <span class="input-group-addon" ng-click="open2()">
-                                                <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>                                                                                    
-                                        </div>
-                                        <span class="help-block" ng-show="!outerForm.modification.$pristine && outerForm.modification.$error.required">El campo fecha de creación es obligatorio</span>
-                                        <em>{{bean.modification| date:'fullDate' }}</em>
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->                                
                                 <div class="form-group"                                 
-                                     ng-show="show_obj_user && (f.name == 'obj_user')"
-                                     ng-class="{'has-error': (outerForm.obj_user.$error.required ||
-                                                             outerForm.obj_user.$error.exists ||
-                                                             outerForm.obj_user.$error.validatemin)
-                                                             && !outerForm.obj_user.$pristine}"
-                                     ng-show="show_obj_user">                                                                                                                                   
-                                    <label class="col-sm-2 control-label" for="obj_user">Usuario:</label>
+                                     ng-show="show_obj_usertype && (f.name == 'obj_usertype')"
+                                     ng-class="{'has-error': (outerForm.obj_usertype.$error.required ||
+                                                             outerForm.obj_usertype.$error.exists ||
+                                                             outerForm.obj_usertype.$error.validatemin)
+                                                             && !outerForm.obj_usertype.$pristine}"
+                                     ng-show="show_obj_usertype">                                                                                                                                   
+                                    <label class="col-sm-2 control-label" for="obj_usertype">Tipo de Usuario:</label>
                                     <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_user_group">
-                                            <span class="input-group-addon" id="obj_user_button" ng-click="chooseOne('obj_user', 'user', 'UserSelectionController')">
+                                        <div class="input-group foreign" id="obj_usertype_group">
+                                            <span class="input-group-addon" id="obj_usertype_button" ng-click="chooseOne('obj_usertype', 'usertype', 'UsertypeSelectionController')">
                                                 <span class="glyphicon glyphicon-search">
                                                 </span>
                                             </span>                                        
                                             <input type="text" 
                                                    ng-model-options="{debounce: 1000}" 
-                                                   ng-change="obj_user_change" 
-                                                   ng-model="bean.obj_user.id" 
+                                                   ng-change="obj_usertype_change" 
+                                                   ng-model="bean.obj_usertype.id" 
                                                    validatemin="1" 
                                                    ng-required="true"  
                                                    aria-describedby="basic-addon2" 
                                                    class="form-control" 
                                                    id="obj_usuario" 
-                                                   name="obj_user"
+                                                   name="obj_usertype"
                                                    size="5" 
                                                    maxlength="5">                                        
                                             <span class="input-group-addon">
-                                                <span>{{bean.obj_user.name}} {{bean.obj_user.surname}}</span>
+                                                <span>{{bean.obj_usertype.description}}</span>
                                             </span>                                       
                                         </div>
-                                        <span class="help-block" ng-show="!outerForm.obj_user.$pristine && outerForm.obj_user.$error.required">El usuario es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_user.$pristine && outerForm.obj_user.$error.validatemin">Debes elegir un usuario</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_user.$pristine && outerForm.obj_user.$error.exists">El usuario no existe</span>
+                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_usertype.$error.required">El tipo de usuario es obligatorio</span>
+                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_usertype.$error.validatemin">Debes elegir un tipo de usuario</span>
+                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_usertype.$error.exists">El tipo de usuario no existe</span>
                                     </div>
                                 </div> 
                                 <!------------------------------------------------->
+
                             </div>
                             <div class="control-group text-right">
                                 <div class="controls">
-                                    <a class="btn btn-primary" ng-click="save()">Guardar</a>
+                                    <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
                                     <a class="btn btn-default" ng-click="plist()">Ir al listado de usuarios</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>
-                        </form>               
+                        </form>
                         <div ng-show="status">                        
                             <div class="alert alert-success" ng-show="response.status == 200">
                                 <h2>{{status}}</h2>
