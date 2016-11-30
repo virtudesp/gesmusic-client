@@ -74,7 +74,7 @@ moduloServicios
                             return "Introduzca un número entero";
                             break;
                         case "decimal":
-                            return "Introduzca un número decimal";
+                            return "Introduzca un número decimal (decimal=punto) con dos decimales";
                             break;
                         case "alpha-numeric":
                             return "Introduzca una cadena de números y letras";
@@ -111,7 +111,7 @@ moduloServicios
                             return new RegExp("-?[0-9]+", "g");
                             break;
                         case "decimal":
-                            return new RegExp("-?\d+\.\d+", "g");
+                            return /^\d+(?:\.\d{1,2})?$/;
                             break;
                         case "alpha-numeric":
                             return new RegExp("^[a-zA-Z0-9]+$", "g");
