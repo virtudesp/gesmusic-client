@@ -36,6 +36,7 @@ var dolity = angular.module('myApp', [
     'userControllers',
     'usertypeControllers',
     'postControllers',  
+    'productControllers',  
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -81,9 +82,14 @@ dolity.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/usertype/plist/:page?/:rpp?', {templateUrl: 'js/usertype/plist.html', controller: 'UsertypePListController'});
         $routeProvider.when('/usertype/selection/:page?/:rpp?', {templateUrl: 'js/usertype/selection.html', controller: 'UsertypeSelectionController'});      
         //------------
+        $routeProvider.when('/product/view/:id', {templateUrl: 'js/product/view.html', controller: 'ProductViewController'});
+        $routeProvider.when('/product/new/:id?', {templateUrl: 'js/product/neweditg.html', controller: 'ProductNewController'});
+        $routeProvider.when('/product/edit/:id', {templateUrl: 'js/product/neweditg.html', controller: 'ProductEditController'});
+        $routeProvider.when('/product/remove/:id', {templateUrl: 'js/product/remove.html', controller: 'ProductRemoveController'});
+        $routeProvider.when('/product/plist/:page?/:rpp?', {templateUrl: 'js/product/plist.html', controller: 'ProductPListController'});
+        $routeProvider.when('/product/selection/:page?/:rpp?', {templateUrl: 'js/product/selection.html', controller: 'ProductSelectionController'});
+        //------------
         $routeProvider.otherwise({redirectTo: '/'});
-
-
     }]);
 //-------------
 dolity.run(function ($rootScope, $location, serverService, sessionService) {
@@ -120,6 +126,7 @@ var moduloSistema = angular.module('systemControllers', []);
 var moduloUser = angular.module('userControllers', []);
 var moduloPost = angular.module('postControllers', []);
 var moduloUsertype = angular.module('usertypeControllers', []);
+var moduloProduct = angular.module('productControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);
