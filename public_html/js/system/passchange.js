@@ -1,31 +1,29 @@
 'use strict';
-moduloSistema.controller('LoginController', ['$scope', '$routeParams', '$location', 'serverService', 'sessionService',
+moduloSistema.controller('PasschangeController', ['$scope', '$routeParams', '$location', 'serverService', 'sessionService',
     function ($scope, $routeParams, $location, serverService, sessionService) {
-        $scope.title = "Formulario de entrada al sistema";
-        $scope.icon = "fa-file-text-o";
+        $scope.title = "Formulario de cambio de password";
+        $scope.icon = "fa-key";
         $scope.user = {};
         if (serverService.debugging()) {
-            $scope.user.username = 'rafael';
-            $scope.user.password = 'rafael';
+            $scope.old = '';
+            $scope.new = '';
         }
-        $scope.login = function () {
-            serverService.getLoginPromise($scope.user.username, $scope.user.password).then(function (response) {
+        $scope.passchange = function () {
+            serverService.getPasswordChangePromise($scope.old, $scope.new).then(function (response) {
                 if (response.status == 200) {
-                    sessionService.setSessionActive();
-                    sessionService.setUsername(response.data.message);
-                    $location.path('home');
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.result = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor";
+                    }
                 } else {
-                    sessionService.setSessionInactive();
-                    sessionService.setUsername('');
-                    return false;
+                    $scope.status = "Error en la recepción de datos del servidor";
                 }
-            }, function errorCallback(response, status) {
-                sessionService.setSessionInactive();
-                sessionService.setUsername('');
-                return false;
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor";
             });
-        };
-
+        }
     }]);
 
 

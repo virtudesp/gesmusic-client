@@ -155,6 +155,11 @@ moduloServicios
                     password = forge_sha256(password).toUpperCase();
                     return $http.get(this.getAppUrl() + '?ob=user&op=login&user=' + username + '&pass=' + password, 'GET', '');
                 },
+                getPasswordChangePromise: function (oldpass, newpass) {
+                    var oldpassword = forge_sha256(oldpass).toUpperCase();
+                    var newpassword = forge_sha256(newpass).toUpperCase();
+                    return $http.get(this.getAppUrl() + '?ob=user&op=passchange&old=' + oldpassword + '&new=' + newpassword, 'GET', '');
+                },                
                 getLogoutPromise: function () {
                     return $http.get(this.getAppUrl() + '?ob=user&op=logout', 'GET', '');
                 },
