@@ -1,10 +1,10 @@
 /*
  * Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  * 
- * dolity: The stunning micro-library that helps you to develop easily 
- *             AJAX web applications by using Angular.js 1.x & zylkanexy
- * dolity is distributed under the MIT License (MIT)
- * Sources at https://github.com/rafaelaznar/dolity
+ * sisane: The stunning micro-library that helps you to develop easily 
+ *             AJAX web applications by using Angular.js 1.x & sisane-server
+ * sisane is distributed under the MIT License (MIT)
+ * Sources at https://github.com/rafaelaznar/sisane
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@
 
 'use strict';
 //-------------
-var dolity = angular.module('myApp', [
+var sisane = angular.module('myApp', [
     'ngRoute',
     'Filters',
     'Services',
@@ -43,18 +43,18 @@ var dolity = angular.module('myApp', [
 ]);
 //-------------
 //---html5 mode off; setting up pushState needs server urlrewritting, so quitting...-------
-//dolity.config(['$locationProvider', function ($locationProvider) {
+//sisane.config(['$locationProvider', function ($locationProvider) {
 //        $locationProvider.html5Mode({
 //            //requireBase: false,
 //            enabled: true            
 //        });
 //    }]);
 //-------------
-dolity.config(['$httpProvider', function ($httpProvider) {
+sisane.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;
     }]);
 //-------------
-dolity.config(['$routeProvider', function ($routeProvider) {
+sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
         //------------
         $routeProvider.when('/login', {templateUrl: 'js/system/login.html', controller: 'LoginController'});
@@ -101,7 +101,7 @@ dolity.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
 //-------------
-dolity.run(function ($rootScope, $location, serverService, sessionService) {
+sisane.run(function ($rootScope, $location, serverService, sessionService) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         sessionService.setSessionInactive();
         sessionService.setUsername('');
