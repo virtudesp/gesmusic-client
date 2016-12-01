@@ -5,7 +5,7 @@ moduloPost.factory('postService', ['serverService', function (serverService) {
                 return [
                     {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "id"},
                     {name: "title", shortname: "Título", longname: "Título", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},
-                    {name: "content", shortname: "Contenido", longname: "Contenido", visible: false, type: "text", required: true, maxlength: 255, pattern: ""},
+                    {name: "content", shortname: "Contenido", longname: "Contenido", visible: false, type: "textarea", required: true, maxlength: 5000, pattern: ""},
                     {name: "creation", shortname: "F.creación", longname: "Fecha de creación", visible: true, type: "date", required: true, maxlength: 255, pattern: ""},
                     {name: "modification", shortname: "F.modificación", longname: "Fecha de modificación", visible: false, type: "date", required: true, maxlength: 255, pattern: ""},
                     {name: "hits", shortname: "Impactos", longname: "Impactos", visible: false, type: "integer", required: false, maxlength: 255, pattern: serverService.getRegExpr("integer"), help: serverService.getRegExpl("integer")},

@@ -581,12 +581,19 @@ moduloServicios
         .factory('sessionService', function ($http) {
             var isSessionActive = false;
             var username = "";
+            var id = 0;
             return {
                 getUsername: function () {
                     return username;
                 },
                 setUsername: function (value) {
                     username = value;
+                },
+                getId: function () {
+                    return id;
+                },
+                setId: function (value) {
+                    id = value;
                 },
                 isSessionActive: function () {
                     return isSessionActive;

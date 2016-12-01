@@ -56,6 +56,31 @@ THE SOFTWARE.
                                     </div>
                                 </div>
                                 <!------------------------------------------------->                            
+                                <div ng-show="f.type == 'textarea'" 
+                                     id="{{f.name}}-group" 
+                                     class="form-group" 
+                                     ng-class="{'has-error': 
+                                                             (outerForm[f.name].$error.required)}">
+                                    <label class="col-sm-2 control-label" for="{{f.name}}">
+                                        <span ng-show="{{f.required}}">*</span>
+                                        {{f.longname}}:
+                                    </label>
+                                    <div class="control col-sm-8">                                   
+                                        <textarea ng-model="bean[f.name]"
+                                               type="text"
+                                               class="form-control"                                           
+                                               id="{{f.name}}"
+                                               name="{{f.name}}"     
+                                               
+                                               placeholder="{{f.name}}"                                             
+                                                                                                                                            
+                                               ng-required="{{f.required}}"
+                                               rows="10"></textarea>
+                                        <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        
+                                    </div>
+                                </div>
+                                <!------------------------------------------------->   
                                 <div ng-show="f.type == 'text'" 
                                      id="{{f.name}}-group" 
                                      class="form-group" 

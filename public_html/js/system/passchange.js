@@ -12,8 +12,7 @@ moduloSistema.controller('LoginController', ['$scope', '$routeParams', '$locatio
             serverService.getLoginPromise($scope.user.username, $scope.user.password).then(function (response) {
                 if (response.status == 200) {
                     sessionService.setSessionActive();
-                    sessionService.setUsername(response.data.message.login);
-                    sessionService.setId(response.data.message.id);
+                    sessionService.setUsername(response.data.message);
                     $location.path('home');
                 } else {
                     sessionService.setSessionInactive();

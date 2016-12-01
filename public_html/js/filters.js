@@ -75,7 +75,14 @@ moduloFiltros
                 }
 
             };
+        })
+        .filter('breakFilter', function () {
+            return function (text) {
+                if (text !== undefined)
+                    return text.replace(/\n/g, '<br />');
+            };
         });
+;
 
 //angular.module('Filters').filter('uppercaseo', function ($filter)
 //{

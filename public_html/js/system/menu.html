@@ -77,9 +77,11 @@ THE SOFTWARE.
             </a>
             <ul class="dropdown-menu dropdown">
                 <li ng-show="!isSessionActive()"><a href="#/login"><i class="fa fa-fw fa-user"></i> Login</a></li>                                
-
-                <li ng-show="isSessionActive()"><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a></li>                                
-                <li ng-show="isSessionActive()"><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a></li>
+                <!--
+                <li ng-show="isSessionActive()"><a href="#"><i class="fa fa-fw fa-user"></i> Perfil de usuario</a></li>                                
+                <li ng-show="isSessionActive()"><a href="#"><i class="fa fa-fw fa-gear"></i> Configuración</a></li>
+                -->
+                <li ng-show="isSessionActive()"><a href="#/passchange"><i class="fa fa-fw fa-key"></i> Cambio de contraseña</a></li>
                 <li ng-show="isSessionActive()" class="divider"></li>
                 <li ng-show="isSessionActive()" id="broth_logout"><a href="#/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>
             </ul>

@@ -39,7 +39,7 @@ var dolity = angular.module('myApp', [
     'productControllers',
     'producttypeControllers',
     'ui.bootstrap',
-    'ngSanitize'
+    'ngSanitize'    
 ]);
 //-------------
 //---html5 mode off; setting up pushState needs server urlrewritting, so quitting...-------
@@ -61,6 +61,7 @@ dolity.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/logout', {templateUrl: 'js/system/logout.html', controller: 'LogoutController'});
         $routeProvider.when('/home', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
         $routeProvider.when('/license', {templateUrl: 'js/system/license.html', controller: 'LicenseController'});
+        $routeProvider.when('/passchange', {templateUrl: 'js/system/passchange.html', controller: 'PasschangeController'});
         //------------       
         $routeProvider.when('/user/view/:id', {templateUrl: 'js/user/view.html', controller: 'UserViewController'});
         $routeProvider.when('/user/new/:id?', {templateUrl: 'js/user/new.html', controller: 'UserNewController'});
@@ -107,7 +108,8 @@ dolity.run(function ($rootScope, $location, serverService, sessionService) {
         serverService.getSessionPromise().then(function (response) {
             if (response['status'] == 200) {
                 sessionService.setSessionActive();
-                sessionService.setUsername(response.data.message);
+                sessionService.setUsername(response.data.message.login);
+                sessionService.setId(response.data.message.id);
             } else {
                 sessionService.setSessionInactive();
                 sessionService.setUsername('');
