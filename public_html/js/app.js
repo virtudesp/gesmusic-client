@@ -33,13 +33,10 @@ var sisane = angular.module('myApp', [
     'Services',
     'Directives',
     'systemControllers',
-    'userControllers',
-    'usertypeControllers',
+    'usuarioControllers',
+    'tipousuarioControllers',
     'medicamentoControllers',
-    'postControllers',
     'posologiaControllers',
-    'productControllers',
-    'producttypeControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -65,19 +62,12 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/license', {templateUrl: 'js/system/license.html', controller: 'LicenseController'});
         $routeProvider.when('/passchange', {templateUrl: 'js/system/passchange.html', controller: 'PasschangeController'});
         //------------       
-        $routeProvider.when('/user/view/:id', {templateUrl: 'js/user/view.html', controller: 'UserViewController'});
-        $routeProvider.when('/user/new/:id?', {templateUrl: 'js/user/new.html', controller: 'UserNewController'});
-        $routeProvider.when('/user/edit/:id', {templateUrl: 'js/user/edit.html', controller: 'UserEditController'});
-        $routeProvider.when('/user/remove/:id', {templateUrl: 'js/user/remove.html', controller: 'UserRemoveController'});
-        $routeProvider.when('/user/plist/:page?/:rpp?', {templateUrl: 'js/user/plist.html', controller: 'UserPListController'});
-        $routeProvider.when('/user/selection/:page?/:rpp?', {templateUrl: 'js/user/selection.html', controller: 'UserSelectionController'});
-        //------------
-        $routeProvider.when('/post/view/:id', {templateUrl: 'js/post/view.html', controller: 'PostViewController'});
-        $routeProvider.when('/post/new/:id?', {templateUrl: 'js/post/new.html', controller: 'PostNewController'});
-        $routeProvider.when('/post/edit/:id', {templateUrl: 'js/post/edit.html', controller: 'PostEditController'});
-        $routeProvider.when('/post/remove/:id', {templateUrl: 'js/post/remove.html', controller: 'PostRemoveController'});
-        $routeProvider.when('/post/plist/:page?/:rpp?', {templateUrl: 'js/post/plist.html', controller: 'PostPListController'});
-        $routeProvider.when('/post/selection/:page?/:rpp?', {templateUrl: 'js/post/selection.html', controller: 'PostSelectionController'});
+        $routeProvider.when('/usuario/view/:id', {templateUrl: 'js/usuario/view.html', controller: 'UsuarioViewController'});
+        $routeProvider.when('/usuario/new/:id?', {templateUrl: 'js/usuario/new.html', controller: 'UsuarioNewController'});
+        $routeProvider.when('/usuario/edit/:id', {templateUrl: 'js/usuario/edit.html', controller: 'UsuarioEditController'});
+        $routeProvider.when('/usuario/remove/:id', {templateUrl: 'js/usuario/remove.html', controller: 'UsuarioRemoveController'});
+        $routeProvider.when('/usuario/plist/:page?/:rpp?', {templateUrl: 'js/usuario/plist.html', controller: 'UsuarioPListController'});
+        $routeProvider.when('/usuario/selection/:page?/:rpp?', {templateUrl: 'js/usuario/selection.html', controller: 'UsuarioSelectionController'});
         //------------
         $routeProvider.when('/posologia/view/:id', {templateUrl: 'js/posologia/view.html', controller: 'PosologiaViewController'});
         $routeProvider.when('/posologia/new/:id?', {templateUrl: 'js/posologia/new.html', controller: 'PosologiaNewController'});
@@ -86,12 +76,12 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/posologia/plist/:page?/:rpp?', {templateUrl: 'js/posologia/plist.html', controller: 'PosologiaPListController'});
         $routeProvider.when('/posologia/selection/:page?/:rpp?', {templateUrl: 'js/posologia/selection.html', controller: 'PosologiaSelectionController'});
         //------------
-        $routeProvider.when('/usertype/view/:id', {templateUrl: 'js/usertype/view.html', controller: 'UsertypeViewController'});
-        $routeProvider.when('/usertype/new/:id?', {templateUrl: 'js/usertype/new.html', controller: 'UsertypeNewController'});
-        $routeProvider.when('/usertype/edit/:id', {templateUrl: 'js/usertype/edit.html', controller: 'UsertypeEditController'});
-        $routeProvider.when('/usertype/remove/:id', {templateUrl: 'js/usertype/remove.html', controller: 'UsertypeRemoveController'});
-        $routeProvider.when('/usertype/plist/:page?/:rpp?', {templateUrl: 'js/usertype/plist.html', controller: 'UsertypePListController'});
-        $routeProvider.when('/usertype/selection/:page?/:rpp?', {templateUrl: 'js/usertype/selection.html', controller: 'UsertypeSelectionController'});
+        $routeProvider.when('/tipousuario/view/:id', {templateUrl: 'js/tipousuario/view.html', controller: 'TipousuarioViewController'});
+        $routeProvider.when('/tipousuario/new/:id?', {templateUrl: 'js/tipousuario/new.html', controller: 'TipousuarioNewController'});
+        $routeProvider.when('/tipousuario/edit/:id', {templateUrl: 'js/tipousuario/edit.html', controller: 'TipousuarioEditController'});
+        $routeProvider.when('/tipousuario/remove/:id', {templateUrl: 'js/tipousuario/remove.html', controller: 'TipousuarioRemoveController'});
+        $routeProvider.when('/tipousuario/plist/:page?/:rpp?', {templateUrl: 'js/tipousuario/plist.html', controller: 'TipousuarioPListController'});
+        $routeProvider.when('/tipousuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});
         //------------
         $routeProvider.when('/medicamento/view/:id', {templateUrl: 'js/medicamento/view.html', controller: 'MedicamentoViewController'});
         $routeProvider.when('/medicamento/new/:id?', {templateUrl: 'js/medicamento/new.html', controller: 'MedicamentoNewController'});
@@ -99,20 +89,6 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/medicamento/remove/:id', {templateUrl: 'js/medicamento/remove.html', controller: 'MedicamentoRemoveController'});
         $routeProvider.when('/medicamento/plist/:page?/:rpp?', {templateUrl: 'js/medicamento/plist.html', controller: 'MedicamentoPListController'});
         $routeProvider.when('/medicamento/selection/:page?/:rpp?', {templateUrl: 'js/medicamento/selection.html', controller: 'MedicamentoSelectionController'});
-        //------------
-        $routeProvider.when('/product/view/:id', {templateUrl: 'js/product/view.html', controller: 'ProductViewController'});
-        $routeProvider.when('/product/new/:id?', {templateUrl: 'js/product/new.html', controller: 'ProductNewController'});
-        $routeProvider.when('/product/edit/:id', {templateUrl: 'js/product/edit.html', controller: 'ProductEditController'});
-        $routeProvider.when('/product/remove/:id', {templateUrl: 'js/product/remove.html', controller: 'ProductRemoveController'});
-        $routeProvider.when('/product/plist/:page?/:rpp?', {templateUrl: 'js/product/plist.html', controller: 'ProductPListController'});
-        $routeProvider.when('/product/selection/:page?/:rpp?', {templateUrl: 'js/product/selection.html', controller: 'ProductSelectionController'});
-        //------------
-        $routeProvider.when('/producttype/view/:id', {templateUrl: 'js/producttype/view.html', controller: 'ProducttypeViewController'});
-        $routeProvider.when('/producttype/new/:id?', {templateUrl: 'js/producttype/new.html', controller: 'ProducttypeNewController'});
-        $routeProvider.when('/producttype/edit/:id', {templateUrl: 'js/producttype/edit.html', controller: 'ProducttypeEditController'});
-        $routeProvider.when('/producttype/remove/:id', {templateUrl: 'js/producttype/remove.html', controller: 'ProducttypeRemoveController'});
-        $routeProvider.when('/producttype/plist/:page?/:rpp?', {templateUrl: 'js/producttype/plist.html', controller: 'ProducttypePListController'});
-        $routeProvider.when('/producttype/selection/:page?/:rpp?', {templateUrl: 'js/producttype/selection.html', controller: 'ProducttypeSelectionController'});
         //------------
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
@@ -149,13 +125,11 @@ sisane.run(function ($rootScope, $location, serverService, sessionService) {
 });
 //-------------
 var moduloSistema = angular.module('systemControllers', []);
-var moduloUser = angular.module('userControllers', []);
+var moduloUsuario = angular.module('usuarioControllers', []);
 var moduloPost = angular.module('postControllers', []);
 var moduloPosologia = angular.module('posologiaControllers', []);
-var moduloUsertype = angular.module('usertypeControllers', []);
+var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
-var moduloProduct = angular.module('productControllers', []);
-var moduloProducttype = angular.module('producttypeControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);
