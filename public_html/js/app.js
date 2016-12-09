@@ -35,6 +35,7 @@ var sisane = angular.module('myApp', [
     'systemControllers',
     'userControllers',
     'usertypeControllers',
+    'medicamentoControllers',
     'postControllers',
     'posologiaControllers',
     'productControllers',
@@ -92,6 +93,13 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/usertype/plist/:page?/:rpp?', {templateUrl: 'js/usertype/plist.html', controller: 'UsertypePListController'});
         $routeProvider.when('/usertype/selection/:page?/:rpp?', {templateUrl: 'js/usertype/selection.html', controller: 'UsertypeSelectionController'});
         //------------
+        $routeProvider.when('/medicamento/view/:id', {templateUrl: 'js/medicamento/view.html', controller: 'MedicamentoViewController'});
+        $routeProvider.when('/medicamento/new/:id?', {templateUrl: 'js/medicamento/new.html', controller: 'MedicamentoNewController'});
+        $routeProvider.when('/medicamento/edit/:id', {templateUrl: 'js/medicamento/edit.html', controller: 'MedicamentoEditController'});
+        $routeProvider.when('/medicamento/remove/:id', {templateUrl: 'js/medicamento/remove.html', controller: 'MedicamentoRemoveController'});
+        $routeProvider.when('/medicamento/plist/:page?/:rpp?', {templateUrl: 'js/medicamento/plist.html', controller: 'MedicamentoPListController'});
+        $routeProvider.when('/medicamento/selection/:page?/:rpp?', {templateUrl: 'js/medicamento/selection.html', controller: 'MedicamentoSelectionController'});
+        //------------
         $routeProvider.when('/product/view/:id', {templateUrl: 'js/product/view.html', controller: 'ProductViewController'});
         $routeProvider.when('/product/new/:id?', {templateUrl: 'js/product/new.html', controller: 'ProductNewController'});
         $routeProvider.when('/product/edit/:id', {templateUrl: 'js/product/edit.html', controller: 'ProductEditController'});
@@ -145,6 +153,7 @@ var moduloUser = angular.module('userControllers', []);
 var moduloPost = angular.module('postControllers', []);
 var moduloPosologia = angular.module('posologiaControllers', []);
 var moduloUsertype = angular.module('usertypeControllers', []);
+var moduloMedicamento = angular.module('medicamentoControllers', []);
 var moduloProduct = angular.module('productControllers', []);
 var moduloProducttype = angular.module('producttypeControllers', []);
 //-------------
