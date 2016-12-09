@@ -36,10 +36,11 @@ var sisane = angular.module('myApp', [
     'userControllers',
     'usertypeControllers',
     'postControllers',
+    'posologiaControllers',
     'productControllers',
     'producttypeControllers',
     'ui.bootstrap',
-    'ngSanitize'    
+    'ngSanitize'
 ]);
 //-------------
 //---html5 mode off; setting up pushState needs server urlrewritting, so quitting...-------
@@ -76,6 +77,13 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/post/remove/:id', {templateUrl: 'js/post/remove.html', controller: 'PostRemoveController'});
         $routeProvider.when('/post/plist/:page?/:rpp?', {templateUrl: 'js/post/plist.html', controller: 'PostPListController'});
         $routeProvider.when('/post/selection/:page?/:rpp?', {templateUrl: 'js/post/selection.html', controller: 'PostSelectionController'});
+        //------------
+        $routeProvider.when('/posologia/view/:id', {templateUrl: 'js/posologia/view.html', controller: 'PosologiaViewController'});
+        $routeProvider.when('/posologia/new/:id?', {templateUrl: 'js/posologia/new.html', controller: 'PosologiaNewController'});
+        $routeProvider.when('/posologia/edit/:id', {templateUrl: 'js/posologia/edit.html', controller: 'PosologiaEditController'});
+        $routeProvider.when('/posologia/remove/:id', {templateUrl: 'js/posologia/remove.html', controller: 'PosologiaRemoveController'});
+        $routeProvider.when('/posologia/plist/:page?/:rpp?', {templateUrl: 'js/posologia/plist.html', controller: 'PosologiaPListController'});
+        $routeProvider.when('/posologia/selection/:page?/:rpp?', {templateUrl: 'js/posologia/selection.html', controller: 'PosologiaSelectionController'});
         //------------
         $routeProvider.when('/usertype/view/:id', {templateUrl: 'js/usertype/view.html', controller: 'UsertypeViewController'});
         $routeProvider.when('/usertype/new/:id?', {templateUrl: 'js/usertype/new.html', controller: 'UsertypeNewController'});
@@ -135,6 +143,7 @@ sisane.run(function ($rootScope, $location, serverService, sessionService) {
 var moduloSistema = angular.module('systemControllers', []);
 var moduloUser = angular.module('userControllers', []);
 var moduloPost = angular.module('postControllers', []);
+var moduloPosologia = angular.module('posologiaControllers', []);
 var moduloUsertype = angular.module('usertypeControllers', []);
 var moduloProduct = angular.module('productControllers', []);
 var moduloProducttype = angular.module('producttypeControllers', []);
