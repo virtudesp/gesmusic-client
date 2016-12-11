@@ -89,7 +89,7 @@ moduloServicios
                 getRegExpr: function (reg) {
                     switch (reg) {
                         case "nombre":
-                            return /^([A-Z]{1}[a-zñáéíóú]+[\s]*)+$/;
+                            return /^([A-Z]{1}[a-zñáéíóúàèò]+[\s]*)+$/;
                             break;
                         case "codigopostal":
                             return /^\d{4,5}$/;

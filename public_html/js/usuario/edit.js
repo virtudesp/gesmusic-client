@@ -27,8 +27,8 @@
  */
 
 'use strict';
-moduloUsuario.controller('UsuarioEditController', ['$scope', '$routeParams', '$location', 'usuarioService', 'serverService', 'postService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, usuarioService, serverService, postService, sharedSpaceService, $filter, $uibModal) {
+moduloUsuario.controller('UsuarioEditController', ['$scope', '$routeParams', '$location', 'usuarioService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, usuarioService, serverService, sharedSpaceService, $filter, $uibModal) {
         $scope.fields = usuarioService.getFields();
         $scope.obtitle = usuarioService.getObTitle();
         $scope.icon = usuarioService.getIcon();
