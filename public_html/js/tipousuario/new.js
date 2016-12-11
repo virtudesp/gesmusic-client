@@ -28,8 +28,8 @@
 
 'use strict';
 
-moduloTipousuario.controller('TipousuarioNewController', ['$scope', '$routeParams', '$location', 'serverService', 'tipousuarioService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, tipousuarioService, sharedSpaceService, $filter, $uibModal) {
+moduloTipousuario.controller('TipousuarioNewController', ['$scope', '$routeParams', '$location', 'serverService', 'tipousuarioService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, tipousuarioService, $filter, $uibModal) {
         $scope.fields = tipousuarioService.getFields();
         $scope.obtitle = tipousuarioService.getObTitle();
         $scope.icon = tipousuarioService.getIcon();
@@ -40,7 +40,7 @@ moduloTipousuario.controller('TipousuarioNewController', ['$scope', '$routeParam
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
         $scope.bean.id = 0;
-        $scope.save = function () {         
+        $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -68,6 +68,6 @@ moduloTipousuario.controller('TipousuarioNewController', ['$scope', '$routeParam
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-       
+
     }]);
 
