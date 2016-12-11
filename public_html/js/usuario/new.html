@@ -82,40 +82,77 @@ THE SOFTWARE.
                                 </div>
                                 <!------------------------------------------------->
                                 <div class="form-group"                                 
-                                     ng-show="show_obj_usertype && (f.name == 'obj_usertype')"
-                                     ng-class="{'has-error': (outerForm.obj_usertype.$error.required ||
-                                                             outerForm.obj_usertype.$error.exists ||
-                                                             outerForm.obj_usertype.$error.validatemin)
-                                                             && !outerForm.obj_usertype.$pristine}"
-                                     ng-show="show_obj_usertype">                                                                                                                                   
-                                    <label class="col-sm-2 control-label" for="obj_usertype">Tipo de Usuario:</label>
+                                     ng-show="show_obj_tipousuario && (f.name == 'obj_tipousuario')"
+                                     ng-class="{'has-error': (outerForm.obj_tipousuario.$error.required ||
+                                                             outerForm.obj_tipousuario.$error.exists ||
+                                                             outerForm.obj_tipousuario.$error.validatemin)}"
+                                     ng-show="show_obj_tipousuario">                                                                                                                                   
+                                    <label class="col-sm-2 control-label" for="obj_tipousuario">Tipo de Usuario:</label>
                                     <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_usertype_group">
-                                            <span class="input-group-addon" id="obj_usertype_button" ng-click="chooseOne('obj_usertype', 'usertype', 'UsuariotypeSelectionController')">
+                                        <div class="input-group foreign" id="obj_tipousuario_group">
+                                            <span class="input-group-addon" id="obj_tipousuario_button" ng-click="chooseOne('obj_tipousuario', 'tipousuario', 'TipousuarioSelectionController')">
                                                 <span class="glyphicon glyphicon-search">
                                                 </span>
                                             </span>                                        
                                             <input type="text" 
                                                    ng-model-options="{debounce: 1000}" 
-                                                   ng-change="obj_usertype_change" 
-                                                   ng-model="bean.obj_usertype.id" 
+                                                   ng-change="obj_tipousuario_change" 
+                                                   ng-model="bean.obj_tipousuario.id" 
                                                    validatemin="1" 
                                                    ng-required="true"  
                                                    aria-describedby="basic-addon2" 
                                                    class="form-control" 
-                                                   id="obj_usuario" 
-                                                   name="obj_usertype"
+                                                   id="obj_tipousuario" 
+                                                   name="obj_tipousuario"
                                                    size="5" 
                                                    maxlength="5">                                        
                                             <span class="input-group-addon">
-                                                <span>{{bean.obj_usertype.description}}</span>
+                                                <span>{{bean.obj_tipousuario.descripcion}}</span>
                                             </span>                                       
                                         </div>
-                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_usertype.$error.required">El tipo de usuario es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_usertype.$error.validatemin">Debes elegir un tipo de usuario</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_usertype.$error.exists">El tipo de usuario no existe</span>
+                                        <span class="help-block" ng-show="outerForm.obj_tipousuario.$error.required">El tipo de usuario es obligatorio</span>
+                                        <span class="help-block" ng-show="outerForm.obj_tipousuario.$error.validatemin">Debes elegir un tipo de usuario</span>
+                                        <span class="help-block" ng-show="outerForm.obj_tipousuario.$error.exists">El tipo de usuario no existe</span>
                                     </div>
                                 </div> 
+
+
+                                <!------------------------------------------------->
+                                <div class="form-group"                                 
+                                     ng-show="show_obj_medico && (f.name == 'obj_medico')"
+                                     ng-class="{'has-error': (outerForm.obj_medico.$error.required ||
+                                                             outerForm.obj_medico.$error.exists ||
+                                                             outerForm.obj_medico.$error.validatemin)}"
+                                     ng-show="show_obj_medico">                                                                                                                                   
+                                    <label class="col-sm-2 control-label" for="obj_medico">Médico asociado:</label>
+                                    <div class="control col-sm-3">
+                                        <div class="input-group foreign" id="obj_medico_group">
+                                            <span class="input-group-addon" id="obj_usertype_button" ng-click="chooseOne('obj_medico', 'medico', 'MedicoSelectionController')">
+                                                <span class="glyphicon glyphicon-search">
+                                                </span>
+                                            </span>                                        
+                                            <input type="text" 
+                                                   ng-model-options="{debounce: 1000}" 
+                                                   ng-change="obj_medico_change" 
+                                                   ng-model="bean.obj_medico.id" 
+                                                   validatemin="1" 
+                                                   ng-required="true"  
+                                                   aria-describedby="basic-addon2" 
+                                                   class="form-control" 
+                                                   id="obj_medico" 
+                                                   name="obj_medico"
+                                                   size="5" 
+                                                   maxlength="5">                                        
+                                            <span class="input-group-addon">
+                                                <span>{{bean.obj_medico.descripcion}}</span>
+                                            </span>                                       
+                                        </div>
+                                        <span class="help-block" ng-show="outerForm.obj_medico.$error.required">El médico es obligatorio</span>
+                                        <span class="help-block" ng-show="outerForm.obj_medico.$error.validatemin">Debes elegir un médico</span>
+                                        <span class="help-block" ng-show="outerForm.obj_medico.$error.exists">El médico no existe</span>
+                                    </div>
+                                </div> 
+
                                 <!------------------------------------------------->
 
                             </div>
