@@ -8,8 +8,7 @@ moduloUsuario.factory('usuarioService', ['serverService', function (serverServic
                     {name: "nombre", shortname: "Nombre", longname: "Nombre", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},                    
                     {name: "primerapellido", shortname: "Apellido 1", longname: "Primer Apellido", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},
                     {name: "segundoapellido", shortname: "Apellido 2", longname: "Segundo Apellido", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},
-                    {name: "login", shortname: "Login", longname: "Login", visible: true, type: "text", required: true, maxlength: 255, pattern: ""},
-                    //{name: "password", shortname: "Password", longname: "Password", visible: false, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("login"), help: serverService.getRegExpl("login")},
+                    {name: "login", shortname: "Login", longname: "Login", visible: true, type: "text", required: true, maxlength: 255, pattern: ""},                    
                     {name: "direccion", shortname: "Dirección", longname: "Dirección", visible: false, type: "text", required: false, maxlength: 255, pattern: ""},
                     {name: "ciudad", shortname: "Ciudad", longname: "Ciudad", visible: false, type: "text", required: false, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},
                     {name: "codigopostal", shortname: "Cód.Postal", longname: "Cód.Postal", visible: false, type: "text", required: false, maxlength: 255, pattern: serverService.getRegExpr("codigopostal"), help: serverService.getRegExpl("codigopostal")},
@@ -17,7 +16,8 @@ moduloUsuario.factory('usuarioService', ['serverService', function (serverServic
                     {name: "pais", shortname: "País", longname: "País", visible: false, type: "text", required: false, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},
                     {name: "email", shortname: "Email", longname: "Email", visible: false, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("email"), help: serverService.getRegExpl("email")},
                     {name: "telefono", shortname: "Teléfono", longname: "Teléfono", visible: false, type: "text", required: false, maxlength: 255, pattern: serverService.getRegExpr("telefono"), help: serverService.getRegExpl("telefono")},
-                    {name: "obj_usertype", shortname: "Tipo", longname: "Tipo de usuario", visible: true, type: "specific", reference: "usertype"}
+                    {name: "obj_tipousuario", shortname: "Tipo", longname: "Tipo de usuario", visible: true, type: "specific", reference: "tipousuario"},
+                    {name: "obj_medico", shortname: "Médico", longname: "Médico asociado", visible: true, type: "specific", reference: "medico"}
                 ];
             },
             getIcon: function () {
