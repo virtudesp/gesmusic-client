@@ -38,8 +38,35 @@ moduloMedico.controller('MedicoNewController', ['$scope', '$routeParams', '$loca
         $scope.op = "plist";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        $scope.bean = {};
-        $scope.bean.id = 0;    
+        $scope.bean = {id: 0};
+        $scope.bean.obj_servicio = {"id": 0};  
+        $scope.bean.obj_especialidad = {"id": 0};  
+        //----
+        $scope.bean.obj_servicio = {"id": 0};
+        if ($routeParams.id_servicio) {
+            serverService.promise_getOne('servicio', $routeParams.id_servicio).then(function (response) {
+                if (response.data.message.id != 0) {
+                    $scope.bean.obj_servicio = response.data.message;
+                    $scope.show_obj_servicio = false;
+                    $scope.title = "Nuevo médico del servicio" + $scope.bean.obj_servicio.descripcion;
+                }
+            });
+        } else {
+            $scope.show_obj_servicio = true;
+        }
+        //----
+        $scope.bean.obj_especialidad = {"id": 0};
+        if ($routeParams.id_especialidad) {
+            serverService.promise_getOne('especialidad', $routeParams.id_especialidad).then(function (response) {
+                if (response.data.message.id != 0) {
+                    $scope.bean.obj_especialidad = response.data.message;
+                    $scope.show_obj_especialidad = false;
+                    $scope.title = "Nuevo médico del especialidad" + $scope.bean.obj_especialidad.descripcion;
+                }
+            });
+        } else {
+            $scope.show_obj_especialidad = true;
+        }
           
         $scope.save = function () {         
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
