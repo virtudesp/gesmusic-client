@@ -36,6 +36,8 @@ var sisane = angular.module('myApp', [
     'usuarioControllers',
     'tipousuarioControllers',
     'medicamentoControllers',
+    'posologiaControllers',
+    'zonaControllers',
     'prioridadControllers',
     'posologiaControllers',
     'viaControllers',
@@ -95,6 +97,14 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/medicamento/plist/:page?/:rpp?', {templateUrl: 'js/medicamento/plist.html', controller: 'MedicamentoPListController'});
         $routeProvider.when('/medicamento/selection/:page?/:rpp?', {templateUrl: 'js/medicamento/selection.html', controller: 'MedicamentoSelectionController'});
         //------------
+
+        $routeProvider.when('/zona/view/:id', {templateUrl: 'js/zona/view.html', controller: 'ZonaViewController'});
+        $routeProvider.when('/zona/new/:id?', {templateUrl: 'js/zona/new.html', controller: 'ZonaNewController'});
+        $routeProvider.when('/zona/edit/:id', {templateUrl: 'js/zona/edit.html', controller: 'ZonaEditController'});
+        $routeProvider.when('/zona/remove/:id', {templateUrl: 'js/zona/remove.html', controller: 'ZonaRemoveController'});
+        $routeProvider.when('/zona/plist/:page?/:rpp?', {templateUrl: 'js/zona/plist.html', controller: 'ZonaPListController'});
+        $routeProvider.when('/zona/selection/:page?/:rpp?', {templateUrl: 'js/zona/selection.html', controller: 'ZonaSelectionController'});
+
         $routeProvider.when('/via/view/:id', {templateUrl: 'js/via/view.html', controller: 'ViaViewController'});
         $routeProvider.when('/via/new/:id?', {templateUrl: 'js/via/new.html', controller: 'ViaNewController'});
         $routeProvider.when('/via/edit/:id', {templateUrl: 'js/via/edit.html', controller: 'ViaEditController'});
@@ -129,6 +139,7 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/anticoagulante/remove/:id', {templateUrl: 'js/anticoagulante/remove.html', controller: 'AnticoagulanteRemoveController'});
         $routeProvider.when('/anticoagulante/plist/:page?/:rpp?', {templateUrl: 'js/anticoagulante/plist.html', controller: 'AnticoagulantePListController'});
         $routeProvider.when('/anticoagulante/selection/:page?/:rpp?', {templateUrl: 'js/anticoagulante/selection.html', controller: 'AnticoagulanteSelectionController'});
+
         //------------
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
@@ -170,6 +181,7 @@ var moduloPost = angular.module('postControllers', []);
 var moduloPosologia = angular.module('posologiaControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
+var moduloZona = angular.module('zonaControllers', []);
 var moduloPrioridad = angular.module('prioridadControllers', []);
 var moduloVia = angular.module('viaControllers', []);
 var moduloImportancia = angular.module('importanciaControllers', []);
