@@ -192,6 +192,13 @@ var moduloPosologia = angular.module('posologiaControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
 var moduloServicio = angular.module('servicioControllers', []);
+var moduloZona = angular.module('zonaControllers', []);
+var moduloImportancia = angular.module('importanciaControllers', []);
+var moduloVia = angular.module('viaControllers', []);
+var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
+var moduloPrioridad = angular.module('prioridadControllers', []);
+var moduloAnticoagulante = angular.module('anticoagulanteControllers', []);
+
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);
