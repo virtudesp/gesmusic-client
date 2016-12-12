@@ -28,12 +28,12 @@
 
 'use strict';
 
-moduloMedicamento.controller('MedicamentoPListController', ['$scope', '$routeParams', '$location', 'serverService', 'medicamentoService', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, medicamentoService, $uibModal) {
-        $scope.fields = medicamentoService.getFields();
-        $scope.obtitle = medicamentoService.getObTitle();
-        $scope.icon = medicamentoService.getIcon();
-        $scope.ob = medicamentoService.getTitle();
+moduloServicio.controller('ServicioPListController', ['$scope', '$routeParams', '$location', 'serverService', 'servicioService', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, servicioService, $uibModal) {
+        $scope.fields = servicioService.getFields();
+        $scope.obtitle = servicioService.getObTitle();
+        $scope.icon = servicioService.getIcon();
+        $scope.ob = servicioService.getTitle();
         $scope.title = "Listado de " + $scope.obtitle;
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
@@ -60,17 +60,17 @@ moduloMedicamento.controller('MedicamentoPListController', ['$scope', '$routePar
                     }
                     return serverService.promise_getPage($scope.ob, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor1";
+                    $scope.status = "Error en la recepción de datos del servidor";
                 }
             }).then(function (response) {
                 if (response.status == 200) {
                     $scope.page = response.data.message;
                     $scope.status = "";
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor2";
+                    $scope.status = "Error en la recepción de datos del servidor";
                 }
             }).catch(function (data) {
-                $scope.status = "Error en la recepción de datos del servidor3";
+                $scope.status = "Error en la recepción de datos del servidor";
             });
         }
         $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {

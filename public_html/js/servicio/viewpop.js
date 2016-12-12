@@ -28,12 +28,12 @@
 'use strict';
 
 
-moduloMedicamento.controller('MedicamentoViewpopController', ['$scope', '$routeParams', 'serverService', 'medicamentoService', '$location', '$uibModalInstance', 'id',
-    function ($scope, $routeParams, serverService, medicamentoService, $location, $uibModalInstance, id) {
-        $scope.fields = medicamentoService.getFields();
-        $scope.obtitle = medicamentoService.getObTitle();
-        $scope.icon = medicamentoService.getIcon();
-        $scope.ob = medicamentoService.getTitle();
+moduloServicio.controller('ServicioViewpopController', ['$scope', '$routeParams', 'serverService', 'servicioService', '$location', '$uibModalInstance', 'id',
+    function ($scope, $routeParams, serverService, servicioService, $location, $uibModalInstance, id) {
+        $scope.fields = servicioService.getFields();
+        $scope.obtitle = servicioService.getObTitle();
+        $scope.icon = servicioService.getIcon();
+        $scope.ob = servicioService.getTitle();
         $scope.title = "Vista de " + $scope.obtitle;
         $scope.id = id;
         $scope.status = null;

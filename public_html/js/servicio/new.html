@@ -55,7 +55,7 @@ THE SOFTWARE.
                                                disabled="disabled" />
                                     </div>
                                 </div>
-                                <!------------------------------------------------->                     
+                                <!------------------------------------------------->                            
                                 <div ng-show="f.type == 'text'" 
                                      id="{{f.name}}-group" 
                                      class="form-group" 
@@ -79,14 +79,13 @@ THE SOFTWARE.
                                         <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
                                         <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
-                                </div>                              
-                                <!------------------------------------------------->
-
+                                </div>
+      
                             </div>
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de usuarios</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de servicios</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>

@@ -28,20 +28,19 @@
 
 'use strict';
 
-moduloMedicamento.controller('MedicamentoNewController', ['$scope', '$routeParams', '$location', 'serverService', 'medicamentoService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, medicamentoService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = medicamentoService.getFields();
-        $scope.obtitle = medicamentoService.getObTitle();
-        $scope.icon = medicamentoService.getIcon();
-        $scope.ob = medicamentoService.getTitle();
+moduloServicio.controller('ServicioNewController', ['$scope', '$routeParams', '$location', 'serverService', 'servicioService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, servicioService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = servicioService.getFields();
+        $scope.obtitle = servicioService.getObTitle();
+        $scope.icon = servicioService.getIcon();
+        $scope.ob = servicioService.getTitle();
         $scope.title = "Creando un nuevo " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
-        $scope.bean.id = 0;    
-          
-        $scope.save = function () {         
+        
+        $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -69,6 +68,6 @@ moduloMedicamento.controller('MedicamentoNewController', ['$scope', '$routeParam
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-       
+
     }]);
 
