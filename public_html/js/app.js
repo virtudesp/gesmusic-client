@@ -41,6 +41,7 @@ var sisane = angular.module('myApp', [
     'viaControllers',
     'importanciaControllers',
     'tipodocumentoControllers',
+    'anticoagulanteControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -122,6 +123,13 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/prioridad/plist/:page?/:rpp?', {templateUrl: 'js/prioridad/plist.html', controller: 'PrioridadPListController'});
         $routeProvider.when('/prioridad/selection/:page?/:rpp?', {templateUrl: 'js/prioridad/selection.html', controller: 'PrioridadSelectionController'});
         //------------
+        $routeProvider.when('/anticoagulante/view/:id', {templateUrl: 'js/anticoagulante/view.html', controller: 'AnticoagulanteViewController'});
+        $routeProvider.when('/anticoagulante/new/:id?', {templateUrl: 'js/anticoagulante/new.html', controller: 'AnticoagulanteNewController'});
+        $routeProvider.when('/anticoagulante/edit/:id', {templateUrl: 'js/anticoagulante/edit.html', controller: 'AnticoagulanteEditController'});
+        $routeProvider.when('/anticoagulante/remove/:id', {templateUrl: 'js/anticoagulante/remove.html', controller: 'AnticoagulanteRemoveController'});
+        $routeProvider.when('/anticoagulante/plist/:page?/:rpp?', {templateUrl: 'js/anticoagulante/plist.html', controller: 'AnticoagulantePListController'});
+        $routeProvider.when('/anticoagulante/selection/:page?/:rpp?', {templateUrl: 'js/anticoagulante/selection.html', controller: 'AnticoagulanteSelectionController'});
+        //------------
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
 //-------------
@@ -166,6 +174,7 @@ var moduloPrioridad = angular.module('prioridadControllers', []);
 var moduloVia = angular.module('viaControllers', []);
 var moduloImportancia = angular.module('importanciaControllers', []);
 var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
+var moduloAnticoagulante = angular.module('anticoagulanteControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);
