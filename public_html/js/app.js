@@ -36,8 +36,8 @@ var sisane = angular.module('myApp', [
     'usuarioControllers',
     'tipousuarioControllers',
     'medicamentoControllers',
-    'prioridadControllers',
     'posologiaControllers',
+    'viaControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -91,12 +91,12 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/medicamento/plist/:page?/:rpp?', {templateUrl: 'js/medicamento/plist.html', controller: 'MedicamentoPListController'});
         $routeProvider.when('/medicamento/selection/:page?/:rpp?', {templateUrl: 'js/medicamento/selection.html', controller: 'MedicamentoSelectionController'});
         //------------
-        $routeProvider.when('/prioridad/view/:id', {templateUrl: 'js/prioridad/view.html', controller: 'PrioridadViewController'});
-        $routeProvider.when('/prioridad/new/:id?', {templateUrl: 'js/prioridad/new.html', controller: 'PrioridadNewController'});
-        $routeProvider.when('/prioridad/edit/:id', {templateUrl: 'js/prioridad/edit.html', controller: 'PrioridadEditController'});
-        $routeProvider.when('/prioridad/remove/:id', {templateUrl: 'js/prioridad/remove.html', controller: 'PrioridadRemoveController'});
-        $routeProvider.when('/prioridad/plist/:page?/:rpp?', {templateUrl: 'js/prioridad/plist.html', controller: 'PrioridadPListController'});
-        $routeProvider.when('/prioridad/selection/:page?/:rpp?', {templateUrl: 'js/prioridad/selection.html', controller: 'PrioridadSelectionController'});
+        $routeProvider.when('/via/view/:id', {templateUrl: 'js/via/view.html', controller: 'ViaViewController'});
+        $routeProvider.when('/via/new/:id?', {templateUrl: 'js/via/new.html', controller: 'ViaNewController'});
+        $routeProvider.when('/via/edit/:id', {templateUrl: 'js/via/edit.html', controller: 'ViaEditController'});
+        $routeProvider.when('/via/remove/:id', {templateUrl: 'js/via/remove.html', controller: 'ViaRemoveController'});
+        $routeProvider.when('/via/plist/:page?/:rpp?', {templateUrl: 'js/via/plist.html', controller: 'ViaPListController'});
+        $routeProvider.when('/via/selection/:page?/:rpp?', {templateUrl: 'js/via/selection.html', controller: 'ViaSelectionController'});
         //------------
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
@@ -138,7 +138,6 @@ var moduloPost = angular.module('postControllers', []);
 var moduloPosologia = angular.module('posologiaControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
-var moduloPrioridad = angular.module('prioridadControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);
