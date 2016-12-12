@@ -28,13 +28,13 @@
 
 'use strict';
 
-moduloMedicamento.controller('MedicamentoViewController', ['$scope', '$routeParams', 'serverService', 'medicamentoService', '$location',
-    function ($scope, $routeParams, serverService, medicamentoService, $location) {
-        $scope.fields = medicamentoService.getFields();
-        $scope.obtitle = medicamentoService.getObTitle();
-        $scope.icon = medicamentoService.getIcon();
-        $scope.ob = medicamentoService.getTitle();
-        $scope.title = "Vista de " + $scope.obtitle;
+moduloServicio.controller('ServicioRemoveController', ['$scope', '$routeParams', '$location', 'serverService', 'servicioService',
+    function ($scope, $routeParams, $location, serverService, servicioService) {
+        $scope.fields = servicioService.getFields();
+        $scope.obtitle = servicioService.getObTitle();
+        $scope.icon = servicioService.getIcon();
+        $scope.ob = servicioService.getTitle();
+        $scope.title = "Borrado de " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;
         $scope.debugging=serverService.debugging();
@@ -52,13 +52,29 @@ moduloMedicamento.controller('MedicamentoViewController', ['$scope', '$routePara
         }).catch(function (data) {
             $scope.status = "Error en la recepción de datos del servidor";
         });
-        $scope.close = function () {
-            $location.path('/home');
-        };
-        $scope.plist = function () {
-            $location.path('/' + $scope.ob + '/plist');
-        };
+        $scope.remove = function () {
+            serverService.promise_removeOne($scope.ob, $scope.id).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        if (response.data.message == 1) {
+                            $scope.status = "El registro " +  $scope.obtitle + " se ha eliminado." ;  
+                        } else {
+                            $scope.status = "Error en el borrado de datos del servidor";
+                        }
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor";
+            });
+        }
         $scope.back = function () {
             window.history.back();
+        };
+        $scope.close = function () {
+            $location.path('/home');
         };
     }]);

@@ -27,12 +27,12 @@
  */
 
 'use strict';
-moduloMedicamento.controller('MedicamentoEditController', ['$scope', '$routeParams', '$location', 'medicamentoService', 'serverService', 'postService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, medicamentoService, serverService, postService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = medicamentoService.getFields();
-        $scope.obtitle = medicamentoService.getObTitle();
-        $scope.icon = medicamentoService.getIcon();
-        $scope.ob = medicamentoService.getTitle();
+moduloServicio.controller('ServicioEditController', ['$scope', '$routeParams', '$location', 'servicioService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, servicioService, serverService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = servicioService.getFields();
+        $scope.obtitle = servicioService.getObTitle();
+        $scope.icon = servicioService.getIcon();
+        $scope.ob = servicioService.getTitle();
         $scope.title = "Editando un " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
@@ -55,6 +55,7 @@ moduloMedicamento.controller('MedicamentoEditController', ['$scope', '$routePara
             $scope.status = "Error en la recepción de datos del servidor";
         });
         $scope.save = function () {
+        
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -82,13 +83,5 @@ moduloMedicamento.controller('MedicamentoEditController', ['$scope', '$routePara
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
-            var modalInstance = $uibModal.open({
-                templateUrl: 'js/' + foreignObjectName + '/selection.html',
-                controller: contollerName,
-                size: 'lg'
-            }).result.then(function (modalResult) {
-                $scope.bean[nameForeign].id = modalResult;
-            });
-        };       
+
     }]);

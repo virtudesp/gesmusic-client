@@ -25,39 +25,47 @@
  * THE SOFTWARE.
  * 
  */
-
 'use strict';
 
-moduloMedicamento.controller('MedicamentoRemoveController', ['$scope', '$routeParams', '$location', 'serverService', 'medicamentoService',
-    function ($scope, $routeParams, $location, serverService, medicamentoService) {
-        $scope.fields = medicamentoService.getFields();
-        $scope.obtitle = medicamentoService.getObTitle();
-        $scope.icon = medicamentoService.getIcon();
-        $scope.ob = medicamentoService.getTitle();
+
+moduloServicio.controller('ServicioRemovepopController', ['$scope', '$routeParams', 'serverService', 'servicioService', '$location', '$uibModalInstance', 'id',
+    function ($scope, $routeParams, serverService, servicioService, $location, $uibModalInstance, id) {
+        $scope.fields = servicioService.getFields();
+        $scope.obtitle = servicioService.getObTitle();
+        $scope.icon = servicioService.getIcon();
+        $scope.ob = servicioService.getTitle();
         $scope.title = "Borrado de " + $scope.obtitle;
-        $scope.id = $routeParams.id;
+        $scope.id = id;
         $scope.status = null;
-        $scope.debugging=serverService.debugging();
-        serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
-            if (response.status == 200) {
-                if (response.data.status == 200) {
-                    $scope.status = null;
-                    $scope.bean = response.data.message;
+        $scope.debugging = serverService.debugging();
+        function getData() {
+            serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.bean = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor";
+                    }
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }
-            } else {
+            }).catch(function (data) {
                 $scope.status = "Error en la recepción de datos del servidor";
-            }
-        }).catch(function (data) {
-            $scope.status = "Error en la recepción de datos del servidor";
-        });
+            });
+        }
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        }
         $scope.remove = function () {
             serverService.promise_removeOne($scope.ob, $scope.id).then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         if (response.data.message == 1) {
-                            $scope.status = "El registro " +  $scope.obtitle + " se ha eliminado." ;  
+                            $scope.status = "El registro " + $scope.obtitle + " se ha eliminado.";
+                            $uibModalInstance.close(true);
+                            getData();
+                            return false;
                         } else {
                             $scope.status = "Error en el borrado de datos del servidor";
                         }
@@ -71,10 +79,5 @@ moduloMedicamento.controller('MedicamentoRemoveController', ['$scope', '$routePa
                 $scope.status = "Error en la recepción de datos del servidor";
             });
         }
-        $scope.back = function () {
-            window.history.back();
-        };
-        $scope.close = function () {
-            $location.path('/home');
-        };
+        getData();
     }]);

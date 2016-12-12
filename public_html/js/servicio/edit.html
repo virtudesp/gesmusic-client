@@ -77,17 +77,16 @@ THE SOFTWARE.
                                                ng-required="{{f.required}}"                                                
                                                />
                                         <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                       <!-- <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>-->
+                                        <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
                                 </div>
-                                
                                 <!------------------------------------------------->
-
+                                
                             </div>
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de medicamentos</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de servicios</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>

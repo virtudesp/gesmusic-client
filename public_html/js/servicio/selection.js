@@ -28,13 +28,13 @@
 
 'use strict';
 
-moduloMedicamento.controller('MedicamentoSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'medicamentoService', 'serverService', '$location', 'sharedSpaceService',
-    function ($scope, $modalInstance, $routeParams, medicamentoService, serverService, $location, sharedSpaceService) {
-        $scope.fields = medicamentoService.getFields();
-        $scope.obtitle = medicamentoService.getObTitle();
-        $scope.icon = medicamentoService.getIcon();
+moduloServicio.controller('ServicioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'servicioService', 'serverService', '$location', 'sharedSpaceService',
+    function ($scope, $modalInstance, $routeParams, servicioService, serverService, $location, sharedSpaceService) {
+        $scope.fields = servicioService.getFields();
+        $scope.obtitle = servicioService.getObTitle();
+        $scope.icon = servicioService.getIcon();
         $scope.title = "Selección de " + $scope.obtitle;
-        $scope.ob = medicamentoService.getTitle();
+        $scope.ob = servicioService.getTitle();
         $scope.op = "selection";
         $scope.numpage = 1;
         $scope.rpp = 10;

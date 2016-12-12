@@ -37,6 +37,7 @@ var sisane = angular.module('myApp', [
     'tipousuarioControllers',
     'medicamentoControllers',
     'posologiaControllers',
+    'servicioControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -90,6 +91,15 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/medicamento/plist/:page?/:rpp?', {templateUrl: 'js/medicamento/plist.html', controller: 'MedicamentoPListController'});
         $routeProvider.when('/medicamento/selection/:page?/:rpp?', {templateUrl: 'js/medicamento/selection.html', controller: 'MedicamentoSelectionController'});
         //------------
+        $routeProvider.when('/servicio/view/:id', {templateUrl: 'js/servicio/view.html', controller: 'ServicioViewController'});
+        $routeProvider.when('/servicio/new/:id?', {templateUrl: 'js/servicio/new.html', controller: 'ServicioNewController'});
+        $routeProvider.when('/servicio/edit/:id', {templateUrl: 'js/servicio/edit.html', controller: 'ServicioEditController'});
+        $routeProvider.when('/servicio/remove/:id', {templateUrl: 'js/servicio/remove.html', controller: 'ServicioRemoveController'});
+        $routeProvider.when('/servicio/plist/:page?/:rpp?', {templateUrl: 'js/servicio/plist.html', controller: 'ServicioPListController'});
+        $routeProvider.when('/servicio/selection/:page?/:rpp?', {templateUrl: 'js/servicio/selection.html', controller: 'ServicioSelectionController'});
+        //------------
+        
+        
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
 //-------------
@@ -130,7 +140,10 @@ var moduloPost = angular.module('postControllers', []);
 var moduloPosologia = angular.module('posologiaControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
+var moduloServicio = angular.module('servicioControllers', []);
+
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);
 var moduloFiltros = angular.module('Filters', []);
+

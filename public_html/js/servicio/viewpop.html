@@ -62,7 +62,7 @@ THE SOFTWARE.
                                         <td ng-show="f.type == 'text'">{{bean[f.name]}}</td>
                                         <td ng-show="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td>
                                         <!-- ----------------------------- -->
-
+                                        <td ng-show="f.name == 'obj_usertype'">{{bean[f.name].description}}</td>                                                
                                     </tr>                                                                                                           
                                 </tbody>
                             </table>  
