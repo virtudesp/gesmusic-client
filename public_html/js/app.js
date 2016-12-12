@@ -37,6 +37,7 @@ var sisane = angular.module('myApp', [
     'tipousuarioControllers',
     'medicamentoControllers',
     'posologiaControllers',
+    'viaControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -90,6 +91,13 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/medicamento/plist/:page?/:rpp?', {templateUrl: 'js/medicamento/plist.html', controller: 'MedicamentoPListController'});
         $routeProvider.when('/medicamento/selection/:page?/:rpp?', {templateUrl: 'js/medicamento/selection.html', controller: 'MedicamentoSelectionController'});
         //------------
+        $routeProvider.when('/via/view/:id', {templateUrl: 'js/via/view.html', controller: 'ViaViewController'});
+        $routeProvider.when('/via/new/:id?', {templateUrl: 'js/via/new.html', controller: 'ViaNewController'});
+        $routeProvider.when('/via/edit/:id', {templateUrl: 'js/via/edit.html', controller: 'ViaEditController'});
+        $routeProvider.when('/via/remove/:id', {templateUrl: 'js/via/remove.html', controller: 'ViaRemoveController'});
+        $routeProvider.when('/via/plist/:page?/:rpp?', {templateUrl: 'js/via/plist.html', controller: 'ViaPListController'});
+        $routeProvider.when('/via/selection/:page?/:rpp?', {templateUrl: 'js/via/selection.html', controller: 'ViaSelectionController'});
+        //------------
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
 //-------------
@@ -130,6 +138,7 @@ var moduloPost = angular.module('postControllers', []);
 var moduloPosologia = angular.module('posologiaControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
+var moduloVia = angular.module('viaControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);
