@@ -63,7 +63,7 @@ THE SOFTWARE.
                                                              outerForm.obj_servicio.$error.validatemin)}"
                                      ng-show="show_obj_servicio">                                                                                                                                   
                                     <label class="col-sm-2 control-label" for="obj_servicio">Servicio:</label>
-                                    <div class="control col-sm-3">
+                                    <div class="control col-sm-4">
                                         <div class="input-group foreign" id="obj_servicio_group">
                                             <span class="input-group-addon" id="obj_servicio_button" ng-click="chooseOne('obj_servicio', 'servicio', 'ServicioSelectionController')">
                                                 <span class="glyphicon glyphicon-search">
@@ -77,12 +77,12 @@ THE SOFTWARE.
                                                    ng-required="true"  
                                                    aria-describedby="basic-addon2" 
                                                    class="form-control" 
-                                                   id="obj_usuario" 
+                                                   id="obj_servicio" 
                                                    name="obj_servicio"
                                                    size="5" 
                                                    maxlength="5">                                        
                                             <span class="input-group-addon">
-                                                <span>{{bean.obj_servicio.description}}</span>
+                                                <span>{{bean.obj_servicio.descripcion}}</span>
                                             </span>                                       
                                         </div>
                                         <span class="help-block" ng-show="outerForm.obj_servicio.$error.required">El servicio es obligatorio</span>
@@ -98,9 +98,9 @@ THE SOFTWARE.
                                                              outerForm.obj_especialidad.$error.validatemin)}"
                                      ng-show="show_obj_especialidad">                                                                                                                                   
                                     <label class="col-sm-2 control-label" for="obj_especialidad">Especialidad:</label>
-                                    <div class="control col-sm-3">
+                                    <div class="control col-sm-4">
                                         <div class="input-group foreign" id="obj_especialidad_group">
-                                            <span class="input-group-addon" id="obj_especialidad_button" ng-click="chooseOne('obj_especialidad', 'especialidad', 'ServicioSelectionController')">
+                                            <span class="input-group-addon" id="obj_especialidad_button" ng-click="chooseOne('obj_especialidad', 'especialidad', 'EspecialidadSelectionController')">
                                                 <span class="glyphicon glyphicon-search">
                                                 </span>
                                             </span>                                        
@@ -112,12 +112,12 @@ THE SOFTWARE.
                                                    ng-required="true"  
                                                    aria-describedby="basic-addon2" 
                                                    class="form-control" 
-                                                   id="obj_usuario" 
+                                                   id="obj_especialidad" 
                                                    name="obj_especialidad"
                                                    size="5" 
                                                    maxlength="5">                                        
                                             <span class="input-group-addon">
-                                                <span>{{bean.obj_especialidad.description}}</span>
+                                                <span>{{bean.obj_especialidad.descripcion}}</span>
                                             </span>                                       
                                         </div>
                                         <span class="help-block" ng-show="outerForm.obj_especialidad.$error.required">La especialidad es obligatoria</span>

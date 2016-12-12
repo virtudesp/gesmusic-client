@@ -27,8 +27,8 @@
  */
 
 'use strict';
-moduloMedico.controller('MedicoEditController', ['$scope', '$routeParams', '$location', 'medicoService', 'serverService', 'postService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, medicoService, serverService, postService, sharedSpaceService, $filter, $uibModal) {
+moduloMedico.controller('MedicoEditController', ['$scope', '$routeParams', '$location', 'medicoService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, medicoService, serverService, sharedSpaceService, $filter, $uibModal) {
         $scope.fields = medicoService.getFields();
         $scope.obtitle = medicoService.getObTitle();
         $scope.icon = medicoService.getIcon();
@@ -39,6 +39,13 @@ moduloMedico.controller('MedicoEditController', ['$scope', '$routeParams', '$loc
         $scope.error = true;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
+
+        $scope.bean.obj_servicio = {"id": 0};
+        $scope.show_obj_servicio = true;
+
+        $scope.bean.obj_especialidad = {"id": 0};
+        $scope.show_obj_especialidad = true;
+
         $scope.id = $routeParams.id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
@@ -55,6 +62,12 @@ moduloMedico.controller('MedicoEditController', ['$scope', '$routeParams', '$loc
             $scope.status = "Error en la recepción de datos del servidor";
         });
         $scope.save = function () {
+            if (!$scope.bean.obj_servicio.id > 0) {
+                $scope.bean.obj_servicio.id = null;
+            }
+            if (!$scope.bean.obj_especialidad.id > 0) {
+                $scope.bean.obj_especialidad.id = null;
+            }
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -90,5 +103,38 @@ moduloMedico.controller('MedicoEditController', ['$scope', '$routeParams', '$loc
             }).result.then(function (modalResult) {
                 $scope.bean[nameForeign].id = modalResult;
             });
-        };       
+        };
+
+        $scope.$watch('bean.obj_servicio.id', function () {
+            if ($scope.bean) {
+                serverService.promise_getOne('servicio', $scope.bean.obj_servicio.id).then(function (response) {
+                    var old_id = $scope.bean.obj_servicio.id;
+                    if (response.data.message.id != 0) {
+                        $scope.outerForm.obj_servicio.$setValidity('exists', true);
+                        $scope.bean.obj_servicio = response.data.message;
+                    } else {
+                        $scope.outerForm.obj_servicio.$setValidity('exists', false);
+                        //$scope.bean.obj_servicio.id = 0;
+                        $scope.bean.obj_servicio.id = old_id;
+                    }
+                });
+            }
+        });
+
+        $scope.$watch('bean.obj_especialidad.id', function () {
+            if ($scope.bean) {
+                serverService.promise_getOne('especialidad', $scope.bean.obj_especialidad.id).then(function (response) {
+                    var old_id = $scope.bean.obj_especialidad.id;
+                    if (response.data.message.id != 0) {
+                        $scope.outerForm.obj_especialidad.$setValidity('exists', true);
+                        $scope.bean.obj_especialidad = response.data.message;
+                    } else {
+                        $scope.outerForm.obj_especialidad.$setValidity('exists', false);
+                        //$scope.bean.obj_especialidad.id = 0;
+                        $scope.bean.obj_especialidad.id = old_id;
+                    }
+                });
+            }
+        });
+
     }]);

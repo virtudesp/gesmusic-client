@@ -109,7 +109,11 @@ THE SOFTWARE.
                                                 <div ng-show="f.visible && f.type == 'integer'" class="text-center">{{obj[f.name]}}</div>
                                                 <div ng-show="f.visible && f.type == 'decimal'" class="text-center">{{obj[f.name]}}</div>
                                                 <div ng-show="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
-                                                <div ng-show="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>                                               
+                                                <div ng-show="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>  
+                                                <!------------------------------------------------>
+                                                <div ng-show="f.visible && f.name == 'obj_servicio'" class="text-center">{{obj.obj_servicio.descripcion}}</div>
+                                                <!------------------------------------------------>
+                                                <div ng-show="f.visible && f.name == 'obj_especialidad'" class="text-center">{{obj.obj_especialidad.descripcion}}</div>                                             
 
                                             </td>   
 
