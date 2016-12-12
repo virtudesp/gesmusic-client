@@ -1,5 +1,5 @@
 'use strict';
-moduloPrioridadService.factory('prioridadService', ['serverService', function (serverService) {
+moduloPrioridad.factory('prioridadService', ['serverService', function (serverService) {
         return {
             getFields: function () {
                 return [

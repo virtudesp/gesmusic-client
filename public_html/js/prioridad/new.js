@@ -9,7 +9,7 @@ moduloPrioridad.controller('PrioridadNewController', ['$scope', '$routeParams', 
         $scope.title = "Creando un nuevo " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
-        $scope.debugging = serverService.debugging();
+        //$scope.debugging = serverService.debugging();
         $scope.bean = {};
         $scope.bean.id = 0;    
           
