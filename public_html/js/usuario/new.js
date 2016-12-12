@@ -39,8 +39,8 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
+        //----
         $scope.bean.obj_tipousuario = {"id": 0};
-        $scope.bean.obj_medico = {"id": 0};
         if ($routeParams.id_tipousuario) {
             serverService.promise_getOne('tipousuario', $routeParams.id_tipousuario).then(function (response) {
                 if (response.data.message.id != 0) {
@@ -52,22 +52,15 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
         } else {
             $scope.show_obj_tipousuario = true;
         }
-
-        if ($routeParams.id_medico) {
-            serverService.promise_getOne('medico', $routeParams.id_medico).then(function (response) {
-                if (response.data.message.id != 0) {
-                    $scope.bean.obj_medico = response.data.message;
-                    $scope.show_obj_medico = false;
-                    $scope.title = "Nuevo usuario del tipo" + $scope.bean.obj_medico.description;
-                }
-            });
-        } else {
-            $scope.show_obj_medico = true;
-        }
-
+        //----
+        $scope.bean.obj_medico = {"id": 0};
+        //-----
         $scope.save = function () {
             $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
             $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
+            if (!$scope.bean.obj_medico.id > 0) {
+                $scope.bean.obj_medico.id = null;
+            }
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -118,19 +111,6 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
                 });
             }
         });
-        $scope.$watch('bean.obj_medico.id', function () {
-            if ($scope.bean) {
-                serverService.promise_getOne('medico', $scope.bean.obj_medico.id).then(function (response) {
-                    var old_id = $scope.bean.obj_medico.id;
-                    $scope.bean.obj_medico = response.data.message;
-                    if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_medico.$setValidity('exists', true);
-                    } else {
-                        $scope.outerForm.obj_medico.$setValidity('exists', false);
-                        $scope.bean.obj_medico.id = old_id;
-                    }
-                });
-            }
-        });
+      
     }]);
 

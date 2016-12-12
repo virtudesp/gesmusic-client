@@ -89,8 +89,8 @@ THE SOFTWARE.
                                      ng-show="show_obj_tipousuario">                                                                                                                                   
                                     <label class="col-sm-2 control-label" for="obj_tipousuario">Tipo de Usuario:</label>
                                     <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_usertype_group">
-                                            <span class="input-group-addon" id="obj_usertype_button" ng-click="chooseOne('obj_tipousuario', 'tipousuario', 'TipousuariotypeSelectionController')">
+                                        <div class="input-group foreign" id="obj_tipousuario_group">
+                                            <span class="input-group-addon" id="obj_tipousuario_button" ng-click="chooseOne('obj_tipousuario', 'tipousuario', 'TipousuarioSelectionController')">
                                                 <span class="glyphicon glyphicon-search">
                                                 </span>
                                             </span>                                        
@@ -102,7 +102,7 @@ THE SOFTWARE.
                                                    ng-required="true"  
                                                    aria-describedby="basic-addon2" 
                                                    class="form-control" 
-                                                   id="obj_usuario" 
+                                                   id="obj_tipousuario" 
                                                    name="obj_tipousuario"
                                                    size="5" 
                                                    maxlength="5">                                        
@@ -115,6 +115,10 @@ THE SOFTWARE.
                                         <span class="help-block" ng-show="outerForm.obj_tipousuario.$error.exists">El tipo de usuario no existe</span>
                                     </div>
                                 </div> 
+
+
+                                <!------------------------------------------------->
+
                                 <!------------------------------------------------->
 
                             </div>
