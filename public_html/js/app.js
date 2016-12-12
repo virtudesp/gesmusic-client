@@ -36,6 +36,7 @@ var sisane = angular.module('myApp', [
     'userControllers',
     'usertypeControllers',
     'medicamentoControllers',
+    'prioridadControllers',
     'postControllers',
     'productControllers',
     'producttypeControllers',
@@ -106,6 +107,13 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/producttype/plist/:page?/:rpp?', {templateUrl: 'js/producttype/plist.html', controller: 'ProducttypePListController'});
         $routeProvider.when('/producttype/selection/:page?/:rpp?', {templateUrl: 'js/producttype/selection.html', controller: 'ProducttypeSelectionController'});
         //------------
+        $routeProvider.when('/prioridad/view/:id', {templateUrl: 'js/prioridad/view.html', controller: 'PrioridadViewController'});
+        $routeProvider.when('/prioridad/new/:id?', {templateUrl: 'js/prioridad/new.html', controller: 'PrioridadNewController'});
+        $routeProvider.when('/prioridad/edit/:id', {templateUrl: 'js/prioridad/edit.html', controller: 'PrioridadEditController'});
+        $routeProvider.when('/prioridad/remove/:id', {templateUrl: 'js/prioridad/remove.html', controller: 'PrioridadRemoveController'});
+        $routeProvider.when('/prioridad/plist/:page?/:rpp?', {templateUrl: 'js/prioridad/plist.html', controller: 'PrioridadPListController'});
+        $routeProvider.when('/prioridad/selection/:page?/:rpp?', {templateUrl: 'js/prioridad/selection.html', controller: 'PrioridadSelectionController'});
+        //------------
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
 //-------------
@@ -147,6 +155,7 @@ var moduloUsertype = angular.module('usertypeControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
 var moduloProduct = angular.module('productControllers', []);
 var moduloProducttype = angular.module('producttypeControllers', []);
+var moduloPrioridad = angular.module('prioridadControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);
