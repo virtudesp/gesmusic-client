@@ -123,7 +123,11 @@ THE SOFTWARE.
                                                     <div ng-show="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                     <div ng-show="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
                                                     <!------------------------------------------------>
-                                                    <div ng-show="f.visible && f.name == 'obj_usertype'" class="text-center"><a href="#/user/view/{{obj.obj_usertype.id}}">{{obj.obj_usertype.description}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_tipousuario'" class="text-center"><a href="#/tipousuario/view/{{obj.obj_tipousuario.id}}">{{obj.obj_tipousuario.descripcion}}</a></div>
+                                                    <!------------------------------------------------>
+                                                    <div ng-show="f.visible && f.name == 'obj_medico' && obj.obj_medico.id>0" class="text-center"><a href="#/medico/view/{{obj.obj_medico.id}}">{{obj.obj_medico.id}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_medico' && obj.obj_medico.id==0" class="text-center" ng-bind-html="false | booleanizate"></div>
+                                                    <!------------------------------------------------>
                                                 </td>                       
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">

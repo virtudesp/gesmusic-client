@@ -27,8 +27,8 @@
  */
 
 'use strict';
-moduloTipousuario.controller('TipousuarioEditController', ['$scope', '$routeParams', '$location', 'tipousuarioService', 'serverService', 'postService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, tipousuarioService, serverService, postService, sharedSpaceService, $filter, $uibModal) {
+moduloTipousuario.controller('TipousuarioEditController', ['$scope', '$routeParams', '$location', 'tipousuarioService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, tipousuarioService, serverService, sharedSpaceService, $filter, $uibModal) {
         $scope.fields = tipousuarioService.getFields();
         $scope.obtitle = tipousuarioService.getObTitle();
         $scope.icon = tipousuarioService.getIcon();

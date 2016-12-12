@@ -39,21 +39,28 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
-        $scope.bean.obj_usertype = {"id": 0};
-        if ($routeParams.id_usertype) {
-            serverService.promise_getOne('usertype', $routeParams.id_usertype).then(function (response) {
+        //----
+        $scope.bean.obj_tipousuario = {"id": 0};
+        if ($routeParams.id_tipousuario) {
+            serverService.promise_getOne('tipousuario', $routeParams.id_tipousuario).then(function (response) {
                 if (response.data.message.id != 0) {
-                    $scope.bean.obj_usertype = response.data.message;
-                    $scope.show_obj_usertype = false;
-                    $scope.title = "Nuevo usuario del tipo" + $scope.bean.obj_usertype.description;
+                    $scope.bean.obj_tipousuario = response.data.message;
+                    $scope.show_obj_tipousuario = false;
+                    $scope.title = "Nuevo usuario del tipo" + $scope.bean.obj_tipousuario.description;
                 }
             });
         } else {
-            $scope.show_obj_usertype = true;
+            $scope.show_obj_tipousuario = true;
         }
+        //----
+        $scope.bean.obj_medico = {"id": 0};
+        //-----
         $scope.save = function () {
             $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
             $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
+            if (!$scope.bean.obj_medico.id > 0) {
+                $scope.bean.obj_medico.id = null;
+            }
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -90,19 +97,20 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
                 $scope.bean[nameForeign].id = modalResult;
             });
         };
-        $scope.$watch('bean.obj_usertype.id', function () {
+        $scope.$watch('bean.obj_tipousuario.id', function () {
             if ($scope.bean) {
-                serverService.promise_getOne('usertype', $scope.bean.obj_usertype.id).then(function (response) {
-                    var old_id = $scope.bean.obj_usertype.id;
-                    $scope.bean.obj_usertype = response.data.message;
+                serverService.promise_getOne('tipousuario', $scope.bean.obj_tipousuario.id).then(function (response) {
+                    var old_id = $scope.bean.obj_tipousuario.id;
+                    $scope.bean.obj_tipousuario = response.data.message;
                     if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_usertype.$setValidity('exists', true);
+                        $scope.outerForm.obj_tipousuario.$setValidity('exists', true);
                     } else {
-                        $scope.outerForm.obj_usertype.$setValidity('exists', false);
-                        $scope.bean.obj_usertype.id = old_id;
+                        $scope.outerForm.obj_tipousuario.$setValidity('exists', false);
+                        $scope.bean.obj_tipousuario.id = old_id;
                     }
                 });
             }
         });
+      
     }]);
 
