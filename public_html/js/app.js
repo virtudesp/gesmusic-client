@@ -149,6 +149,7 @@ var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
 var moduloImportancia = angular.module('importanciaControllers', []);
 var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
+var moduloVia = angular.module('viaControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
 var moduloServicios = angular.module('Services', []);
