@@ -36,6 +36,7 @@ var sisane = angular.module('myApp', [
     'usuarioControllers',
     'tipousuarioControllers',
     'medicamentoControllers',
+    'prioridadControllers',
     'posologiaControllers',
     'viaControllers',
     'importanciaControllers',
@@ -114,6 +115,13 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/tipodocumento/plist/:page?/:rpp?', {templateUrl: 'js/tipodocumento/plist.html', controller: 'TipodocumentoPListController'});
         $routeProvider.when('/tipodocumento/selection/:page?/:rpp?', {templateUrl: 'js/tipodocumento/selection.html', controller: 'TipodocumentoSelectionController'});
         //------------
+        $routeProvider.when('/prioridad/view/:id', {templateUrl: 'js/prioridad/view.html', controller: 'PrioridadViewController'});
+        $routeProvider.when('/prioridad/new/:id?', {templateUrl: 'js/prioridad/new.html', controller: 'PrioridadNewController'});
+        $routeProvider.when('/prioridad/edit/:id', {templateUrl: 'js/prioridad/edit.html', controller: 'PrioridadEditController'});
+        $routeProvider.when('/prioridad/remove/:id', {templateUrl: 'js/prioridad/remove.html', controller: 'PrioridadRemoveController'});
+        $routeProvider.when('/prioridad/plist/:page?/:rpp?', {templateUrl: 'js/prioridad/plist.html', controller: 'PrioridadPListController'});
+        $routeProvider.when('/prioridad/selection/:page?/:rpp?', {templateUrl: 'js/prioridad/selection.html', controller: 'PrioridadSelectionController'});
+        //------------
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
 //-------------
@@ -154,6 +162,7 @@ var moduloPost = angular.module('postControllers', []);
 var moduloPosologia = angular.module('posologiaControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
+var moduloPrioridad = angular.module('prioridadControllers', []);
 var moduloVia = angular.module('viaControllers', []);
 var moduloImportancia = angular.module('importanciaControllers', []);
 var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
