@@ -98,7 +98,7 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/medico/plist/:page?/:rpp?', {templateUrl: 'js/medico/plist.html', controller: 'MedicoPListController'});
         $routeProvider.when('/medico/selection/:page?/:rpp?', {templateUrl: 'js/medico/selection.html', controller: 'MedicoSelectionController'});*/
         //------------
-        $routeProvider.when('/servicio/view/:id', {templateUrl: 'js/servicio/view.html', controller: 'ServicioViewController'});
+         /* $routeProvider.when('/servicio/view/:id', {templateUrl: 'js/servicio/view.html', controller: 'ServicioViewController'});
         $routeProvider.when('/servicio/new/:id?', {templateUrl: 'js/servicio/new.html', controller: 'ServicioNewController'});
         $routeProvider.when('/servicio/edit/:id', {templateUrl: 'js/servicio/edit.html', controller: 'ServicioEditController'});
         $routeProvider.when('/servicio/remove/:id', {templateUrl: 'js/servicio/remove.html', controller: 'ServicioRemoveController'});
@@ -106,7 +106,7 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/servicio/selection/:page?/:rpp?', {templateUrl: 'js/servicio/selection.html', controller: 'ServicioSelectionController'});
         //------------
         
-        /*
+      
 
         $routeProvider.when('/zona/view/:id', {templateUrl: 'js/zona/view.html', controller: 'ZonaViewController'});
         $routeProvider.when('/zona/new/:id?', {templateUrl: 'js/zona/new.html', controller: 'ZonaNewController'});
