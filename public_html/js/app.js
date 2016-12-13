@@ -84,6 +84,13 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/tipousuario/plist/:page?/:rpp?', {templateUrl: 'js/tipousuario/plist.html', controller: 'TipousuarioPListController'});
         $routeProvider.when('/tipousuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});
         //------------
+        $routeProvider.when('/medicamento/view/:id', {templateUrl: 'js/medicamento/view.html', controller: 'MedicamentoViewController'});
+        $routeProvider.when('/medicamento/new/:id?', {templateUrl: 'js/medicamento/new.html', controller: 'MedicamentoNewController'});
+        $routeProvider.when('/medicamento/edit/:id', {templateUrl: 'js/medicamento/edit.html', controller: 'MedicamentoEditController'});
+        $routeProvider.when('/medicamento/remove/:id', {templateUrl: 'js/medicamento/remove.html', controller: 'MedicamentoRemoveController'});
+        $routeProvider.when('/medicamento/plist/:page?/:rpp?', {templateUrl: 'js/medicamento/plist.html', controller: 'MedicamentoPListController'});
+        $routeProvider.when('/medicamento/selection/:page?/:rpp?', {templateUrl: 'js/medicamento/selection.html', controller: 'MedicamentoSelectionController'});
+        //------------
         $routeProvider.when('/medico/view/:id', {templateUrl: 'js/medico/view.html', controller: 'MedicoViewController'});
         $routeProvider.when('/medico/new/:id?', {templateUrl: 'js/medico/new.html', controller: 'MedicoNewController'});
         $routeProvider.when('/medico/edit/:id', {templateUrl: 'js/medico/edit.html', controller: 'MedicoEditController'});
