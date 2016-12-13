@@ -59,6 +59,9 @@ moduloServicios
                         case "nombre":
                             return "Las palabras deben comenzar con mayúsculas";
                             break;
+                        case "palabra":
+                            return "No se pueden introducir números, solo palabras en minúscula";
+                            break;
                         case "codigopostal":
                             return "Se requieren 4 o 5 dígitos";
                             break;
@@ -94,6 +97,9 @@ moduloServicios
                     switch (reg) {
                         case "nombre":
                             return /^([A-Z]{1}[a-zñáéíóúàèò]+[\s]*)+$/;
+                            break;
+                        case "palabra":
+                            return /^([a-z]{1}[a-zñáéíóúàèò]+[\s]*)+$/;
                             break;
                         case "codigopostal":
                             return /^\d{4,5}$/;

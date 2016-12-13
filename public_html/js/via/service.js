@@ -12,7 +12,7 @@ moduloVia.factory('viaService', ['serverService', function (serverService) {
                 return "fa-medkit";
             },
             getObTitle: function () {
-                return "via";
+                return "vía";
             },
             getTitle: function () {
                 return "via";
