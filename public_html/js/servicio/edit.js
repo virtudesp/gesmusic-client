@@ -27,24 +27,19 @@
  */
 
 'use strict';
-
-moduloPosologia.controller('PosologiaEditController', ['$scope', '$routeParams', '$location', 'posologiaService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, posologiaService, serverService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = posologiaService.getFields();
-        $scope.obtitle = posologiaService.getObTitle();
-        $scope.icon = posologiaService.getIcon();
-        $scope.ob = posologiaService.getTitle();
-        $scope.title = "Editando  " + $scope.obtitle;
+moduloServicio.controller('ServicioEditController', ['$scope', '$routeParams', '$location', 'servicioService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, servicioService, serverService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = servicioService.getFields();
+        $scope.obtitle = servicioService.getObTitle();
+        $scope.icon = servicioService.getIcon();
+        $scope.ob = servicioService.getTitle();
+        $scope.title = "Editando un " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
         $scope.error = true;
         $scope.debugging = serverService.debugging();
-        $scope.id = $routeParams.id;
-        //------------specific------------
         $scope.bean = {};
-        $scope.bean.obj_medicamento = {"id": 0};
-        $scope.show_obj_medicamento = true;
-        //---------------------------------
+        $scope.id = $routeParams.id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {
@@ -60,8 +55,7 @@ moduloPosologia.controller('PosologiaEditController', ['$scope', '$routeParams',
             $scope.status = "Error en la recepción de datos del servidor";
         });
         $scope.save = function () {
-            $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
-            $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
+        
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -89,29 +83,5 @@ moduloPosologia.controller('PosologiaEditController', ['$scope', '$routeParams',
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
-            var modalInstance = $uibModal.open({
-                templateUrl: 'js/' + foreignObjectName + '/selection.html',
-                controller: contollerName,
-                size: 'lg'
-            }).result.then(function (modalResult) {
-                $scope.bean[nameForeign].id = modalResult;
-            });
-        };
-        //------------------specific-------------------------------------------
-        $scope.$watch('bean.obj_medicamento.id', function () {
-            if ($scope.bean) {
-                serverService.promise_getOne('medicamento', $scope.bean.obj_medicamento.id).then(function (response) {
-                    var old_id = $scope.bean.obj_medicamento.id;
-                    if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_medicamento.$setValidity('exists', true);
-                        $scope.bean.obj_medicamento = response.data.message;
-                    } else {
-                        $scope.outerForm.obj_medicamento.$setValidity('exists', false);
-                        //$scope.bean.obj_medicamento.id = 0;
-                        $scope.bean.obj_medicamento.id = old_id;
-                    }
-                });
-            }
-        });
+
     }]);

@@ -28,23 +28,19 @@
 
 'use strict';
 
-moduloPosologia.controller('PosologiaEditController', ['$scope', '$routeParams', '$location', 'posologiaService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, posologiaService, serverService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = posologiaService.getFields();
-        $scope.obtitle = posologiaService.getObTitle();
-        $scope.icon = posologiaService.getIcon();
-        $scope.ob = posologiaService.getTitle();
-        $scope.title = "Editando  " + $scope.obtitle;
+moduloImportancia.controller('ImportanciaEditController', ['$scope', '$routeParams', '$location', 'importanciaService', 'serverService', 'postService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, importanciaService, serverService, postService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = importanciaService.getFields();
+        $scope.obtitle = importanciaService.getObTitle();
+        $scope.icon = importanciaService.getIcon();
+        $scope.ob = importanciaService.getTitle();
+        $scope.title = "Editando un " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
         $scope.error = true;
         $scope.debugging = serverService.debugging();
+        $scope.bean = {id: 0};
         $scope.id = $routeParams.id;
-        //------------specific------------
-        $scope.bean = {};
-        $scope.bean.obj_medicamento = {"id": 0};
-        $scope.show_obj_medicamento = true;
-        //---------------------------------
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {
@@ -98,20 +94,5 @@ moduloPosologia.controller('PosologiaEditController', ['$scope', '$routeParams',
                 $scope.bean[nameForeign].id = modalResult;
             });
         };
-        //------------------specific-------------------------------------------
-        $scope.$watch('bean.obj_medicamento.id', function () {
-            if ($scope.bean) {
-                serverService.promise_getOne('medicamento', $scope.bean.obj_medicamento.id).then(function (response) {
-                    var old_id = $scope.bean.obj_medicamento.id;
-                    if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_medicamento.$setValidity('exists', true);
-                        $scope.bean.obj_medicamento = response.data.message;
-                    } else {
-                        $scope.outerForm.obj_medicamento.$setValidity('exists', false);
-                        //$scope.bean.obj_medicamento.id = 0;
-                        $scope.bean.obj_medicamento.id = old_id;
-                    }
-                });
-            }
-        });
+
     }]);

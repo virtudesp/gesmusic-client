@@ -27,24 +27,26 @@
  */
 
 'use strict';
-
-moduloPosologia.controller('PosologiaEditController', ['$scope', '$routeParams', '$location', 'posologiaService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, posologiaService, serverService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = posologiaService.getFields();
-        $scope.obtitle = posologiaService.getObTitle();
-        $scope.icon = posologiaService.getIcon();
-        $scope.ob = posologiaService.getTitle();
-        $scope.title = "Editando  " + $scope.obtitle;
+moduloMedico.controller('MedicoEditController', ['$scope', '$routeParams', '$location', 'medicoService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, medicoService, serverService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = medicoService.getFields();
+        $scope.obtitle = medicoService.getObTitle();
+        $scope.icon = medicoService.getIcon();
+        $scope.ob = medicoService.getTitle();
+        $scope.title = "Editando un " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
         $scope.error = true;
         $scope.debugging = serverService.debugging();
-        $scope.id = $routeParams.id;
-        //------------specific------------
         $scope.bean = {};
-        $scope.bean.obj_medicamento = {"id": 0};
-        $scope.show_obj_medicamento = true;
-        //---------------------------------
+
+        $scope.bean.obj_servicio = {"id": 0};
+        $scope.show_obj_servicio = true;
+
+        $scope.bean.obj_especialidad = {"id": 0};
+        $scope.show_obj_especialidad = true;
+
+        $scope.id = $routeParams.id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {
@@ -60,8 +62,12 @@ moduloPosologia.controller('PosologiaEditController', ['$scope', '$routeParams',
             $scope.status = "Error en la recepción de datos del servidor";
         });
         $scope.save = function () {
-            $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
-            $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
+            if (!$scope.bean.obj_servicio.id > 0) {
+                $scope.bean.obj_servicio.id = null;
+            }
+            if (!$scope.bean.obj_especialidad.id > 0) {
+                $scope.bean.obj_especialidad.id = null;
+            }
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -98,20 +104,37 @@ moduloPosologia.controller('PosologiaEditController', ['$scope', '$routeParams',
                 $scope.bean[nameForeign].id = modalResult;
             });
         };
-        //------------------specific-------------------------------------------
-        $scope.$watch('bean.obj_medicamento.id', function () {
+
+        $scope.$watch('bean.obj_servicio.id', function () {
             if ($scope.bean) {
-                serverService.promise_getOne('medicamento', $scope.bean.obj_medicamento.id).then(function (response) {
-                    var old_id = $scope.bean.obj_medicamento.id;
+                serverService.promise_getOne('servicio', $scope.bean.obj_servicio.id).then(function (response) {
+                    var old_id = $scope.bean.obj_servicio.id;
                     if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_medicamento.$setValidity('exists', true);
-                        $scope.bean.obj_medicamento = response.data.message;
+                        $scope.outerForm.obj_servicio.$setValidity('exists', true);
+                        $scope.bean.obj_servicio = response.data.message;
                     } else {
-                        $scope.outerForm.obj_medicamento.$setValidity('exists', false);
-                        //$scope.bean.obj_medicamento.id = 0;
-                        $scope.bean.obj_medicamento.id = old_id;
+                        $scope.outerForm.obj_servicio.$setValidity('exists', false);
+                        //$scope.bean.obj_servicio.id = 0;
+                        $scope.bean.obj_servicio.id = old_id;
                     }
                 });
             }
         });
+
+        $scope.$watch('bean.obj_especialidad.id', function () {
+            if ($scope.bean) {
+                serverService.promise_getOne('especialidad', $scope.bean.obj_especialidad.id).then(function (response) {
+                    var old_id = $scope.bean.obj_especialidad.id;
+                    if (response.data.message.id != 0) {
+                        $scope.outerForm.obj_especialidad.$setValidity('exists', true);
+                        $scope.bean.obj_especialidad = response.data.message;
+                    } else {
+                        $scope.outerForm.obj_especialidad.$setValidity('exists', false);
+                        //$scope.bean.obj_especialidad.id = 0;
+                        $scope.bean.obj_especialidad.id = old_id;
+                    }
+                });
+            }
+        });
+
     }]);
