@@ -28,8 +28,8 @@
 
 'use strict';
 
-moduloPosologia.controller('PosologiaEditController', ['$scope', '$routeParams', '$location', 'posologiaService', 'serverService', 'postService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, posologiaService, serverService, postService, sharedSpaceService, $filter, $uibModal) {
+moduloPosologia.controller('PosologiaEditController', ['$scope', '$routeParams', '$location', 'posologiaService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, posologiaService, serverService, sharedSpaceService, $filter, $uibModal) {
         $scope.fields = posologiaService.getFields();
         $scope.obtitle = posologiaService.getObTitle();
         $scope.icon = posologiaService.getIcon();
