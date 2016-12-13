@@ -27,8 +27,8 @@
  */
 
 'use strict';
-moduloMedicamento.controller('MedicamentoEditController', ['$scope', '$routeParams', '$location', 'medicamentoService', 'serverService', 'postService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, medicamentoService, serverService, postService, sharedSpaceService, $filter, $uibModal) {
+moduloMedicamento.controller('MedicamentoEditController', ['$scope', '$routeParams', '$location', 'medicamentoService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, medicamentoService, serverService, sharedSpaceService, $filter, $uibModal) {
         $scope.fields = medicamentoService.getFields();
         $scope.obtitle = medicamentoService.getObTitle();
         $scope.icon = medicamentoService.getIcon();
