@@ -209,6 +209,14 @@ moduloServicios
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=set', {params: jsonfile});
                 },
                 //--------
+                date_toDate: function (input) {
+                    var parts = input.split('/');
+                    return new Date(parts[2], parts[1] - 1, parts[0]);
+                },
+                date_toDate2: function (input) {
+                    var parts = input.split('-');
+                    return new Date(parts[0], parts[1] - 1, parts[2]);
+                },
                 array_identificarArray: function (arr) {
                     var newObj = {};
                     for (var property in arr) {
