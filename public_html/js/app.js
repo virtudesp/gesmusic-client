@@ -44,6 +44,7 @@ var sisane = angular.module('myApp', [
     'posologiaControllers',
     'viaControllers',
     'zonaControllers',
+    'tipoControllers',
     //'importanciaControllers',
     //'tipodocumentoControllers',
     //'anticoagulanteControllers',
@@ -141,6 +142,13 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/zona/remove/:id', {templateUrl: 'js/zona/remove.html', controller: 'ZonaRemoveController'});
         $routeProvider.when('/zona/plist/:page?/:rpp?', {templateUrl: 'js/zona/plist.html', controller: 'ZonaPListController'});
         $routeProvider.when('/zona/selection/:page?/:rpp?', {templateUrl: 'js/zona/selection.html', controller: 'ZonaSelectionController'});
+        //------------
+        $routeProvider.when('/tipo/view/:id', {templateUrl: 'js/tipo/view.html', controller: 'TipoViewController'});
+        $routeProvider.when('/tipo/new/:id?', {templateUrl: 'js/tipo/new.html', controller: 'TipoNewController'});
+        $routeProvider.when('/tipo/edit/:id', {templateUrl: 'js/tipo/edit.html', controller: 'TipoEditController'});
+        $routeProvider.when('/tipo/remove/:id', {templateUrl: 'js/tipo/remove.html', controller: 'TipoRemoveController'});
+        $routeProvider.when('/tipo/plist/:page?/:rpp?', {templateUrl: 'js/tipo/plist.html', controller: 'TipoPListController'});
+        $routeProvider.when('/tipo/selection/:page?/:rpp?', {templateUrl: 'js/tipo/selection.html', controller: 'TipoSelectionController'});
 
 //------------
 //        $routeProvider.when('/servicio/view/:id', {templateUrl: 'js/servicio/view.html', controller: 'ServicioViewController'});
@@ -233,6 +241,8 @@ var moduloVia = angular.module('viaControllers', []);
 var moduloTipodiagnostico = angular.module('tipodiagnosticoControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
 var moduloZona = angular.module('zonaControllers', []);
+var moduloTipo = angular.module('tipoControllers', []);
+
 //var moduloMedico = angular.module('medicoControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
