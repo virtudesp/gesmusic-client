@@ -8,7 +8,7 @@ moduloZona.factory('zonaService', ['serverService', function (serverService) {
                 ];
             },
             getIcon: function () {
-                return "fa-flask";
+                return "fa-universal-access";
             },
             getObTitle: function () {
                 return "zona";
