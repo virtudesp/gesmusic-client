@@ -47,7 +47,7 @@ var sisane = angular.module('myApp', [
     'tipoControllers',
     //'importanciaControllers',
     //'tipodocumentoControllers',
-    //'anticoagulanteControllers',
+    'anticoagulanteControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -188,12 +188,12 @@ sisane.config(['$routeProvider', function ($routeProvider) {
 //         $routeProvider.when('/tipodocumento/selection/:page?/:rpp?', {templateUrl: 'js/tipodocumento/selection.html', controller: 'TipodocumentoSelectionController'});
 //      
 //         //------------
-//         $routeProvider.when('/anticoagulante/view/:id', {templateUrl: 'js/anticoagulante/view.html', controller: 'AnticoagulanteViewController'});
-//         $routeProvider.when('/anticoagulante/new/:id?', {templateUrl: 'js/anticoagulante/new.html', controller: 'AnticoagulanteNewController'});
-//         $routeProvider.when('/anticoagulante/edit/:id', {templateUrl: 'js/anticoagulante/edit.html', controller: 'AnticoagulanteEditController'});
-//         $routeProvider.when('/anticoagulante/remove/:id', {templateUrl: 'js/anticoagulante/remove.html', controller: 'AnticoagulanteRemoveController'});
-//         $routeProvider.when('/anticoagulante/plist/:page?/:rpp?', {templateUrl: 'js/anticoagulante/plist.html', controller: 'AnticoagulantePListController'});
-//         $routeProvider.when('/anticoagulante/selection/:page?/:rpp?', {templateUrl: 'js/anticoagulante/selection.html', controller: 'AnticoagulanteSelectionController'});*/
+         $routeProvider.when('/anticoagulante/view/:id', {templateUrl: 'js/anticoagulante/view.html', controller: 'AnticoagulanteViewController'});
+         $routeProvider.when('/anticoagulante/new/:id?', {templateUrl: 'js/anticoagulante/new.html', controller: 'AnticoagulanteNewController'});
+         $routeProvider.when('/anticoagulante/edit/:id', {templateUrl: 'js/anticoagulante/edit.html', controller: 'AnticoagulanteEditController'});
+         $routeProvider.when('/anticoagulante/remove/:id', {templateUrl: 'js/anticoagulante/remove.html', controller: 'AnticoagulanteRemoveController'});
+         $routeProvider.when('/anticoagulante/plist/:page?/:rpp?', {templateUrl: 'js/anticoagulante/plist.html', controller: 'AnticoagulantePListController'});
+         $routeProvider.when('/anticoagulante/selection/:page?/:rpp?', {templateUrl: 'js/anticoagulante/selection.html', controller: 'AnticoagulanteSelectionController'});
 
 
         //------------
@@ -243,6 +243,7 @@ var moduloMedicamento = angular.module('medicamentoControllers', []);
 var moduloZona = angular.module('zonaControllers', []);
 var moduloTipo = angular.module('tipoControllers', []);
 
+var moduloAnticoagulante = angular.module('anticoagulanteControllers', []);
 //var moduloMedico = angular.module('medicoControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);

@@ -32,11 +32,7 @@ THE SOFTWARE.
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
-                    <div class="panel-body" ng-cloak>
-                        <div class="alert alert-success" role="alert" ng-show="debugging">
-                            <h4>Debug:</h4>
-                            {{bean|json}}
-                        </div>                   
+                    <div class="panel-body" ng-cloak>                
                         <form name="outerForm" class="form-horizontal text-left"  ng-show="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->       
