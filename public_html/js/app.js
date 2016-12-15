@@ -45,6 +45,7 @@ var sisane = angular.module('myApp', [
     'viaControllers',
     'zonaControllers',
     'tipoControllers',
+    'especialidadControllers',
     //'importanciaControllers',
     //'tipodocumentoControllers',
     'anticoagulanteControllers',
@@ -188,6 +189,14 @@ sisane.config(['$routeProvider', function ($routeProvider) {
          $routeProvider.when('/anticoagulante/plist/:page?/:rpp?', {templateUrl: 'js/anticoagulante/plist.html', controller: 'AnticoagulantePListController'});
          $routeProvider.when('/anticoagulante/selection/:page?/:rpp?', {templateUrl: 'js/anticoagulante/selection.html', controller: 'AnticoagulanteSelectionController'});
 
+        //------------
+         $routeProvider.when('/especialidad/view/:id', {templateUrl: 'js/especialidad/view.html', controller: 'EspecialidadViewController'});
+         $routeProvider.when('/especialidad/new/:id?', {templateUrl: 'js/especialidad/new.html', controller: 'EspecialidadNewController'});
+         $routeProvider.when('/especialidad/edit/:id', {templateUrl: 'js/especialidad/edit.html', controller: 'EspecialidadEditController'});
+         $routeProvider.when('/especialidad/remove/:id', {templateUrl: 'js/especialidad/remove.html', controller: 'EspecialidadRemoveController'});
+         $routeProvider.when('/especialidad/plist/:page?/:rpp?', {templateUrl: 'js/especialidad/plist.html', controller: 'EspecialidadPListController'});
+         $routeProvider.when('/especialidad/selection/:page?/:rpp?', {templateUrl: 'js/especialidad/selection.html', controller: 'EspecialidadSelectionController'});
+
 
         //------------
 
@@ -235,7 +244,7 @@ var moduloTipodiagnostico = angular.module('tipodiagnosticoControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
 var moduloZona = angular.module('zonaControllers', []);
 var moduloTipo = angular.module('tipoControllers', []);
-
+var moduloEspecialidad = angular.module('especialidadControllers', []);
 var moduloAnticoagulante = angular.module('anticoagulanteControllers', []);
 var moduloDocumento = angular.module('documentoControllers', []);
 //var moduloMedico = angular.module('medicoControllers', []);
