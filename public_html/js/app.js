@@ -49,6 +49,7 @@ var sisane = angular.module('myApp', [
     //'importanciaControllers',
     //'tipodocumentoControllers',
     'anticoagulanteControllers',
+    'servicioControllers',    
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -145,12 +146,12 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/documento/plist/:page?/:rpp?', {templateUrl: 'js/documento/plist.html', controller: 'DocumentoPListController'});
         $routeProvider.when('/documento/selection/:page?/:rpp?', {templateUrl: 'js/documento/selection.html', controller: 'DocumentoSelectionController'});
         //------------
-//        $routeProvider.when('/servicio/view/:id', {templateUrl: 'js/servicio/view.html', controller: 'ServicioViewController'});
-//        $routeProvider.when('/servicio/new/:id?', {templateUrl: 'js/servicio/new.html', controller: 'ServicioNewController'});
-//        $routeProvider.when('/servicio/edit/:id', {templateUrl: 'js/servicio/edit.html', controller: 'ServicioEditController'});
-//        $routeProvider.when('/servicio/remove/:id', {templateUrl: 'js/servicio/remove.html', controller: 'ServicioRemoveController'});
-//        $routeProvider.when('/servicio/plist/:page?/:rpp?', {templateUrl: 'js/servicio/plist.html', controller: 'ServicioPListController'});
-//        $routeProvider.when('/servicio/selection/:page?/:rpp?', {templateUrl: 'js/servicio/selection.html', controller: 'ServicioSelectionController'});
+        $routeProvider.when('/servicio/view/:id', {templateUrl: 'js/servicio/view.html', controller: 'ServicioViewController'});
+        $routeProvider.when('/servicio/new/:id?', {templateUrl: 'js/servicio/new.html', controller: 'ServicioNewController'});
+        $routeProvider.when('/servicio/edit/:id', {templateUrl: 'js/servicio/edit.html', controller: 'ServicioEditController'});
+        $routeProvider.when('/servicio/remove/:id', {templateUrl: 'js/servicio/remove.html', controller: 'ServicioRemoveController'});
+        $routeProvider.when('/servicio/plist/:page?/:rpp?', {templateUrl: 'js/servicio/plist.html', controller: 'ServicioPListController'});
+        $routeProvider.when('/servicio/selection/:page?/:rpp?', {templateUrl: 'js/servicio/selection.html', controller: 'ServicioSelectionController'});
         //------------
 //        $routeProvider.when('/medico/view/:id', {templateUrl: 'js/medico/view.html', controller: 'MedicoViewController'});
 //        $routeProvider.when('/medico/new/:id?', {templateUrl: 'js/medico/new.html', controller: 'MedicoNewController'});
@@ -247,6 +248,8 @@ var moduloTipo = angular.module('tipoControllers', []);
 var moduloEspecialidad = angular.module('especialidadControllers', []);
 var moduloAnticoagulante = angular.module('anticoagulanteControllers', []);
 var moduloDocumento = angular.module('documentoControllers', []);
+var moduloServicio = angular.module('servicioControllers', []);
+
 //var moduloMedico = angular.module('medicoControllers', []);
 //-------------
 var moduloDirectivas = angular.module('Directives', []);

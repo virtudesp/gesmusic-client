@@ -10,7 +10,7 @@ moduloServicio.factory('servicioService', ['serverService', function (serverServ
                 ];
             },
             getIcon: function () {
-                return "fa-service";
+                return "fa-book";
             },
             getObTitle: function () {
                 return "servicio";
