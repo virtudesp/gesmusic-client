@@ -35,19 +35,17 @@ var sisane = angular.module('myApp', [
     'systemControllers',
     'usuarioControllers',
     'tipousuarioControllers',
+    'medicamentoControllers',
+    'medicoControllers',
     'documentoControllers',
     'viaControllers',
     'tipodiagnosticoControllers',
-    //'medicoControllers',
     'posologiaControllers',
-    'medicamentoControllers',
     'prioridadControllers',
     'viaControllers',
     'zonaControllers',
     'tipoControllers',
     'especialidadControllers',
-    //'importanciaControllers',
-    //'tipodocumentoControllers',
     'anticoagulanteControllers',
     'servicioControllers',    
     'ui.bootstrap',
@@ -96,19 +94,34 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/tipousuario/plist/:page?/:rpp?', {templateUrl: 'js/tipousuario/plist.html', controller: 'TipousuarioPListController'});
         $routeProvider.when('/tipousuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});
         //------------
-        $routeProvider.when('/via/view/:id', {templateUrl: 'js/via/view.html', controller: 'ViaViewController'});
-        $routeProvider.when('/via/new/:id?', {templateUrl: 'js/via/new.html', controller: 'ViaNewController'});
-        $routeProvider.when('/via/edit/:id', {templateUrl: 'js/via/edit.html', controller: 'ViaEditController'});
-        $routeProvider.when('/via/remove/:id', {templateUrl: 'js/via/remove.html', controller: 'ViaRemoveController'});
-        $routeProvider.when('/via/plist/:page?/:rpp?', {templateUrl: 'js/via/plist.html', controller: 'ViaPListController'});
-        $routeProvider.when('/via/selection/:page?/:rpp?', {templateUrl: 'js/via/selection.html', controller: 'ViaSelectionController'});
-        //------------
         $routeProvider.when('/medicamento/view/:id', {templateUrl: 'js/medicamento/view.html', controller: 'MedicamentoViewController'});
         $routeProvider.when('/medicamento/new/:id?', {templateUrl: 'js/medicamento/new.html', controller: 'MedicamentoNewController'});
         $routeProvider.when('/medicamento/edit/:id', {templateUrl: 'js/medicamento/edit.html', controller: 'MedicamentoEditController'});
         $routeProvider.when('/medicamento/remove/:id', {templateUrl: 'js/medicamento/remove.html', controller: 'MedicamentoRemoveController'});
         $routeProvider.when('/medicamento/plist/:page?/:rpp?', {templateUrl: 'js/medicamento/plist.html', controller: 'MedicamentoPListController'});
         $routeProvider.when('/medicamento/selection/:page?/:rpp?', {templateUrl: 'js/medicamento/selection.html', controller: 'MedicamentoSelectionController'});
+        //------------
+        $routeProvider.when('/medico/view/:id', {templateUrl: 'js/medico/view.html', controller: 'MedicoViewController'});
+        $routeProvider.when('/medico/new/:id?', {templateUrl: 'js/medico/new.html', controller: 'MedicoNewController'});
+        $routeProvider.when('/medico/edit/:id', {templateUrl: 'js/medico/edit.html', controller: 'MedicoEditController'});
+        $routeProvider.when('/medico/remove/:id', {templateUrl: 'js/medico/remove.html', controller: 'MedicoRemoveController'});
+        $routeProvider.when('/medico/plist/:page?/:rpp?', {templateUrl: 'js/medico/plist.html', controller: 'MedicoPListController'});
+        $routeProvider.when('/medico/selection/:page?/:rpp?', {templateUrl: 'js/medico/selection.html', controller: 'MedicoSelectionController'});
+        //------------
+        
+        $routeProvider.when('/zona/view/:id', {templateUrl: 'js/zona/view.html', controller: 'ZonaViewController'});
+        $routeProvider.when('/zona/new/:id?', {templateUrl: 'js/zona/new.html', controller: 'ZonaNewController'});
+        $routeProvider.when('/zona/edit/:id', {templateUrl: 'js/zona/edit.html', controller: 'ZonaEditController'});
+        $routeProvider.when('/zona/remove/:id', {templateUrl: 'js/zona/remove.html', controller: 'ZonaRemoveController'});
+        $routeProvider.when('/zona/plist/:page?/:rpp?', {templateUrl: 'js/zona/plist.html', controller: 'ZonaPListController'});
+        $routeProvider.when('/zona/selection/:page?/:rpp?', {templateUrl: 'js/zona/selection.html', controller: 'ZonaSelectionController'});
+
+        $routeProvider.when('/via/view/:id', {templateUrl: 'js/via/view.html', controller: 'ViaViewController'});
+        $routeProvider.when('/via/new/:id?', {templateUrl: 'js/via/new.html', controller: 'ViaNewController'});
+        $routeProvider.when('/via/edit/:id', {templateUrl: 'js/via/edit.html', controller: 'ViaEditController'});
+        $routeProvider.when('/via/remove/:id', {templateUrl: 'js/via/remove.html', controller: 'ViaRemoveController'});
+        $routeProvider.when('/via/plist/:page?/:rpp?', {templateUrl: 'js/via/plist.html', controller: 'ViaPListController'});
+        $routeProvider.when('/via/selection/:page?/:rpp?', {templateUrl: 'js/via/selection.html', controller: 'ViaSelectionController'});
         //------------
         $routeProvider.when('/prioridad/view/:id', {templateUrl: 'js/prioridad/view.html', controller: 'PrioridadViewController'});
         $routeProvider.when('/prioridad/new/:id?', {templateUrl: 'js/prioridad/new.html', controller: 'PrioridadNewController'});
@@ -123,13 +136,6 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/tipodiagnostico/remove/:id', {templateUrl: 'js/tipodiagnostico/remove.html', controller: 'TipodiagnosticoRemoveController'});
         $routeProvider.when('/tipodiagnostico/plist/:page?/:rpp?', {templateUrl: 'js/tipodiagnostico/plist.html', controller: 'TipodiagnosticoPListController'});
         $routeProvider.when('/tipodiagnostico/selection/:page?/:rpp?', {templateUrl: 'js/tipodiagnostico/selection.html', controller: 'TipodiagnosticoSelectionController'});
-        //------------
-        $routeProvider.when('/zona/view/:id', {templateUrl: 'js/zona/view.html', controller: 'ZonaViewController'});
-        $routeProvider.when('/zona/new/:id?', {templateUrl: 'js/zona/new.html', controller: 'ZonaNewController'});
-        $routeProvider.when('/zona/edit/:id', {templateUrl: 'js/zona/edit.html', controller: 'ZonaEditController'});
-        $routeProvider.when('/zona/remove/:id', {templateUrl: 'js/zona/remove.html', controller: 'ZonaRemoveController'});
-        $routeProvider.when('/zona/plist/:page?/:rpp?', {templateUrl: 'js/zona/plist.html', controller: 'ZonaPListController'});
-        $routeProvider.when('/zona/selection/:page?/:rpp?', {templateUrl: 'js/zona/selection.html', controller: 'ZonaSelectionController'});
         //------------
         $routeProvider.when('/tipo/view/:id', {templateUrl: 'js/tipo/view.html', controller: 'TipoViewController'});
         $routeProvider.when('/tipo/new/:id?', {templateUrl: 'js/tipo/new.html', controller: 'TipoNewController'});
@@ -152,37 +158,8 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/servicio/remove/:id', {templateUrl: 'js/servicio/remove.html', controller: 'ServicioRemoveController'});
         $routeProvider.when('/servicio/plist/:page?/:rpp?', {templateUrl: 'js/servicio/plist.html', controller: 'ServicioPListController'});
         $routeProvider.when('/servicio/selection/:page?/:rpp?', {templateUrl: 'js/servicio/selection.html', controller: 'ServicioSelectionController'});
+       
         //------------
-//        $routeProvider.when('/medico/view/:id', {templateUrl: 'js/medico/view.html', controller: 'MedicoViewController'});
-//        $routeProvider.when('/medico/new/:id?', {templateUrl: 'js/medico/new.html', controller: 'MedicoNewController'});
-//        $routeProvider.when('/medico/edit/:id', {templateUrl: 'js/medico/edit.html', controller: 'MedicoEditController'});
-//        $routeProvider.when('/medico/remove/:id', {templateUrl: 'js/medico/remove.html', controller: 'MedicoRemoveController'});
-//        $routeProvider.when('/medico/plist/:page?/:rpp?', {templateUrl: 'js/medico/plist.html', controller: 'MedicoPListController'});
-//        $routeProvider.when('/medico/selection/:page?/:rpp?', {templateUrl: 'js/medico/selection.html', controller: 'MedicoSelectionController'});
-        //----------------
-//        $routeProvider.when('/zona/view/:id', {templateUrl: 'js/zona/view.html', controller: 'ZonaViewController'});
-//        $routeProvider.when('/zona/new/:id?', {templateUrl: 'js/zona/new.html', controller: 'ZonaNewController'});
-//        $routeProvider.when('/zona/edit/:id', {templateUrl: 'js/zona/edit.html', controller: 'ZonaEditController'});
-//        $routeProvider.when('/zona/remove/:id', {templateUrl: 'js/zona/remove.html', controller: 'ZonaRemoveController'});
-//        $routeProvider.when('/zona/plist/:page?/:rpp?', {templateUrl: 'js/zona/plist.html', controller: 'ZonaPListController'});
-//        $routeProvider.when('/zona/selection/:page?/:rpp?', {templateUrl: 'js/zona/selection.html', controller: 'ZonaSelectionController'});
-//
-        //------------
-//         $routeProvider.when('/importancia/view/:id', {templateUrl: 'js/importancia/view.html', controller: 'ImportanciaViewController'});
-//         $routeProvider.when('/importancia/new/:id?', {templateUrl: 'js/importancia/new.html', controller: 'ImportanciaNewController'});
-//         $routeProvider.when('/importancia/edit/:id', {templateUrl: 'js/importancia/edit.html', controller: 'ImportanciaEditController'});
-//         $routeProvider.when('/importancia/remove/:id', {templateUrl: 'js/importancia/remove.html', controller: 'ImportanciaRemoveController'});
-//         $routeProvider.when('/importancia/plist/:page?/:rpp?', {templateUrl: 'js/importancia/plist.html', controller: 'ImportanciaPListController'});
-//         $routeProvider.when('/importancia/selection/:page?/:rpp?', {templateUrl: 'js/importancia/selection.html', controller: 'ImportanciaSelectionController'});
-//         //------------
-//         $routeProvider.when('/tipodocumento/view/:id', {templateUrl: 'js/tipodocumento/view.html', controller: 'TipodocumentoViewController'});
-//         $routeProvider.when('/tipodocumento/new/:id?', {templateUrl: 'js/tipodocumento/new.html', controller: 'TipodocumentoNewController'});
-//         $routeProvider.when('/tipodocumento/edit/:id', {templateUrl: 'js/tipodocumento/edit.html', controller: 'TipodocumentoEditController'});
-//         $routeProvider.when('/tipodocumento/remove/:id', {templateUrl: 'js/tipodocumento/remove.html', controller: 'TipodocumentoRemoveController'});
-//         $routeProvider.when('/tipodocumento/plist/:page?/:rpp?', {templateUrl: 'js/tipodocumento/plist.html', controller: 'TipodocumentoPListController'});
-//         $routeProvider.when('/tipodocumento/selection/:page?/:rpp?', {templateUrl: 'js/tipodocumento/selection.html', controller: 'TipodocumentoSelectionController'});
-//
-//         //------------
          $routeProvider.when('/anticoagulante/view/:id', {templateUrl: 'js/anticoagulante/view.html', controller: 'AnticoagulanteViewController'});
          $routeProvider.when('/anticoagulante/new/:id?', {templateUrl: 'js/anticoagulante/new.html', controller: 'AnticoagulanteNewController'});
          $routeProvider.when('/anticoagulante/edit/:id', {templateUrl: 'js/anticoagulante/edit.html', controller: 'AnticoagulanteEditController'});
@@ -243,6 +220,7 @@ var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloVia = angular.module('viaControllers', []);
 var moduloTipodiagnostico = angular.module('tipodiagnosticoControllers', []);
 var moduloMedicamento = angular.module('medicamentoControllers', []);
+var moduloMedico = angular.module('medicoControllers', []);
 var moduloZona = angular.module('zonaControllers', []);
 var moduloTipo = angular.module('tipoControllers', []);
 var moduloEspecialidad = angular.module('especialidadControllers', []);

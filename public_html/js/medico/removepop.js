@@ -34,7 +34,7 @@ moduloMedico.controller('MedicoRemovepopController', ['$scope', '$routeParams', 
         $scope.obtitle = medicoService.getObTitle();
         $scope.icon = medicoService.getIcon();
         $scope.ob = medicoService.getTitle();
-        $scope.title = "Borrado de " + $scope.obtitle;
+        $scope.title = "Borrado de un " + $scope.obtitle;
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

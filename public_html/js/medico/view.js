@@ -34,7 +34,7 @@ moduloMedico.controller('MedicoViewController', ['$scope', '$routeParams', 'serv
         $scope.obtitle = medicoService.getObTitle();
         $scope.icon = medicoService.getIcon();
         $scope.ob = medicoService.getTitle();
-        $scope.title = "Vista de " + $scope.obtitle;
+        $scope.title = "Vista de un " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;
         $scope.debugging=serverService.debugging();

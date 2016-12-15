@@ -33,7 +33,7 @@ moduloMedico.controller('MedicoSelectionController', ['$scope', '$uibModalInstan
         $scope.fields = medicoService.getFields();
         $scope.obtitle = medicoService.getObTitle();
         $scope.icon = medicoService.getIcon();
-        $scope.title = "Selección de " + $scope.obtitle;
+        $scope.title = "Selección de un " + $scope.obtitle;
         $scope.ob = medicoService.getTitle();
         $scope.op = "selection";
         $scope.numpage = 1;
