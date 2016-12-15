@@ -48,7 +48,8 @@ var sisane = angular.module('myApp', [
     'especialidadControllers',
     'anticoagulanteControllers',
     'servicioControllers', 
-    'pacienteControllers', 
+    'pacienteControllers',
+    'tipomuestraControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -187,6 +188,15 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/paciente/selection/:page?/:rpp?', {templateUrl: 'js/paciente/selection.html', controller: 'PacienteSelectionController'});
 
         //------------
+        
+        $routeProvider.when('/tipomuestra/view/:id', {templateUrl: 'js/tipomuestra/view.html', controller: 'TipomuestraViewController'});
+        $routeProvider.when('/tipomuestra/new/:id?', {templateUrl: 'js/tipomuestra/new.html', controller: 'TipomuestraNewController'});
+        $routeProvider.when('/tipomuestra/edit/:id', {templateUrl: 'js/tipomuestra/edit.html', controller: 'TipomuestraEditController'});
+        $routeProvider.when('/tipomuestra/remove/:id', {templateUrl: 'js/tipomuestra/remove.html', controller: 'TipomuestraRemoveController'});
+        $routeProvider.when('/tipomuestra/plist/:page?/:rpp?', {templateUrl: 'js/tipomuestra/plist.html', controller: 'TipomuestraPListController'});
+        $routeProvider.when('/tipomuestra/selection/:page?/:rpp?', {templateUrl: 'js/tipomuestra/selection.html', controller: 'TipomuestraSelectionController'});
+        
+        //------------
 
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
@@ -238,6 +248,7 @@ var moduloAnticoagulante = angular.module('anticoagulanteControllers', []);
 var moduloDocumento = angular.module('documentoControllers', []);
 var moduloServicio = angular.module('servicioControllers', []);
 var moduloPaciente = angular.module('pacienteControllers', []);
+var moduloTipomuestra = angular.module('tipomuestraControllers', []);
 
 //var moduloMedico = angular.module('medicoControllers', []);
 //-------------
