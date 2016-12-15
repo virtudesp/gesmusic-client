@@ -47,7 +47,8 @@ var sisane = angular.module('myApp', [
     'tipoControllers',
     'especialidadControllers',
     'anticoagulanteControllers',
-    'servicioControllers',    
+    'servicioControllers', 
+    'pacienteControllers', 
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -177,6 +178,15 @@ sisane.config(['$routeProvider', function ($routeProvider) {
 
 
         //------------
+        
+        $routeProvider.when('/paciente/view/:id', {templateUrl: 'js/paciente/view.html', controller: 'PacienteViewController'});
+        $routeProvider.when('/paciente/new/:id?', {templateUrl: 'js/paciente/new.html', controller: 'PacienteNewController'});
+        $routeProvider.when('/paciente/edit/:id', {templateUrl: 'js/paciente/edit.html', controller: 'PacienteEditController'});
+        $routeProvider.when('/paciente/remove/:id', {templateUrl: 'js/paciente/remove.html', controller: 'PacienteRemoveController'});
+        $routeProvider.when('/paciente/plist/:page?/:rpp?', {templateUrl: 'js/paciente/plist.html', controller: 'PacientePListController'});
+        $routeProvider.when('/paciente/selection/:page?/:rpp?', {templateUrl: 'js/paciente/selection.html', controller: 'PacienteSelectionController'});
+
+        //------------
 
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
@@ -227,6 +237,7 @@ var moduloEspecialidad = angular.module('especialidadControllers', []);
 var moduloAnticoagulante = angular.module('anticoagulanteControllers', []);
 var moduloDocumento = angular.module('documentoControllers', []);
 var moduloServicio = angular.module('servicioControllers', []);
+var moduloPaciente = angular.module('pacienteControllers', []);
 
 //var moduloMedico = angular.module('medicoControllers', []);
 //-------------
