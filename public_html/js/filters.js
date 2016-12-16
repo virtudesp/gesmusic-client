@@ -77,9 +77,9 @@ moduloFiltros
             };
         })
         .filter('breakFilter', function () {
-            return function (text) {
-                if (text !== undefined)
-                    return text.replace(/\n/g, '<br />');
+            return function (text) {  
+                if (typeof text == 'string')
+                    return text.replace(/\n/g, '<br />');     
             };
         });
 ;
