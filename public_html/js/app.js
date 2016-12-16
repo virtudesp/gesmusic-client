@@ -54,6 +54,7 @@ var sisane = angular.module('myApp', [
     'especialidadControllers',
     'servicioControllers',
     'pacienteControllers',
+    'zonaimagenControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -239,6 +240,16 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/tipomuestra/selection/:page?/:rpp?', {templateUrl: 'js/tipomuestra/selection.html', controller: 'TipomuestraSelectionController'});
 
         //------------
+        
+        $routeProvider.when('/zonaimagen/view/:id', {templateUrl: 'js/zonaimagen/view.html', controller: 'ZonaimagenViewController'});
+        $routeProvider.when('/zonaimagen/new/:id?', {templateUrl: 'js/zonaimagen/new.html', controller: 'ZonaimagenNewController'});
+        $routeProvider.when('/zonaimagen/edit/:id', {templateUrl: 'js/zonaimagen/edit.html', controller: 'ZonaimagenEditController'});
+        $routeProvider.when('/zonaimagen/remove/:id', {templateUrl: 'js/zonaimagen/remove.html', controller: 'ZonaimagenRemoveController'});
+        $routeProvider.when('/zonaimagen/plist/:page?/:rpp?', {templateUrl: 'js/zonaimagen/plist.html', controller: 'ZonaimagenPListController'});
+        $routeProvider.when('/zonaimagen/selection/:page?/:rpp?', {templateUrl: 'js/zonaimagen/selection.html', controller: 'ZonaimagenSelectionController'});
+
+        //------------
+        
 
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
@@ -296,6 +307,7 @@ var moduloServicio = angular.module('servicioControllers', []);
 var moduloPaciente = angular.module('pacienteControllers', []);
 var moduloTipomuestra = angular.module('tipomuestraControllers', []);
 var moduloEpisodio = angular.module('episodioControllers', []);
+var moduloZonaimagen = angular.module('zonaimagenControllers', []);
 
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
