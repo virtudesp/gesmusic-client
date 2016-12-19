@@ -43,6 +43,7 @@ moduloFiltros
                 return input[0] + ':' + input[1];
             };
         })
+        
         .filter('clipString', function ($filter)
         {
             return function (input)
@@ -60,6 +61,25 @@ moduloFiltros
 
             };
         })
+        .filter('clipString2', function ($filter)
+        {
+            return function (input)
+            {
+                if (input == null) {
+                    return "";
+                }
+
+                if (input.length > 50) {
+                    return input.substr(0, 25).trim() + " ...";
+
+                } else {
+                    return input;
+                }
+
+            };
+        })
+        
+        
         .filter('booleanizate', function ($filter)
         {
             return function (input)

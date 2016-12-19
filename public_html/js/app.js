@@ -54,6 +54,7 @@ var sisane = angular.module('myApp', [
     'especialidadControllers',
     'servicioControllers',
     'pacienteControllers',
+    'diagnosticoControllers',
     'zonaimagenControllers',
     'ui.bootstrap',
     'ngSanitize'
@@ -249,7 +250,14 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/zonaimagen/selection/:page?/:rpp?', {templateUrl: 'js/zonaimagen/selection.html', controller: 'ZonaimagenSelectionController'});
 
         //------------
-        
+        $routeProvider.when('/diagnostico/view/:id', {templateUrl: 'js/diagnostico/view.html', controller: 'DiagnosticoViewController'});
+        $routeProvider.when('/diagnostico/new/:id?', {templateUrl: 'js/diagnostico/new.html', controller: 'DiagnosticoNewController'});
+        $routeProvider.when('/diagnostico/edit/:id', {templateUrl: 'js/diagnostico/edit.html', controller: 'DiagnosticoEditController'});
+        $routeProvider.when('/diagnostico/remove/:id', {templateUrl: 'js/diagnostico/remove.html', controller: 'DiagnosticoRemoveController'});
+        $routeProvider.when('/diagnostico/plist/:page?/:rpp?', {templateUrl: 'js/diagnostico/plist.html', controller: 'DiagnosticoPListController'});
+        $routeProvider.when('/diagnostico/selection/:page?/:rpp?', {templateUrl: 'js/diagnostico/selection.html', controller: 'DiagnosticoSelectionController'});
+
+        //------------        
 
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
@@ -308,6 +316,7 @@ var moduloPaciente = angular.module('pacienteControllers', []);
 var moduloTipomuestra = angular.module('tipomuestraControllers', []);
 var moduloEpisodio = angular.module('episodioControllers', []);
 var moduloZonaimagen = angular.module('zonaimagenControllers', []);
+var moduloDiagnostico = angular.module('diagnosticoControllers', []);
 
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
