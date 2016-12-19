@@ -56,6 +56,7 @@ var sisane = angular.module('myApp', [
     'pacienteControllers',
     'diagnosticoControllers',
     'zonaimagenControllers',
+    'tecnicaControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -258,6 +259,15 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/diagnostico/selection/:page?/:rpp?', {templateUrl: 'js/diagnostico/selection.html', controller: 'DiagnosticoSelectionController'});
 
         //------------        
+        
+        $routeProvider.when('/tecnica/view/:id', {templateUrl: 'js/tecnica/view.html', controller: 'TecnicaViewController'});
+        $routeProvider.when('/tecnica/new/:id?', {templateUrl: 'js/tecnica/new.html', controller: 'TecnicaNewController'});
+        $routeProvider.when('/tecnica/edit/:id', {templateUrl: 'js/tecnica/edit.html', controller: 'TecnicaEditController'});
+        $routeProvider.when('/tecnica/remove/:id', {templateUrl: 'js/tecnica/remove.html', controller: 'TecnicaRemoveController'});
+        $routeProvider.when('/tecnica/plist/:page?/:rpp?', {templateUrl: 'js/tecnica/plist.html', controller: 'TecnicaPListController'});
+        $routeProvider.when('/tecnica/selection/:page?/:rpp?', {templateUrl: 'js/tecnica/selection.html', controller: 'TecnicaSelectionController'});
+
+        //------------
 
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
@@ -317,6 +327,7 @@ var moduloTipomuestra = angular.module('tipomuestraControllers', []);
 var moduloEpisodio = angular.module('episodioControllers', []);
 var moduloZonaimagen = angular.module('zonaimagenControllers', []);
 var moduloDiagnostico = angular.module('diagnosticoControllers', []);
+var moduloTecnica = angular.module('tecnicaControllers', []);
 
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
