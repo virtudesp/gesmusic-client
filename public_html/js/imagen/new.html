@@ -122,10 +122,10 @@ THE SOFTWARE.
                                                              outerForm.obj_tecnica.$error.exists ||
                                                              outerForm.obj_tecnica.$error.validatemin)
                                                              && !outerForm.obj_tecnica.$pristine}">
-                                    <label class="col-sm-2 control-label" for="obj_tecnica">Tipo de tecnica:</label>
+                                    <label class="col-sm-2 control-label" for="obj_tecnica">Técnica:</label>
                                     <div class="control col-sm-3">
                                         <div class="input-group foreign" id="obj_tecnica_group">
-                                            <span class="input-group-addon" id="obj_tecnica_button" ng-click="chooseOne('obj_tecnica', 'tecnica', 'MedicamentoSelectionController')">
+                                            <span class="input-group-addon" id="obj_tecnica_button" ng-click="chooseOne('obj_tecnica', 'tecnica', 'TecnicaSelectionController')">
                                                 <span class="glyphicon glyphicon-search">
                                                 </span>
                                             </span>
@@ -151,7 +151,41 @@ THE SOFTWARE.
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
-
+                                <div class="form-group"
+                                     ng-show="show_obj_prueba && (f.name == 'obj_prueba')"
+                                     ng-class="{'has-error': (outerForm.obj_prueba.$error.required ||
+                                                             outerForm.obj_prueba.$error.exists ||
+                                                             outerForm.obj_prueba.$error.validatemin)
+                                                             && !outerForm.obj_prueba.$pristine}">
+                                    <label class="col-sm-2 control-label" for="obj_prueba">Prueba:</label>
+                                    <div class="control col-sm-3">
+                                        <div class="input-group foreign" id="obj_prueba_group">
+                                            <span class="input-group-addon" id="obj_prueba_button" ng-click="chooseOne('obj_prueba', 'prueba', 'PruebaSelectionController')">
+                                                <span class="glyphicon glyphicon-search">
+                                                </span>
+                                            </span>
+                                            <input type="text"
+                                                   ng-model-options="{debounce: 1000}"
+                                                   ng-change="obj_prueba_change"
+                                                   ng-model="bean.obj_prueba.id"
+                                                   validatemin="1"
+                                                   ng-required="true"
+                                                   aria-describedby="basic-addon2"
+                                                   class="form-control"
+                                                   id="obj_productype"
+                                                   name="obj_prueba"
+                                                   size="5"
+                                                   maxlength="5">
+                                            <span class="input-group-addon">
+                                                <span>{{bean.obj_prueba.descripcion}}</span>
+                                            </span>
+                                        </div>
+                                        <span class="help-block" ng-show="!outerForm.obj_prueba.$pristine && outerForm.obj_prueba.$error.required">El tipo de prueba es obligatorio</span>
+                                        <span class="help-block" ng-show="!outerForm.obj_prueba.$pristine && outerForm.obj_prueba.$error.validatemin">Debes elegir un tipo de prueba</span>
+                                        <span class="help-block" ng-show="!outerForm.obj_prueba.$pristine && outerForm.obj_prueba.$error.exists">El tipo de prueba no existe</span>
+                                    </div>
+                                </div>
+                                <!------------------------------------------------->
                             </div>
                             <div class="control-group text-right">
                                 <div class="controls">

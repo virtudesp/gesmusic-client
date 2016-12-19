@@ -40,17 +40,29 @@ moduloImagen.controller('ImagenNewController', ['$scope', '$routeParams', '$loca
         $scope.debugging = serverService.debugging();
         $scope.bean = {id: 0};
         $scope.bean.obj_tecnica = {"id": 0};
+        $scope.bean.obj_prueba = {"id": 0};
         //----
         if ($routeParams.id_tecnica) {
             serverService.promise_getOne('tecnica', $routeParams.id_tecnica).then(function (response) {
                 if (response.data.message.id != 0) {
                     $scope.bean.obj_tecnica = response.data.message;
                     $scope.show_obj_tecnica = false;
-                    $scope.title = "Nuevo imagen del usuario " + $scope.bean.obj_tecnica.description;
+                    $scope.title = "Nueva imagen";
                 }
             });
         } else {
             $scope.show_obj_tecnica = true;
+        }
+        if ($routeParams.id_prueba) {
+            serverService.promise_getOne('prueba', $routeParams.id_prueba).then(function (response) {
+                if (response.data.message.id != 0) {
+                    $scope.bean.obj_prueba = response.data.message;
+                    $scope.show_obj_prueba = false;
+                    $scope.title = "Nueva imagen";
+                }
+            });
+        } else {
+            $scope.show_obj_prueba = true;
         }
         $scope.save = function () {
             $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
@@ -101,6 +113,20 @@ moduloImagen.controller('ImagenNewController', ['$scope', '$routeParams', '$loca
                     } else {
                         $scope.outerForm.obj_tecnica.$setValidity('exists', false);
                         $scope.bean.obj_tecnica.id = old_id;
+                    }
+                });
+            }
+        });
+        $scope.$watch('bean.obj_prueba.id', function () {
+            if ($scope.bean) {
+                serverService.promise_getOne('prueba', $scope.bean.obj_prueba.id).then(function (response) {
+                    var old_id = $scope.bean.obj_prueba.id;
+                    $scope.bean.obj_prueba = response.data.message;
+                    if (response.data.message.id != 0) {
+                        $scope.outerForm.obj_prueba.$setValidity('exists', true);
+                    } else {
+                        $scope.outerForm.obj_prueba.$setValidity('exists', false);
+                        $scope.bean.obj_prueba.id = old_id;
                     }
                 });
             }
