@@ -43,11 +43,7 @@ moduloPrueba.controller('PruebaEditController', ['$scope', '$routeParams', '$loc
         //------------specific------------
         $scope.bean = {};
         $scope.bean.obj_episodio = {"id": 0};
-        $scope.bean.obj_imagen = {"id": 0};
-        $scope.bean.obj_analitica = {"id": 0};
         $scope.show_obj_episodio = true;
-        $scope.show_obj_imagen = true;
-        $scope.show_obj_analitica = true;
         //---------------------------------
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
@@ -120,38 +116,6 @@ moduloPrueba.controller('PruebaEditController', ['$scope', '$routeParams', '$loc
                 });
             }
         });
-        $scope.$watch('bean.obj_imagen.id', function () {
-            if ($scope.bean) {
-                serverService.promise_getOne('imagen', $scope.bean.obj_imagen.id).then(function (response) {
-                    var old_id = $scope.bean.obj_imagen.id;
-                    if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_imagen.$setValidity('exists', true);
-                        $scope.bean.obj_imagen = response.data.message;
-                    } else {
-                        $scope.outerForm.obj_imagen.$setValidity('exists', false);
-                        //$scope.bean.obj_imagen.id = 0;
-                        $scope.bean.obj_imagen.id = old_id;
-                    }
-                });
-            }
-        });
-        $scope.$watch('bean.obj_analitica.id', function () {
-            if ($scope.bean) {
-                serverService.promise_getOne('analitica', $scope.bean.obj_analitica.id).then(function (response) {
-                    var old_id = $scope.bean.obj_analitica.id;
-                    if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_analitica.$setValidity('exists', true);
-                        $scope.bean.obj_analitica = response.data.message;
-                    } else {
-                        $scope.outerForm.obj_analitica.$setValidity('exists', false);
-                        //$scope.bean.obj_analitica.id = 0;
-                        $scope.bean.obj_analitica.id = old_id;
-                    }
-                });
-            }
-        });
-
-
         $scope.dateOptions = {
             formatYear: 'yyyy',
             startingDay: 1

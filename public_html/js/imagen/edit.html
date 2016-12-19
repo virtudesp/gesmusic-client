@@ -83,9 +83,9 @@ THE SOFTWARE.
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div class="form-group"   
+                                <div class="form-group"
                                      ng-show="f.name == 'fecha'"
-                                     id="fecha-group" 
+                                     id="fecha-group"
                                      ng-class="{'has-error': (outerForm.fecha.$error.required && !outerForm.fecha.$pristine) ||
                                                              (!bean.fecha && !outerForm.fecha.$pristine)}">
                                     <label class="col-sm-2 control-label" for="fecha">
@@ -94,21 +94,21 @@ THE SOFTWARE.
                                     </label>
                                     <div class="control col-sm-3">
                                         <div class="input-group date" id="fecha_group">
-                                            <input type="text" 
-                                                   class="form-control" 
+                                            <input type="text"
+                                                   class="form-control"
                                                    placeholder="{{bean.fecha| date:'fullDate' }}"
-                                                   uib-datepicker-popup="dd/MM/yyyy" 
-                                                   ng-model="bean.fecha" 
-                                                   is-open="popup1.opened" 
-                                                   datepicker-options="dateOptions" 
-                                                   ng-required="true" 
+                                                   uib-datepicker-popup="dd/MM/yyyy"
+                                                   ng-model="bean.fecha"
+                                                   is-open="popup1.opened"
+                                                   datepicker-options="dateOptions"
+                                                   ng-required="true"
                                                    close-text="Cerrar"
                                                    id="fecha"
-                                                   name="fecha"                                      
-                                                   />                               
+                                                   name="fecha"
+                                                   />
                                             <span class="input-group-addon" ng-click="open1()">
                                                 <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>                                                                                    
+                                            </span>
                                         </div>
                                         <span class="help-block" ng-show="!outerForm.fecha.$pristine && outerForm.fecha.$error.required">El campo fecha de creación es obligatorio</span>
 
@@ -157,7 +157,7 @@ THE SOFTWARE.
                                                              outerForm.obj_prueba.$error.exists ||
                                                              outerForm.obj_prueba.$error.validatemin)}">
                                     <label class="col-sm-2 control-label" for="obj_prueba">Tipo de prueba:</label>
-                                    <div class="control col-sm-3">
+                                    <div class="control col-sm-5">
                                         <div class="input-group foreign" id="obj_prueba_group">
                                             <span class="input-group-addon" id="obj_prueba_button" ng-click="chooseOne('obj_prueba', 'prueba', 'PruebaSelectionController')">
                                                 <span class="glyphicon glyphicon-search">
@@ -165,18 +165,17 @@ THE SOFTWARE.
                                             </span>
                                             <input type="text"
                                                    ng-model-options="{debounce: 1000}"
-                                                   ng-change="obj_prueba_change"
                                                    ng-model="bean.obj_prueba.id"
                                                    validatemin="1"
                                                    ng-required="true"
                                                    aria-describedby="basic-addon2"
                                                    class="form-control"
-                                                   id="obj_productype"
+                                                   id="obj_prueba"
                                                    name="obj_prueba"
                                                    size="5"
                                                    maxlength="5">
                                             <span class="input-group-addon">
-                                                <span>{{bean.obj_prueba.descripcion}}</span>
+                                                <span>{{bean.obj_prueba.informe|clipString}}</span>
                                             </span>
                                         </div>
                                         <span class="help-block" ng-show="outerForm.obj_prueba.$error.required">El tipo de prueba es obligatorio</span>
@@ -189,7 +188,7 @@ THE SOFTWARE.
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de posologia</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de imagen</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>
