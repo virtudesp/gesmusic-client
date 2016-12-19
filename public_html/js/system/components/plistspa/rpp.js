@@ -8,7 +8,7 @@ moduloDirectivas.directive('plistrppspa', function () {
 });
 moduloSistema.controller('plistrppspaController', ['$scope', 'serverService', '$rootScope', function ($scope, serverService, $rootScope) {
         $scope.getUrlFromRpp = function (rpp) {
-            return "#/" + serverService.getUrlFromParams($scope.$parent.ob, $scope.$parent.op, $scope.$parent.numpage, rpp, $scope.$parent.ufilter, $scope.$parent.uorder);
+            return "" + serverService.getUrlFromParams($scope.$parent.ob, $scope.$parent.op, $scope.$parent.numpage, rpp, $scope.$parent.ufilter, $scope.$parent.uorder);
         }
         $scope.showRPPSelection = function (rpp)
         {

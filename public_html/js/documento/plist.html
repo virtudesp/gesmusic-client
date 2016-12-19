@@ -92,7 +92,7 @@ THE SOFTWARE.
                                             <div class="row">
                                                 <div class="col-md-12 text-center">
                                                     <p><br>
-                                                        <a class="btn btn-primary" href="#/{{ob}}/new">Crear un nuevo {{ob}}</a>
+                                                        <a class="btn btn-primary" href="{{ob}}/new">Crear un nuevo {{ob}}</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -110,21 +110,21 @@ THE SOFTWARE.
                                                     <div ng-show="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
                                                     <div ng-show="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                     <!------------------------------------------------>
-                                                    <div ng-show="f.visible && f.name == 'obj_tipodocumento'" class="text-center"><a href="#/tipodocumento/view/{{obj.obj_tipodocumento.id}}">{{obj.obj_tipodocumento.descripcion}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_tipodocumento'" class="text-center"><a href="tipodocumento/view/{{obj.obj_tipodocumento.id}}">{{obj.obj_tipodocumento.descripcion}}</a></div>
                                                 </td>
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" href="#/{{ob}}/view/{{obj.id}}">
+                                                            <a class="btn btn-default btn-xs" href="{{ob}}/view/{{obj.id}}">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'documento', 'DocumentoViewpopController', 'viewpop')">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                                             </a>
-                                                            <a class="btn btn-default btn-xs" href="#/{{ob}}/edit/{{obj.id}}">
+                                                            <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
                                                                 <span class="glyphicon glyphicon-pencil"></span>
                                                             </a>
-                                                            <a class="btn btn-default btn-xs" href="#/{{ob}}/remove/{{obj.id}}">
+                                                            <a class="btn btn-default btn-xs" href="{{ob}}/remove/{{obj.id}}">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'documento', 'DocumentoRemovepopController', 'removepop')">

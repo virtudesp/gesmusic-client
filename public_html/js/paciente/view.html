@@ -63,14 +63,14 @@ THE SOFTWARE.
                                             <td ng-show="f.type == 'text'">{{bean[f.name]}}</td>
                                             <td ng-show="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td> 
                                             <!------------------------------------------------>
-                                            <td ng-show="f.type == 'specific'"><a href="#/servicio/view/{{obj.obj_servicio.id}}">{{bean[f.name].descripcion}}</a></td>
+                                            <td ng-show="f.type == 'specific'"><a href="servicio/view/{{obj.obj_servicio.id}}">{{bean[f.name].descripcion}}</a></td>
 
                                         </tr>
                                     </tbody>
                                 </table>  
                                 <div class="text-right"> 
-                                    <a class="btn btn-primary" href="#/{{ob}}/edit/{{bean.id}}">Editar</a>
-                                    <a class="btn btn-danger" href="#/{{ob}}/remove/{{bean.id}}">Borrar</a>
+                                    <a class="btn btn-primary" href="{{ob}}/edit/{{bean.id}}">Editar</a>
+                                    <a class="btn btn-danger" href="{{ob}}/remove/{{bean.id}}">Borrar</a>
                                     <a class="btn btn-default" ng-click="plist()">Ir al listado de {{obtitle}}</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>

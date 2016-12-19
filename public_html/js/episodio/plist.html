@@ -101,7 +101,7 @@ THE SOFTWARE.
                                             <div class="row">
                                                 <div class="col-md-12 text-center">
                                                     <p><br>
-                                                        <a class="btn btn-primary" href="#/{{ob}}/new">Crear un nuevo {{obtitle}}</a>
+                                                        <a class="btn btn-primary" href="{{ob}}/new">Crear un nuevo {{obtitle}}</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -123,27 +123,27 @@ THE SOFTWARE.
                                                     <div ng-show="f.visible && f.type == 'textarea'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                     <div ng-show="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
                                                     <!------------------------------------------------>
-                                                    <div ng-show="f.visible && f.name == 'obj_importancia'" class="text-center"><a href="#/importancia/view/{{obj.obj_importancia.id}}">{{obj.obj_importancia.descripcion}}</a></div>
-                                                    <div ng-show="f.visible && f.name == 'obj_servicio'" class="text-center"><a href="#/servicio/view/{{obj.obj_servicio.id}}">{{obj.obj_servicio.descripcion}}</a></div>
-                                                    <div ng-show="f.visible && f.name == 'obj_tipo'" class="text-center"><a href="#/tipo/view/{{obj.obj_tipo.id}}">{{obj.obj_tipo.descripcion}}</a></div>
-                                                    <div ng-show="f.visible && f.name == 'obj_paciente'" class="text-center"><a href="#/paciente/view/{{obj.obj_paciente.id}}">{{obj.obj_paciente.name}} {{obj.obj_paciente.primer_apellido}}</a></div>
-                                                    <div ng-show="f.visible && f.name == 'obj_medico'" class="text-center"><a href="#/medico/view/{{obj.obj_medico.id}}">{{obj.obj_medico.id}}</a></div>
-                                                    <div ng-show="f.visible && f.name == 'obj_episodio'" class="text-center"><a href="#/episodio/view/{{obj.obj_episodio.id}}">{{obj.obj_episodio.fecha | date:'fullDate'}}</a></div>
-                                                    <div ng-show="f.visible && f.name == 'obj_prioridad'" class="text-center"><a href="#/prioridad/view/{{obj.obj_prioridad.id}}">{{obj.obj_prioridad.descripcion}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_importancia'" class="text-center"><a href="importancia/view/{{obj.obj_importancia.id}}">{{obj.obj_importancia.descripcion}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_servicio'" class="text-center"><a href="servicio/view/{{obj.obj_servicio.id}}">{{obj.obj_servicio.descripcion}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_tipo'" class="text-center"><a href="tipo/view/{{obj.obj_tipo.id}}">{{obj.obj_tipo.descripcion}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_paciente'" class="text-center"><a href="paciente/view/{{obj.obj_paciente.id}}">{{obj.obj_paciente.name}} {{obj.obj_paciente.primer_apellido}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_medico'" class="text-center"><a href="medico/view/{{obj.obj_medico.id}}">{{obj.obj_medico.id}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_episodio'" class="text-center"><a href="episodio/view/{{obj.obj_episodio.id}}">{{obj.obj_episodio.fecha | date:'fullDate'}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_prioridad'" class="text-center"><a href="prioridad/view/{{obj.obj_prioridad.id}}">{{obj.obj_prioridad.descripcion}}</a></div>
                                                 </td>                       
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" href="#/{{ob}}/view/{{obj.id}}">
+                                                            <a class="btn btn-default btn-xs" href="{{ob}}/view/{{obj.id}}">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'episodio', 'EpisodioViewpopController', 'viewpop')">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                                             </a>
-                                                            <a class="btn btn-default btn-xs" href="#/{{ob}}/edit/{{obj.id}}">
+                                                            <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
                                                                 <span class="glyphicon glyphicon-pencil"></span>
                                                             </a>
-                                                            <a class="btn btn-default btn-xs" href="#/{{ob}}/remove/{{obj.id}}">
+                                                            <a class="btn btn-default btn-xs" href="{{ob}}/remove/{{obj.id}}">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'episodio', 'EpisodioRemovepopController', 'removepop')">

@@ -60,12 +60,12 @@ var sisane = angular.module('myApp', [
 ]);
 //-------------
 //---html5 mode off; setting up pushState needs server urlrewritting, so quitting...-------
-//sisane.config(['$locationProvider', function ($locationProvider) {
-//        $locationProvider.html5Mode({
-//            //requireBase: false,
-//            enabled: true
-//        });
-//    }]);
+sisane.config(['$locationProvider', function ($locationProvider) {
+        $locationProvider.html5Mode({
+            //requireBase: false,
+            enabled: true
+        });
+    }]);
 //-------------
 sisane.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;

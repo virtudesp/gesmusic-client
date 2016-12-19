@@ -41,7 +41,7 @@ moduloDirectivas
         .directive('linkusuario', function () {
             return {
                 restrict: 'E',
-                template: '<a ng-show="obj.id" href="#/usuario/view/{{obj.id}}">{{obj.id}} - {{obj.login}} ({{obj.ciudad}})</a>',
+                template: '<a ng-show="obj.id" href="usuario/view/{{obj.id}}">{{obj.id}} - {{obj.login}} ({{obj.ciudad}})</a>',
                 scope: {
                     obj: "=source"
                 }
@@ -50,7 +50,7 @@ moduloDirectivas
         .directive('linktipodocumento', function () {
             return {
                 restrict: 'E',
-                template: '<a ng-show="obj.id" href="#/tipodocumento/view/{{obj.id}}">{{obj.id}}-({{obj.descripcion}})</a>',
+                template: '<a ng-show="obj.id" href="tipodocumento/view/{{obj.id}}">{{obj.id}}-({{obj.descripcion}})</a>',
                 scope: {
                     obj: "=source"
                 }

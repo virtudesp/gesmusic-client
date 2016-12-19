@@ -58,7 +58,7 @@ THE SOFTWARE.
                                             <td>{{f.longname}}</td>
                                             <td ng-show="!f.name.startsWith('obj_')">{{bean[f.name]}}</td>    
                                             <td ng-show="f.name.startsWith('obj_')">
-                                                <a href="#/{{f.reference}}/view/{{bean[f.name]['id']}}">
+                                                <a href="{{f.reference}}/view/{{bean[f.name]['id']}}">
                                                     {{bean[f.name]["descripcion"]}}                                                
                                                 </a>
                                             </td>                                                
@@ -66,8 +66,8 @@ THE SOFTWARE.
                                     </tbody>
                                 </table>  
                                 <div class="text-right"> 
-                                    <a class="btn btn-primary" href="#/{{ob}}/edit/{{bean.id}}">Editar</a>
-                                    <a class="btn btn-danger" href="#/{{ob}}/remove/{{bean.id}}">Borrar</a>
+                                    <a class="btn btn-primary" href="{{ob}}/edit/{{bean.id}}">Editar</a>
+                                    <a class="btn btn-danger" href="{{ob}}/remove/{{bean.id}}">Borrar</a>
                                     <a class="btn btn-default" ng-click="plist()">Ir al listado de imagenes</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>

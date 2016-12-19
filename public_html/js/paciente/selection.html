@@ -111,7 +111,7 @@ THE SOFTWARE.
                                                 <div ng-show="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                 <div ng-show="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>                                               
                                                 <!------------------------------------------------>
-                                            <td ng-show="f.type == 'specific'"><a href="#/servicio/view/{{obj.obj_servicio.id}}">{{bean[f.name].descripcion}}</a></td> 
+                                            <td ng-show="f.type == 'specific'"><a href="servicio/view/{{obj.obj_servicio.id}}">{{bean[f.name].descripcion}}</a></td> 
                                             </td>   
 
                                             <td plistoperationbarspa></tdspa>

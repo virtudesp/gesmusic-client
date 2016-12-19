@@ -8,10 +8,10 @@ moduloDirectivas.directive('plistpagination', function () {
 });
 moduloSistema.controller('plistPaginationController', ['$scope', 'serverService', '$location', function ($scope, serverService, $location) {
 //        $scope.getUrlFromPageNumber = function (pagenumber) {
-//            return "#/" + serverService.getUrlFromParams($scope.ob, $scope.op, pagenumber, $scope.rpp, $scope.ufilter, $scope.uorder);
+//            return "" + serverService.getUrlFromParams($scope.ob, $scope.op, pagenumber, $scope.rpp, $scope.ufilter, $scope.uorder);
 //        }
 //        $scope.getUrlFromRpp = function (rpp) {
-//            return "#/" + serverService.getUrlFromParams($scope.ob, $scope.op, $scope.numpage, rpp, $scope.ufilter, $scope.uorder);
+//            return "" + serverService.getUrlFromParams($scope.ob, $scope.op, $scope.numpage, rpp, $scope.ufilter, $scope.uorder);
 //        }
 
 
