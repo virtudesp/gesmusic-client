@@ -355,40 +355,40 @@ THE SOFTWARE.
                                 </div> 
                                 <!------------------------------------------------->
                                 <div class="form-group"                                 
-                                     ng-show="show_obj_prioridad && (f.name == 'obj_prioridad')"
-                                     ng-class="{'has-error': (outerForm.obj_prioridad.$error.required ||
-                                                             outerForm.obj_prioridad.$error.exists ||
-                                                             outerForm.obj_prioridad.$error.validatemin)
-                                                             && !outerForm.obj_prioridad.$pristine}"
-                                     ng-show="show_obj_prioridad">                                                                                                                                   
-                                    <label class="col-sm-2 control-label" for="obj_prioridad">
+                                     ng-show="show_obj_cargo && (f.name == 'obj_cargo')"
+                                     ng-class="{'has-error': (outerForm.obj_cargo.$error.required ||
+                                                             outerForm.obj_cargo.$error.exists ||
+                                                             outerForm.obj_cargo.$error.validatemin)
+                                                             && !outerForm.obj_cargo.$pristine}"
+                                     ng-show="show_obj_cargo">                                                                                                                                   
+                                    <label class="col-sm-2 control-label" for="obj_cargo">
                                         <span ng-show="{{f.required}}">*</span>
                                         {{f.longname}}
                                     </label>
                                     <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_prioridad_group">
-                                            <span class="input-group-addon" id="obj_prioridad_button" ng-click="chooseOne('obj_prioridad', 'prioridad', 'PrioridadSelectionController')">
+                                        <div class="input-group foreign" id="obj_cargo_group">
+                                            <span class="input-group-addon" id="obj_cargo_button" ng-click="chooseOne('obj_cargo', 'cargo', 'CargoSelectionController')">
                                                 <span class="glyphicon glyphicon-search">
                                                 </span>
                                             </span>                                        
                                             <input type="text" 
                                                    ng-model-options="{debounce: 1000}" 
-                                                   ng-model="bean.obj_prioridad.id" 
+                                                   ng-model="bean.obj_cargo.id" 
                                                    validatemin="0" 
                                                    ng-required="{{f.required}}"  
                                                    aria-describedby="basic-addon2" 
                                                    class="form-control" 
-                                                   id="obj_prioridad" 
-                                                   name="obj_prioridad"
+                                                   id="obj_cargo" 
+                                                   name="obj_cargo"
                                                    size="5" 
                                                    maxlength="5">                                        
                                             <span class="input-group-addon">
-                                                <span>{{bean.obj_prioridad.descripcion}}</span>
+                                                <span>{{bean.obj_cargo.descripcion}}</span>
                                             </span>                                       
                                         </div>
-                                        <span class="help-block" ng-show="!outerForm.obj_prioridad.$pristine && outerForm.obj_prioridad.$error.required">La prioridad es obligatoria</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_prioridad.$pristine && outerForm.obj_prioridad.$error.validatemin">Debes elegir una prioridad</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_prioridad.$pristine && outerForm.obj_prioridad.$error.exists">La prioridad no existe</span>
+                                        <span class="help-block" ng-show="!outerForm.obj_cargo.$pristine && outerForm.obj_cargo.$error.required">La cargo es obligatoria</span>
+                                        <span class="help-block" ng-show="!outerForm.obj_cargo.$pristine && outerForm.obj_cargo.$error.validatemin">Debes elegir una cargo</span>
+                                        <span class="help-block" ng-show="!outerForm.obj_cargo.$pristine && outerForm.obj_cargo.$error.exists">La cargo no existe</span>
                                     </div>
                                 </div> 
                                 <!------------------------------------------------->

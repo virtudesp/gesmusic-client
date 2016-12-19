@@ -28,8 +28,8 @@
 
 'use strict';
 
-moduloPrueba.controller('PruebaSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService',
-    function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService) {
+moduloPrueba.controller('PruebaSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'pruebaService', 'serverService', '$location', 'sharedSpaceService',
+    function ($scope, $modalInstance, $routeParams, pruebaService, serverService, $location, sharedSpaceService) {
         $scope.fields = pruebaService.getFields();
         $scope.obtitle = pruebaService.getObTitle();
         $scope.icon = pruebaService.getIcon();

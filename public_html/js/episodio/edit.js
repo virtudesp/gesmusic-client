@@ -46,14 +46,14 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
         $scope.bean.obj_paciente = {"id": 0};
         $scope.bean.obj_medico = {"id": 0};
         $scope.bean.obj_episodio = {"id": 0};
-        $scope.bean.obj_prioridad = {"id": 0};
+        $scope.bean.obj_cargo = {"id": 0};
         $scope.show_obj_importancia = true;
         $scope.show_obj_servicio = true;
         $scope.show_obj_tipo = true;
         $scope.show_obj_paciente = true;
         $scope.show_obj_medico = true;
         $scope.show_obj_episodio = true;
-        $scope.show_obj_prioridad = true;
+        $scope.show_obj_cargo = true;
         $scope.id = $routeParams.id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
@@ -79,7 +79,7 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
             if($scope.bean.obj_paciente.id <= 0) $scope.bean.obj_paciente.id = null;
             if($scope.bean.obj_medico.id <= 0) $scope.bean.obj_medico.id = null;
             if($scope.bean.obj_episodio.id <= 0) $scope.bean.obj_episodio.id = null;
-            if($scope.bean.obj_prioridad.id <= 0) $scope.bean.obj_prioridad.id = null;
+            if($scope.bean.obj_cargo.id <= 0) $scope.bean.obj_cargo.id = null;
             
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
@@ -215,13 +215,13 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
             }
         });
 
-        $scope.$watch('bean.obj_prioridad.id', function () {
+        $scope.$watch('bean.obj_cargo.id', function () {
             if ($scope.bean) {
-                serverService.promise_getOne('prioridad', $scope.bean.obj_prioridad.id).then(function (response) {
-                    var old_id = $scope.bean.obj_prioridad.id;
-                    $scope.bean.obj_prioridad = response.data.message;
+                serverService.promise_getOne('cargo', $scope.bean.obj_cargo.id).then(function (response) {
+                    var old_id = $scope.bean.obj_cargo.id;
+                    $scope.bean.obj_cargo = response.data.message;
                     if (response.data.message.id <= 0) {
-                        $scope.bean.obj_prioridad.id = old_id;
+                        $scope.bean.obj_cargo.id = old_id;
                     }
                 });
             }
