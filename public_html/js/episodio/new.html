@@ -383,7 +383,7 @@ THE SOFTWARE.
                                                    size="5" 
                                                    maxlength="5">                                        
                                             <span class="input-group-addon">
-                                                <span>{{bean.obj_cargo.descripcion}}</span>
+                                                <span>{{bean.obj_cargo.date|date:'fullDate'}}</span>
                                             </span>                                       
                                         </div>
                                         <span class="help-block" ng-show="!outerForm.obj_cargo.$pristine && outerForm.obj_cargo.$error.required">La cargo es obligatoria</span>
