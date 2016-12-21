@@ -46,7 +46,7 @@ function foreignkey(serverService, $uibModal) {
 
                             self.desc += self.bean[self.metadata.name][d] + " ";
                         }
-                    }else{
+                    } else {
                         self.desc = self.bean[self.metadata.name][self.metadata.desc]
                     }
                 }
