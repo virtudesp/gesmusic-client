@@ -39,13 +39,13 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {id: 0};
-        $scope.bean.obj_importancia = {"id": 0};
-        $scope.bean.obj_servicio = {"id": 0};
-        $scope.bean.obj_tipo = {"id": 0};
-        $scope.bean.obj_paciente = {"id": 0};
-        $scope.bean.obj_medico = {"id": 0};
-        $scope.bean.obj_episodio = {"id": 0};
-        $scope.bean.obj_cargo = {"id": 0};
+        $scope.bean.obj_importancia = {"id": null};
+        $scope.bean.obj_servicio = {"id": null};
+        $scope.bean.obj_tipo = {"id": null};
+        $scope.bean.obj_paciente = {"id": null};
+        $scope.bean.obj_medico = {"id": null};
+        $scope.bean.obj_episodio = {"id": null};
+        $scope.bean.obj_cargo = {"id": null};
         $scope.show_obj_importancia = true;
         $scope.show_obj_servicio = true;
         $scope.show_obj_tipo = true;
@@ -54,19 +54,11 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.show_obj_episodio = true;
         $scope.show_obj_cargo = true;
         
-        
+        console.log($scope.outerForm);
         //----
 
         $scope.save = function () {
             $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
-            
-            if($scope.bean.obj_importancia.id <= 0) $scope.bean.obj_importancia.id = null;
-            if($scope.bean.obj_servicio.id <= 0) $scope.bean.obj_servicio.id = null;
-            if($scope.bean.obj_tipo.id <= 0) $scope.bean.obj_tipo.id = null;
-            if($scope.bean.obj_paciente.id <= 0) $scope.bean.obj_paciente.id = null;
-            if($scope.bean.obj_medico.id <= 0) $scope.bean.obj_medico.id = null;
-            if($scope.bean.obj_episodio.id <= 0) $scope.bean.obj_episodio.id = null;
-            if($scope.bean.obj_cargo.id <= 0) $scope.bean.obj_cargo.id = null;
 
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
@@ -95,126 +87,8 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
-            var modalInstance = $uibModal.open({
-                templateUrl: 'js/' + foreignObjectName + '/selection.html',
-                controller: contollerName,
-                size:'lg'
-            }).result.then(function (modalResult) {
-                $scope.bean[nameForeign].id = modalResult;
-            });
-        };
-
-        $scope.$watch('bean.obj_importancia.id', function () {
-            if ($scope.bean) {
-                serverService.promise_getOne('importancia', $scope.bean.obj_importancia.id).then(function (response) {
-                    var old_id = $scope.bean.obj_importancia.id;
-                    $scope.bean.obj_importancia = response.data.message;
-                    if (response.data.message.id <= 0) {
-                        $scope.outerForm.obj_importancia.$setValidity('exists', true);
-                        $scope.bean.obj_importancia.id = old_id;
-                    }
-                }).catch(function (data) {
-                    $scope.outerForm.obj_importancia.$setValidity('exists', false);
-                });
-            }
-        });
-
-        $scope.$watch('bean.obj_servicio.id', function () {
-            if ($scope.bean.obj_servicio.id >= 0) {
-                serverService.promise_getOne('servicio', $scope.bean.obj_servicio.id).then(function (response) {
-                    var old_id = $scope.bean.obj_servicio.id;
-                    $scope.bean.obj_servicio = response.data.message;
-                    if (response.data.message.id <= 0) {
-                      $scope.bean.obj_servicio.id = old_id;
-                    }
-                });
-            }else{
-                $scope.bean.obj_servicio.descripcion = "";
-            }
-        });
-
-        $scope.$watch('bean.obj_tipo.id', function () {
-            if ($scope.bean.obj_tipo.id >= 0) {
-                serverService.promise_getOne('tipo', $scope.bean.obj_tipo.id).then(function (response) {
-                    var old_id = $scope.bean.obj_tipo.id;
-                    $scope.bean.obj_tipo = response.data.message;
-                    if (response.data.message.id <= 0) {
-                      $scope.bean.obj_tipo.id = old_id;
-                    } 
-                });
-            }else{
-                $scope.bean.obj_tipo.descripcion = "";
-            }
-        });
-
-        $scope.$watch('bean.obj_paciente.id', function () {
-            if ($scope.bean.obj_paciente.id) {
-                serverService.promise_getOne('paciente', $scope.bean.obj_paciente.id).then(function (response) {
-                    var old_id = $scope.bean.obj_paciente.id;
-                    $scope.bean.obj_paciente = response.data.message;
-                    if (response.data.message.id <= 0) {
-                      $scope.bean.obj_paciente.id = old_id;
-                    } 
-                });
-            }else{
-                $scope.bean.obj_paciente.name = "";
-                $scope.bean.obj_paciente.pimer_apellido = "";
-            }
-        });
-
-        $scope.$watch('bean.obj_medico.id', function () {
-            
-            if ($scope.bean.obj_medico.id > 0) {
-                serverService.promise_getOne('medico', $scope.bean.obj_medico.id).then(function (response) {
-                    var old_id = $scope.bean.obj_medico.id;
-                    $scope.bean.obj_medico = response.data.message;
-                    if (response.data.message.id <= 0) {
-                      $scope.bean.obj_medico.id = old_id;
-                    }
-                });
-                var filter = "and,id_medico,equa," + $scope.bean.obj_medico.id;
-                
-                serverService.promise_getPage("usuario",1,1,filter).then(function(data){
-                    if(data.data.message.length > 0) {
-                        $scope.medico = data.data.message[0];
-                        $scope.outerForm.obj_medico.$setValidity('exists', true);
-                    }else{
-                        $scope.outerForm.obj_medico.$setValidity('exists', false);
-                        $scope.medico = {nombre:"", primerapellido:""};        
-                    }
-                });
-            }else if($scope.bean.obj_medico.id || $scope.bean.obj_medico.id === ""){
-                $scope.outerForm.obj_medico.$setValidity('exists', true);
-                $scope.medico = {nombre:"", primerapellido:""};
-                $scope.bean.obj_medico.id = 0;
-            }
-            
-        });
-
-        $scope.$watch('bean.obj_episodio.id', function () {
-            if ($scope.bean) {
-                serverService.promise_getOne('episodio', $scope.bean.obj_episodio.id).then(function (response) {
-                    var old_id = $scope.bean.obj_episodio.id;
-                    $scope.bean.obj_episodio = response.data.message;
-                    if (response.data.message.id <= 0) {
-                        $scope.bean.obj_episodio.id = old_id;
-                    }
-                });
-            }
-        });
-
-        $scope.$watch('bean.obj_cargo.id', function () {
-            if ($scope.bean) {
-                serverService.promise_getOne('cargo', $scope.bean.obj_cargo.id).then(function (response) {
-                    var old_id = $scope.bean.obj_cargo.id;
-                    $scope.bean.obj_cargo = response.data.message;
-                    if (response.data.message.id <= 0) {
-                        $scope.bean.obj_cargo.id = old_id;
-                    }
-                });
-            }
-        });
+        
+        
         $scope.dateOptions = {
             formatYear: 'yyyy',
             startingDay: 1
