@@ -188,6 +188,10 @@ THE SOFTWARE.
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
+                                <datepicker ng-show="f.type == 'date'" metadata="f" form="outerForm" bean="bean"></datepicker>
+                                
+                                
+                                <!------------------------------------------------->
                                 <div class="form-group"
                                      ng-show="show_obj_medicamento && (f.name == 'obj_medicamento')"
                                      ng-class="{'has-error': (outerForm.obj_medicamento.$error.required ||

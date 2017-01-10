@@ -56,17 +56,7 @@ moduloDirectivas
                 }
             }
         })
-
-
-
-
-
-
-
-
-
-
-
+        
         .directive('validatemin', function () {
             return {
                 restrict: 'A',

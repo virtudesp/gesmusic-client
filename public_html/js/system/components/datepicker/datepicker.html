@@ -1,0 +1,36 @@
+<div class="form-group"
+    ng-class="{'has-error': (
+        dt.form[dt.name].$error.required ||
+        dt.form[dt.name].$error.exists ||
+        dt.form[dt.name].$error.validatemin) && 
+        !dt.form[dt.name].$pristine}">
+    <label class="col-sm-2 control-label" for="{{dt.name}}">
+        <span ng-show="{{dt.required}}">*</span>{{dt.longname}}
+    </label>
+    <div class="control col-sm-3">
+        <div class="input-group date" id="fecha_group">
+            <input type="text" 
+               
+                   ng-model="{{dt.name}}"
+                   ng-required="{{dt.required}}"
+                   placeholder="{{dt.name | date:'fullDate' }}"  
+              
+                   class="form-control" 
+                   id="{{dt.identificador}}" 
+                   name="{{dt.name}}"
+                 > 
+
+        </div>
+        <span class="help-block" ng-show="!dt.form[dt.name].$pristine && dt.form[dt.name].$error.required">Este campo es obligatorio</span>
+        <span class="help-block" ng-show="!dt.form[dt.name].$pristine && dt.form[dt.name].$error.validatemin">Debes elegir uno/a</span>
+        <span class="help-block" ng-show="!dt.form[dt.name].$pristine && dt.form[dt.name].$error.exists">Debes elegir uno/a que exista</span>
+        <span class="help-block" ng-show="!dt.form[dt.name].$pristine && dt.form[dt.name].$error.pattern">El campo no tiene formato adecuado: {{dt.help}}</span>
+
+    </div>
+</div>
+
+  <script>
+  $( function() {
+    $( "#" + {{dt.identificador}}).datepicker();
+  } );
+  </script>

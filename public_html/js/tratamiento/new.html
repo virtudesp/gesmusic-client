@@ -121,7 +121,7 @@ THE SOFTWARE.
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div class="form-group"
+                                <!--<div class="form-group"
                                      ng-show="f.name == 'fecha_inicio'"
                                      id="fecha-group"
                                      ng-class="{'has-error': (outerForm.fecha_inicio.$error.required && !outerForm.fecha_inicio.$pristine) ||
@@ -154,7 +154,7 @@ THE SOFTWARE.
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div class="form-group"
+                                 <!--<div class="form-group"
                                      ng-show="f.name == 'fecha_fin'"
                                      id="fecha-group"
                                      ng-class="{'has-error': (outerForm.fecha_fin.$error.required && !outerForm.fecha_fin.$pristine) ||
@@ -187,151 +187,16 @@ THE SOFTWARE.
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-show="show_obj_medicamento && (f.name == 'obj_medicamento')"
-                                     ng-class="{'has-error': (outerForm.obj_medicamento.$error.required ||
-                                                             outerForm.obj_medicamento.$error.exists ||
-                                                             outerForm.obj_medicamento.$error.validatemin)
-                                                             && !outerForm.obj_servicio.$pristine}"
-                                     ng-show="show_obj_medicamento">
-                                    <label class="col-sm-2 control-label" for="obj_medicamento">Medicamento:</label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_medicamento_group">
-                                            <span class="input-group-addon" id="obj_medicamento_button" ng-click="chooseOne('obj_medicamento', 'medicamento', 'MedicamentoSelectionController')">
-                                                <span class="glyphicon glyphicon-search">
-                                                </span>
-                                            </span>
-                                            <input type="text"
-                                                   ng-model-options="{debounce: 1000}"
-                                                   ng-change="obj_medicamento_change"
-                                                   ng-model="bean.obj_medicamento.id"
-                                                   validatemin="1"
-                                                   ng-required="true"
-                                                   aria-describedby="basic-addon2"
-                                                   class="form-control"
-                                                   id="obj_medicamento"
-                                                   name="obj_medicamento"
-                                                   size="5"
-                                                   maxlength="5">
-                                            <span class="input-group-addon">
-                                                <span>{{bean.obj_medicamento.descripcion}}</span>
-                                            </span>
-                                        </div>
-                                        <span class="help-block" ng-show="outerForm.obj_medicamento.$error.required">El medicamento es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm.obj_medicamento.$error.validatemin">Debes elegir un medicamento</span>
-                                        <span class="help-block" ng-show="outerForm.obj_medicamento.$error.exists">El medicamento no existe</span>
-                                    </div>
-                                </div>
+                                
+                                <date-picker ng-show="f.type == 'date'" name="f.name" identificador="f.name"  longname="f.longname" form="outerForm" required="f.required"></date-picker>
+                                
                                 <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-show="show_obj_via && (f.name == 'obj_via')"
-                                     ng-class="{'has-error': (outerForm.obj_via.$error.required ||
-                                                             outerForm.obj_via.$error.exists ||
-                                                             outerForm.obj_via.$error.validatemin)
-                                                             && !outerForm.obj_servicio.$pristine}"
-                                     ng-show="show_obj_via">
-                                    <label class="col-sm-2 control-label" for="obj_via">Via:</label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_via_group">
-                                            <span class="input-group-addon" id="obj_via_button" ng-click="chooseOne('obj_via', 'via', 'ViaSelectionController')">
-                                                <span class="glyphicon glyphicon-search">
-                                                </span>
-                                            </span>
-                                            <input type="text"
-                                                   ng-model-options="{debounce: 1000}"
-                                                   ng-change="obj_via_change"
-                                                   ng-model="bean.obj_via.id"
-                                                   validatemin="1"
-                                                   ng-required="true"
-                                                   aria-describedby="basic-addon2"
-                                                   class="form-control"
-                                                   id="obj_via"
-                                                   name="obj_via"
-                                                   size="5"
-                                                   maxlength="5">
-                                            <span class="input-group-addon">
-                                                <span>{{bean.obj_via.descripcion}}</span>
-                                            </span>
-                                        </div>
-                                        <span class="help-block" ng-show="outerForm.obj_via.$error.required">La via es obligatoria</span>
-                                        <span class="help-block" ng-show="outerForm.obj_via.$error.validatemin">Debes elegir una via</span>
-                                        <span class="help-block" ng-show="outerForm.obj_via.$error.exists">La via no existe</span>
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-show="show_obj_posologia && (f.name == 'obj_posologia')"
-                                     ng-class="{'has-error': (outerForm.obj_posologia.$error.required ||
-                                                             outerForm.obj_posologia.$error.exists ||
-                                                             outerForm.obj_posologia.$error.validatemin)
-                                                             && !outerForm.obj_servicio.$pristine}"
-                                     ng-show="show_obj_posologia">
-                                    <label class="col-sm-2 control-label" for="obj_posologia">Posología:</label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_posologia_group">
-                                            <span class="input-group-addon" id="obj_posologia_button" ng-click="chooseOne('obj_posologia', 'posologia', 'PosologiaSelectionController')">
-                                                <span class="glyphicon glyphicon-search">
-                                                </span>
-                                            </span>
-                                            <input type="text"
-                                                   ng-model-options="{debounce: 1000}"
-                                                   ng-change="obj_posologia_change"
-                                                   ng-model="bean.obj_posologia.id"
-                                                   validatemin="1"
-                                                   ng-required="true"
-                                                   aria-describedby="basic-addon2"
-                                                   class="form-control"
-                                                   id="obj_posologia"
-                                                   name="obj_posologia"
-                                                   size="5"
-                                                   maxlength="5">
-                                            <span class="input-group-addon">
-                                                <span>{{bean.obj_posologia.descripcion}}</span>
-                                            </span>
-                                        </div>
-                                        <span class="help-block" ng-show="outerForm.obj_posologia.$error.required">La posología es obligatoria</span>
-                                        <span class="help-block" ng-show="outerForm.obj_posologia.$error.validatemin">Debes elegir una posología</span>
-                                        <span class="help-block" ng-show="outerForm.obj_posologia.$error.exists">La posología no existe</span>
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-show="show_obj_diagnostico && (f.name == 'obj_diagnostico')"
-                                     ng-class="{'has-error': (outerForm.obj_diagnostico.$error.required ||
-                                                             outerForm.obj_diagnostico.$error.exists ||
-                                                             outerForm.obj_diagnostico.$error.validatemin)
-                                                             && !outerForm.obj_servicio.$pristine}"
-                                     ng-show="show_obj_diagnostico">
-                                    <label class="col-sm-2 control-label" for="obj_diagnostico">Diagnóstico:</label>
-                                    <div class="control col-sm-4">
-                                        <div class="input-group foreign" id="obj_diagnostico_group">
-                                            <span class="input-group-addon" id="obj_diagnostico_button" ng-click="chooseOne('obj_diagnostico', 'diagnostico', 'DiagnosticoSelectionController')">
-                                                <span class="glyphicon glyphicon-search">
-                                                </span>
-                                            </span>
-                                            <input type="text"
-                                                   ng-model-options="{debounce: 1000}"
-                                                   ng-change="obj_diagnostico_change"
-                                                   ng-model="bean.obj_diagnostico.id"
-                                                   validatemin="1"
-                                                   ng-required="true"
-                                                   aria-describedby="basic-addon2"
-                                                   class="form-control"
-                                                   id="obj_diagnostico"
-                                                   name="obj_diagnostico"
-                                                   size="5"
-                                                   maxlength="5">
-                                            <span class="input-group-addon">
-                                                <span>{{bean.obj_diagnostico.informe|clipString}}</span>
-                                            </span>
-                                        </div>
-                                        <span class="help-block" ng-show="outerForm.obj_diagnostico.$error.required">El diagnóstico es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm.obj_diagnostico.$error.validatemin">Debes elegir un diagnóstico</span>
-                                        <span class="help-block" ng-show="outerForm.obj_diagnostico.$error.exists">El diagnóstico no existe</span>
-                                    </div>
-                                </div>
+
+                                <foreign-key ng-show="f.type == 'specific'" metadata="f" form="outerForm" bean="bean"></foreign-key>
+                               
                                 <!------------------------------------------------->
                             </div>
+                           
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
