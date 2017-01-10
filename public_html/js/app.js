@@ -279,14 +279,12 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/analitica/remove/:id', {templateUrl: 'js/analitica/remove.html', controller: 'AnaliticaRemoveController'});
         $routeProvider.when('/analitica/plist/:page?/:rpp?', {templateUrl: 'js/analitica/plist.html', controller: 'AnaliticaPListController'});
         $routeProvider.when('/analitica/selection/:page?/:rpp?', {templateUrl: 'js/analitica/selection.html', controller: 'AnaliticaSelectionController'});
-
        
-        //------------        
-      
-     
-        
-      
+        //------------
+                    
 
+  
+        //------------
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
 //-------------
