@@ -37,11 +37,11 @@
         <meta name="author" content="Rafael Aznar">
         <title>sisane</title>
         <!-- see resetCSS  -->
-        <link href="/sisane-client/public_html/vendor/jquery-ui-1.12.0.custom/jquery-ui.min.css" rel="stylesheet" type="text/css">
         <link href="/sisane-client/public_html/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="/sisane-client/public_html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
         <link href="/sisane-client/public_html/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="/sisane-client/public_html/css/main/fonts/fonts.css" rel="stylesheet" type="text/css">
+        <link href="/sisane-client/public_html/vendor/jqueryui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
         <link href="/sisane-client/public_html/css/main/main.css" rel="stylesheet" type="text/css">
         <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
         <!-- html5 mode off
@@ -61,15 +61,20 @@
         <div ng-cloak ng-view></div>
         <!-- ------------------------------- -->
         <script src="vendor/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
-        <script src="vendor/jquery-ui-1.12.0.custom/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="vendor/jqueryui/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="vendor/jqueryui/locale-es.js" type="text/javascript"></script>
+
         <script src="vendor/angular/angular.min.js" type="text/javascript"></script>
         <script src="vendor/angular/angular-sanitize.min.js" type="text/javascript"></script>
         <script src="vendor/angular/angular-route.min.js" type="text/javascript"></script>
-        <!-- <script src="vendor/ausias/ausiasDOM.js" type="text/javascript"></script> -->
+
         <script src="vendor/UIBootstrap/ui-bootstrap-tpls-2.2.0.min.js" type="text/javascript"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
         <script src="vendor/moment/moment-with-locales.min.js" type="text/javascript"></script>
         <script src="vendor/angular/angular-locale_es-es.js" type="text/javascript"></script>
+
         <script src="vendor/sha/forge-sha256.min.js" type="text/javascript"></script>
         <!-- ------------------------------- -->
         <script src="js/app.js" type="text/javascript"></script>
@@ -99,15 +104,15 @@
         <script src="js/system/components/plistspa/visiblefields.js" type="text/javascript"></script>
         <script src="js/system/components/plistspa/operationbar.js" type="text/javascript"></script>
         <script src="js/system/components/plistspa/info.js" type="text/javascript"></script>
-        <script src="js/system/components/plistspa/tableSelectionHeader.js" type="text/javascript"></script>
-        <script src="js/system/components/foreignkey/foreignkey.js" type="text/javascript"></script>
+        <script src="js/system/components/plistspa/tableSelectionHeader.js" type="text/javascript"></script>        
         <!-- ------------------------------- --> 
-        
+        <script src="js/system/components/foreignkey/foreignkey.js" type="text/javascript"></script>
         <script src="js/system/components/about/about.js" type="text/javascript"></script>
         <script src="js/system/components/item/item.js" type="text/javascript"></script>
+        <script src="js/system/components/label/lbl.js" type="text/javascript"></script>
         <script src="js/system/components/datepicker/datepicker.js" type="text/javascript"></script>
-        
-        
+
+
         <!-- ------------------------------- --> 
         <script src="js/usuario/service.js" type="text/javascript"></script>
         <script src="js/usuario/view.js" type="text/javascript"></script>
@@ -274,7 +279,7 @@
         <script src="js/episodio/view.js" type="text/javascript"></script>
         <script src="js/episodio/viewpop.js" type="text/javascript"></script>
         <!-- ------------------------------- -->
-        <!--<script src="js/importancia/edit.js" type="text/javascript"></script>
+        <script src="js/importancia/edit.js" type="text/javascript"></script>
         <script src="js/importancia/new.js" type="text/javascript"></script>
         <script src="js/importancia/plist.js" type="text/javascript"></script>
         <script src="js/importancia/remove.js" type="text/javascript"></script>
@@ -282,17 +287,17 @@
         <script src="js/importancia/selection.js" type="text/javascript"></script>
         <script src="js/importancia/service.js" type="text/javascript"></script>
         <script src="js/importancia/view.js" type="text/javascript"></script>
-        <script src="js/importancia/viewpop.js" type="text/javascript"></script>-->
+        <script src="js/importancia/viewpop.js" type="text/javascript"></script>
         <!-- ------------------------------- --> 
-        <!--        <script src="js/tipodocumento/edit.js" type="text/javascript"></script>
-                <script src="js/tipodocumento/new.js" type="text/javascript"></script>
-                <script src="js/tipodocumento/plist.js" type="text/javascript"></script>
-                <script src="js/tipodocumento/remove.js" type="text/javascript"></script>
-                <script src="js/tipodocumento/removepop.js" type="text/javascript"></script>
-                <script src="js/tipodocumento/selection.js" type="text/javascript"></script>
-                <script src="js/tipodocumento/service.js" type="text/javascript"></script>
-                <script src="js/tipodocumento/view.js" type="text/javascript"></script>
-                <script src="js/tipodocumento/viewpop.js" type="text/javascript"></script>        -->
+        <script src="js/tipodocumento/edit.js" type="text/javascript"></script>
+        <script src="js/tipodocumento/new.js" type="text/javascript"></script>
+        <script src="js/tipodocumento/plist.js" type="text/javascript"></script>
+        <script src="js/tipodocumento/remove.js" type="text/javascript"></script>
+        <script src="js/tipodocumento/removepop.js" type="text/javascript"></script>
+        <script src="js/tipodocumento/selection.js" type="text/javascript"></script>
+        <script src="js/tipodocumento/service.js" type="text/javascript"></script>
+        <script src="js/tipodocumento/view.js" type="text/javascript"></script>
+        <script src="js/tipodocumento/viewpop.js" type="text/javascript"></script>        
 
         <!-- ------------------------------- -->
         <script src="js/anticoagulante/edit.js" type="text/javascript"></script>
@@ -375,7 +380,7 @@
         <script src="js/tecnica/view.js" type="text/javascript"></script>
         <script src="js/tecnica/viewpop.js" type="text/javascript"></script>        
         <!-- ------------------------------- --> 
-        
+
         <script src="js/tratamiento/edit.js" type="text/javascript"></script>
         <script src="js/tratamiento/new.js" type="text/javascript"></script>
         <script src="js/tratamiento/plist.js" type="text/javascript"></script>

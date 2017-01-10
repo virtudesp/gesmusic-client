@@ -56,7 +56,7 @@ moduloDirectivas
                 }
             }
         })
-        
+
         .directive('validatemin', function () {
             return {
                 restrict: 'A',
@@ -109,7 +109,42 @@ moduloDirectivas
                     ctrl.$formatters.push(maxValidator);
                 }
             };
+        })
+        .directive('jqdatepicker', function () {
+            return {
+                restrict: "A",
+                require: "ngModel",
+                link: function (scope, elem, attrs, ngModelCtrl) {
+                    var updateModel = function (dateText) {
+                        scope.$apply(function () {
+                            ngModelCtrl.$setViewValue(dateText);
+                        });
+                    };
+                    var options = {
+                        dateFormat: "dd/mm/yy",
+                        onSelect: function (dateText) {
+                            updateModel(dateText);
+                        }
+                    };
+                    elem.datepicker(options);
+                }
+//                restrict: 'A',
+//                require: 'ngModel',
+//                link: function (scope, element, attrs, ngModelCtrl) {
+//                    element.datepicker({
+//                        dateFormat: 'DD, d  MM, yy',
+//                        onSelect: function (date) {
+//                        scope.$apply(function () {
+//                            ngModelCtrl.$setViewValue(date);
+//                        });
+//                            //scope.date = date;
+//                            //scope.$apply();
+//                        }
+//                    });
+//                }
+            };
         });
+;
 
 
 
