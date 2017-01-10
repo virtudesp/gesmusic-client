@@ -59,6 +59,7 @@ var sisane = angular.module('myApp', [
     'tecnicaControllers',
     'tratamientoControllers',
     'analiticaControllers',
+    'cargoControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -280,8 +281,21 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/analitica/plist/:page?/:rpp?', {templateUrl: 'js/analitica/plist.html', controller: 'AnaliticaPListController'});
         $routeProvider.when('/analitica/selection/:page?/:rpp?', {templateUrl: 'js/analitica/selection.html', controller: 'AnaliticaSelectionController'});
        
-        //------------
-                    
+        //------------    
+
+        $routeProvider.when('/cargo/view/:id', {templateUrl: 'js/cargo/view.html', controller: 'CargoViewController'});
+        $routeProvider.when('/cargo/new/:id?', {templateUrl: 'js/cargo/new.html', controller: 'CargoNewController'});
+        $routeProvider.when('/cargo/edit/:id', {templateUrl: 'js/cargo/edit.html', controller: 'CargoEditController'});
+        $routeProvider.when('/cargo/remove/:id', {templateUrl: 'js/cargo/remove.html', controller: 'CargoRemoveController'});
+        $routeProvider.when('/cargo/plist/:page?/:rpp?', {templateUrl: 'js/cargo/plist.html', controller: 'CargoPListController'});
+        $routeProvider.when('/cargo/selection/:page?/:rpp?', {templateUrl: 'js/cargo/selection.html', controller: 'CargoSelectionController'});
+
+       
+        //------------  
+      
+     
+        
+      
 
   
         //------------
@@ -346,6 +360,7 @@ var moduloDiagnostico = angular.module('diagnosticoControllers', []);
 var moduloTecnica = angular.module('tecnicaControllers', []);
 var moduloTratamiento = angular.module('tratamientoControllers', []);
 var moduloAnalitica = angular.module('analiticaControllers', []);
+var moduloCargo = angular.module('cargoControllers', []);
 
 //-------------
 var moduloDirectivas = angular.module('Directives', []);
