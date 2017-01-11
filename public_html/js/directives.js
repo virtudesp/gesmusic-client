@@ -112,36 +112,16 @@ moduloDirectivas
         })
         .directive('jqdatepicker', function () {
             return {
-                restrict: "A",
-                require: "ngModel",
-                link: function (scope, elem, attrs, ngModelCtrl) {
-                    var updateModel = function (dateText) {
-                        scope.$apply(function () {
-                            ngModelCtrl.$setViewValue(dateText);
-                        });
-                    };
-                    var options = {
-                        dateFormat: "dd/mm/yy",
+                require: 'ngModel',
+                link: function (scope, el, attr, ngModel) {
+                    $(el).datepicker({
                         onSelect: function (dateText) {
-                            updateModel(dateText);
+                            scope.$apply(function () {
+                                ngModel.$setViewValue(dateText);
+                            });
                         }
-                    };
-                    elem.datepicker(options);
+                    });
                 }
-//                restrict: 'A',
-//                require: 'ngModel',
-//                link: function (scope, element, attrs, ngModelCtrl) {
-//                    element.datepicker({
-//                        dateFormat: 'DD, d  MM, yy',
-//                        onSelect: function (date) {
-//                        scope.$apply(function () {
-//                            ngModelCtrl.$setViewValue(date);
-//                        });
-//                            //scope.date = date;
-//                            //scope.$apply();
-//                        }
-//                    });
-//                }
             };
         });
 ;
