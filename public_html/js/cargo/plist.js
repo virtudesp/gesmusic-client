@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  *
- * sisane: The stunning micro-library that helps you to develop easily
- *             AJAX web applications by using Angular.js 1.x & sisane-server
- * sisane is distributed under the MIT License (MIT)
+ * escalamio: The stunning micro-library that helps you to develop easily
+ *             AJAX web applications by using Angular.js 1.x & zylkanexy
+ * escalamio is distributed under the MIT License (MIT)
  * Sources at https://github.com/rafaelaznar/
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,12 +28,12 @@
 
 'use strict';
 
-moduloUsuario.controller('UsuarioPListController', ['$scope', '$routeParams', '$location', 'serverService', 'usuarioService', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, usuarioService, $uibModal) {
-        $scope.fields = usuarioService.getFields();
-        $scope.obtitle = usuarioService.getObTitle();
-        $scope.icon = usuarioService.getIcon();
-        $scope.ob = usuarioService.getTitle();
+moduloCargo.controller('CargoPListController', ['$scope', '$routeParams', 'serverService', '$location', 'cargoService', '$uibModal',
+    function ($scope, $routeParams, serverService, $location, cargoService, $uibModal) {
+        $scope.fields = cargoService.getFields();
+        $scope.obtitle = cargoService.getObTitle();
+        $scope.icon = cargoService.getIcon();
+        $scope.ob = cargoService.getTitle();
         $scope.title = "Listado de " + $scope.obtitle;
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
@@ -49,7 +49,7 @@ moduloUsuario.controller('UsuarioPListController', ['$scope', '$routeParams', '$
         $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
         $scope.filterExpression = serverService.checkEmptyString($routeParams.filter) + '+' + serverService.checkEmptyString($routeParams.sfilter);
         $scope.status = null;
-        $scope.debugging=serverService.debugging();
+        $scope.debugging = serverService.debugging();
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
@@ -92,5 +92,3 @@ moduloUsuario.controller('UsuarioPListController', ['$scope', '$routeParams', '$
         };
         getDataFromServer();
     }]);
-
-

@@ -1,7 +1,7 @@
 <!--
 Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
 
-sisane: The stunning micro-library that helps you to develop easily 
+sisane: The stunning micro-library that helps you to develop easily
             AJAX web applications by using Angular.js 1.x & sisane-server
 sisane is distributed under the MIT License (MIT)
 Sources at https://github.com/rafaelaznar/
@@ -33,112 +33,109 @@ THE SOFTWARE.
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="panel-body" ng-cloak>
-                        <div class="alert alert-success" role="alert" ng-show="debugging">
-                            <h4>Debug:</h4>
-                            {{bean|json}}
-                        </div>                   
                         <form name="outerForm" class="form-horizontal text-left"  ng-show="!status">
                             <div ng-repeat="f in fields">
-                                <!------------------------------------------------->       
-                                <div ng-show="f.type == 'id'" 
-                                     id="{{f.name}}-group" 
+                                <!------------------------------------------------->
+                                <div ng-show="f.type == 'id'"
+                                     id="{{f.name}}-group"
                                      class="form-group">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
                                         {{f.longname}}:
                                     </label>
                                     <div class="control col-sm-3">
-                                        <input ng-model="bean[f.name]" 
-                                               type="text" id="{{f.name}}" 
+                                        <input ng-model="bean[f.name]"
+                                               type="text" id="{{f.name}}"
                                                class="form-control" name="{{f.name}}"
                                                placeholder="{{f.name}}"
-                                               size="15" 
+                                               size="15"
                                                disabled="disabled" />
                                     </div>
                                 </div>
-                                <!------------------------------------------------->                            
-                                <div ng-show="f.type == 'text'" 
-                                     id="{{f.name}}-group" 
-                                     class="form-group" 
-                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
-                                                             (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
+                                <!------------------------------------------------->
+                                <div class="form-group"
+                                     ng-show="f.name == 'date'"
+                                     id="fecha-group"
+                                     ng-class="{'has-error': (outerForm.fecha.$error.required && !outerForm.fecha.$pristine) ||
+                                                             (!bean.fecha && !outerForm.fecha.$pristine)}">
+                                    <label class="col-sm-2 control-label" for="fecha">
                                         <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}:
+                                        {{f.longname}}
                                     </label>
-                                    <div class="control col-sm-8">                                   
-                                        <input ng-model="bean[f.name]"
-                                               type="text"
-                                               class="form-control"                                           
-                                               id="{{f.name}}"
-                                               name="{{f.name}}"     
-                                               ng-pattern="f.pattern"
-                                               placeholder="{{f.name}}"                                             
-                                               maxlength="{{f.maxlength}}"                                                                                               
-                                               ng-required="{{f.required}}"                                                
-                                               />
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
+                                    <div class="control col-sm-3">
+                                        <div class="input-group date" id="fecha_group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   placeholder="{{f.longname}}"
+                                                   uib-datepicker-popup="dd/MM/yyyy"
+                                                   ng-model="bean.date"
+                                                   is-open="popup1.opened"
+                                                   datepicker-options="dateOptions"
+                                                   ng-required="true"
+                                                   close-text="Cerrar"
+                                                   id="fecha"
+                                                   name="fecha"
+                                                   />
+                                            <span class="input-group-addon" ng-click="open1()">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                        </div>
+                                        <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
+                                        <em>{{bean.date| date:'fullDate' }}</em>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div class="form-group"                                 
-                                     ng-show="show_obj_tipousuario && (f.name == 'obj_tipousuario')"
-                                     ng-class="{'has-error': (outerForm.obj_tipousuario.$error.required ||
-                                                             outerForm.obj_tipousuario.$error.exists ||
-                                                             outerForm.obj_tipousuario.$error.validatemin)
-                                                             && !outerForm.obj_tipousuario.$pristine}"
-                                     ng-show="show_obj_tipousuario">                                                                                                                                   
-                                    <label class="col-sm-2 control-label" for="obj_tipousuario">Tipo de Usuario:</label>
+                                <div class="form-group"
+                                     ng-show="show_obj_documento && (f.name == 'obj_documento')"
+                                     ng-class="{'has-error': (outerForm.obj_documento.$error.required ||
+                                                             outerForm.obj_documento.$error.exists ||
+                                                             outerForm.obj_documento.$error.valifechamin)}"
+                                     ng-show="show_obj_documento">
+                                    <label class="col-sm-2 control-label" for="obj_documento">Documento:</label>
                                     <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_tipousuario_group">
-                                            <span class="input-group-addon" id="obj_tipousuario_button" ng-click="chooseOne('obj_tipousuario', 'tipousuario', 'TipousuarioSelectionController')">
+                                        <div class="input-group foreign" id="obj_documento_group">
+                                            <span class="input-group-addon" id="obj_documento_button" ng-click="chooseOne('obj_documento', 'documento', 'DocumentoSelectionController')">
                                                 <span class="glyphicon glyphicon-search">
                                                 </span>
-                                            </span>                                        
-                                            <input type="text" 
-                                                   ng-model-options="{debounce: 1000}" 
-                                                   ng-change="obj_tipousuario_change" 
-                                                   ng-model="bean.obj_tipousuario.id" 
-                                                   validatemin="1" 
-                                                   ng-required="true"  
-                                                   aria-describedby="basic-addon2" 
-                                                   class="form-control" 
-                                                   id="obj_tipousuario" 
-                                                   name="obj_tipousuario"
-                                                   size="5" 
-                                                   maxlength="5">                                        
+                                            </span>
+                                            <input type="text"
+                                                   ng-model-options="{debounce: 1000}"
+                                                   ng-change="obj_documento_change"
+                                                   ng-model="bean.obj_documento.id"
+                                                   valifechamin="1"
+                                                   ng-required="true"
+                                                   aria-describedby="basic-addon2"
+                                                   class="form-control"
+                                                   id="obj_documento"
+                                                   name="obj_documento"
+                                                   size="5"
+                                                   maxlength="5">
                                             <span class="input-group-addon">
-                                                <span>{{bean.obj_tipousuario.descripcion}}</span>
-                                            </span>                                       
+                                                <span>{{bean.obj_documento.descripcion|clipString}}</span>
+                                            </span>
                                         </div>
-                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_tipousuario.$error.required">El tipo de usuario es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_tipousuario.$error.validatemin">Debes elegir un tipo de usuario</span>
-                                        <span class="help-block" ng-show="!outerForm.obj_usertype.$pristine && outerForm.obj_tipousuario.$error.exists">El tipo de usuario no existe</span>
+                                        <span class="help-block" ng-show="outerForm.obj_documento.$error.required">El cargo es obligatorio</span>
+                                        <span class="help-block" ng-show="outerForm.obj_documento.$error.valifechamin">Debes elegir un cargo</span>
+                                        <span class="help-block" ng-show="outerForm.obj_documento.$error.exists">El cargo no existe</span>
                                     </div>
-                                </div> 
-
-
+                                </div>
                                 <!------------------------------------------------->
-
-
-                                <!------------------------------------------------->
-
                             </div>
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de usuarios</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de documentos</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>
                         </form>
-                        <div ng-show="status">                        
+                        <div ng-show="status">
                             <div class="alert alert-success" ng-show="response.status == 200">
                                 <h2>{{status}}</h2>
                                 <a ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
                             </div>
                             <div class="alert alert-danger" ng-show="response.status != 200">
-                                <h2>{{status}}</h2>                             
+                                <h2>{{status}}</h2>
                             </div>
                         </div>
                     </div>
@@ -146,5 +143,5 @@ THE SOFTWARE.
                 </div>
             </div>
         </div>
-    </div>     
+    </div>
 </div>
