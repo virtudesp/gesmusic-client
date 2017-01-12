@@ -61,7 +61,17 @@ THE SOFTWARE.
 
                                                 </div>
                                                 <div class="col-lg-6  col-md-6 col-sm-8 text-center">
-                                                    <plistpagination></plistpagination>
+                                                    <cplistpagination 
+                                                        ob="ob"         
+                                                        op="op"         
+                                                        numpage="numpage"          
+                                                        rpp="rpp"
+                                                        pages="pages"
+                                                        neighbourhood="neighbourhood"
+                                                        filterParams="filterParams"
+                                                        orderParams="orderParams"
+                                                        sfilterParams="sfilterParams"
+                                                        </plistpagination>
                                                 </div>
                                                 <div class="col-lg-3  col-md-3 col-sm-4 text-center">
                                                     <plistrpp></plistrpp>
@@ -128,7 +138,7 @@ THE SOFTWARE.
                                                     <div ng-show="f.visible && f.name == 'obj_tipo'" class="text-center"><a href="tipo/view/{{obj.obj_tipo.id}}">{{obj.obj_tipo.descripcion}}</a></div>
                                                     <div ng-show="f.visible && f.name == 'obj_paciente'" class="text-center"><a href="paciente/view/{{obj.obj_paciente.id}}">{{obj.obj_paciente.name}} {{obj.obj_paciente.primer_apellido}}</a></div>
                                                     <div ng-show="f.visible && f.name == 'obj_medico'" class="text-center"><a href="medico/view/{{obj.obj_medico.id}}">{{obj.obj_medico.id}}</a></div>
-                                                    <div ng-show="f.visible && f.name == 'obj_episodio'" class="text-center"><a href="episodio/view/{{obj.obj_episodio.id}}">{{obj.obj_episodio.fecha | date:'fullDate'}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_episodio'" class="text-center"><a href="episodio/view/{{obj.obj_episodio.id}}">{{obj.obj_episodio.fecha| date:'fullDate'}}</a></div>
                                                     <div ng-show="f.visible && f.name == 'obj_cargo'" class="text-center"><a href="cargo/view/{{obj.obj_cargo.id}}">{{obj.obj_cargo.date| date:'fullDate'}}</a></div>
                                                 </td>                       
                                                 <td>

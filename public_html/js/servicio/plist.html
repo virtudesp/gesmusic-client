@@ -61,7 +61,17 @@ THE SOFTWARE.
 
                                                 </div>
                                                 <div class="col-lg-6  col-md-6 col-sm-8 text-center">
-                                                    <plistpagination></plistpagination>
+                                                    <cplistpagination 
+                                                        ob="ob"         
+                                                        op="op"         
+                                                        numpage="numpage"          
+                                                        rpp="rpp"
+                                                        pages="pages"
+                                                        neighbourhood="neighbourhood"
+                                                        filterParams="filterParams"
+                                                        orderParams="orderParams"
+                                                        sfilterParams="sfilterParams"
+                                                        </plistpagination>
                                                 </div>
                                                 <div class="col-lg-3  col-md-3 col-sm-4 text-center">
                                                     <plistrpp></plistrpp>
@@ -123,7 +133,7 @@ THE SOFTWARE.
                                                     <div ng-show="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                     <div ng-show="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
                                                     <!------------------------------------------------>
-                                                  
+
                                                 </td>                       
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
