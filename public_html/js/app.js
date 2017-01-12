@@ -226,6 +226,15 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/especialidad/selection/:page?/:rpp?', {templateUrl: 'js/especialidad/selection.html', controller: 'EspecialidadSelectionController'});
 
         //------------
+
+        $routeProvider.when('/cargo/view/:id', {templateUrl: 'js/cargo/view.html', controller: 'CargoViewController'});
+        $routeProvider.when('/cargo/new/:id?', {templateUrl: 'js/cargo/new.html', controller: 'CargoNewController'});
+        $routeProvider.when('/cargo/edit/:id', {templateUrl: 'js/cargo/edit.html', controller: 'CargoEditController'});
+        $routeProvider.when('/cargo/remove/:id', {templateUrl: 'js/cargo/remove.html', controller: 'CargoRemoveController'});
+        $routeProvider.when('/cargo/plist/:page?/:rpp?', {templateUrl: 'js/cargo/plist.html', controller: 'CargoPListController'});
+        $routeProvider.when('/cargo/selection/:page?/:rpp?', {templateUrl: 'js/cargo/selection.html', controller: 'CargoSelectionController'});
+
+        //------------
         $routeProvider.when('/paciente/view/:id', {templateUrl: 'js/paciente/view.html', controller: 'PacienteViewController'});
         $routeProvider.when('/paciente/new/:id?', {templateUrl: 'js/paciente/new.html', controller: 'PacienteNewController'});
         $routeProvider.when('/paciente/edit/:id', {templateUrl: 'js/paciente/edit.html', controller: 'PacienteEditController'});
