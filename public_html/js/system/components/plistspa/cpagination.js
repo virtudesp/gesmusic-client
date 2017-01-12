@@ -8,9 +8,6 @@ moduloDirectivas.component('cplistpaginationspa', {
         rpp: '<',
         pages: '<',
         neighbourhood: '<',
-        filterParams: '<',
-        orderParams: '<',
-        sfilterParams: '<',
         pageSelectionEvent: '&'
     },
     templateUrl: 'js/system/components/plistspa/cpagination.html',
