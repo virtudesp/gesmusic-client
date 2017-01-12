@@ -54,7 +54,7 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.show_obj_episodio = true;
         $scope.show_obj_cargo = true;
         
-        console.log($scope.outerForm);
+        
         //----
 
         $scope.save = function () {
@@ -101,6 +101,8 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.popup1 = {
             opened: false
         };
-
+        $scope.errors = function($argument){
+            alert($argument);
+        };
     }]);
 

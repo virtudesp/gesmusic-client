@@ -280,24 +280,21 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/analitica/remove/:id', {templateUrl: 'js/analitica/remove.html', controller: 'AnaliticaRemoveController'});
         $routeProvider.when('/analitica/plist/:page?/:rpp?', {templateUrl: 'js/analitica/plist.html', controller: 'AnaliticaPListController'});
         $routeProvider.when('/analitica/selection/:page?/:rpp?', {templateUrl: 'js/analitica/selection.html', controller: 'AnaliticaSelectionController'});
-       
-        //------------    
 
-        $routeProvider.when('/cargo/view/:id', {templateUrl: 'js/cargo/view.html', controller: 'CargoViewController'});
-        $routeProvider.when('/cargo/new/:id?', {templateUrl: 'js/cargo/new.html', controller: 'CargoNewController'});
-        $routeProvider.when('/cargo/edit/:id', {templateUrl: 'js/cargo/edit.html', controller: 'CargoEditController'});
-        $routeProvider.when('/cargo/remove/:id', {templateUrl: 'js/cargo/remove.html', controller: 'CargoRemoveController'});
-        $routeProvider.when('/cargo/plist/:page?/:rpp?', {templateUrl: 'js/cargo/plist.html', controller: 'CargoPListController'});
-        $routeProvider.when('/cargo/selection/:page?/:rpp?', {templateUrl: 'js/cargo/selection.html', controller: 'CargoSelectionController'});
+        //------------        
+        $routeProvider.when('/zonaimagen/view/:id', {templateUrl: 'js/zonaimagen/view.html', controller: 'ZonaimagenViewController'});
+        $routeProvider.when('/zonaimagen/new/:id?', {templateUrl: 'js/zonaimagen/new.html', controller: 'ZonaimagenNewController'});
+        $routeProvider.when('/zonaimagen/edit/:id', {templateUrl: 'js/zonaimagen/edit.html', controller: 'ZonaimagenEditController'});
+        $routeProvider.when('/zonaimagen/remove/:id', {templateUrl: 'js/zonaimagen/remove.html', controller: 'ZonaimagenRemoveController'});
+        $routeProvider.when('/zonaimagen/plist/:page?/:rpp?', {templateUrl: 'js/zonaimagen/plist.html', controller: 'ZonaimagenPListController'});
+        $routeProvider.when('/zonaimagen/selection/:page?/:rpp?', {templateUrl: 'js/zonaimagen/selection.html', controller: 'ZonaimagenSelectionController'});
 
-       
-        //------------  
-      
-     
-        
-      
-
-  
+        //------------        
+        $routeProvider.when('/tratamiento/view/:id', {templateUrl: 'js/tratamiento/view.html', controller: 'TratamientoViewController'});
+        $routeProvider.when('/tratamiento/new/:id?', {templateUrl: 'js/tratamiento/new.html', controller: 'TratamientoNewController'});
+        $routeProvider.when('/tratamiento/edit/:id', {templateUrl: 'js/tratamiento/edit.html', controller: 'TratamientoEditController'});
+        $routeProvider.when('/tratamiento/remove/:id', {templateUrl: 'js/tratamiento/remove.html', controller: 'TratamientoRemoveController'});
+        $routeProvider.when('/tratamiento/plist/:page?/:rpp?', {templateUrl: 'js/tratamiento/plist.html', controller: 'TratamientoPListController'});
         //------------
         $routeProvider.otherwise({redirectTo: '/'});
     }]);

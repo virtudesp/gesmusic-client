@@ -7,7 +7,7 @@ moduloEpisodio.factory('episodioService', ['serverService', function (serverServ
                     {name: "fecha", shortname: "Fecha", longname: "Fecha", visible: true, type: "date", required: true, maxlength: 255, pattern: "",showSelection: true},
                     {name: "informe", shortname: "Informe", longname: "Informe", visible: true, type: "textarea", required: true, maxlength: 5000, pattern: "",showSelection: false},
                     {name: "importe", shortname: "Importe", longname: "Importe", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr('decimal'),help:serverService.getRegExpl('decimal'),showSelection: false},
-                    {name: "obj_importancia", shortname: "Importancia", longname: "Importancia", visible: true, type: "specific", required: false, reference:"importancia",showSelection: true,desc:'descripcion'},
+                    {name: "obj_importancia", shortname: "Importancia", longname: "Importancia", visible: true, type: "specific", required: true, reference:"importancia",showSelection: true,desc:'descripcion'},
                     {name: "obj_servicio", shortname: "Servicio", longname: "Servicio", visible: true, type: "specific", required: true, reference:"servicio",showSelection: true,desc:'descripcion',nullable:true},
                     {name: "obj_tipo", shortname: "Tipo", longname: "Tipo", visible: true, type: "specific", required: true, reference:"tipo",showSelection: true,desc:'descripcion'},
                     {name: "obj_paciente", shortname: "Paciente", longname: "Paciente", visible: true, type: "specific", required: false, reference:"paciente",showSelection: true,desc:['name','primer_apellido']},
