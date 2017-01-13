@@ -46,7 +46,7 @@ moduloVia.controller('ViaSelectionController', ['$scope', '$uibModalInstance', '
         $scope.orderParams = null;
         $scope.filterParams = null;
         $scope.status = null;
-        $scope.debugging=serverService.debugging();
+        $scope.debugging = serverService.debugging();
         $scope.closeForm = function (id) {
             $modalInstance.close(id);
         };

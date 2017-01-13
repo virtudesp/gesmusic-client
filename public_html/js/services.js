@@ -253,7 +253,7 @@ moduloServicios
                 evaluateMax: function (lowEnd, highEnd) {
                     return Math.max(lowEnd, highEnd);
                 },
-                capitalizeWord: function(string){
+                capitalizeWord: function (string) {
                     return string.charAt(0).toUpperCase() + string.slice(1);
                 }
             };

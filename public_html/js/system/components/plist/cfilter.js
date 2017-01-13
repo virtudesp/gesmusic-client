@@ -6,7 +6,7 @@ moduloDirectivas.component('cplistfilter', {
         op: '<',
         fields: '<',
         rpp: '<',
-        numpage: '<',         
+        numpage: '<',
         order: '<',
         sfilter: '<'
     },

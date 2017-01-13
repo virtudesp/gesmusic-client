@@ -55,7 +55,7 @@ moduloMedicamento.controller('MedicamentoSelectionController', ['$scope', '$uibM
             $modalInstance.dismiss('cancel');
         }
         $scope.getData = function (selectedPageNumber) {
-            $scope.numpage=selectedPageNumber;
+            $scope.numpage = selectedPageNumber;
             serverService.promise_getCount($scope.ob, $scope.filterParams).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;

@@ -71,7 +71,7 @@ moduloTipodocumento.controller('TipodocumentoNewController', ['$scope', '$routeP
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        
+
 
     }]);
 

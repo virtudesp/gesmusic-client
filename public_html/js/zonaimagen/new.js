@@ -53,7 +53,7 @@ moduloZonaimagen.controller('ZonaimagenNewController', ['$scope', '$routeParams'
         } else {
             $scope.show_obj_zona = true;
         }
-         //----
+        //----
         if ($routeParams.id_imagen) {
             serverService.promise_getOne('imagen', $routeParams.id_imagen).then(function (response) {
                 if (response.data.message.id != 0) {
@@ -65,7 +65,7 @@ moduloZonaimagen.controller('ZonaimagenNewController', ['$scope', '$routeParams'
         } else {
             $scope.show_obj_imagen = true;
         }
-        
+
         $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
@@ -117,7 +117,7 @@ moduloZonaimagen.controller('ZonaimagenNewController', ['$scope', '$routeParams'
                 });
             }
         });
-        
+
         $scope.$watch('bean.obj_imagen.id', function () {
             if ($scope.bean) {
                 serverService.promise_getOne('imagen', $scope.bean.obj_imagen.id).then(function (response) {
@@ -132,6 +132,6 @@ moduloZonaimagen.controller('ZonaimagenNewController', ['$scope', '$routeParams'
                 });
             }
         });
-       
+
     }]);
 

@@ -51,8 +51,8 @@ moduloPaciente.controller('PacienteNewController', ['$scope', '$routeParams', '$
             });
         } else {
             $scope.show_obj_servicio = true;
-        } 
-         
+        }
+
         $scope.save = function () {
             $scope.bean.fecha_salida = $filter('date')($scope.bean.fecha_salida, "dd/MM/yyyy");
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
@@ -82,7 +82,7 @@ moduloPaciente.controller('PacienteNewController', ['$scope', '$routeParams', '$
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        
+
         $scope.dateOptions = {
             formatYear: 'yyyy',
             startingDay: 1
@@ -95,7 +95,7 @@ moduloPaciente.controller('PacienteNewController', ['$scope', '$routeParams', '$
         $scope.popup1 = {
             opened: false
         };
-        
+
         $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'js/' + foreignObjectName + '/selection.html',
@@ -105,9 +105,9 @@ moduloPaciente.controller('PacienteNewController', ['$scope', '$routeParams', '$
                 $scope.bean[nameForeign].id = modalResult;
             });
         };
-        
-       
-        
+
+
+
         //-----------------specific---------------------------------------------
         $scope.$watch('bean.obj_servicio.id', function () {
             if ($scope.bean) {

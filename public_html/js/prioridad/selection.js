@@ -2,7 +2,7 @@
 
 moduloPrioridad.controller('PrioridadSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'prioridadService', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $modalInstance, $routeParams, prioridadService, serverService, $location, sharedSpaceService) {
-        
+
         $scope.fields = prioridadService.getFields();
         $scope.obtitle = prioridadService.getObTitle();
         $scope.icon = prioridadService.getIcon();

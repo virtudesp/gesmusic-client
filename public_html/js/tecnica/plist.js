@@ -2,7 +2,7 @@
 
 moduloTecnica.controller('TecnicaPListController', ['$scope', '$routeParams', '$location', 'serverService', 'tecnicaService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, tecnicaService, $uibModal) {
-        
+
         $scope.fields = tecnicaService.getFields();
         $scope.obtitle = tecnicaService.getObTitle();
         $scope.icon = tecnicaService.getIcon();
@@ -22,8 +22,8 @@ moduloTecnica.controller('TecnicaPListController', ['$scope', '$routeParams', '$
         $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
         $scope.filterExpression = serverService.checkEmptyString($routeParams.filter) + '+' + serverService.checkEmptyString($routeParams.sfilter);
         $scope.status = null;
-        $scope.debugging=serverService.debugging();
-        
+        $scope.debugging = serverService.debugging();
+
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {

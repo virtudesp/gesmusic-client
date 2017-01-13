@@ -3,7 +3,7 @@
 
 moduloTipo.controller('TipoRemovepopController', ['$scope', '$routeParams', 'serverService', 'tipoService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, tipoService, $location, $uibModalInstance, id) {
-        
+
         $scope.fields = tipoService.getFields();
         $scope.obtitle = tipoService.getObTitle();
         $scope.icon = tipoService.getIcon();
@@ -12,7 +12,7 @@ moduloTipo.controller('TipoRemovepopController', ['$scope', '$routeParams', 'ser
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        
+
         function getData() {
             serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
                 if (response.status == 200) {

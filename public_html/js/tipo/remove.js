@@ -9,7 +9,7 @@ moduloTipo.controller('TipoRemoveController', ['$scope', '$routeParams', '$locat
         $scope.title = "Borrado de " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;
-        $scope.debugging=serverService.debugging();
+        $scope.debugging = serverService.debugging();
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {
@@ -29,7 +29,7 @@ moduloTipo.controller('TipoRemoveController', ['$scope', '$routeParams', '$locat
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         if (response.data.message == 1) {
-                            $scope.status = "El registro " +  $scope.obtitle + " se ha eliminado." ;  
+                            $scope.status = "El registro " + $scope.obtitle + " se ha eliminado.";
                         } else {
                             $scope.status = "Error en el borrado de datos del servidor";
                         }

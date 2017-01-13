@@ -72,15 +72,22 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
         });
         $scope.save = function () {
             $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
-            
-            if($scope.bean.obj_importancia.id <= 0) $scope.bean.obj_importancia.id = null;
-            if($scope.bean.obj_servicio.id <= 0) $scope.bean.obj_servicio.id = null;
-            if($scope.bean.obj_tipo.id <= 0) $scope.bean.obj_tipo.id = null;
-            if($scope.bean.obj_paciente.id <= 0) $scope.bean.obj_paciente.id = null;
-            if($scope.bean.obj_medico.id <= 0) $scope.bean.obj_medico.id = null;
-            if($scope.bean.obj_episodio.id <= 0) $scope.bean.obj_episodio.id = null;
-            if($scope.bean.obj_cargo.id <= 0) $scope.bean.obj_cargo.id = null;
-            
+
+            if ($scope.bean.obj_importancia.id <= 0)
+                $scope.bean.obj_importancia.id = null;
+            if ($scope.bean.obj_servicio.id <= 0)
+                $scope.bean.obj_servicio.id = null;
+            if ($scope.bean.obj_tipo.id <= 0)
+                $scope.bean.obj_tipo.id = null;
+            if ($scope.bean.obj_paciente.id <= 0)
+                $scope.bean.obj_paciente.id = null;
+            if ($scope.bean.obj_medico.id <= 0)
+                $scope.bean.obj_medico.id = null;
+            if ($scope.bean.obj_episodio.id <= 0)
+                $scope.bean.obj_episodio.id = null;
+            if ($scope.bean.obj_cargo.id <= 0)
+                $scope.bean.obj_cargo.id = null;
+
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -117,7 +124,7 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
                 $scope.bean[nameForeign].id = modalResult;
             });
         };
-        
+
         $scope.$watch('bean.obj_importancia.id', function () {
             if ($scope.bean) {
                 serverService.promise_getOne('importancia', $scope.bean.obj_importancia.id).then(function (response) {
@@ -139,10 +146,10 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
                     var old_id = $scope.bean.obj_servicio.id;
                     $scope.bean.obj_servicio = response.data.message;
                     if (response.data.message.id <= 0) {
-                      $scope.bean.obj_servicio.id = old_id;
+                        $scope.bean.obj_servicio.id = old_id;
                     }
                 });
-            }else{
+            } else {
                 $scope.bean.obj_servicio.descripcion = "";
             }
         });
@@ -153,10 +160,10 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
                     var old_id = $scope.bean.obj_tipo.id;
                     $scope.bean.obj_tipo = response.data.message;
                     if (response.data.message.id <= 0) {
-                      $scope.bean.obj_tipo.id = old_id;
-                    } 
+                        $scope.bean.obj_tipo.id = old_id;
+                    }
                 });
-            }else{
+            } else {
                 $scope.bean.obj_tipo.descripcion = "";
             }
         });
@@ -167,10 +174,10 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
                     var old_id = $scope.bean.obj_paciente.id;
                     $scope.bean.obj_paciente = response.data.message;
                     if (response.data.message.id <= 0) {
-                      $scope.bean.obj_paciente.id = old_id;
-                    } 
+                        $scope.bean.obj_paciente.id = old_id;
+                    }
                 });
-            }else{
+            } else {
                 $scope.bean.obj_paciente.name = "";
                 $scope.bean.obj_paciente.pimer_apellido = "";
             }
@@ -182,23 +189,23 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
                     var old_id = $scope.bean.obj_medico.id;
                     $scope.bean.obj_medico = response.data.message;
                     if (response.data.message.id <= 0) {
-                      $scope.bean.obj_medico.id = old_id;
+                        $scope.bean.obj_medico.id = old_id;
                     }
                 });
                 var filter = "and,id_medico,equa," + $scope.bean.obj_medico.id;
-                
-                serverService.promise_getPage("usuario",1,1,filter).then(function(data){
-                    if(data.data.message.length > 0) {
+
+                serverService.promise_getPage("usuario", 1, 1, filter).then(function (data) {
+                    if (data.data.message.length > 0) {
                         $scope.medico = data.data.message[0];
                         $scope.outerForm.obj_medico.$setValidity('exists', true);
-                    }else{
+                    } else {
                         $scope.outerForm.obj_medico.$setValidity('exists', false);
-                        $scope.medico = {nombre:"", primerapellido:""};        
+                        $scope.medico = {nombre: "", primerapellido: ""};
                     }
                 });
-            }else if($scope.bean.obj_medico.id || $scope.bean.obj_medico.id === ""){
+            } else if ($scope.bean.obj_medico.id || $scope.bean.obj_medico.id === "") {
                 $scope.outerForm.obj_medico.$setValidity('exists', true);
-                $scope.medico = {nombre:"", primerapellido:""};
+                $scope.medico = {nombre: "", primerapellido: ""};
                 $scope.bean.obj_medico.id = 0;
             }
         });
@@ -226,8 +233,8 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
                 });
             }
         });
-        
-        
+
+
         $scope.dateOptions = {
             formatYear: 'yyyy',
             startingDay: 1
@@ -240,5 +247,5 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
         $scope.popup1 = {
             opened: false
         };
-        
+
     }]);

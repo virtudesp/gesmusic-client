@@ -39,8 +39,8 @@ moduloMedico.controller('MedicoNewController', ['$scope', '$routeParams', '$loca
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {id: 0};
-        $scope.bean.obj_servicio = {"id": 0};  
-        $scope.bean.obj_especialidad = {"id": 0};  
+        $scope.bean.obj_servicio = {"id": 0};
+        $scope.bean.obj_especialidad = {"id": 0};
         //----
         $scope.bean.obj_servicio = {"id": 0};
         if ($routeParams.id_servicio) {
@@ -67,8 +67,8 @@ moduloMedico.controller('MedicoNewController', ['$scope', '$routeParams', '$loca
         } else {
             $scope.show_obj_especialidad = true;
         }
-          
-        $scope.save = function () {         
+
+        $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -96,7 +96,7 @@ moduloMedico.controller('MedicoNewController', ['$scope', '$routeParams', '$loca
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-              
+
         $scope.$watch('bean.obj_servicio.id', function () {
             if ($scope.bean) {
                 serverService.promise_getOne('servicio', $scope.bean.obj_servicio.id).then(function (response) {
@@ -111,7 +111,7 @@ moduloMedico.controller('MedicoNewController', ['$scope', '$routeParams', '$loca
                 });
             }
         });
-              
+
         $scope.$watch('bean.obj_especialidad.id', function () {
             if ($scope.bean) {
                 serverService.promise_getOne('especialidad', $scope.bean.obj_especialidad.id).then(function (response) {

@@ -33,7 +33,7 @@ THE SOFTWARE.
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="panel-body" ng-cloak>
-                                         
+
                         <form name="outerForm" class="form-horizontal text-left"  ng-show="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->       
@@ -74,10 +74,10 @@ THE SOFTWARE.
                                                ng-required="{{f.required}}"                                                
                                                />
                                         <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                       <!-- <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>-->
+                                        <!-- <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>-->
                                     </div>
                                 </div>
-                                
+
                                 <!------------------------------------------------->
 
                             </div>

@@ -59,7 +59,7 @@ function foreignkey(serverService, $uibModal) {
         }
     };
 
-    var validity = function(isValid) {
+    var validity = function (isValid) {
         if (self.form) {
             self.form[self.name].$setValidity('exists', isValid);
         }

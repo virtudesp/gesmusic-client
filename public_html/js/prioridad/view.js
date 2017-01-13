@@ -2,7 +2,7 @@
 
 moduloPrioridad.controller('PrioridadViewController', ['$scope', '$routeParams', 'serverService', 'prioridadService', '$location',
     function ($scope, $routeParams, serverService, prioridadService, $location) {
-        
+
         $scope.fields = prioridadService.getFields();
         $scope.obtitle = prioridadService.getObTitle();
         $scope.icon = prioridadService.getIcon();
@@ -10,7 +10,7 @@ moduloPrioridad.controller('PrioridadViewController', ['$scope', '$routeParams',
         $scope.title = "Vista de " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;
-        $scope.debugging=serverService.debugging();
+        $scope.debugging = serverService.debugging();
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {

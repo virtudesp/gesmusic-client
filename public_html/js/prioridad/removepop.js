@@ -3,7 +3,7 @@
 
 moduloPrioridad.controller('PrioridadRemovepopController', ['$scope', '$routeParams', 'serverService', 'prioridadService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, prioridadService, $location, $uibModalInstance, id) {
-        
+
         $scope.fields = prioridadService.getFields();
         $scope.obtitle = prioridadService.getObTitle();
         $scope.icon = prioridadService.getIcon();
@@ -12,7 +12,7 @@ moduloPrioridad.controller('PrioridadRemovepopController', ['$scope', '$routePar
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        
+
         function getData() {
             serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
                 if (response.status == 200) {

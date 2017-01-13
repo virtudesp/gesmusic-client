@@ -63,5 +63,5 @@ moduloTecnica.controller('TecnicaEditController', ['$scope', '$routeParams', '$l
             }).result.then(function (modalResult) {
                 $scope.bean[nameForeign].id = modalResult;
             });
-        };       
+        };
     }]);

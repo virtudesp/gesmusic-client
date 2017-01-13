@@ -61,17 +61,17 @@ THE SOFTWARE.
 
                                                 </div>
                                                 <div class="col-lg-6  col-md-6 col-sm-8 text-center">
-                                                                                                           <cplistpagination 
-                                                             ob="ob"         
-                                                             op="op"         
-                                                             numpage="numpage"          
-                                                             rpp="rpp"
-                                                             pages="pages"
-                                                             neighbourhood="neighbourhood"
-                                                             filterParams="filterParams"
-                                                             orderParams="orderParams"
-                                                             sfilterParams="sfilterParams">
-                                                         </cplistpagination>
+                                                    <cplistpagination 
+                                                        ob="ob"         
+                                                        op="op"         
+                                                        numpage="numpage"          
+                                                        rpp="rpp"
+                                                        pages="pages"
+                                                        neighbourhood="neighbourhood"
+                                                        filterParams="filterParams"
+                                                        orderParams="orderParams"
+                                                        sfilterParams="sfilterParams">
+                                                    </cplistpagination>
                                                 </div>
                                                 <div class="col-lg-3  col-md-3 col-sm-4 text-center">
                                                     <plistrpp></plistrpp>
@@ -92,7 +92,16 @@ THE SOFTWARE.
                                             <div class="row">  
                                                 <div class="col-md-12">
                                                     <p></p>
-                                                    <plistfilter></plistfilter>
+                                                    <cplistfilter
+                                                        ob="ob"         
+                                                        op="op"   
+                                                        fields="fields"
+                                                        rpp="rpp"
+                                                        numpage="numpage"                                                                       
+                                                        order="sfilterParams"
+                                                        sfilter="sfilterParams"
+                                                        >
+                                                    </cplistfilter>  
                                                 </div>
                                             </div>
                                         </div>
@@ -155,7 +164,7 @@ THE SOFTWARE.
                                                     </div>
                                                 </td>
                                             </tr> 
-                                            
+
                                         </tbody>
                                     </table>            
                                 </div>

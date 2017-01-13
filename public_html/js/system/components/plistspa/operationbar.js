@@ -1,6 +1,6 @@
 'use strict';
 
-moduloDirectivas.directive('plistoperationbarspa', function () { 
+moduloDirectivas.directive('plistoperationbarspa', function () {
     return {
         restrict: 'A',
         templateUrl: 'js/system/components/plistspa/operationbar.html',

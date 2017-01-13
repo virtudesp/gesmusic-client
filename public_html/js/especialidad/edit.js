@@ -63,5 +63,5 @@ moduloEspecialidad.controller('EspecialidadEditController', ['$scope', '$routePa
             }).result.then(function (modalResult) {
                 $scope.bean[nameForeign].id = modalResult;
             });
-        };       
+        };
     }]);

@@ -11,9 +11,9 @@ moduloTipo.controller('TipoNewController', ['$scope', '$routeParams', '$location
         $scope.status = null;
         //$scope.debugging = serverService.debugging();
         $scope.bean = {};
-        $scope.bean.id = 0;    
-          
-        $scope.save = function () {         
+        $scope.bean.id = 0;
+
+        $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -41,6 +41,6 @@ moduloTipo.controller('TipoNewController', ['$scope', '$routeParams', '$location
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-       
+
     }]);
 

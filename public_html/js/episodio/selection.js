@@ -28,8 +28,8 @@
 
 'use strict';
 
-moduloEpisodio.controller('EpisodioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService','episodioService',
-    function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService,episodioService) {
+moduloEpisodio.controller('EpisodioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService', 'episodioService',
+    function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService, episodioService) {
         $scope.fields = episodioService.getFields();
         $scope.obtitle = episodioService.getObTitle();
         $scope.icon = episodioService.getIcon();
@@ -46,7 +46,7 @@ moduloEpisodio.controller('EpisodioSelectionController', ['$scope', '$uibModalIn
         $scope.orderParams = null;
         $scope.filterParams = null;
         $scope.status = null;
-        $scope.debugging=serverService.debugging();
+        $scope.debugging = serverService.debugging();
         $scope.closeForm = function (id) {
             $modalInstance.close(id);
         };

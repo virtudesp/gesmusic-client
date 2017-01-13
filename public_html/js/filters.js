@@ -43,7 +43,7 @@ moduloFiltros
                 return input[0] + ':' + input[1];
             };
         })
-        
+
         .filter('clipString', function ($filter)
         {
             return function (input)
@@ -78,8 +78,8 @@ moduloFiltros
 
             };
         })
-        
-        
+
+
         .filter('booleanizate', function ($filter)
         {
             return function (input)
@@ -97,9 +97,9 @@ moduloFiltros
             };
         })
         .filter('breakFilter', function () {
-            return function (text) {  
+            return function (text) {
                 if (typeof text == 'string')
-                    return text.replace(/\n/g, '<br />');     
+                    return text.replace(/\n/g, '<br />');
             };
         });
 ;

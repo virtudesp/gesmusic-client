@@ -120,7 +120,7 @@ moduloTratamiento.controller('TratamientoEditController', ['$scope', '$routePara
                 $scope.bean[nameForeign].id = modalResult;
             });
         };
-        
+
         $scope.$watch('bean.obj_medicamento.id', function () {
             if ($scope.bean) {
                 if ($scope.bean.obj_medicamento.id) {
@@ -138,7 +138,7 @@ moduloTratamiento.controller('TratamientoEditController', ['$scope', '$routePara
                 }
             }
         });
-        
+
         $scope.$watch('bean.obj_via.id', function () {
             if ($scope.bean) {
                 if ($scope.bean.obj_via.id) {
@@ -156,7 +156,7 @@ moduloTratamiento.controller('TratamientoEditController', ['$scope', '$routePara
                 }
             }
         });
-        
+
         $scope.$watch('bean.obj_posologia.id', function () {
             if ($scope.bean) {
                 if ($scope.bean.obj_posologia.id) {
@@ -174,7 +174,7 @@ moduloTratamiento.controller('TratamientoEditController', ['$scope', '$routePara
                 }
             }
         });
-        
+
         $scope.$watch('bean.obj_diagnostico.id', function () {
             if ($scope.bean) {
                 if ($scope.bean.obj_diagnostico.id) {
@@ -192,7 +192,7 @@ moduloTratamiento.controller('TratamientoEditController', ['$scope', '$routePara
                 }
             }
         });
-        
+
         $scope.dateOptions = {
             formatYear: 'yyyy',
             startingDay: 1

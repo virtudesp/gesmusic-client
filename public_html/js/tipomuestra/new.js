@@ -40,7 +40,7 @@ moduloTipomuestra.controller('TipomuestraNewController', ['$scope', '$routeParam
         $scope.debugging = serverService.debugging();
         $scope.bean = {id: 0};
         $scope.bean.obj_medicamento = {"id": 0};
-        
+
         $scope.save = function () {
             $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
             $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
