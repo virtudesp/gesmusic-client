@@ -5,15 +5,13 @@ moduloDirectivas.component('datePicker', {
     bindings: {
         name: '<',
         required: '<',
-        fecha: '=',
-        fecha2: '='
+        fecha: '='
     }
 });
 
 function datepicker(serverService) {
     var self = this;
     self.fecha="";
-    self.fecha2="";
 }
 
 
