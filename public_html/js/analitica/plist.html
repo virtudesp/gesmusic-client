@@ -97,9 +97,9 @@ THE SOFTWARE.
                                                         fields="fields"
                                                         rpp="rpp"
                                                         numpage="numpage"                                                                       
-                                                        order="sfilterParams"
-                                                        sfilter="sfilterParams"
-                                                        >
+                                                        order="orderParams"
+                                                        filter="filterParams"
+                                                        sfilter="sfilterParams">
                                                     </cplistfilter>                                                
                                                 </div>
                                             </div>
@@ -131,7 +131,7 @@ THE SOFTWARE.
                                     <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">
                                         <thead plistheader></thead>
                                         <tbody>
-                                            <tr ng-repeat="obj in page | filter:searchText">
+                                            <tr ng-repeat="obj in page| filter:searchText">
                                                 <td ng-repeat="f in fields" ng-show="f.visible"  class="text-right">
                                                     <div ng-show="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
                                                     <div ng-show="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
