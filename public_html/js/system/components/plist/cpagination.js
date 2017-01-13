@@ -8,9 +8,9 @@ moduloDirectivas.component('cplistpagination', {
         rpp: '<',
         pages: '<',
         neighbourhood: '<',
-        filterParams: '<',
-        orderParams: '<',
-        sfilterParams: '<'
+        filterparams: '<',
+        orderparams: '<',
+        sfilterparams: '<'
     },
     templateUrl: 'js/system/components/plist/cpagination.html',
     controllerAs: 'pf',
@@ -18,7 +18,7 @@ moduloDirectivas.component('cplistpagination', {
             var self = this;
             self.gotopage = function (numpage) {
                 self.numpage = numpage;
-                $location.path(self.ob + '/' + self.op + '/' + self.numpage + '/' + self.rpp).search('filter', self.filterParams).search('sfilter', self.sfilterParams).search('order', self.orderParams);
+                $location.path(self.ob + '/' + self.op + '/' + self.numpage + '/' + self.rpp).search('filter', self.filterparams).search('sfilter', self.sfilterparams).search('order', self.orderparams);
                 return false;
             };
             self.getRangeArray = serverService.getRangeArray;
