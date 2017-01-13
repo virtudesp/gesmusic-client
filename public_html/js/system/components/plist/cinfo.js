@@ -34,15 +34,3 @@ moduloDirectivas.component('cplistinfo', {
             };
         }]
 });
-
-
-
-
-
-moduloSistema.controller('plistInfoController', ['$scope', 'serverService', '$rootScope', '$location', function ($scope, serverService, $rootScope, $location) {
-
-
-
-
-    }
-]);
