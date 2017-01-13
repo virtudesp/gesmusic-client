@@ -92,5 +92,5 @@ moduloTipousuario.controller('TipousuarioEditController', ['$scope', '$routePara
             }).result.then(function (modalResult) {
                 $scope.bean[nameForeign].id = modalResult;
             });
-        };       
+        };
     }]);

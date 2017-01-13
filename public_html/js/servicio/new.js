@@ -39,7 +39,7 @@ moduloServicio.controller('ServicioNewController', ['$scope', '$routeParams', '$
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
-        
+
         $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {

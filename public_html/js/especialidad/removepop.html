@@ -56,18 +56,18 @@ THE SOFTWARE.
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="f in fields" class="text-left">
-                                      <td>{{f.longname}}</td>
-                                            <td ng-show="f.type == 'id'"><b>{{bean[f.name]}}</b></td>
-                                            <td ng-show="f.type == 'date'">{{bean[f.name]}}</td>
-                                            <td ng-show="f.type == 'integer'">{{bean[f.name]}}</td>
-                                            <td ng-show="f.type == 'decimal'">{{bean[f.name]}}</td>
-                                            <td ng-show="f.type == 'text'">{{bean[f.name]}}</td>
-                                            <td ng-show="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td> 
-                                            <td ng-show="f.name.startsWith('obj_')">
-                                                <a href="{{f.reference}}/view/{{bean[f.name]['id']}}">
-                                                    {{bean[f.name]["description"]}}
-                                                </a>
-                                            </td>                           
+                                        <td>{{f.longname}}</td>
+                                        <td ng-show="f.type == 'id'"><b>{{bean[f.name]}}</b></td>
+                                        <td ng-show="f.type == 'date'">{{bean[f.name]}}</td>
+                                        <td ng-show="f.type == 'integer'">{{bean[f.name]}}</td>
+                                        <td ng-show="f.type == 'decimal'">{{bean[f.name]}}</td>
+                                        <td ng-show="f.type == 'text'">{{bean[f.name]}}</td>
+                                        <td ng-show="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td> 
+                                        <td ng-show="f.name.startsWith('obj_')">
+                                            <a href="{{f.reference}}/view/{{bean[f.name]['id']}}">
+                                                {{bean[f.name]["description"]}}
+                                            </a>
+                                        </td>                           
                                     </tr>
                                 </tbody>
                             </table>  

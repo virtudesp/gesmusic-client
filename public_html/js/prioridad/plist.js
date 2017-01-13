@@ -2,7 +2,7 @@
 
 moduloPrioridad.controller('PrioridadPListController', ['$scope', '$routeParams', '$location', 'serverService', 'prioridadService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, prioridadService, $uibModal) {
-        
+
         $scope.fields = prioridadService.getFields();
         $scope.obtitle = prioridadService.getObTitle();
         $scope.icon = prioridadService.getIcon();
@@ -22,8 +22,8 @@ moduloPrioridad.controller('PrioridadPListController', ['$scope', '$routeParams'
         $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
         $scope.filterExpression = serverService.checkEmptyString($routeParams.filter) + '+' + serverService.checkEmptyString($routeParams.sfilter);
         $scope.status = null;
-        $scope.debugging=serverService.debugging();
-        
+        $scope.debugging = serverService.debugging();
+
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {

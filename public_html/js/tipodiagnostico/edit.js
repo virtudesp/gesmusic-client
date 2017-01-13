@@ -94,5 +94,5 @@ moduloTipodiagnostico.controller('TipodiagnosticoEditController', ['$scope', '$r
                 $scope.bean[nameForeign].id = modalResult;
             });
         };
-        
+
     }]);

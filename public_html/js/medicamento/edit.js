@@ -90,5 +90,5 @@ moduloMedicamento.controller('MedicamentoEditController', ['$scope', '$routePara
             }).result.then(function (modalResult) {
                 $scope.bean[nameForeign].id = modalResult;
             });
-        };       
+        };
     }]);

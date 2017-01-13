@@ -62,7 +62,7 @@ THE SOFTWARE.
                                             <td ng-show="f.type == 'integer'">{{bean[f.name]}}</td>
                                             <td ng-show="f.type == 'decimal'">{{bean[f.name]}}</td>
                                             <td ng-show="f.type == 'text'">{{bean[f.name]}}</td>
-                                            <td ng-show="f.type == 'textarea'" ng-bind-html="bean[f.name]|breakFilter"></td>
+                                            <td ng-show="f.type == 'textarea'" ng-bind-html="bean[f.name] | breakFilter"></td>
                                             <td ng-show="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td>
                                             <!-- ----------------------------- -->                                            
                                             <td ng-show="f.name == 'obj_medicamento'">{{bean[f.name].descripcion}}</td>                                             

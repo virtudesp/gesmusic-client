@@ -16,7 +16,7 @@ moduloSistema.controller('plistPaginationController', ['$scope', 'serverService'
 
 
 
-        
+
         $scope.gotopage = function (numpage) {
             $scope.numpage = numpage;
             $location.path($scope.ob + '/' + $scope.op + '/' + $scope.numpage + '/' + $scope.rpp).search('filter', $scope.filterParams).search('sfilter', $scope.sfilterParams).search('order', $scope.orderParams);

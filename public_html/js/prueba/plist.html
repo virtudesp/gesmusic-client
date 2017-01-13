@@ -57,14 +57,42 @@ THE SOFTWARE.
                                             <p></p>
                                             <div class="row">
                                                 <div class="col-lg-3 col-md-3 col-sm-12">
-                                                    <plistinfo></plistinfo>
+                                                    <cplistinfo
+                                                        ob="ob"         
+                                                        op="op"         
+                                                        numpage="numpage"                                                       
+                                                        rpp="rpp"
+                                                        registers="registers"        
+                                                        orderParams="orderParams"
+                                                        filterParams="filterParams"
+                                                        sfilterParams="sfilterParams"
+                                                        searchText="searchText">
+                                                    </cplistinfo>
 
                                                 </div>
                                                 <div class="col-lg-6  col-md-6 col-sm-8 text-center">
-                                                    <plistpagination></plistpagination>
+                                                    <cplistpagination 
+                                                        ob="ob"         
+                                                        op="op"         
+                                                        numpage="numpage"          
+                                                        rpp="rpp"
+                                                        pages="pages"
+                                                        neighbourhood="neighbourhood"
+                                                        filterParams="filterParams"
+                                                        orderParams="orderParams"
+                                                        sfilterParams="sfilterParams">
+                                                    </cplistpagination>
                                                 </div>
                                                 <div class="col-lg-3  col-md-3 col-sm-4 text-center">
-                                                    <plistrpp></plistrpp>
+                                                    <cplistrpp
+                                                        ob="ob"         
+                                                        op="op"         
+                                                        numpage="numpage"          
+                                                        rpp="rpp"                                                       
+                                                        filterParams="filterParams"
+                                                        orderParams="orderParams"
+                                                        sfilterParams="sfilterParams">
+                                                    </cplistrpp>
                                                 </div>
                                             </div>
                                             <p></p>
@@ -82,7 +110,16 @@ THE SOFTWARE.
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p></p>
-                                                    <plistfilter></plistfilter>
+                                                    <cplistfilter
+                                                        ob="ob"         
+                                                        op="op"   
+                                                        fields="fields"
+                                                        rpp="rpp"
+                                                        numpage="numpage"                                                                       
+                                                        order="orderParams"
+                                                        filter="filterParams"
+                                                        sfilter="sfilterParams">
+                                                    </cplistfilter>  
                                                 </div>
                                             </div>
                                         </div>
@@ -113,7 +150,7 @@ THE SOFTWARE.
                                     <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">
                                         <thead plistheader></thead>
                                         <tbody>
-                                            <tr ng-repeat="obj in page| filter:searchText">
+                                            <tr ng-repeat="obj in page | filter:searchText">
                                                 <td ng-repeat="f in fields" ng-show="f.visible"  class="text-right">
                                                     <div ng-show="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
                                                     <div ng-show="f.visible && f.type == 'textarea'" class="text-left">{{obj[f.name]|clipString}}</div>

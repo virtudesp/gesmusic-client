@@ -63,5 +63,5 @@ moduloPrioridad.controller('PrioridadEditController', ['$scope', '$routeParams',
             }).result.then(function (modalResult) {
                 $scope.bean[nameForeign].id = modalResult;
             });
-        };       
+        };
     }]);

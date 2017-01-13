@@ -29,7 +29,7 @@
 'use strict';
 moduloDiagnostico.controller('DiagnosticoEditController', ['$scope', '$routeParams', '$location', 'diagnosticoService', 'serverService', '$filter', '$uibModal',
     function ($scope, $routeParams, $location, diagnosticoService, serverService, $filter, $uibModal) {
-               $scope.fields = diagnosticoService.getFields();
+        $scope.fields = diagnosticoService.getFields();
         $scope.obtitle = diagnosticoService.getObTitle();
         $scope.icon = diagnosticoService.getIcon();
         $scope.ob = diagnosticoService.getTitle();
@@ -41,17 +41,17 @@ moduloDiagnostico.controller('DiagnosticoEditController', ['$scope', '$routePara
         $scope.bean = {};
         //----
         $scope.show_obj_tipodiagnostico = true;
-        
+
         $scope.show_obj_episodio = true;
-        
-        
-         $scope.id = $routeParams.id;
+
+
+        $scope.id = $routeParams.id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    
+
                     $scope.bean.fecha = serverService.date_toDate($scope.bean.fecha);
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
@@ -74,8 +74,8 @@ moduloDiagnostico.controller('DiagnosticoEditController', ['$scope', '$routePara
         } else {
             $scope.show_obj_tipodiagnostico = true;
         }
-      
-               $scope.bean.obj_episodio = {"id": 0};
+
+        $scope.bean.obj_episodio = {"id": 0};
         if ($routeParams.id_episodio) {
             serverService.promise_getOne('episodio', $routeParams.id_episodio).then(function (response) {
                 if (response.data.message.id != 0) {
@@ -87,12 +87,12 @@ moduloDiagnostico.controller('DiagnosticoEditController', ['$scope', '$routePara
         } else {
             $scope.show_obj_episodio = true;
         }
-      
-        
-        
+
+
+
         $scope.save = function () {
             $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
-    
+
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -143,8 +143,8 @@ moduloDiagnostico.controller('DiagnosticoEditController', ['$scope', '$routePara
                 });
             }
         });
-        
-               $scope.$watch('bean.obj_episodio.id', function () {
+
+        $scope.$watch('bean.obj_episodio.id', function () {
             if ($scope.bean) {
                 serverService.promise_getOne('episodio', $scope.bean.obj_episodio.id).then(function (response) {
                     var old_id = $scope.bean.obj_episodio.id;
@@ -158,12 +158,12 @@ moduloDiagnostico.controller('DiagnosticoEditController', ['$scope', '$routePara
                 });
             }
         });
-        
-        $scope.dateOptions = 
-        {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
+
+        $scope.dateOptions =
+                {
+                    formatYear: 'yyyy',
+                    startingDay: 1
+                };
         //datepicker 1
         $scope.open1 = function () {
             $scope.popup1.opened = true;
@@ -172,5 +172,5 @@ moduloDiagnostico.controller('DiagnosticoEditController', ['$scope', '$routePara
         $scope.popup1 = {
             opened: false
         };
-      
+
     }]);

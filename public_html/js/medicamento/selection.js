@@ -54,7 +54,8 @@ moduloMedicamento.controller('MedicamentoSelectionController', ['$scope', '$uibM
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
         }
-        function getData() {
+        $scope.getData = function (selectedPageNumber) {
+            $scope.numpage = selectedPageNumber;
             serverService.promise_getCount($scope.ob, $scope.filterParams).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;
@@ -80,31 +81,32 @@ moduloMedicamento.controller('MedicamentoSelectionController', ['$scope', '$uibM
         }
         $scope.$on('filterSelectionEvent', function (event, data) {
             $scope.filterParams = data;
-            getData();
+            $scope.getData($scope.numpage);
         });
         $scope.$on('orderSelectionEvent', function (event, data) {
             $scope.orderParams = data;
-            getData();
+            $scope.getData($scope.numpage);
         });
         $scope.$on('pageSelectionEvent', function (event, data) {
             $scope.numpage = data;
-            getData();
+            $scope.getData($scope.numpage);
         });
         $scope.$on('rppSelectionEvent', function (event, data) {
             $scope.rpp = data;
-            getData();
+            $scope.getData($scope.numpage);
         });
         $scope.$on('resetOrderEvent', function (event) {
             $scope.orderParams = null;
-            getData();
+            $scope.getData($scope.numpage);
         });
         $scope.$on('resetFilterEvent', function (event) {
             $scope.filterParams = null;
-            getData();
+            $scope.getData($scope.numpage);
         });
         $scope.chooseOne = function (id) {
             $scope.closeForm(id);
             return false;
         }
-        getData();
+        $scope.getData($scope.numpage);
+
     }]);

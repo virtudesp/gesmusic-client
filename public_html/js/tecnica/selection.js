@@ -2,7 +2,7 @@
 
 moduloTecnica.controller('TecnicaSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'tecnicaService', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $modalInstance, $routeParams, tecnicaService, serverService, $location, sharedSpaceService) {
-        
+
         $scope.fields = tecnicaService.getFields();
         $scope.obtitle = tecnicaService.getObTitle();
         $scope.icon = tecnicaService.getIcon();

@@ -29,7 +29,7 @@
 'use strict';
 
 moduloTipo.controller('TipoViewController', ['$scope', '$routeParams', 'serverService', 'tipoService', '$location',
-    function ($scope, $routeParams, serverService,tipoService, $location) {
+    function ($scope, $routeParams, serverService, tipoService, $location) {
         $scope.fields = tipoService.getFields();
         $scope.obtitle = tipoService.getObTitle();
         $scope.icon = tipoService.getIcon();
@@ -37,7 +37,7 @@ moduloTipo.controller('TipoViewController', ['$scope', '$routeParams', 'serverSe
         $scope.title = "Vista de " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;
-        $scope.debugging=serverService.debugging();
+        $scope.debugging = serverService.debugging();
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {

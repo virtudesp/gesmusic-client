@@ -90,5 +90,5 @@ moduloAnticoagulante.controller('AnticoagulanteEditController', ['$scope', '$rou
             }).result.then(function (modalResult) {
                 $scope.bean[nameForeign].id = modalResult;
             });
-        };       
+        };
     }]);

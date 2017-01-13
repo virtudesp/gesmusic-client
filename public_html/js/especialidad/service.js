@@ -5,7 +5,6 @@ moduloEspecialidad.factory('especialidadService', ['serverService', function (se
                 return [
                     {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "id"},
                     {name: "descripcion", shortname: "Desc.", longname: "Descripción", visible: true, type: "text"},
-                   
                 ];
             },
             getIcon: function () {

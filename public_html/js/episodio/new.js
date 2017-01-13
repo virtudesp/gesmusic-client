@@ -53,8 +53,8 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.show_obj_medico = true;
         $scope.show_obj_episodio = true;
         $scope.show_obj_cargo = true;
-        
-        console.log($scope.outerForm);
+
+
         //----
 
         $scope.save = function () {
@@ -87,8 +87,8 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        
-        
+
+
         $scope.dateOptions = {
             formatYear: 'yyyy',
             startingDay: 1
@@ -101,6 +101,8 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.popup1 = {
             opened: false
         };
-
+        $scope.errors = function ($argument) {
+            alert($argument);
+        };
     }]);
 

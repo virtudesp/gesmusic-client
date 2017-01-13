@@ -63,5 +63,5 @@ moduloTipo.controller('TipoEditController', ['$scope', '$routeParams', '$locatio
             }).result.then(function (modalResult) {
                 $scope.bean[nameForeign].id = modalResult;
             });
-        };       
+        };
     }]);

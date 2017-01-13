@@ -41,7 +41,7 @@ moduloDiagnostico.controller('DiagnosticoNewController', ['$scope', '$routeParam
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
         //----
-        
+
         $scope.bean.obj_tipodiagnostico = {"id": 0};
         if ($routeParams.id_tipodiagnostico) {
             serverService.promise_getOne('tipodiagnostico', $routeParams.id_tipousuario).then(function (response) {
@@ -54,8 +54,8 @@ moduloDiagnostico.controller('DiagnosticoNewController', ['$scope', '$routeParam
         } else {
             $scope.show_obj_tipodiagnostico = true;
         }
-      
-               $scope.bean.obj_episodio = {"id": 0};
+
+        $scope.bean.obj_episodio = {"id": 0};
         if ($routeParams.id_episodio) {
             serverService.promise_getOne('episodio', $routeParams.id_episodio).then(function (response) {
                 if (response.data.message.id != 0) {
@@ -67,13 +67,13 @@ moduloDiagnostico.controller('DiagnosticoNewController', ['$scope', '$routeParam
         } else {
             $scope.show_obj_episodio = true;
         }
-      
-        
-        
+
+
+
         $scope.save = function () {
             $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
-            
-         
+
+
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -124,8 +124,8 @@ moduloDiagnostico.controller('DiagnosticoNewController', ['$scope', '$routeParam
                 });
             }
         });
-        
-               $scope.$watch('bean.obj_episodio.id', function () {
+
+        $scope.$watch('bean.obj_episodio.id', function () {
             if ($scope.bean) {
                 serverService.promise_getOne('episodio', $scope.bean.obj_episodio.id).then(function (response) {
                     var old_id = $scope.bean.obj_episodio.id;
@@ -139,12 +139,12 @@ moduloDiagnostico.controller('DiagnosticoNewController', ['$scope', '$routeParam
                 });
             }
         });
-        
-        $scope.dateOptions = 
-        {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
+
+        $scope.dateOptions =
+                {
+                    formatYear: 'yyyy',
+                    startingDay: 1
+                };
         //datepicker 1
         $scope.open1 = function () {
             $scope.popup1.opened = true;
@@ -153,6 +153,6 @@ moduloDiagnostico.controller('DiagnosticoNewController', ['$scope', '$routeParam
         $scope.popup1 = {
             opened: false
         };
-      
+
     }]);
 

@@ -71,7 +71,7 @@ moduloImportancia.controller('ImportanciaNewController', ['$scope', '$routeParam
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        
+
 
     }]);
 

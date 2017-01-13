@@ -3,7 +3,7 @@
 
 moduloTecnica.controller('TecnicaRemovepopController', ['$scope', '$routeParams', 'serverService', 'tecnicaService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, tecnicaService, $location, $uibModalInstance, id) {
-        
+
         $scope.fields = tecnicaService.getFields();
         $scope.obtitle = tecnicaService.getObTitle();
         $scope.icon = tecnicaService.getIcon();
@@ -12,7 +12,7 @@ moduloTecnica.controller('TecnicaRemovepopController', ['$scope', '$routeParams'
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        
+
         function getData() {
             serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
                 if (response.status == 200) {

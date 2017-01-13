@@ -133,7 +133,7 @@ moduloAnalitica.controller('AnaliticaNewController', ['$scope', '$routeParams', 
                 $scope.bean[nameForeign].id = modalResult;
             });
         };
-        
+
         $scope.$watch('bean.obj_tipomuestra.id', function () {
             if ($scope.bean) {
                 if ($scope.bean.obj_tipomuestra.id) {
@@ -151,7 +151,7 @@ moduloAnalitica.controller('AnaliticaNewController', ['$scope', '$routeParams', 
                 }
             }
         });
-        
+
         $scope.$watch('bean.obj_anticoagulante.id', function () {
             if ($scope.bean) {
                 if ($scope.bean.obj_anticoagulante.id) {
@@ -169,7 +169,7 @@ moduloAnalitica.controller('AnaliticaNewController', ['$scope', '$routeParams', 
                 }
             }
         });
-        
+
         $scope.$watch('bean.obj_prioridad.id', function () {
             if ($scope.bean) {
                 if ($scope.bean.obj_prioridad.id) {
@@ -187,7 +187,7 @@ moduloAnalitica.controller('AnaliticaNewController', ['$scope', '$routeParams', 
                 }
             }
         });
-        
+
         $scope.$watch('bean.obj_episodio.id', function () {
             if ($scope.bean) {
                 if ($scope.bean.obj_episodio.id) {
@@ -205,7 +205,7 @@ moduloAnalitica.controller('AnaliticaNewController', ['$scope', '$routeParams', 
                 }
             }
         });
-        
+
         $scope.dateOptions = {
             formatYear: 'yyyy',
             startingDay: 1
