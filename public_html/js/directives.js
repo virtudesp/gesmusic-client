@@ -112,9 +112,10 @@ moduloDirectivas
         })
         .directive('jqdatepicker', function () {
             return {
+                restrict: 'A',
                 require: 'ngModel',
-                link: function (scope, el, attr, ngModel) {
-                    $(el).datepicker({
+                link: function (scope, element, attr, ngModel) {
+                    $(element).datepicker({
                         onSelect: function (dateText) {
                             scope.$apply(function () {
                                 ngModel.$setViewValue(dateText);

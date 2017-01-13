@@ -116,10 +116,8 @@ THE SOFTWARE.
                                      ng-class="{'has-error': (outerForm.fecha_inicio.$error.required && !outerForm.fecha_inicio.$pristine) ||
                                                              (!bean.fecha_inicio && !outerForm.fecha_inicio.$pristine)}">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />                            
-                                    <div class="control col-sm-3">  
-                                        
-                                    <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_inicio" />    
-                                    
+                                    <div class="control col-sm-3"> 
+                                    <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_inicio" />  
                                         <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
                                         <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
@@ -130,16 +128,13 @@ THE SOFTWARE.
                                      id="fecha-group"
                                      ng-class="{'has-error': (outerForm.fecha_fin.$error.required && !outerForm.fecha_fin.$pristine) ||
                                                              (!bean.fecha_fin && !outerForm.fecha_fin.$pristine)}">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />                                    
-                                    <div class="control col-sm-3"> 
-                                        
-                                        <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_inicio" />                                    
-                                        
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />               
+                                    <div class="control col-sm-3">                                         
+                                        <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha2="bean.fecha_fin" />   
                                         <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
                                         <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
-                                </div>
-                                
+                                </div>                                
                                 <!------------------------------------------------->
                                 <foreign-key ng-show="f.type == 'specific'" metadata="f" form="outerForm" bean="bean"></foreign-key>                               
                                 <!------------------------------------------------->

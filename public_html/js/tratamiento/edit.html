@@ -43,9 +43,7 @@ THE SOFTWARE.
                                 <div ng-show="f.type == 'id'"
                                      id="{{f.name}}-group"
                                      class="form-group">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        {{f.longname}}:
-                                    </label>
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
                                     <div class="control col-sm-3">
                                         <input ng-model="bean[f.name]"
                                                type="text" id="{{f.name}}"
@@ -62,9 +60,7 @@ THE SOFTWARE.
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern) ||
                                                              (outerForm[f.name].$error.required)}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}:
-                                    </label>
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
                                     <div class="control col-sm-8">
                                         <input ng-model="bean[f.name]"
                                                type="text"
@@ -84,9 +80,7 @@ THE SOFTWARE.
                                   <div ng-show="f.type === 'textarea'" id="{{f.name}}-group" class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}:
-                                    </label>                                 
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />                                  
                                     <div class="control col-sm-8">  
                                         <textarea ng-model="bean[f.name]" class="form-control" id="{{f.name}}" name="{{f.name}}"
                                                   placeholder="{{f.name}}" ng-required="{{f.required}}" ng-pattern="f.pattern" rows="10">    
@@ -103,9 +97,7 @@ THE SOFTWARE.
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
                                                              (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}:
-                                    </label>
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
                                     <div class="control col-sm-8">
                                         <input ng-model="bean[f.name]"
                                                type="decimal"
@@ -128,30 +120,11 @@ THE SOFTWARE.
                                      ng-class="{'has-error': (outerForm.fecha_inicio.$error.required && !outerForm.fecha_inicio.$pristine) ||
                                                              (!bean.fecha_inicio && !outerForm.fecha_inicio.$pristine)}">
                                     <label class="col-sm-2 control-label" for="fecha_inicio">
-                                        <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}
-                                    </label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group date" id="fecha_group">
-                                            <input type="text"
-                                                   class="form-control"
-                                                   placeholder="{{bean.fecha_inicio| date:'fullDate' }}"
-                                                   uib-datepicker-popup="dd/MM/yyyy"
-                                                   ng-model="bean.fecha_inicio"
-                                                   is-open="popup1.opened"
-                                                   datepicker-options="dateOptions"
-                                                   ng-required="true"
-                                                   close-text="Cerrar"
-                                                   id="fecha"
-                                                   name="fecha_inicio"
-                                                   />
-                                            <span class="input-group-addon" ng-click="open1()">
-                                                <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>
-                                        </div>
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
+                                    <div class="control col-sm-3">                                            
+                                        <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_inicio" />                                       
                                         <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
                                         <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
-
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
@@ -161,180 +134,15 @@ THE SOFTWARE.
                                      ng-class="{'has-error': (outerForm.fecha_fin.$error.required && !outerForm.fecha_fin.$pristine) ||
                                                              (!bean.fecha_fin && !outerForm.fecha_fin.$pristine)}">
                                     <label class="col-sm-2 control-label" for="fecha_fin">
-                                        <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}
-                                    </label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group date" id="fecha_group">
-                                            <input type="text"
-                                                   class="form-control"
-                                                   placeholder="{{bean.fecha_fin| date:'fullDate' }}"
-                                                   uib-datepicker-popup="dd/MM/yyyy"
-                                                   ng-model="bean.fecha_fin"
-                                                   is-open="popup2.opened"
-                                                   datepicker-options="dateOptions"
-                                                   ng-required="true"
-                                                   close-text="Cerrar"
-                                                   id="{{f.name}}"
-                                                   name="{{f.name}}" 
-                                                   />
-                                            <span class="input-group-addon" ng-click="open2()">
-                                                <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>
-                                        </div>
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
+                                    <div class="control col-sm-3">                                            
+                                        <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_fin" />                                    
                                         <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
                                         <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
-
                                     </div>
-                                </div>
+                                </div>                                
                                 <!------------------------------------------------->
-                                <datepicker ng-show="f.type == 'date'" metadata="f" form="outerForm" bean="bean"></datepicker>
-                                
-                                
-                                <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-show="show_obj_medicamento && (f.name == 'obj_medicamento')"
-                                     ng-class="{'has-error': (outerForm.obj_medicamento.$error.required ||
-                                                             outerForm.obj_medicamento.$error.exists ||
-                                                             outerForm.obj_medicamento.$error.validatemin)
-                                                             && !outerForm.obj_servicio.$pristine}"
-                                     ng-show="show_obj_medicamento">
-                                    <label class="col-sm-2 control-label" for="obj_medicamento">Medicamento:</label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_medicamento_group">
-                                            <span class="input-group-addon" id="obj_medicamento_button" ng-click="chooseOne('obj_medicamento', 'medicamento', 'MedicamentoSelectionController')">
-                                                <span class="glyphicon glyphicon-search">
-                                                </span>
-                                            </span>
-                                            <input type="text"
-                                                   ng-model-options="{debounce: 1000}"
-                                                   ng-change="obj_medicamento_change"
-                                                   ng-model="bean.obj_medicamento.id"
-                                                   validatemin="1"
-                                                   ng-required="true"
-                                                   aria-describedby="basic-addon2"
-                                                   class="form-control"
-                                                   id="obj_medicamento"
-                                                   name="obj_medicamento"
-                                                   size="5"
-                                                   maxlength="5">
-                                            <span class="input-group-addon">
-                                                <span>{{bean.obj_medicamento.descripcion}}</span>
-                                            </span>
-                                        </div>
-                                        <span class="help-block" ng-show="outerForm.obj_medicamento.$error.required">El medicamento es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm.obj_medicamento.$error.validatemin">Debes elegir un medicamento</span>
-                                        <span class="help-block" ng-show="outerForm.obj_medicamento.$error.exists">El medicamento no existe</span>
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-show="show_obj_via && (f.name == 'obj_via')"
-                                     ng-class="{'has-error': (outerForm.obj_via.$error.required ||
-                                                             outerForm.obj_via.$error.exists ||
-                                                             outerForm.obj_via.$error.validatemin)
-                                                             && !outerForm.obj_servicio.$pristine}"
-                                     ng-show="show_obj_via">
-                                    <label class="col-sm-2 control-label" for="obj_via">Via:</label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_via_group">
-                                            <span class="input-group-addon" id="obj_via_button" ng-click="chooseOne('obj_via', 'via', 'ViaSelectionController')">
-                                                <span class="glyphicon glyphicon-search">
-                                                </span>
-                                            </span>
-                                            <input type="text"
-                                                   ng-model-options="{debounce: 1000}"
-                                                   ng-change="obj_via_change"
-                                                   ng-model="bean.obj_via.id"
-                                                   validatemin="1"
-                                                   ng-required="true"
-                                                   aria-describedby="basic-addon2"
-                                                   class="form-control"
-                                                   id="obj_via"
-                                                   name="obj_via"
-                                                   size="5"
-                                                   maxlength="5">
-                                            <span class="input-group-addon">
-                                                <span>{{bean.obj_via.descripcion}}</span>
-                                            </span>
-                                        </div>
-                                        <span class="help-block" ng-show="outerForm.obj_via.$error.required">La via es obligatoria</span>
-                                        <span class="help-block" ng-show="outerForm.obj_via.$error.validatemin">Debes elegir una via</span>
-                                        <span class="help-block" ng-show="outerForm.obj_via.$error.exists">La via no existe</span>
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-show="show_obj_posologia && (f.name == 'obj_posologia')"
-                                     ng-class="{'has-error': (outerForm.obj_posologia.$error.required ||
-                                                             outerForm.obj_posologia.$error.exists ||
-                                                             outerForm.obj_posologia.$error.validatemin)
-                                                             && !outerForm.obj_servicio.$pristine}"
-                                     ng-show="show_obj_posologia">
-                                    <label class="col-sm-2 control-label" for="obj_posologia">Posología:</label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_posologia_group">
-                                            <span class="input-group-addon" id="obj_posologia_button" ng-click="chooseOne('obj_posologia', 'posologia', 'PosologiaSelectionController')">
-                                                <span class="glyphicon glyphicon-search">
-                                                </span>
-                                            </span>
-                                            <input type="text"
-                                                   ng-model-options="{debounce: 1000}"
-                                                   ng-change="obj_posologia_change"
-                                                   ng-model="bean.obj_posologia.id"
-                                                   validatemin="1"
-                                                   ng-required="true"
-                                                   aria-describedby="basic-addon2"
-                                                   class="form-control"
-                                                   id="obj_posologia"
-                                                   name="obj_posologia"
-                                                   size="5"
-                                                   maxlength="5">
-                                            <span class="input-group-addon">
-                                                <span>{{bean.obj_posologia.descripcion}}</span>
-                                            </span>
-                                        </div>
-                                        <span class="help-block" ng-show="outerForm.obj_posologia.$error.required">La posología es obligatoria</span>
-                                        <span class="help-block" ng-show="outerForm.obj_posologia.$error.validatemin">Debes elegir una posología</span>
-                                        <span class="help-block" ng-show="outerForm.obj_posologia.$error.exists">La posología no existe</span>
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-show="show_obj_diagnostico && (f.name == 'obj_diagnostico')"
-                                     ng-class="{'has-error': (outerForm.obj_diagnostico.$error.required ||
-                                                             outerForm.obj_diagnostico.$error.exists ||
-                                                             outerForm.obj_diagnostico.$error.validatemin)
-                                                             && !outerForm.obj_servicio.$pristine}"
-                                     ng-show="show_obj_diagnostico">
-                                    <label class="col-sm-2 control-label" for="obj_diagnostico">Diagnóstico:</label>
-                                    <div class="control col-sm-4">
-                                        <div class="input-group foreign" id="obj_diagnostico_group">
-                                            <span class="input-group-addon" id="obj_diagnostico_button" ng-click="chooseOne('obj_diagnostico', 'diagnostico', 'DiagnosticoSelectionController')">
-                                                <span class="glyphicon glyphicon-search">
-                                                </span>
-                                            </span>
-                                            <input type="text"
-                                                   ng-model-options="{debounce: 1000}"
-                                                   ng-change="obj_diagnostico_change"
-                                                   ng-model="bean.obj_diagnostico.id"
-                                                   validatemin="1"
-                                                   ng-required="true"
-                                                   aria-describedby="basic-addon2"
-                                                   class="form-control"
-                                                   id="obj_diagnostico"
-                                                   name="obj_diagnostico"
-                                                   size="5"
-                                                   maxlength="5">
-                                            <span class="input-group-addon">
-                                                <span>{{bean.obj_diagnostico.informe|clipString}}</span>
-                                            </span>
-                                        </div>
-                                        <span class="help-block" ng-show="outerForm.obj_diagnostico.$error.required">El diagnóstico es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm.obj_diagnostico.$error.validatemin">Debes elegir un diagnóstico</span>
-                                        <span class="help-block" ng-show="outerForm.obj_diagnostico.$error.exists">El diagnóstico no existe</span>
-                                    </div>
-                                </div>
+                                <foreign-key ng-show="f.type == 'specific'" metadata="f" form="outerForm" bean="bean"></foreign-key>                               
                                 <!------------------------------------------------->
                             </div>
                             <div class="control-group text-right">
