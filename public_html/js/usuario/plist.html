@@ -56,8 +56,19 @@ THE SOFTWARE.
                                         <div role="tabpanel" id="pane0" class="tab-pane fade active in">
                                             <p></p>
                                             <div class="row">
-                                                <div class="col-lg-3 col-md-3 col-sm-12">                                                    
-                                                    <plistinfo></plistinfo>
+                                                <div class="col-lg-3 col-md-3 col-sm-12">  
+                                                    
+                                                    <cplistinfo
+                                                        ob="ob"         
+                                                        op="op"         
+                                                        numpage="numpage"                                                       
+                                                        rpp="rpp"
+                                                        registers="registers"        
+                                                        orderparams="orderParams"
+                                                        filterparams="filterParams"
+                                                        sfilterparams="sfilterParams"
+                                                        searchtext="searchText">
+                                                    </cplistinfo>
 
                                                 </div>
                                                 <div class="col-lg-6  col-md-6 col-sm-8 text-center">
@@ -133,7 +144,7 @@ THE SOFTWARE.
                                         <thead plistheader></thead>
                                         <tbody>
 
-                                            <tr ng-repeat="obj in page| filter:searchText">
+                                            <tr ng-repeat="obj in page | filter:searchText">
                                                 <td ng-repeat="f in fields" ng-show="f.visible"  class="text-right">
                                                     <div ng-show="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
                                                     <div ng-show="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>

@@ -6,24 +6,24 @@ moduloDirectivas.component('cplistinfo', {
         op: '<',
         numpage: '<',
         rpp: '<',
-        pages: '<',
-        neighbourhood: '<',
-        filterParams: '<',
-        orderParams: '<',
-        searchText: '='
+        registers: '<',
+        orderparams: '<',
+        filterparams: '<',
+        sfilterparams: '<',
+        searchtext: '='
     },
     templateUrl: 'js/system/components/plist/cinfo.html',
-    controllerAs: 'pi',
-    controller: ['serverService', '$location', function (serverService, $location) {
+    controllerAs: 'pli',
+    controller: ['$location', function ($location) {
             var self = this;
             self.doresetorder = function () {
-                $location.url(self.ob + '/' + self.op + '/' + self.numpage + '/' + self.rpp).search('filter', self.filterParams).search('sfilter', self.sfilterParams);
+                $location.url(self.ob + '/' + self.op + '/' + self.numpage + '/' + self.rpp).search('filter', self.filterparams).search('sfilter', self.sfilterparams);
                 return false;
             };
 
 
             self.doresetfilter = function () {
-                $location.url(self.ob + '/' + self.op + '/' + self.numpage + '/' + self.rpp).search('sfilter', self.sfilterParams).search('order', $routeParams.order);
+                $location.url(self.ob + '/' + self.op + '/' + self.numpage + '/' + self.rpp).search('sfilter', self.sfilterparams).search('order', self.orderparams);
                 return false;
             };
 
