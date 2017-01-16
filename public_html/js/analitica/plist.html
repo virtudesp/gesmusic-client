@@ -158,14 +158,14 @@ THE SOFTWARE.
                                                     <div ng-show="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                     <div ng-show="f.visible && f.type == 'textarea'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                     <div ng-show="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>  
-                                                    <!------------------------------------------------>
-                                                    <div ng-show="f.visible && f.name == 'obj_tipomuestra'" class="text-center"><a href="tipomuestra/view/{{obj.obj_tipomuestra.id}}">{{obj.obj_tipomuestra.descripcion}}</a></div>
-                                                    <!------------------------------------------------>
-                                                    <div ng-show="f.visible && f.name == 'obj_anticoagulante'" class="text-center"><a href="anticoagulante/view/{{obj.obj_anticoagulante.id}}">{{obj.obj_anticoagulante.descripcion}}</a></div>  
-                                                    <!------------------------------------------------>
-                                                    <div ng-show="f.visible && f.name == 'obj_prioridad'" class="text-center"><a href="prioridad/view/{{obj.obj_prioridad.id}}">{{obj.obj_prioridad.descripcion}}</a></div>
-                                                    <!------------------------------------------------>
-                                                    <div ng-show="f.visible && f.name == 'obj_episodio'" class="text-center"><a href="episodio/view/{{obj.obj_episodio.id}}">{{obj.obj_episodio.informe|clipString}}</a></div>  
+                                                    <div ng-show="f.visible && f.type == 'foreign'" class="text-left">
+                                                        <cforeign 
+                                                            obf="f.reference"
+                                                            opf="'view'"
+                                                            idf="obj[(f.name)].id"
+                                                            descf="obj[(f.name)][f.descforeign]|clipString">                                                                
+                                                        </cforeign>
+                                                    </div>                                                   
                                                 </td>
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
