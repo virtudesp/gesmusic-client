@@ -101,6 +101,22 @@ moduloFiltros
                 if (typeof text == 'string')
                     return text.replace(/\n/g, '<br />');
             };
+        })
+
+        .filter('fechaformateada', function ($filter)
+        {
+            return function (input) {
+                if (input == null)
+                {
+                    return "";
+                }
+                var arr = input.split("/");
+                var newDate = (arr[2] + "/" + arr[0] + "/" + arr[2]);
+
+                //var _date = $filter('date')(new Date(input), 'EEEE, dd \'de\' MMMM \'de\' yyyy');
+                var _date = $filter('date')(newDate, 'EEEE, dd \'de\' MMMM \'de\' yyyy');
+                return _date;
+            };
         });
 ;
 
