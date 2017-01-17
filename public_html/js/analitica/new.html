@@ -117,26 +117,9 @@ THE SOFTWARE.
                                                              (!bean.fecha_peticion && !outerForm.fecha_peticion.$pristine)}">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />
                                     <div class="control col-sm-3">
-                                        <div class="input-group date" id="fecha_group">
-                                            <input type="text"
-                                                   class="form-control"
-                                                   placeholder="{{bean.fecha_peticion| date:'fullDate' }}"
-                                                   uib-datepicker-popup="dd/MM/yyyy"
-                                                   ng-model="bean.fecha_peticion"
-                                                   is-open="popup1.opened"
-                                                   datepicker-options="dateOptions"
-                                                   ng-required="true"
-                                                   close-text="Cerrar"
-                                                   id="fecha"
-                                                   name="fecha_peticion"
-                                                   />
-                                            <span class="input-group-addon" ng-click="open1()">
-                                                <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>
-                                        </div>
+                                        <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_peticion" />
                                         <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
                                         <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
-
                                     </div>
                                 </div>
                                 <!------------------------------------------------->

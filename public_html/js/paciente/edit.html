@@ -91,25 +91,8 @@ THE SOFTWARE.
                                         {{f.longname}}
                                     </label>
                                     <div class="control col-sm-3">
-                                        <div class="input-group date" id="fecha_salida_group">
-                                            <input type="text" 
-                                                   class="form-control" 
-                                                   placeholder="{{f.longname}}"
-                                                   uib-datepicker-popup="dd/MM/yyyy" 
-                                                   ng-model="bean.fecha_salida" 
-                                                   is-open="popup1.opened" 
-                                                   datepicker-options="dateOptions" 
-                                                   ng-required="true" 
-                                                   close-text="Cerrar"
-                                                   id="fecha_salida"
-                                                   name="fecha_salida"                                      
-                                                   />                               
-                                            <span class="input-group-addon" ng-click="open1()">
-                                                <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>                                                                                    
-                                        </div>
+                                        <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_salida" /> 
                                         <span class="help-block" ng-show="!outerForm.fecha_salida.$pristine && outerForm.fecha_salida.$error.required">El campo fecha de creación es obligatorio</span>
-                                        <em>{{bean.fecha_salida| date:'fullDate' }}</em>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->

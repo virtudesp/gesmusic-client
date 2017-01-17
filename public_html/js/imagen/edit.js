@@ -52,7 +52,7 @@ moduloImagen.controller('ImagenEditController', ['$scope', '$routeParams', '$loc
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    $scope.bean.fecha = serverService.date_toDate($scope.bean.fecha);
+                    $scope.bean.fecha = $filter('date')(serverService.date_toDate($scope.bean.fecha), "dd/MM/yyyy");
 
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
@@ -134,19 +134,4 @@ moduloImagen.controller('ImagenEditController', ['$scope', '$routeParams', '$loc
                 });
             }
         });
-
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
-        //datepicker 1
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-            $scope.outerForm.fecha.$pristine = false;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
-
-
     }]);

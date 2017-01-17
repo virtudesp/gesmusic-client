@@ -106,16 +106,16 @@ moduloFiltros
         .filter('fechaformateada', function ($filter)
         {
             return function (input) {
-                if (input == null)
+                if (input == null || input == "")
                 {
                     return "";
                 }
-                var arr = input.split("/");
-                var newDate = (arr[2] + "/" + arr[0] + "/" + arr[2]);
-
-                //var _date = $filter('date')(new Date(input), 'EEEE, dd \'de\' MMMM \'de\' yyyy');
-                var _date = $filter('date')(newDate, 'EEEE, dd \'de\' MMMM \'de\' yyyy');
-                return _date;
+                var arr = input.split("/"); // formato dd/mm/aaaa
+                var mm = parseInt(arr[1]);
+                mm -= 1;
+                var newDate = new Date(arr[2], mm, arr[0]);
+                var formatedDate = $filter('date')(newDate, 'EEEE, dd \'de\' MMMM \'de\' yyyy');
+                return formatedDate;
             };
         });
 ;

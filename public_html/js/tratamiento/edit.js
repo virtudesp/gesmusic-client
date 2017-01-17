@@ -55,8 +55,8 @@ moduloTratamiento.controller('TratamientoEditController', ['$scope', '$routePara
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    $scope.bean.fecha_inicio = serverService.date_toDate($scope.bean.fecha_inicio);
-                    $scope.bean.fecha_fin = serverService.date_toDate($scope.bean.fecha_fin);
+                    $scope.bean.fecha_inicio = $filter('date')(serverService.date_toDate($scope.bean.fecha_inicio), "dd/MM/yyyy");
+                    $scope.bean.fecha_fin = $filter('date')(serverService.date_toDate($scope.bean.fecha_fin), "dd/MM/yyyy");
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor1";
                 }
@@ -67,14 +67,17 @@ moduloTratamiento.controller('TratamientoEditController', ['$scope', '$routePara
             $scope.status = "Error en la recepción de datos del servidor3";
         });
         $scope.save = function () {
-            if (!$scope.bean.obj_medicamento.id > 0) $scope.bean.obj_medicamento.id = null;
-            if (!$scope.bean.obj_via.id > 0) $scope.bean.obj_via.id = null;
-            if (!$scope.bean.obj_posologia.id > 0) $scope.bean.obj_posologia.id = null;
-            if (!$scope.bean.obj_diagnostico.id > 0) $scope.bean.obj_diagnostico.id = null;
-            
+            if (!$scope.bean.obj_medicamento.id > 0)
+                $scope.bean.obj_medicamento.id = null;
+            if (!$scope.bean.obj_via.id > 0)
+                $scope.bean.obj_via.id = null;
+            if (!$scope.bean.obj_posologia.id > 0)
+                $scope.bean.obj_posologia.id = null;
+            if (!$scope.bean.obj_diagnostico.id > 0)
+                $scope.bean.obj_diagnostico.id = null;
+
             $scope.bean.fecha_inicio = $filter('date')($scope.bean.fecha_inicio, "dd/MM/yyyy");
             $scope.bean.fecha_fin = $filter('date')($scope.bean.fecha_fin, "dd/MM/yyyy");
-            
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

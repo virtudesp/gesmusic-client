@@ -34,7 +34,7 @@ moduloAnalitica.controller('AnaliticaNewController', ['$scope', '$routeParams', 
         $scope.obtitle = analiticaService.getObTitle();
         $scope.icon = analiticaService.getIcon();
         $scope.ob = analiticaService.getTitle();
-        $scope.title = "Creando un nuevo " + $scope.obtitle;
+        $scope.title = "Creando una nueva " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
@@ -206,20 +206,5 @@ moduloAnalitica.controller('AnaliticaNewController', ['$scope', '$routeParams', 
             }
         });
 
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
-        //datepicker 1 fecha_peticion
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-            $scope.outerForm.fecha_peticion.$pristine = true;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
-        $scope.popup2 = {
-            opened: false
-        };
     }]);
 

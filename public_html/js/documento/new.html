@@ -91,23 +91,7 @@ THE SOFTWARE.
                                         {{f.longname}}
                                     </label>
                                     <div class="control col-sm-3">
-                                        <div class="input-group date" id="fecha_group">
-                                            <input type="text"
-                                                   class="form-control"
-                                                   placeholder="{{f.longname}}"
-                                                   uib-datepicker-popup="dd/MM/yyyy"
-                                                   ng-model="bean.fecha"
-                                                   is-open="popup1.opened"
-                                                   datepicker-options="dateOptions"
-                                                   ng-required="true"
-                                                   close-text="Cerrar"
-                                                   id="fecha"
-                                                   name="fecha"
-                                                   />
-                                            <span class="input-group-addon" ng-click="open1()">
-                                                <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>
-                                        </div>
+                                        <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha" /> 
                                         <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
                                         <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                         <em>{{bean.fecha| date:'fullDate' }}</em>

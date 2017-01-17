@@ -59,7 +59,6 @@ THE SOFTWARE.
                                      class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern) ||
                                                              (outerForm[f.name].$error.required)}">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
                                     <div class="control col-sm-8">
                                         <input ng-model="bean[f.name]"
@@ -78,9 +77,8 @@ THE SOFTWARE.
                                 </div>
                                 <!------------------------------------------------->
                                 <div ng-show="f.type === 'textarea'" id="{{f.name}}-group" class="form-group"
-                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />                                  
+                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">                                    
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />                                 
                                     <div class="control col-sm-8">  
                                         <textarea ng-model="bean[f.name]" class="form-control" id="{{f.name}}" name="{{f.name}}"
                                                   placeholder="{{f.name}}" ng-required="{{f.required}}" ng-pattern="f.pattern" rows="10">    
@@ -89,14 +87,12 @@ THE SOFTWARE.
                                         <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>   
                                     </div>
                                 </div>
-
                                 <!------------------------------------------------->
                                 <div ng-show="f.type == 'decimal'"
                                      id="{{f.name}}-group"
                                      class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
                                                              (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
                                     <div class="control col-sm-8">
                                         <input ng-model="bean[f.name]"
@@ -119,10 +115,9 @@ THE SOFTWARE.
                                      id="fecha-group"
                                      ng-class="{'has-error': (outerForm.fecha_inicio.$error.required && !outerForm.fecha_inicio.$pristine) ||
                                                              (!bean.fecha_inicio && !outerForm.fecha_inicio.$pristine)}">
-                                    <label class="col-sm-2 control-label" for="fecha_inicio">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
-                                    <div class="control col-sm-3">                                            
-                                        <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_inicio" />                                       
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />                            
+                                    <div class="control col-sm-3"> 
+                                        <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_inicio" />  
                                         <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
                                         <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
@@ -133,7 +128,6 @@ THE SOFTWARE.
                                      id="fecha-group"
                                      ng-class="{'has-error': (outerForm.fecha_fin.$error.required && !outerForm.fecha_fin.$pristine) ||
                                                              (!bean.fecha_fin && !outerForm.fecha_fin.$pristine)}">
-                                    <label class="col-sm-2 control-label" for="fecha_fin">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
                                     <div class="control col-sm-3">                                            
                                         <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_fin" />                                    

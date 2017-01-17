@@ -33,7 +33,7 @@ moduloAnalitica.controller('AnaliticaEditController', ['$scope', '$routeParams',
         $scope.obtitle = analiticaService.getObTitle();
         $scope.icon = analiticaService.getIcon();
         $scope.ob = analiticaService.getTitle();
-        $scope.title = "Editando un " + $scope.obtitle;
+        $scope.title = "Editando una " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;
         $scope.error = true;
@@ -58,7 +58,7 @@ moduloAnalitica.controller('AnaliticaEditController', ['$scope', '$routeParams',
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    $scope.bean.fecha_peticion = serverService.date_toDate($scope.bean.fecha_peticion);
+                    $scope.bean.fecha_peticion = $filter('date')(serverService.date_toDate($scope.bean.fecha_peticion), "dd/MM/yyyy");
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor1";
                 }
@@ -194,16 +194,5 @@ moduloAnalitica.controller('AnaliticaEditController', ['$scope', '$routeParams',
         $scope.dateOptions = {
             formatYear: 'yyyy',
             startingDay: 1
-        };
-        //datepicker 1 fecha_peticion
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-            $scope.outerForm.fecha_peticion.$pristine = true;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
-        $scope.popup2 = {
-            opened: false
         };
     }]);

@@ -49,7 +49,7 @@ moduloCargo.controller('CargoEditController', ['$scope', '$routeParams', '$locat
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    $scope.bean.date = serverService.date_toDate($scope.bean.date);
+                    $scope.bean.date = $filter('date')(serverService.date_toDate($scope.bean.date), "dd/MM/yyyy");
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }
@@ -114,16 +114,4 @@ moduloCargo.controller('CargoEditController', ['$scope', '$routeParams', '$locat
                 }
             }
         });
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
-        //datepicker 1
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-            $scope.outerForm.date.$pristine = true;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
     }]);
