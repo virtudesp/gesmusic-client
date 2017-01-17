@@ -310,7 +310,96 @@ moduloServicios
                 setSessionActive: function () {
                     isSessionActive = true;
                 }
-
             };
         })
-        .value('version', '0.1');
+        .factory('metaService', [
+            'serverService',
+            'analiticaService',
+            'anticoagulanteService',
+            'cargoService',
+            'diagnosticoService',
+            'documentoService',
+            'episodioService',
+            'especialidadService',
+            'imagenService',
+            'importanciaService',
+            'medicamentoService',
+            'pacienteService',
+            'posologiaService',
+            'prioridadService',
+            'pruebaService',
+            'servicioService',
+            'tecnicaService',
+            'tipoService',
+            'tipodiagnosticoService',
+            'tipodocumentoService',
+            'tipomuestraService',
+            'tipousuarioService',
+            'tratamientoService',
+            'usuarioService',
+            'viaService',
+            'zonaService',
+            'zonaimagenService',
+            function (
+                    serverService,
+                    analiticaService,
+                    anticoagulanteService,
+                    cargoService,
+                    diagnosticoService,
+                    documentoService,
+                    episodioService,
+                    especialidadService,
+                    imagenService,
+                    importanciaService,
+                    medicamentoService,
+                    pacienteService,
+                    posologiaService,
+                    prioridadService,
+                    pruebaService,
+                    servicioService,
+                    tecnicaService,
+                    tipoService,
+                    tipodiagnosticoService,
+                    tipodocumentoService,
+                    tipomuestraService,
+                    tipousuarioService,
+                    tratamientoService,
+                    usuarioService,
+                    viaService,
+                    zonaService,
+                    zonaimagenService
+                    ) {
+                var meta = {};
+                return {
+                    getMeta: function () {
+                        meta.analitica = ({'fields': analiticaService.getFields(), 'name': analiticaService.getTitle(), 'title': serverService.capitalizeWord(analiticaService.getObTitle())});
+                        meta.anticoagulante = ({'fields': anticoagulanteService.getFields(), 'name': anticoagulanteService.getTitle(), 'title': serverService.capitalizeWord(anticoagulanteService.getObTitle())});
+                        meta.cargo = ({'fields': cargoService.getFields(), 'name': cargoService.getTitle(), 'title': serverService.capitalizeWord(cargoService.getObTitle())});
+                        meta.diagnostico = ({'fields': diagnosticoService.getFields(), 'name': diagnosticoService.getTitle(), 'title': serverService.capitalizeWord(diagnosticoService.getObTitle())});
+                        meta.documento = ({'fields': documentoService.getFields(), 'name': documentoService.getTitle(), 'title': serverService.capitalizeWord(documentoService.getObTitle())});
+                        meta.episodio = ({'fields': episodioService.getFields(), 'name': episodioService.getTitle(), 'title': serverService.capitalizeWord(episodioService.getObTitle())});
+                        meta.especialidad = ({'fields': especialidadService.getFields(), 'name': especialidadService.getTitle(), 'title': serverService.capitalizeWord(especialidadService.getObTitle())});
+                        meta.imagen = ({'fields': imagenService.getFields(), 'name': imagenService.getTitle(), 'title': serverService.capitalizeWord(imagenService.getObTitle())});
+                        meta.importancia = ({'fields': importanciaService.getFields(), 'name': importanciaService.getTitle(), 'title': serverService.capitalizeWord(importanciaService.getObTitle())});
+                        meta.medicamento = ({'fields': medicamentoService.getFields(), 'name': medicamentoService.getTitle(), 'title': serverService.capitalizeWord(medicamentoService.getObTitle())});
+                        meta.paciente = ({'fields': pacienteService.getFields(), 'name': pacienteService.getTitle(), 'title': serverService.capitalizeWord(pacienteService.getObTitle())});
+                        meta.posologia = ({'fields': posologiaService.getFields(), 'name': posologiaService.getTitle(), 'title': serverService.capitalizeWord(posologiaService.getObTitle())});
+                        meta.prioridad = ({'fields': prioridadService.getFields(), 'name': prioridadService.getTitle(), 'title': serverService.capitalizeWord(prioridadService.getObTitle())});
+                        meta.prueba = ({'fields': pruebaService.getFields(), 'name': pruebaService.getTitle(), 'title': serverService.capitalizeWord(pruebaService.getObTitle())});
+                        meta.servicio = ({'fields': servicioService.getFields(), 'name': servicioService.getTitle(), 'title': serverService.capitalizeWord(servicioService.getObTitle())});
+                        meta.tecnica = ({'fields': tecnicaService.getFields(), 'name': tecnicaService.getTitle(), 'title': serverService.capitalizeWord(tecnicaService.getObTitle())});
+                        meta.tipo = ({'fields': tipoService.getFields(), 'name': tipoService.getTitle(), 'title': serverService.capitalizeWord(tipoService.getObTitle())});
+                        meta.tipodiagnostico = ({'fields': tipodiagnosticoService.getFields(), 'name': tipodiagnosticoService.getTitle(), 'title': serverService.capitalizeWord(tipodiagnosticoService.getObTitle())});
+                        meta.tipodocumento = ({'fields': tipodocumentoService.getFields(), 'name': tipodocumentoService.getTitle(), 'title': serverService.capitalizeWord(tipodocumentoService.getObTitle())});
+                        meta.tipomuestra = ({'fields': tipomuestraService.getFields(), 'name': tipomuestraService.getTitle(), 'title': serverService.capitalizeWord(tipomuestraService.getObTitle())});
+                        meta.tipousuario = ({'fields': tipousuarioService.getFields(), 'name': tipousuarioService.getTitle(), 'title': serverService.capitalizeWord(tipousuarioService.getObTitle())});
+                        meta.tratamiento = ({'fields': tratamientoService.getFields(), 'name': tratamientoService.getTitle(), 'title': serverService.capitalizeWord(tratamientoService.getObTitle())});
+                        meta.usuario = ({'fields': usuarioService.getFields(), 'name': usuarioService.getTitle(), 'title': serverService.capitalizeWord(usuarioService.getObTitle())});
+                        meta.via = ({'fields': viaService.getFields(), 'name': viaService.getTitle(), 'title': serverService.capitalizeWord(viaService.getObTitle())});
+                        meta.zona = ({'fields': zonaService.getFields(), 'name': zonaService.getTitle(), 'title': serverService.capitalizeWord(zonaService.getObTitle())});
+                        meta.zonaimagen = ({'fields': zonaimagenService.getFields(), 'name': zonaimagenService.getTitle(), 'title': serverService.capitalizeWord(zonaimagenService.getObTitle())});
+                        return meta;
+                    }
+                }
+            }])
+        .value('version', '1');
