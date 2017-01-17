@@ -45,16 +45,18 @@ THE SOFTWARE.
             <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-icon-list-alt"></i>Personal sanitario<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">                
                 <li class="dropdown-header">Usuarios</li>
-                <li ng-class="{ active: isActive('/usuario/plist')}"><a href="usuario/plist"><i class="fa fa-fw fa-user"></i>Usuario/a</a></li>
-                <li ng-class="{ active: isActive('/tipousuario/plist')}"><a href="tipousuario/plist"><i class="fa fa-fw fa-user-o"></i>Tipo de Usuario/a</a></li>                
+                <li ng-class="{ active: isActive('/{{meta.usuario.name}}/plist')}"><a href="{{meta.usuario.name}}/plist"><i class="fa fa-fw {{meta.usuario.icon}}"></i>{{meta.usuario.title}}</a></li>
+                <li ng-class="{ active: isActive('/{{meta.tipousuario.name}}/plist')}"><a href="{{meta.tipousuario.name}}/plist"><i class="fa fa-fw {{meta.tipousuario.icon}}"></i>{{meta.tipousuario.title}}</a></li>                
                 <li class="divider"></li>                
                 <li class="dropdown-header">Servicios hospitalarios</li>
-                <li ng-class="{ active: isActive('/servicio/plist')}"><a href="servicio/plist"><i class="fa fa-fw fa-book"></i>Servicio</a></li>
+                <li ng-class="{ active: isActive('/{{meta.servicio.name}}/plist')}"><a href="{{meta.servicio.name}}/plist"><i class="fa fa-fw {{meta.servicio.icon}}"></i>{{meta.servicio.title}}</a></li>
                 <li class="dropdown-header">Medicos</li>                
-                <li ng-class="{ active: isActive('/medico/plist')}"><a href="medico/plist"><i class="fa fa-fw fa-user-md"></i>Médico/a</a></li>                
-                <li ng-class="{ active: isActive('/especialidad/plist')}"><a href="especialidad/plist"><i class="fa fa-fw fa-stethoscope"></i>Especialidades</a></li>                                
+                <li ng-class="{ active: isActive('/{{meta.medico.name}}/plist')}"><a href="{{meta.medico.name}}/plist"><i class="fa fa-fw {{meta.medico.icon}}"></i>{{meta.medico.title}}</a></li>                
+                <li ng-class="{ active: isActive('/{{meta.especialidad.name}}/plist')}"><a href="{{meta.especialidad.name}}/plist"><i class="fa fa-fw {{meta.especialidad.icon}}"></i>{{meta.especialidad.title}}</a></li>                                
+                <!--
                 <li class="dropdown-header">Enfermeros</li>                
                 <li ng-class="{ active: isActive('/enfermero/plist')}"><a href="enfermero/plist"><i class="fa fa-fw fa-question-circle-o"></i>Enfermero/a</a></li>                                
+                -->
             </ul>
         </li>
         <!-- Pacientes e historial clínico ------------------------------------------- -->   
