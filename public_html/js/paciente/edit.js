@@ -39,6 +39,8 @@ moduloPaciente.controller('PacienteEditController', ['$scope', '$routeParams', '
         $scope.error = true;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
+        $scope.bean.obj_servicio = {"id": 0};
+        $scope.show_obj_servicio = true;
         $scope.id = $routeParams.id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
