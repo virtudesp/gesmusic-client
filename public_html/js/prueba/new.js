@@ -40,6 +40,7 @@ moduloPrueba.controller('PruebaNewController', ['$scope', '$routeParams', '$loca
         $scope.debugging = serverService.debugging();
         $scope.bean = {id: 0};
         $scope.bean.obj_episodio = {"id": 0};
+        $scope.expression = serverService.getRegExpr('decimal');
         //----
         if ($routeParams.id_episodio) {
             serverService.promise_getOne('episodio', $routeParams.id_episodio).then(function (response) {
@@ -119,5 +120,6 @@ moduloPrueba.controller('PruebaNewController', ['$scope', '$routeParams', '$loca
         $scope.popup1 = {
             opened: false
         };
+
     }]);
 
