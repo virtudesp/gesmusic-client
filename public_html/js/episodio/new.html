@@ -1,7 +1,7 @@
 <!--
 Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
 
-sisane: The stunning micro-library that helps you to develop easily 
+sisane: The stunning micro-library that helps you to develop easily
             AJAX web applications by using Angular.js 1.x & sisane-server
 sisane is distributed under the MIT License (MIT)
 Sources at https://github.com/rafaelaznar/
@@ -36,36 +36,36 @@ THE SOFTWARE.
                         <div class="alert alert-success" role="alert" ng-show="debugging">
                             <h4>Debug:</h4>
                             {{bean|json}}
-                        </div>                   
+                        </div>
                         <form name="outerForm" class="form-horizontal text-left" ng-show="!status">
                             <div class="row" ng-repeat="f in fields">
-                                <!------------------------------------------------->       
+                                <!------------------------------------------------->
 
-                                <!------------------------------------------------->       
+                                <!------------------------------------------------->
                                 <div ng-show="f.type == 'id'" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key> 
+                                    <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key>
                                 </div>
-                                <!------------------------------------------------->                            
+                                <!------------------------------------------------->
                                 <div ng-show="f.type === 'textarea'" id="{{f.name}}-group" class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
                                         <span ng-show="{{f.required}}">*</span>
                                         {{f.longname}}:
-                                    </label>                                 
-                                    <div class="control col-sm-8">  
+                                    </label>
+                                    <div class="control col-sm-8">
                                         <textarea ng-model="bean[f.name]" class="form-control" id="{{f.name}}" name="{{f.name}}"
-                                                  placeholder="{{f.name}}" ng-required="{{f.required}}" ng-pattern="f.pattern" rows="10">    
+                                                  placeholder="{{f.name}}" ng-required="{{f.required}}" ng-pattern="f.pattern" rows="10">
                                         </textarea>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>   
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>   
+                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
 
-                                <div class="form-group"   
+                                <div class="form-group"
                                      ng-show="f.name == 'fecha'"
-                                     id="{{f.name}}-group" 
+                                     id="{{f.name}}-group"
                                      ng-class="{'has-error': !outerForm[f.name].$pristine && (outerForm[f.name].$error.required || !bean[f.name])}">
                                     <label class="col-sm-2 control-label" for="fecha">
                                         <span ng-show="{{f.required}}">*</span>
@@ -73,34 +73,34 @@ THE SOFTWARE.
                                     </label>
                                     <div class="control col-sm-3">
                                         <div class="input-group date" id="fecha_group">
-                                            <input type="text" 
-                                                   class="form-control" 
+                                            <input type="text"
+                                                   class="form-control"
                                                    placeholder="{{f.longname}}"
-                                                   uib-datepicker-popup="dd/MM/yyyy" 
-                                                   ng-model="bean.fecha" 
-                                                   is-open="popup1.opened" 
-                                                   datepicker-options="dateOptions" 
-                                                   ng-required="{{f.required}}" 
+                                                   uib-datepicker-popup="dd/MM/yyyy"
+                                                   ng-model="bean.fecha"
+                                                   is-open="popup1.opened"
+                                                   datepicker-options="dateOptions"
+                                                   ng-required="{{f.required}}"
                                                    close-text="Cerrar"
                                                    id="{{f.name}}"
-                                                   name="{{f.name}}" />                               
+                                                   name="{{f.name}}" />
                                             <span class="input-group-addon" ng-click="open1()">
                                                 <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>                                                                                    
+                                            </span>
                                         </div>
                                         <span class="help-block" ng-show="!outerForm[f.name].$pristine && (outerForm.fecha.$error.required || !bean[f.name])">El campo fecha es obligatorio</span>
                                         <em>{{bean.fecha| date:'fullDate' }}</em>
                                     </div>
                                 </div>
 
-                                <!------------------------------------------------->                               
-                                <div ng-show="f.type == 'text'" id="{{f.name}}-group" class="form-group" 
+                                <!------------------------------------------------->
+                                <div ng-show="f.type == 'text'" id="{{f.name}}-group" class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
                                         <span ng-show="{{f.required}}">*</span> {{f.longname}}:
                                     </label>
 
-                                    <div class="control col-sm-8">                                   
+                                    <div class="control col-sm-8">
                                         <input ng-model="bean[f.name]" type="text" class="form-control" id="{{f.name}}" name="{{f.name}}" ng-pattern="f.pattern"
                                                placeholder="{{f.name}}" maxlength="{{f.maxlength}}" ng-required="{{f.required}}"/>
                                         <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
@@ -121,11 +121,10 @@ THE SOFTWARE.
                                                  reference="f.reference"
                                                  description="f.desc"
                                                  bean="bean[f.name]"
-                                                 form="outerForm">   
+                                                 form="outerForm">
                                     </foreign-key>
                                 </div>
                                 <!------------------------------------------------->
-
                             </div>
                             <div class="control-group text-right">
                                 <div class="controls">
@@ -134,14 +133,14 @@ THE SOFTWARE.
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>
-                        </form>               
-                        <div ng-show="status">                        
+                        </form>
+                        <div ng-show="status">
                             <div class="alert alert-success" ng-show="response.status == 200">
                                 <h2>{{status}}</h2>
                                 <a ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
                             </div>
                             <div class="alert alert-danger" ng-show="response.status != 200">
-                                <h2>{{status}}</h2>                             
+                                <h2>{{status}}</h2>
                             </div>
                         </div>
                     </div>
@@ -149,5 +148,5 @@ THE SOFTWARE.
                 </div>
             </div>
         </div>
-    </div>     
+    </div>
 </div>
