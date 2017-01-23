@@ -152,7 +152,7 @@ THE SOFTWARE.
                                         <thead plistheader></thead>
                                         <tbody>
 
-                                            <tr ng-repeat="obj in page | filter:searchText">
+                                            <tr ng-repeat="obj in page| filter:searchText">
                                                 <td ng-repeat="f in fields" ng-show="f.visible"  class="text-right">
                                                     <div ng-show="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
                                                     <div ng-show="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
@@ -184,6 +184,9 @@ THE SOFTWARE.
                                                             </a>
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'diagnostico', 'DiagnosticoRemovepopController', 'removepop')">
                                                                 <span class="glyphicon glyphicon-remove"></span>
+                                                            </a>
+                                                            <a class="btn btn-default btn-xs" href="tratamiento/plist/?id={{obj.id}}">
+                                                                <span class="glyphicon glyphicon-align-left"></span>
                                                             </a>
                                                         </div>
                                                     </div>
