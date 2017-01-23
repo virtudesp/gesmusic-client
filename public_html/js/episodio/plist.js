@@ -51,6 +51,11 @@ moduloEpisodio.controller('EpisodioPListController', ['$scope', '$routeParams', 
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         function getDataFromServer() {
+            
+            if($routeParams.id){
+                $scope.filterExpression = "and,id_paciente,equa," + $routeParams.id
+            }
+            
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;
