@@ -13,7 +13,8 @@ moduloEpisodio.factory('episodioService', ['serverService', function (serverServ
                     {name: "obj_paciente", shortname: "Paciente", longname: "Paciente", visible: true, type: "specific", required: false, reference: "paciente", showSelection: true, desc: ['name', 'primer_apellido']},
                     {name: "obj_medico", shortname: "Medico", longname: "Medico", visible: true, type: "specific", required: false, reference: "medico", showSelection: true, desc: 'id'},
                     {name: "obj_episodio", shortname: "Episodio", longname: "Episodio", visible: true, type: "specific", required: false, reference: "episodio", showSelection: true, desc: 'fecha'},
-                    {name: "obj_cargo", shortname: "Cargo", longname: "Cargo", visible: true, type: "specific", required: false, reference: "cargo", showSelection: true, desc: 'date'}
+                    {name: "obj_cargo", shortname: "Cargo", longname: "Cargo", visible: true, type: "specific", required: false, reference: "cargo", showSelection: true, desc: 'date'},
+                    {name: "archivado", shortname: "Archivado", longname: "Archivado", visible: true, type: "boolean", required: false, reference: "cargo", showSelection: true, desc: 'boolean'}
                 ];
             },
             getIcon: function () {

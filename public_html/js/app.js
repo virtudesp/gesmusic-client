@@ -186,7 +186,7 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/episodio/remove/:id', {templateUrl: 'js/episodio/remove.html', controller: 'EpisodioRemoveController'});
         $routeProvider.when('/episodio/plist/:page?/:rpp?', {templateUrl: 'js/episodio/plist.html', controller: 'EpisodioPListController'});
         $routeProvider.when('/episodio/selection/:page?/:rpp?', {templateUrl: 'js/episodio/selection.html', controller: 'EpisodioSelectionController'});
-        //------------
+       //------------
         $routeProvider.when('/tipo/view/:id', {templateUrl: 'js/tipo/view.html', controller: 'TipoViewController'});
         $routeProvider.when('/tipo/new/:id?', {templateUrl: 'js/tipo/new.html', controller: 'TipoNewController'});
         $routeProvider.when('/tipo/edit/:id', {templateUrl: 'js/tipo/edit.html', controller: 'TipoEditController'});

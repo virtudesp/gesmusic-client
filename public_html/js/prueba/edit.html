@@ -42,20 +42,9 @@ THE SOFTWARE.
                         <form name="outerForm" class="form-horizontal text-left"  ng-show="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'id'"
-                                     id="{{f.name}}-group"
-                                     class="form-group">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        {{f.longname}}:
-                                    </label>
-                                    <div class="control col-sm-3">
-                                        <input ng-model="bean[f.name]"
-                                               type="text" id="{{f.name}}"
-                                               class="form-control" name="{{f.name}}"
-                                               placeholder="{{f.name}}"
-                                               size="15"
-                                               disabled="disabled" />
-                                    </div>
+                                <div ng-show="f.type == 'id'" class="form-group">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                    <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key>
                                 </div>
                                 <!------------------------------------------------->
                                 <div ng-show="f.type === 'textarea'" id="{{f.name}}-group" class="form-group"
@@ -128,21 +117,15 @@ THE SOFTWARE.
                                      class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
                                                              (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}:
-                                    </label>
-                                    <div class="control col-sm-8">
-                                        <input ng-model="bean[f.name]"
-                                               type="decimal"
-                                               class="form-control"
-                                               id="{{f.name}}"
-                                               name="{{f.name}}"
-                                               ng-pattern="f.pattern"
-                                               placeholder="{{f.name}}"
-                                               maxlength="{{f.maxlength}}"
-                                               ng-required="{{f.required}}"
-                                               />
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                    <div class="control col-sm-4">
+                                        <componentenumero
+                                            decimalnumber="bean[f.name]"
+                                            name="f.name"
+                                            maxlength="f.maxlength"
+                                            pattern="f.pattern"
+                                            required="f.required">
+                                        </componentenumero>
                                         <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
                                         <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
