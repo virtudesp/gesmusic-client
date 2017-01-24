@@ -255,6 +255,18 @@ moduloServicios
                 },
                 capitalizeWord: function (string) {
                     return string.charAt(0).toUpperCase() + string.slice(1);
+                },
+                getFilterExpression: function (filter, sfilter) {
+                    if (this.checkEmptyString(filter)) {
+                        return this.checkEmptyString(filter)
+                    }
+                    if (this.checkEmptyString(sfilter)) {
+                        if (this.checkEmptyString(filter)) {
+                            return this.checkEmptyString(filter) + '+' + this.checkEmptyString(sfilter);
+                        } else {
+                            return  this.checkEmptyString(sfilter);
+                        }
+                    }
                 }
             };
         })
