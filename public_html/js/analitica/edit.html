@@ -40,9 +40,18 @@ THE SOFTWARE.
                         <form name="outerForm" class="form-horizontal text-left"  ng-show="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'id'" class="form-group">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key>
+                                <div ng-show="f.type == 'id'"
+                                     id="{{f.name}}-group"
+                                     class="form-group">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
+                                    <div class="control col-sm-3">
+                                        <input ng-model="bean[f.name]"
+                                               type="text" id="{{f.name}}"
+                                               class="form-control" name="{{f.name}}"
+                                               placeholder="{{f.name}}"
+                                               size="15"
+                                               disabled="disabled" />
+                                    </div>
                                 </div>
                                 <!------------------------------------------------->
                                 <div ng-show="f.type == 'text'"
@@ -50,10 +59,7 @@ THE SOFTWARE.
                                      class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern) ||
                                                              (outerForm[f.name].$error.required)}">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}:
-                                    </label>
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
                                     <div class="control col-sm-8">
                                         <input ng-model="bean[f.name]"
                                                type="text"
@@ -72,11 +78,8 @@ THE SOFTWARE.
                                 <!------------------------------------------------->
                                 <div ng-show="f.type === 'textarea'" id="{{f.name}}-group" class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}:
-                                    </label>
-                                    <div class="control col-sm-8">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />                                 
+                                    <div class="control col-sm-8">  
                                         <textarea ng-model="bean[f.name]" class="form-control" id="{{f.name}}" name="{{f.name}}"
                                                   placeholder="{{f.name}}" ng-required="{{f.required}}" ng-pattern="f.pattern" rows="10">
                                         </textarea>
@@ -108,36 +111,19 @@ THE SOFTWARE.
                                 <div class="form-group"
                                      ng-show="f.name == 'fecha_peticion'"
                                      id="fecha-group"
-                                     ng-class="{'has-error': (outerForm.fecha_peticion.$error.required && !outerForm.fecha_peticion.$pristine) ||
-                                                             (!bean.fecha_peticion && !outerForm.fecha_peticion.$pristine)}">
-                                    <label class="col-sm-2 control-label" for="fecha_peticion">
-                                        <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}
-                                    </label>
+                                     ng-class="{'has-error': (outerForm.fecha_peticion.$error.required || 
+                                                             outerForm.fecha_peticion.$error.valid )   
+                                                             && !outerForm.fecha_peticion.$pristine}">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" /> 
                                     <div class="control col-sm-3">
-                                        <div class="input-group date" id="fecha_group">
-                                            <input type="text"
-                                                   class="form-control"
-                                                   placeholder="{{bean.fecha_peticion| date:'fullDate' }}"
-                                                   uib-datepicker-popup="dd/MM/yyyy"
-                                                   ng-model="bean.fecha_peticion"
-                                                   is-open="popup1.opened"
-                                                   datepicker-options="dateOptions"
-                                                   ng-required="true"
-                                                   close-text="Cerrar"
-                                                   id="fecha"
-                                                   name="fecha_peticion"
-                                                   />
-                                            <span class="input-group-addon" ng-click="open1()">
-                                                <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>
-                                        </div>
-                                        <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
-
+                                        <date-picker ng-show="f.type == 'date'" 
+                                                     name="f.name" 
+                                                     required="f.required" 
+                                                     fecha="bean.fecha_peticion" 
+                                                     form="outerForm" /> 
+                                        <span class="help-block" ng-show="outerForm.fecha_peticion.$error.required">El campo es obligatorio</span>
                                     </div>
                                 </div>
-
                                 <!------------------------------------------------->
                                 <div class="form-group"
                                      ng-show="show_obj_tipomuestra && (f.name == 'obj_tipomuestra')"

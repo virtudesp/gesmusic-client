@@ -131,25 +131,5 @@ moduloImagen.controller('ImagenNewController', ['$scope', '$routeParams', '$loca
                 });
             }
         });
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
-        //datepicker 1
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-            $scope.outerForm.fecha.$pristine = false;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
-        //datepicker 2
-        $scope.open2 = function () {
-            $scope.popup2.opened = true;
-            $scope.outerForm.modification.$pristine = false;
-        };
-        $scope.popup2 = {
-            opened: false
-        };
     }]);
 

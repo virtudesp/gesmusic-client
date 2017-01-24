@@ -44,33 +44,17 @@ THE SOFTWARE.
                                 <div class="form-group"
                                      ng-show="f.name == 'date'"
                                      id="fecha-group"
-                                     ng-class="{'has-error': (outerForm.fecha.$error.required && !outerForm.fecha.$pristine) ||
-                                                             (!bean.fecha && !outerForm.fecha.$pristine)}">
-                                    <label class="col-sm-2 control-label" for="fecha">
-                                        <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}
-                                    </label>
+                                     ng-class="{'has-error': (outerForm.date.$error.required || 
+                                                             outerForm.date.$error.valid )   
+                                                             && !outerForm.date.$pristine}">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" /> 
                                     <div class="control col-sm-3">
-                                        <div class="input-group date" id="fecha_group">
-                                            <input type="text"
-                                                   class="form-control"
-                                                   placeholder="{{f.longname}}"
-                                                   uib-datepicker-popup="dd/MM/yyyy"
-                                                   ng-model="bean.date"
-                                                   is-open="popup1.opened"
-                                                   datepicker-options="dateOptions"
-                                                   ng-required="true"
-                                                   close-text="Cerrar"
-                                                   id="fecha"
-                                                   name="fecha"
-                                                   />
-                                            <span class="input-group-addon" ng-click="open1()">
-                                                <i class="glyphicon glyphicon-calendar"></i>
-                                            </span>
-                                        </div>
-                                        <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
-                                        <em>{{bean.date| date:'fullDate' }}</em>
+                                        <date-picker ng-show="f.type == 'date'" 
+                                                     name="f.name" 
+                                                     required="f.required" 
+                                                     fecha="bean.date" 
+                                                     form="outerForm" /> 
+                                        <span class="help-block" ng-show="outerForm.date.$error.required">El campo es obligatorio</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->

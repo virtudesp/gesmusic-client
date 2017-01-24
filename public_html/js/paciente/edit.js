@@ -47,7 +47,7 @@ moduloPaciente.controller('PacienteEditController', ['$scope', '$routeParams', '
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    $scope.bean.fecha_salida = serverService.date_toDate($scope.bean.fecha_salida);
+                    $scope.bean.fecha_salida = $filter('date')(serverService.date_toDate($scope.bean.fecha_salida), "dd/MM/yyyy");
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }
@@ -86,20 +86,7 @@ moduloPaciente.controller('PacienteEditController', ['$scope', '$routeParams', '
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
-        //datepicker 1
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-            $scope.outerForm.creation.$pristine = false;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
-
+        
         $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'js/' + foreignObjectName + '/selection.html',

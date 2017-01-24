@@ -100,18 +100,5 @@ moduloCargo.controller('CargoNewController', ['$scope', '$routeParams', '$locati
                 }
             }
         });
-
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
-        //datepicker 1
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-            $scope.outerForm.date.$pristine = false;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
     }]);
 

@@ -50,7 +50,7 @@ moduloPrueba.controller('PruebaEditController', ['$scope', '$routeParams', '$loc
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    $scope.bean.fecha_peticion = serverService.date_toDate($scope.bean.fecha_peticion);
+                    $scope.bean.fecha_peticion = $filter('date')(serverService.date_toDate($scope.bean.fecha_peticion), "dd/MM/yyyy");
 
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
@@ -116,18 +116,4 @@ moduloPrueba.controller('PruebaEditController', ['$scope', '$routeParams', '$loc
                 });
             }
         });
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
-        //datepicker 1
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-            $scope.outerForm.fecha_peticion.$pristine = false;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
-
-
     }]);

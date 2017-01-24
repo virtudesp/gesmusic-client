@@ -68,11 +68,8 @@ moduloDiagnostico.controller('DiagnosticoNewController', ['$scope', '$routeParam
             $scope.show_obj_episodio = true;
         }
 
-
-
         $scope.save = function () {
             $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
-
 
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
@@ -139,20 +136,5 @@ moduloDiagnostico.controller('DiagnosticoNewController', ['$scope', '$routeParam
                 });
             }
         });
-
-        $scope.dateOptions =
-                {
-                    formatYear: 'yyyy',
-                    startingDay: 1
-                };
-        //datepicker 1
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-            $scope.outerForm.fecha.$pristine = true;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
-
     }]);
 

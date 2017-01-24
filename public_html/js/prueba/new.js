@@ -107,19 +107,5 @@ moduloPrueba.controller('PruebaNewController', ['$scope', '$routeParams', '$loca
                 });
             }
         });
-
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
-        //datepicker 1
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-            $scope.outerForm.fecha_peticion.$pristine = false;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
-
     }]);
 
