@@ -190,9 +190,4 @@ moduloAnalitica.controller('AnaliticaEditController', ['$scope', '$routeParams',
                 }
             }
         });
-
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
     }]);

@@ -81,15 +81,20 @@ THE SOFTWARE.
                                     </div>
                                 </div>                              
                                 <!------------------------------------------------->
-                                <div class="form-group"   
+                                <div class="form-group"
                                      ng-show="f.name == 'fecha_salida'"
-                                     id="fecha_salida-group" 
-                                     ng-class="{'has-error': (outerForm.fecha_salida.$error.required && !outerForm.fecha_salida.$pristine) ||
-                                                             (!bean.fecha_salida && !outerForm.fecha_salida.$pristine)}">
-                                    <label class="col-sm-2 control-label" for="fecha_salida">{{f.longname}}</label>
+                                     id="fecha-group"
+                                     ng-class="{'has-error': (outerForm.fecha_salida.$error.required || 
+                                                             outerForm.fecha_salida.$error.valid )   
+                                                             && !outerForm.fecha_salida.$pristine}">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" /> 
                                     <div class="control col-sm-3">
-                                        <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_salida" />
-                                        <span class="help-block" ng-show="!outerForm.fecha_salida.$pristine && outerForm.fecha_salida.$error.required">El campo fecha de creación es obligatorio</span>
+                                        <date-picker ng-show="f.type == 'date'" 
+                                                     name="f.name" 
+                                                     required="f.required" 
+                                                     fecha="bean.fecha_salida" 
+                                                     form="outerForm" /> 
+                                        <span class="help-block" ng-show="outerForm.fecha_salida.$error.required">El campo es obligatorio</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->

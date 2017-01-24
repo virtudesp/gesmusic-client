@@ -49,7 +49,6 @@ moduloCargo.controller('CargoEditController', ['$scope', '$routeParams', '$locat
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    $scope.bean.date = $filter('date')(serverService.date_toDate($scope.bean.date), "dd/MM/yyyy");
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }

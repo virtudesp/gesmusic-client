@@ -84,16 +84,17 @@ THE SOFTWARE.
                                 <div class="form-group"
                                      ng-show="f.name == 'fecha'"
                                      id="fecha-group"
-                                     ng-class="{'has-error': (outerForm.fecha.$error.required && !outerForm.fecha.$pristine) ||
-                                                             (!bean.fecha && !outerForm.fecha.$pristine)}">
-                                    <label class="col-sm-2 control-label" for="fecha">
-                                        <span ng-show="{{f.required}}">*</span>
-                                        {{f.longname}}
-                                    </label>
+                                     ng-class="{'has-error': (outerForm.fecha.$error.required || 
+                                                             outerForm.fecha.$error.valid )   
+                                                             && !outerForm.fecha.$pristine}">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" /> 
                                     <div class="control col-sm-3">
-                                        <date-picker ng-show="f.type == 'date'" name="f.name" required="f.required" fecha="bean.fecha_inicio" /> 
-                                        <span class="help-block" ng-show="outerForm[f.name].$error.required">Introduce una fecha</span>
-                                        <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
+                                        <date-picker ng-show="f.type == 'date'" 
+                                                     name="f.name" 
+                                                     required="f.required" 
+                                                     fecha="bean.fecha" 
+                                                     form="outerForm" /> 
+                                        <span class="help-block" ng-show="outerForm.fecha.$error.required">El campo es obligatorio</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->

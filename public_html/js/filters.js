@@ -106,7 +106,7 @@ moduloFiltros
         .filter('fechaformateada', function ($filter)
         {
             return function (input) {
-                if (input == null || input == "")
+                if (input == null || input == "" || input.length != 10)
                 {
                     return "";
                 }
