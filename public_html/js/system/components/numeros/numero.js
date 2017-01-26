@@ -14,7 +14,5 @@ moduloDirectivas.component("componentenumero", {
         pattern: '<',
         required: '<'
     },
-    controller: function () {
-        console.log(this);
-    }
-})
+    controller: function () {}
+});

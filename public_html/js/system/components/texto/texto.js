@@ -15,8 +15,6 @@ moduloDirectivas.component('texto',{
        required: '<'
        
    },
-   controller: function(){
-       console.log(this);
-   }
+   controller: function(){}
     
 });

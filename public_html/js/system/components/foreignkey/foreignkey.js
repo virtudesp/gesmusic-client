@@ -15,7 +15,7 @@ moduloDirectivas.component('foreignKey', {
 
 function foreignkey(serverService, $uibModal) {
     var self = this;
-
+    
     self.chooseOne = function () {
         var modalInstance = $uibModal.open({
             templateUrl: 'js/' + self.reference + '/selection.html',
@@ -59,7 +59,7 @@ function foreignkey(serverService, $uibModal) {
         }
     };
 
-    var validity = function (isValid) {
+    var validity = function(isValid) {
         if (self.form) {
             self.form[self.name].$setValidity('exists', isValid);
         }

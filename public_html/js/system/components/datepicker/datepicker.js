@@ -18,7 +18,8 @@ function datepickerCtrl(serverService) {
         // El único formato válido es dd/mm/aaaa
         if (strFecha.length != 10) {
             validity(false);
-        } 
+        }
+        
         else { 
             var arrFecha = strFecha.split("/");            
             if (arrFecha[0].length != 2 || arrFecha[1].length != 2 || arrFecha[2].length != 4) {

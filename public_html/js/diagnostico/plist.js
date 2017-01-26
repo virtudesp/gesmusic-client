@@ -91,6 +91,13 @@ moduloDiagnostico.controller('DiagnosticoPListController', ['$scope', '$routePar
             });
         };
         getDataFromServer();
+        
+        $scope.tableinfo = {
+            name: 'tratamiento',
+            fields: ['id','Medicamento','Inicio','Fin'],
+            vars: ['id',{obj_medicamento:'descripcion'},'fecha_inicio','fecha_fin']
+        };
+        
     }]);
 
 
