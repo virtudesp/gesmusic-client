@@ -63,19 +63,14 @@ THE SOFTWARE.
                                 </div>
                                 <!------------------------------------------------->
                                 <div class="form-group"
-                                     ng-show="f.name == 'fecha'"
-                                     id="fecha-group"
-                                     ng-class="{'has-error': (outerForm.fecha.$error.required || 
-                                                             outerForm.fecha.$error.valid )   
+                                     ng-show="f.type == 'date'"
+
+                                     ng-class="{'has-error': (outerForm.fecha.$error.required ||
+                                                             outerForm.fecha.$error.valid)
                                                              && !outerForm.fecha.$pristine}">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" /> 
+                                    <label class="col-sm-2 control-label" for="fecha">Fecha y hora:</label>
                                     <div class="control col-sm-3">
-                                        <date-picker ng-show="f.type == 'date'" 
-                                                     name="f.name" 
-                                                     required="f.required" 
-                                                     fecha="bean.fecha" 
-                                                     form="outerForm" /> 
-                                        <span class="help-block" ng-show="outerForm.fecha.$error.required">El campo es obligatorio</span>
+                                        <date-time-picker name="f.name" form="outerForm" required="f.required" fecha="bean[f.name]"></date-time-picker>
                                     </div>
                                 </div>
 

@@ -134,7 +134,36 @@ moduloDirectivas
                     elem.datepicker(options);
                 }
             }
-        });
+        }).directive("datetimepicker", function () {
+          return {
+            restrict: "A",
+            require: "ngModel",
+            link: function (scope, elem, attrs, ngModelCtrl) {
+              var updateModel = function (dateText) {
+                // call $apply to bring stuff to angular model
+                scope.$apply(function () {
+                  ngModelCtrl.$setViewValue(dateText);
+                });
+              };
+
+              var options = {
+                dateFormat: "dd/mm/yy",
+                // handle jquery date change
+                onSelect: function (dateText) {
+                  updateModel(dateText);
+                }
+              };
+
+              // jqueryfy the element
+              elem.datetimepicker($.timepicker.regional['es']);
+
+              
+
+
+            }
+          }
+        })
+        ;
 ;
 
 
