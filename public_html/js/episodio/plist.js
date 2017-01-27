@@ -43,6 +43,8 @@ moduloEpisodio.controller('EpisodioPListController', ['$scope', '$routeParams', 
         $scope.ordervalue = "";
         $scope.filter = "id";
         $scope.filteroperator = "like";
+        $scope.fechas = [];
+        $scope.importes = [];
         $scope.filtervalue = "";
         $scope.filterParams = serverService.checkNull($routeParams.filter)
         $scope.orderParams = serverService.checkNull($routeParams.order)
@@ -68,6 +70,11 @@ moduloEpisodio.controller('EpisodioPListController', ['$scope', '$routeParams', 
             }).then(function (response) {
                 if (response.status == 200) {
                     $scope.page = response.data.message;
+                    for(var i=0;i<$scope.page.length;i++){
+                        $scope.fechas.push($scope.page[i].fecha);
+                        $scope.importes.push($scope.page[i].importe);
+                    }
+                    console.log($scope.importes+" "+$scope.fechas);
                     $scope.status = "";
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";

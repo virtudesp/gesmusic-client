@@ -44,6 +44,8 @@ moduloAnalitica.controller('AnaliticaPListController', ['$scope', '$routeParams'
         $scope.filter = "id";
         $scope.filteroperator = "like";
         $scope.filtervalue = "";
+        $scope.fechas = [];
+        $scope.prioridades = [];
         $scope.filterParams = serverService.checkNull($routeParams.filter)
         $scope.orderParams = serverService.checkNull($routeParams.order)
         $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
@@ -70,6 +72,10 @@ moduloAnalitica.controller('AnaliticaPListController', ['$scope', '$routeParams'
             }).then(function (response) {
                 if (response.status == 200) {
                     $scope.page = response.data.message;
+                    for(var i=0;i<$scope.page.length;i++){
+                        $scope.fechas.push($scope.page[i].fecha_peticion);
+                        $scope.prioridades.push($scope.page[i].obj_prioridad.id);
+                    }
                     $scope.status = "";
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
