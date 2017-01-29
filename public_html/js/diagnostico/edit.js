@@ -51,8 +51,6 @@ moduloDiagnostico.controller('DiagnosticoEditController', ['$scope', '$routePara
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-
-                    $scope.bean.fecha = $filter('date')(serverService.date_toDate($scope.bean.fecha), "dd/MM/yyyy");
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }
@@ -91,7 +89,10 @@ moduloDiagnostico.controller('DiagnosticoEditController', ['$scope', '$routePara
 
 
         $scope.save = function () {
-            $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
+           var arrinputdate = $scope.bean.fecha.split(" ");
+           var partes = arrinputdate[0].split("/");
+           var newDate = new Date(partes[2], partes[1] - 1, partes[0]);
+           $scope.bean.fecha = $filter('date')(newDate, "dd/MM/yyyy HH:mm");  
 
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {

@@ -53,12 +53,15 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.show_obj_medico = true;
         $scope.show_obj_episodio = true;
         $scope.show_obj_cargo = true;
-        
-        
+
+
         //----
 
         $scope.save = function () {
-            $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
+            var arrinputdate = $scope.bean.fecha.split(" ");
+            var partes = arrinputdate[0].split("/");
+            var newDate = new Date(partes[2], partes[1] - 1, partes[0]);
+            $scope.bean.fecha = $filter('date')(newDate, "dd/MM/yyyy HH:mm");
 
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
@@ -87,34 +90,34 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        
+
         $scope.$watch('bean.obj_medico.id', function () {
             if ($scope.bean.obj_medico.id > 0) {
                 serverService.promise_getOne('medico', $scope.bean.obj_medico.id).then(function (response) {
                     var old_id = $scope.bean.obj_medico.id;
                     $scope.bean.obj_medico = response.data.message;
                     if (response.data.message.id <= 0) {
-                      $scope.bean.obj_medico.id = old_id;
+                        $scope.bean.obj_medico.id = old_id;
                     }
                 });
                 var filter = "and,id_medico,equa," + $scope.bean.obj_medico.id;
-                
-                serverService.promise_getPage("usuario",1,1,filter).then(function(data){
-                    if(data.data.message.length > 0) {
+
+                serverService.promise_getPage("usuario", 1, 1, filter).then(function (data) {
+                    if (data.data.message.length > 0) {
                         $scope.medico = data.data.message[0];
                         $scope.outerForm.obj_medico.$setValidity('exists', true);
-                    }else{
+                    } else {
                         $scope.outerForm.obj_medico.$setValidity('exists', false);
-                        $scope.medico = {nombre:"", primerapellido:""};        
+                        $scope.medico = {nombre: "", primerapellido: ""};
                     }
                 });
-            }else if($scope.bean.obj_medico.id || $scope.bean.obj_medico.id === ""){
+            } else if ($scope.bean.obj_medico.id || $scope.bean.obj_medico.id === "") {
                 $scope.outerForm.obj_medico.$setValidity('exists', true);
-                $scope.medico = {nombre:"", primerapellido:""};
+                $scope.medico = {nombre: "", primerapellido: ""};
                 $scope.bean.obj_medico.id = 0;
             }
         });
-        
+
         $scope.dateOptions = {
             formatYear: 'yyyy',
             startingDay: 1
@@ -127,7 +130,7 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.popup1 = {
             opened: false
         };
-        $scope.errors = function($argument){
+        $scope.errors = function ($argument) {
             alert($argument);
         };
     }]);
