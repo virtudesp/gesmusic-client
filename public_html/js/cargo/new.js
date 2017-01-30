@@ -40,6 +40,7 @@ moduloCargo.controller('CargoNewController', ['$scope', '$routeParams', '$locati
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
         $scope.bean.id = 0;
+        $scope.tabla='documento';
         //---
         $scope.bean.obj_documento = {"id": 0};
         $scope.show_obj_documento = true;
@@ -83,22 +84,22 @@ moduloCargo.controller('CargoNewController', ['$scope', '$routeParams', '$locati
                 $scope.bean[nameForeign].id = modalResult;
             });
         };
-        $scope.$watch('bean.obj_documento.id', function () {
-            if ($scope.bean) {
-                if ($scope.bean.obj_documento.id) {
-                    serverService.promise_getOne('documento', $scope.bean.obj_documento.id).then(function (response) {
-                        var old_id = $scope.bean.obj_documento.id;
-                        if (response.data.message.id != 0) {
-                            $scope.outerForm.obj_documento.$setValidity('exists', true);
-                            $scope.bean.obj_documento = response.data.message;
-                        } else {
-                            $scope.outerForm.obj_documento.$setValidity('exists', false);
-                            $scope.bean.obj_documento.id = old_id;
-                            $scope.bean.obj_documento.descripcion = "";
-                        }
-                    });
-                }
-            }
-        });
+//        $scope.$watch('bean.obj_documento.id', function () {
+//            if ($scope.bean) {
+//                if ($scope.bean.obj_documento.id) {
+//                    serverService.promise_getOne('documento', $scope.bean.obj_documento.id).then(function (response) {
+//                        var old_id = $scope.bean.obj_documento.id;
+//                        if (response.data.message.id != 0) {
+//                            $scope.outerForm.obj_documento.$setValidity('exists', true);
+//                            $scope.bean.obj_documento = response.data.message;
+//                        } else {
+//                            $scope.outerForm.obj_documento.$setValidity('exists', false);
+//                            $scope.bean.obj_documento.id = old_id;
+//                            $scope.bean.obj_documento.descripcion = "";
+//                        }
+//                    });
+//                }
+//            }
+//        });
     }]);
 
