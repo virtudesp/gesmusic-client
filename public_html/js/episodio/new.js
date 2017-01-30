@@ -90,46 +90,6 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-
-        $scope.$watch('bean.obj_medico.id', function () {
-            if ($scope.bean.obj_medico.id > 0) {
-                serverService.promise_getOne('medico', $scope.bean.obj_medico.id).then(function (response) {
-                    var old_id = $scope.bean.obj_medico.id;
-                    $scope.bean.obj_medico = response.data.message;
-                    if (response.data.message.id <= 0) {
-                        $scope.bean.obj_medico.id = old_id;
-                    }
-                });
-                var filter = "and,id_medico,equa," + $scope.bean.obj_medico.id;
-
-                serverService.promise_getPage("usuario", 1, 1, filter).then(function (data) {
-                    if (data.data.message.length > 0) {
-                        $scope.medico = data.data.message[0];
-                        $scope.outerForm.obj_medico.$setValidity('exists', true);
-                    } else {
-                        $scope.outerForm.obj_medico.$setValidity('exists', false);
-                        $scope.medico = {nombre: "", primerapellido: ""};
-                    }
-                });
-            } else if ($scope.bean.obj_medico.id || $scope.bean.obj_medico.id === "") {
-                $scope.outerForm.obj_medico.$setValidity('exists', true);
-                $scope.medico = {nombre: "", primerapellido: ""};
-                $scope.bean.obj_medico.id = 0;
-            }
-        });
-
-        $scope.dateOptions = {
-            formatYear: 'yyyy',
-            startingDay: 1
-        };
-        //datepicker 1
-        $scope.open1 = function () {
-            $scope.popup1.opened = true;
-            $scope.outerForm.fecha.$pristine = false;
-        };
-        $scope.popup1 = {
-            opened: false
-        };
         $scope.errors = function ($argument) {
             alert($argument);
         };
