@@ -46,7 +46,11 @@ moduloCargo.controller('CargoNewController', ['$scope', '$routeParams', '$locati
         //---
 
         $scope.save = function () {
-            $scope.bean.date = $filter('date')($scope.bean.date, "dd/MM/yyyy HH:mm");
+           var arrinputdate = $scope.bean.date.split(" ");
+           var partes = arrinputdate[0].split("/");
+           var newDate = new Date(partes[2], partes[1] - 1, partes[0]);
+           $scope.bean.date = $filter('date')(newDate, "dd/MM/yyyy HH:mm");  
+           
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

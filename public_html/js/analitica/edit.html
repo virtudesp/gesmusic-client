@@ -109,21 +109,20 @@ THE SOFTWARE.
                                 </div>
                                 <!------------------------------------------------->
                                 <div class="form-group"
-                                     ng-show="f.name == 'fecha_peticion'"
+                                     ng-show="f.type == 'date'"
                                      id="fecha-group"
-                                     ng-class="{'has-error': (outerForm.fecha_peticion.$error.required || 
-                                                             outerForm.fecha_peticion.$error.valid )   
-                                                             && !outerForm.fecha_peticion.$pristine}">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" /> 
+                                     ng-class="{'has-error': (outerForm[f.name].$error.required || 
+                                                             outerForm[f.name].$error.valid)   
+                                                             && !outerForm[f.name].$pristine}">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                     <div class="control col-sm-3">
-                                        <date-picker ng-show="f.type == 'date'" 
-                                                     name="f.name" 
-                                                     required="f.required" 
-                                                     fecha="bean.fecha_peticion" 
-                                                     form="outerForm" /> 
-                                        <span class="help-block" ng-show="outerForm.fecha_peticion.$error.required">El campo es obligatorio</span>
+                                        <date-picker 
+                                            name="f.name" 
+                                            required="f.required" 
+                                            fecha="bean[f.name]" 
+                                            form="outerForm" > 
+                                        </date-picker>    
                                     </div>
-                                </div>
                                 <!------------------------------------------------->
                                 <div class="form-group"
                                      ng-show="show_obj_tipomuestra && (f.name == 'obj_tipomuestra')"

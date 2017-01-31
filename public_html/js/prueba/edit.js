@@ -50,8 +50,6 @@ moduloPrueba.controller('PruebaEditController', ['$scope', '$routeParams', '$loc
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    $scope.bean.fecha_peticion = $filter('date')(serverService.date_toDate($scope.bean.fecha_peticion), "dd/MM/yyyy");
-
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }
@@ -62,7 +60,11 @@ moduloPrueba.controller('PruebaEditController', ['$scope', '$routeParams', '$loc
             $scope.status = "Error en la recepción de datos del servidor";
         });
         $scope.save = function () {
-            $scope.bean.fecha_peticion = $filter('date')($scope.bean.fecha_peticion, "dd/MM/yyyy HH:mm");
+            var arrinputdate = $scope.bean.fecha_peticion.split(" ");
+            var partes = arrinputdate[0].split("/");
+            var newDate = new Date(partes[2], partes[1] - 1, partes[0]);
+            $scope.bean.fecha_peticion = $filter('date')(newDate, "dd/MM/yyyy HH:mm");  
+            
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
