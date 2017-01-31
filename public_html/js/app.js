@@ -61,7 +61,8 @@ var sisane = angular.module('myApp', [
     'analiticaControllers',
     'cargoControllers',
     'ui.bootstrap',
-    'ngSanitize'
+    'ngSanitize',
+    'chart.js'
 ]);
 //-------------
 //---html5 mode off; setting up pushState needs server urlrewritting, so quitting...-------

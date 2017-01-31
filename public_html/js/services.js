@@ -53,6 +53,10 @@ moduloServicios
                     return "http://localhost:8081/sisane-server/json";
                     //return location.protocol + '//' + location.hostname + ':' + location.port + '/' + this.getAppName() + '/index.php';
                 },
+                getCAppUrl: function () {
+                    return "http://localhost:8080/sisane-client/public_html/";
+                    //return location.protocol + '//' + location.hostname + ':' + location.port + '/' + this.getAppName() + '/index.php';
+                },
                 //---- OK ----
                 getRegExpl: function (reg) {
                     switch (reg) {
