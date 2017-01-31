@@ -52,8 +52,6 @@ moduloImagen.controller('ImagenEditController', ['$scope', '$routeParams', '$loc
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    $scope.bean.fecha = $filter('date')(serverService.date_toDate($scope.bean.fecha), "dd/MM/yyyy");
-
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }
@@ -64,8 +62,7 @@ moduloImagen.controller('ImagenEditController', ['$scope', '$routeParams', '$loc
             $scope.status = "Error en la recepción de datos del servidor";
         });
         $scope.save = function () {
-            $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
-            $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
+            $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy HH:mm");
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

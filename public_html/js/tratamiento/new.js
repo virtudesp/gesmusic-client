@@ -52,8 +52,20 @@ moduloTratamiento.controller('TratamientoNewController', ['$scope', '$routeParam
         //----
 
         $scope.save = function () {
-            $scope.bean.fecha_inicio = $filter('date')($scope.bean.fecha_inicio, "dd/MM/yyyy");
-            $scope.bean.fecha_fin = $filter('date')($scope.bean.fecha_fin, "dd/MM/yyyy");
+            $scope.bean.fecha_inicio = $filter('date')($scope.bean.fecha_inicio, "dd/MM/yyyy HH:mm");
+            $scope.bean.fecha_fin = $filter('date')($scope.bean.fecha_fin, "dd/MM/yyyy HH:mm");
+
+            var arrFecha1 = $scope.bean.fecha_inicio.split("/");
+            var newDate1 = new Date(arrFecha1[2], arrFecha1[1] - 1, arrFecha1[0]);
+            var arrFecha2 = $scope.bean.fecha_fin.split("/");
+            var newDate2 = new Date(arrFecha2[2], arrFecha2[1] - 1, arrFecha2[0]);
+            
+            if ((new Date($scope.bean.fecha_inicio).getTime() > new Date($scope.bean.fecha_fin).getTime()))
+            {
+                //alert("La fecha de inicio no puede ser posterior a la fecha de fin");
+                $scope.outerForm.fecha_fin.$setValidity('fechafin_novalid', false);
+                //$scope.outerForm.fecha_fin.$setValidity('valid', false);
+            }
             
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {

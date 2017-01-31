@@ -60,7 +60,7 @@ moduloDocumento.controller('DocumentoEditController', ['$scope', '$routeParams',
             $scope.status = "Error en la recepción de datos del servidor";
         });
         $scope.save = function () {
-            $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
+            $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy HH:mm");
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

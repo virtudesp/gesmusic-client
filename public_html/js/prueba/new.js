@@ -56,7 +56,7 @@ moduloPrueba.controller('PruebaNewController', ['$scope', '$routeParams', '$loca
         }
 
         $scope.save = function () {
-            $scope.bean.fecha_peticion = $filter('date')($scope.bean.fecha_peticion, "dd/MM/yyyy");
+            $scope.bean.fecha_peticion = $filter('date')($scope.bean.fecha_peticion, "dd/MM/yyyy HH:mm");
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

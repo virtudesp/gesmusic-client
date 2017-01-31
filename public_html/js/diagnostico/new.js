@@ -69,7 +69,7 @@ moduloDiagnostico.controller('DiagnosticoNewController', ['$scope', '$routeParam
         }
 
         $scope.save = function () {
-            $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
+            $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy HH:mm");
 
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {

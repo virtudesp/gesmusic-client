@@ -81,7 +81,7 @@ moduloAnalitica.controller('AnaliticaEditController', ['$scope', '$routeParams',
             if (!$scope.bean.obj_episodio.id > 0) {
                 $scope.bean.obj_episodio.id = null;
             }
-            $scope.bean.fecha_peticion = $filter('date')($scope.bean.fecha_peticion, "dd/MM/yyyy");
+            $scope.bean.fecha_peticion = $filter('date')($scope.bean.fecha_peticion, "dd/MM/yyyy HH:mm");
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

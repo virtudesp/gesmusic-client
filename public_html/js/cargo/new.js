@@ -46,7 +46,7 @@ moduloCargo.controller('CargoNewController', ['$scope', '$routeParams', '$locati
         //---
 
         $scope.save = function () {
-            $scope.bean.date = $filter('date')($scope.bean.date, "dd/MM/yyyy");
+            $scope.bean.date = $filter('date')($scope.bean.date, "dd/MM/yyyy HH:mm");
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

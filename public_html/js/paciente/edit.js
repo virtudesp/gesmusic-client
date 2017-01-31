@@ -47,7 +47,6 @@ moduloPaciente.controller('PacienteEditController', ['$scope', '$routeParams', '
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    $scope.bean.fecha_salida = $filter('date')(serverService.date_toDate($scope.bean.fecha_salida), "dd/MM/yyyy");
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }
@@ -58,7 +57,7 @@ moduloPaciente.controller('PacienteEditController', ['$scope', '$routeParams', '
             $scope.status = "Error en la recepción de datos del servidor";
         });
         $scope.save = function () {
-            $scope.bean.fecha_salida = $filter('date')($scope.bean.fecha_salida, "dd/MM/yyyy");
+            $scope.bean.fecha_salida = $filter('date')($scope.bean.fecha_salida, "dd/MM/yyyy HH:mm");
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

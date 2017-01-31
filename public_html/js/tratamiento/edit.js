@@ -48,6 +48,7 @@ moduloTratamiento.controller('TratamientoEditController', ['$scope', '$routePara
         $scope.show_obj_posologia = true;
         $scope.bean.obj_diagnostico = {"id": 0};
         $scope.show_obj_diagnostico = true;
+        
         //---
         $scope.id = $routeParams.id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
@@ -76,25 +77,38 @@ moduloTratamiento.controller('TratamientoEditController', ['$scope', '$routePara
             if (!$scope.bean.obj_diagnostico.id > 0)
                 $scope.bean.obj_diagnostico.id = null;
 
-            $scope.bean.fecha_inicio = $filter('date')($scope.bean.fecha_inicio, "dd/MM/yyyy");
-            $scope.bean.fecha_fin = $filter('date')($scope.bean.fecha_fin, "dd/MM/yyyy");
-            var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
-            serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
-                if (response.status == 200) {
-                    if (response.data.status == 200) {
-                        $scope.response = response;
-                        $scope.status = "El registro " + $scope.obtitle + " se ha modificado ... id = " + $scope.bean.id;
-                        $scope.bean.id = $scope.bean.id;
+            $scope.bean.fecha_inicio = $filter('date')($scope.bean.fecha_inicio, "dd/MM/yyyy HH:mm");
+            $scope.bean.fecha_fin = $filter('date')($scope.bean.fecha_fin, "dd/MM/yyyy HH:mm");
+
+            var arrFecha1 = $scope.bean.fecha_inicio.split("/");
+            var newDate1 = new Date(arrFecha1[2], arrFecha1[1] - 1, arrFecha1[0]);
+            var arrFecha2 = $scope.bean.fecha_fin.split("/");
+            var newDate2 = new Date(arrFecha2[2], arrFecha2[1] - 1, arrFecha2[0]);
+
+            if (newDate1.getTime() > newDate2.getTime())
+            {
+                //alert("La fecha de inicio no puede ser posterior a la fecha de fin");
+                $scope.outerForm.fecha_fin.$setValidity('fechafin_novalid', false);
+                $scope.outerForm.fecha_fin.$setValidity('valid', false);
+
+            } else {
+                var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
+                serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
+                    if (response.status == 200) {
+                        if (response.data.status == 200) {
+                            $scope.response = response;
+                            $scope.status = "El registro " + $scope.obtitle + " se ha modificado ... id = " + $scope.bean.id;
+                            $scope.bean.id = $scope.bean.id;
+                        } else {
+                            $scope.status = "Error en la recepción de datos del servidor";
+                        }
                     } else {
                         $scope.status = "Error en la recepción de datos del servidor";
                     }
-                } else {
+                }).catch(function (data) {
                     $scope.status = "Error en la recepción de datos del servidor";
-                }
-            }).catch(function (data) {
-                $scope.status = "Error en la recepción de datos del servidor";
-            });
-            ;
+                });
+            }
         };
         $scope.back = function () {
             window.history.back();
