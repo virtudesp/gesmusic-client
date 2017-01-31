@@ -60,7 +60,6 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
                 if (response.data.status == 200) {
                     $scope.status = null;
                     $scope.bean = response.data.message;
-                    $scope.bean.fecha = $filter('date')(serverService.date_toDate($scope.bean.fecha), "dd/MM/yyyy");
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }
@@ -71,7 +70,10 @@ moduloEpisodio.controller('EpisodioEditController', ['$scope', '$routeParams', '
             $scope.status = "Error en la recepción de datos del servidor";
         });
         $scope.save = function () {
-            $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
+            var arrinputdate = $scope.bean.fecha.split(" ");
+            var partes = arrinputdate[0].split("/");
+            var newDate = new Date(partes[2], partes[1] - 1, partes[0]);
+            $scope.bean.fecha = $filter('date')(newDate, "dd/MM/yyyy HH:mm");
 
             if ($scope.bean.obj_importancia.id <= 0)
                 $scope.bean.obj_importancia.id = null;

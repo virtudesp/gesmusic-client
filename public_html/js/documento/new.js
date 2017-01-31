@@ -46,7 +46,11 @@ moduloDocumento.controller('DocumentoNewController', ['$scope', '$routeParams', 
         //---
 
         $scope.save = function () {
-            $scope.bean.fecha = $filter('date')($scope.bean.fecha, "dd/MM/yyyy");
+           var arrinputdate = $scope.bean.fecha.split(" ");
+           var partes = arrinputdate[0].split("/");
+           var newDate = new Date(partes[2], partes[1] - 1, partes[0]);
+           $scope.bean.fecha = $filter('date')(newDate, "dd/MM/yyyy HH:mm");  
+           
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
