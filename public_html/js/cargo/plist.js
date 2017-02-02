@@ -50,7 +50,7 @@ moduloCargo.controller('CargoPListController', ['$scope', '$routeParams', 'serve
         $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        function getDataFromServer() {
+        $scope.url = $scope.ob + '/' + $scope.op; function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;

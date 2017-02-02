@@ -55,7 +55,7 @@ moduloEpisodio.controller('EpisodioPListController', ['$scope', '$routeParams', 
 
 
 
-
+        
         //-------------------------------------------
         $scope.id_paciente = serverService.checkNull($routeParams.id_paciente)
         if ($scope.id_paciente) {

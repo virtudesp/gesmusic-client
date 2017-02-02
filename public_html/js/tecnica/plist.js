@@ -24,7 +24,7 @@ moduloTecnica.controller('TecnicaPListController', ['$scope', '$routeParams', '$
         $scope.status = null;
         $scope.debugging = serverService.debugging();
 
-        function getDataFromServer() {
+        $scope.url = $scope.ob + '/' + $scope.op; function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;

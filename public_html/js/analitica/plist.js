@@ -52,7 +52,8 @@ moduloAnalitica.controller('AnaliticaPListController', ['$scope', '$routeParams'
         $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        function getDataFromServer() {
+        $scope.
+        $scope.url = $scope.ob + '/' + $scope.op; function getDataFromServer() {
             
             if ($routeParams.id) {
                 $scope.filterExpression = 'and,id_episodio,equa,' + $routeParams.id;
