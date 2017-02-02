@@ -61,6 +61,7 @@ moduloEpisodio.controller('EpisodioPListController', ['$scope', '$routeParams', 
         if ($scope.id_paciente) {
             $scope.op = 'plistpaciente';
             $scope.url = $scope.ob + '/' + $scope.op + '/' + $scope.id_paciente;
+            $scope.urlnew = $scope.ob + '/newpaciente/' + +$scope.id_paciente;
             if ($scope.filterExpression) {
                 $scope.filterExpression += "and,id_paciente,equa," + $scope.id_paciente;
             } else {
@@ -68,6 +69,7 @@ moduloEpisodio.controller('EpisodioPListController', ['$scope', '$routeParams', 
             }
         } else {
             $scope.url = $scope.ob + '/' + $scope.op;
+            $scope.urlnew = $scope.ob + '/new';
         }
         //-------------------------------------------
 

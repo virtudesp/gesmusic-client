@@ -42,7 +42,13 @@ moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$
         $scope.bean.obj_importancia = {"id": null};
         $scope.bean.obj_servicio = {"id": null};
         $scope.bean.obj_tipo = {"id": null};
-        $scope.bean.obj_paciente = {"id": null};
+        if ($routeParams.id_paciente) {
+            $scope.pacientefijado = true;
+            $scope.bean.obj_paciente = {"id": $routeParams.id_paciente};
+        } else {
+            $scope.pacientefijado = false;
+            $scope.bean.obj_paciente = {"id": null};
+        }
         $scope.bean.obj_medico = {"id": null};
         $scope.bean.obj_episodio = {"id": null};
         $scope.bean.obj_cargo = {"id": null};
