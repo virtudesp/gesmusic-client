@@ -5,41 +5,40 @@ moduloDirectivas.component('actions', {
     bindings:
             {
                 id: '<',
-                name: '<'                
+                name: '<'
             }
 
 });
 
-function actions(serverService,$uibModal)
+function actions(serverService, $uibModal)
 {
     var self = this;
-   
+
     self.appurl = serverService.getCAppUrl();
-    
-    self.pop = function (id, foreignObjectName, foreignViewName,op) {
-        
-    self.viewpop=serverService.capitalizeWord(self.name); 
-    if(op===1)
-    {   
-    self.viewpop+='ViewpopController';     
-    }
-    else if(op===2)
-    {  
-    self.viewpop+='RemovepopController';         
-    }
-    
+
+    self.pop = function (id, foreignObjectName, foreignViewName, op) {
+
+        self.viewpop = serverService.capitalizeWord(self.name);
+        if (op === 1)
+        {
+            self.viewpop += 'ViewpopController';
+        } else if (op === 2)
+        {
+            self.viewpop += 'RemovepopController';
+        }
+
         var modalInstance = $uibModal.open({
             templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',
             controller: self.viewpop,
             size: 'lg',
-            resolve:   {
-                       id: function () {
-                       return id;
-                       }
+            resolve: {
+                id: function () {
+                    return id;
                 }
-            }).result.then(function () {
-                
-            });
-        };
+            }
+        }).result.then(function () {
+
+        });
+    };
 
 }

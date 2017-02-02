@@ -60,8 +60,8 @@ moduloPaciente.controller('PacienteEditController', ['$scope', '$routeParams', '
             var arrinputdate = $scope.bean.fecha_salida.split(" ");
             var partes = arrinputdate[0].split("/");
             var newDate = new Date(partes[2], partes[1] - 1, partes[0]);
-            $scope.bean.fecha_salida = $filter('date')(newDate, "dd/MM/yyyy HH:mm"); 
-           
+            $scope.bean.fecha_salida = $filter('date')(newDate, "dd/MM/yyyy HH:mm");
+
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -89,7 +89,7 @@ moduloPaciente.controller('PacienteEditController', ['$scope', '$routeParams', '
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        
+
         $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'js/' + foreignObjectName + '/selection.html',

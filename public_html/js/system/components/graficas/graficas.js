@@ -109,9 +109,9 @@ function graficas(serverService, $uibModal, $routeParams, $filter, sharedSpaceSe
 
         if (self.graficaOn == false) {
             self.filtrarFechas();
-            self.graficaOn=true;
-        }else{
-            self.graficaOn=false;
+            self.graficaOn = true;
+        } else {
+            self.graficaOn = false;
         }
 
     };

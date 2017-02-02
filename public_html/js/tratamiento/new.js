@@ -48,28 +48,28 @@ moduloTratamiento.controller('TratamientoNewController', ['$scope', '$routeParam
         $scope.show_obj_medicamento = true;
         $scope.show_obj_posologia = true;
         $scope.show_obj_via = true;
-        $scope.show_obj_diagnostico = true;       
+        $scope.show_obj_diagnostico = true;
         //----
 
         $scope.save = function () {
-                                     
+
             var arrinputdate1 = $scope.bean.fecha_inicio.split(" ");
             var arrFecha1 = arrinputdate1[0].split("/");
             var newDate1 = new Date(arrFecha1[2], arrFecha1[1] - 1, arrFecha1[0]);
             $scope.bean.fecha_inicio = $filter('date')(newDate1, "dd/MM/yyyy HH:mm");
-            
+
             var arrinputdate2 = $scope.bean.fecha_fin.split(" ");
             var arrFecha2 = arrinputdate2[0].split("/");
             var newDate2 = new Date(arrFecha2[2], arrFecha2[1] - 1, arrFecha2[0]);
             $scope.bean.fecha_fin = $filter('date')(newDate2, "dd/MM/yyyy HH:mm");
-            
+
             if (newDate1.getTime() > newDate2.getTime())
             {
                 //alert("La fecha de inicio no puede ser posterior a la fecha de fin");
                 $scope.outerForm.fecha_fin.$setValidity('ordenfechas', false);
                 $scope.outerForm.fecha_fin.$setValidity('valid', false);
             }
-            
+
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

@@ -1,13 +1,13 @@
-moduloDirectivas.controller('mtmModal2', ['$scope', 'metaService', 'id', 
-                            'reference', 'from','$filter','serverService',
-                            '$uibModalInstance',
-                            function ($scope, metaService, id, reference,
-                            from ,$filter,serverService,$uibModalInstance) {
-        
+moduloDirectivas.controller('mtmModal2', ['$scope', 'metaService', 'id',
+    'reference', 'from', '$filter', 'serverService',
+    '$uibModalInstance',
+    function ($scope, metaService, id, reference,
+            from, $filter, serverService, $uibModalInstance) {
+
         var fields = metaService.getMeta()[reference].fields;
         $scope.bean = {id: 0};
         var pos = null;
-        
+
         for (var f in fields) {
             if (fields[f].name.match('obj_')) {
                 $scope.bean[fields[f].name] = {id: 0}
@@ -27,11 +27,11 @@ moduloDirectivas.controller('mtmModal2', ['$scope', 'metaService', 'id',
             for (var f in fields) {
                 if (fields[f].type === 'date') {
                     $scope.bean[fields[f].name] = $filter('date')($scope.bean[fields[f].name], "dd/MM/yyyy");
-                }               
+                }
             }
 
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
-            
+
             serverService.promise_setOne(reference, jsonToSend).then(function (response) {
                 if (response.status === 200) {
                     $uibModalInstance.close(true);
@@ -41,11 +41,11 @@ moduloDirectivas.controller('mtmModal2', ['$scope', 'metaService', 'id',
             }).catch(function (data) {
                 console.log(data);
             });
-            
+
         };
-        
+
         $scope.close = function () {
-            $uibModalInstance.close();         
+            $uibModalInstance.close();
         };
 
 

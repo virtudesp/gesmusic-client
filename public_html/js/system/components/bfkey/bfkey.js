@@ -7,7 +7,7 @@ moduloDirectivas.component('bfKey', {
                 bean: '=',
                 name: '<',
                 reference: '<',
-                fname: '<'                
+                fname: '<'
             }
 
 });
@@ -15,11 +15,11 @@ moduloDirectivas.component('bfKey', {
 function bfkey(serverService, $uibModal, metaService)
 {
     var self = this;
-    
-    self.icon = function(iname){
-     return  metaService.getMeta()[iname].icon;
+
+    self.icon = function (iname) {
+        return  metaService.getMeta()[iname].icon;
     };
-    
+
     self.chooseOne = function () {
         var modalInstance = $uibModal.open({
             templateUrl: 'js/' + self.reference + '/selection.html',
@@ -30,7 +30,7 @@ function bfkey(serverService, $uibModal, metaService)
             self.bean["id_" + self.reference] = modalResult;
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray(self.bean))};
             serverService.promise_setOne(self.name, jsonToSend);
-        location.reload();
+            location.reload();
         });
     };
 

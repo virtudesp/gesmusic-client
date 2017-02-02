@@ -40,18 +40,18 @@ moduloCargo.controller('CargoNewController', ['$scope', '$routeParams', '$locati
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
         $scope.bean.id = 0;
-        $scope.tabla='documento';
+        $scope.tabla = 'documento';
         //---
         $scope.bean.obj_documento = {"id": 0};
         $scope.show_obj_documento = true;
         //---
 
         $scope.save = function () {
-           var arrinputdate = $scope.bean.date.split(" ");
-           var partes = arrinputdate[0].split("/");
-           var newDate = new Date(partes[2], partes[1] - 1, partes[0]);
-           $scope.bean.date = $filter('date')(newDate, "dd/MM/yyyy HH:mm");  
-           
+            var arrinputdate = $scope.bean.date.split(" ");
+            var partes = arrinputdate[0].split("/");
+            var newDate = new Date(partes[2], partes[1] - 1, partes[0]);
+            $scope.bean.date = $filter('date')(newDate, "dd/MM/yyyy HH:mm");
+
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

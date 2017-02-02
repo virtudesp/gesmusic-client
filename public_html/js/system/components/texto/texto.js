@@ -4,17 +4,17 @@
  * and open the template in the editor.
  */
 
-moduloDirectivas.component('texto',{
-   templateUrl: "js/system/components/texto/texto.html",
-   controllerAs: 'txt',
-   bindings: {
-       model: '=',
-       name: '<',
-       pattern: '<',
-       length: '<',
-       required: '<'
-       
-   },
-   controller: function(){}
-    
+moduloDirectivas.component('texto', {
+    templateUrl: "js/system/components/texto/texto.html",
+    controllerAs: 'txt',
+    bindings: {
+        model: '=',
+        name: '<',
+        pattern: '<',
+        length: '<',
+        required: '<'
+
+    },
+    controller: function () {}
+
 });

@@ -50,7 +50,8 @@ moduloDiagnostico.controller('DiagnosticoPListController', ['$scope', '$routePar
         $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        $scope.url = $scope.ob + '/' + $scope.op; function getDataFromServer() {
+        $scope.url = $scope.ob + '/' + $scope.op;
+        function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;
@@ -91,13 +92,13 @@ moduloDiagnostico.controller('DiagnosticoPListController', ['$scope', '$routePar
             });
         };
         getDataFromServer();
-        
+
         $scope.tableinfo = {
             name: 'tratamiento',
-            fields: ['id','Medicamento','Inicio','Fin'],
-            vars: ['id',{obj_medicamento:'descripcion'},'fecha_inicio','fecha_fin']
+            fields: ['id', 'Medicamento', 'Inicio', 'Fin'],
+            vars: ['id', {obj_medicamento: 'descripcion'}, 'fecha_inicio', 'fecha_fin']
         };
-        
+
     }]);
 
 

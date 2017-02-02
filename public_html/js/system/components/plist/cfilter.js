@@ -2,7 +2,7 @@
 moduloDirectivas.component('cplistfilter', {
     restrict: 'E',
     bindings: {
-        url: '<',        
+        url: '<',
         fields: '<',
         rpp: '<',
         numpage: '<',

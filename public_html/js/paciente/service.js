@@ -15,9 +15,9 @@ moduloServicios.factory('pacienteService', ['serverService', function (serverSer
                     {name: "ciudad", shortname: "Ciudad", longname: "Ciudad", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},
                     {name: "codigopostal", shortname: "Cod. Postal", longname: "Codigo Postal", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("codigopostal"), help: serverService.getRegExpl("nombre")},
                     {name: "provincia", shortname: "Prov.", longname: "Provincia", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},
-                    {name: "pais", shortname: "Pais", longname: "Pais", visible: false, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("nombre") ,help: serverService.getRegExpl("nombre")},
-                    {name: "email", shortname: "Email", longname: "Email", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("email") ,help: serverService.getRegExpl("email")},
-                    {name: "telefono", shortname: "Tel.", longname: "Telefono", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("telefono"),help: serverService.getRegExpl("telefono")},
+                    {name: "pais", shortname: "Pais", longname: "Pais", visible: false, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},
+                    {name: "email", shortname: "Email", longname: "Email", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("email"), help: serverService.getRegExpl("email")},
+                    {name: "telefono", shortname: "Tel.", longname: "Telefono", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("telefono"), help: serverService.getRegExpl("telefono")},
                     {name: "obj_servicio", shortname: "Tipo serv.", longname: "Tipo de servicio", visible: true, type: "foreign", reference: "servicio"},
                     {name: "fecha_salida", shortname: "Fech. Salida", longname: "Fecha Salida", visible: true, type: "date", required: true, maxlength: 255, pattern: ""}
                 ];

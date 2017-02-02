@@ -1,7 +1,7 @@
 <div class="alert alert-success" role="alert">
     {{ct.nombre}}:
     <span ng-repeat="f in ct.fields.fields" class="text-left">
-        <span class="badge" ng-show="ct.bean[f.name] && f.type!='foreign'">
+        <span class="badge" ng-show="ct.bean[f.name] && f.type != 'foreign'">
             <span>{{f.longname}}:</span>        
             <!-- ----------------------------- -->
             <span ng-show="f.type == 'id'"><b>{{ct.bean[f.name]}}</b></span>

@@ -27,7 +27,7 @@ moduloDirectivas.controller('mtmModal', ['$scope', 'serverService', '$uibModalIn
                 console.log('error', err);
             });
         }
-        
+
         getData();
 
         $scope.add = function () {
@@ -46,14 +46,15 @@ moduloDirectivas.controller('mtmModal', ['$scope', 'serverService', '$uibModalIn
                         return currentTable;
                     }
                 }
-            }).result.then(function (modalResult) { 
+            }).result.then(function (modalResult) {
                 if (modalResult) {
                     getData();
                 }
 
             }).catch(function (err) {
                 console.log(err);
-            });;
+            });
+            ;
         };
 
         $scope.cancel = function () {
