@@ -64,6 +64,10 @@ function foreignkey(serverService, $uibModal) {
             self.form[self.name].$setValidity('exists', isValid);
         }
     };
+
+    this.$onInit = function () {
+        self.change(self.bean.id);
+    }
 }
 
 
