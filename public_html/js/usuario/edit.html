@@ -40,12 +40,12 @@ THE SOFTWARE.
                         <form name="outerForm" class="form-horizontal text-left"  ng-show="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->       
-                                <div ng-show="f.type == 'id'" class="form-group">
+                                <div ng-if="f.type == 'id'" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                     <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key> 
                                 </div>
                                 <!-------------------------------------------------> 
-                                <div ng-show="f.type == 'text'" id="{{f.name}}-group" class="form-group" 
+                                <div ng-if="f.type == 'text'" id="{{f.name}}-group" class="form-group" 
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
                                                              (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
@@ -56,7 +56,7 @@ THE SOFTWARE.
                                     </div>
                                 </div>  
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'foreign'" class="form-group">
+                                <div ng-if="f.type == 'foreign'" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                     <foreign-key class="col-md-4"
                                                  bean="bean[f.name]"
