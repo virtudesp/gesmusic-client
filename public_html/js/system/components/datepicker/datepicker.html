@@ -9,4 +9,4 @@
            jqdatepicker />
     <small>{{dt.fecha| fechaformateada }}</small>
 </div>
-<span class="help-block" ng-show="dt.form[dt.name].$error.valid">Fecha no válida</span>
+<span class="help-block" ng-if="dt.form[dt.name].$error.valid">Fecha no válida</span>

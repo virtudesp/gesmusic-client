@@ -7,26 +7,26 @@
             <div class="row">
                 <div class="col-lg-12" ng-cloak>          
                     <div class="row">
-                        <div class="col-xs-12" ng-show="status">
+                        <div class="col-xs-12" ng-if="status">
                             <div class="alert alert-danger" role="alert">
                                 <h3 class="bg-danger">{{status}}</h3>                                
                             </div>
                         </div>
                     </div>
-                    <div class="row-fluid" ng-show="!status">
+                    <div class="row-fluid" ng-if="!status">
                         <div class="col-md-12">                
-                            <form name="outerForm" class="form-horizontal text-left" ng-show="!status">
+                            <form name="outerForm" class="form-horizontal text-left" ng-if="!status">
                                 <div class="row" ng-repeat="f in fields">
 
                                     <!------------------------------------------------->       
-                                    <div ng-show="f.type == 'id'" class="form-group">
+                                    <div ng-if="f.type == 'id'" class="form-group">
                                         <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                         <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key> 
                                     </div>
 
                                     <!------------------------------------------------->
 
-                                    <div ng-show="f.type == 'decimal'" class="form-group">
+                                    <div ng-if="f.type == 'decimal'" class="form-group">
                                         <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                         <componentenumero 
                                             class="col-md-3" 
@@ -39,23 +39,23 @@
                                     </div>
 
                                     <!------------------------------------------------->                            
-                                    <div ng-show="f.type === 'textarea'" id="{{f.name}}-group" class="form-group"
+                                    <div ng-if="f.type === 'textarea'" id="{{f.name}}-group" class="form-group"
                                          ng-class="{'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
                                         <label class="col-sm-2 control-label" for="{{f.name}}">
-                                            <span ng-show="{{f.required}}">*</span>
+                                            <span ng-if="{{f.required}}">*</span>
                                             {{f.longname}}:
                                         </label>                                 
                                         <div class="control col-sm-8">  
                                             <textarea ng-model="bean[f.name]" class="form-control" id="{{f.name}}" name="{{f.name}}"
                                                       placeholder="{{f.name}}" ng-required="{{f.required}}" ng-pattern="f.pattern" rows="10">    
                                             </textarea>
-                                            <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>   
-                                            <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>   
+                                            <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>   
+                                            <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>   
                                         </div>
                                     </div>
                                     <!------------------------------------------------->
 
-                                    <div ng-show="f.type == 'text'" class="form-group">
+                                    <div ng-if="f.type == 'text'" class="form-group">
                                         <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                         <texto 
                                             class="col-md-3" 
@@ -67,12 +67,12 @@
                                         </texto>
                                     </div>
                                     <!------------------------------------------------->
-                                    <div ng-show="f.type == 'boolean'" class="form-group">
+                                    <div ng-if="f.type == 'boolean'" class="form-group">
                                         <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                         <boolean parametro="bean[f.name]"></boolean>
                                     </div>
                                     <!------------------------------------------------->
-                                    <div ng-show="f.type == 'specific'" class="form-group">
+                                    <div ng-if="f.type == 'specific'" class="form-group">
                                         <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                         <foreign-key class="col-md-4"
                                                      name="f.name"
@@ -85,7 +85,7 @@
                                     </div>
                                     <!------------------------------------------------->
                                     <div class="form-group"
-                                         ng-show="f.type == 'date'"
+                                         ng-if="f.type == 'date'"
 
                                          ng-class="{'has-error': (outerForm[f.name].$error.required ||
                                                          outerForm[f.name].$error.valid)
@@ -98,7 +98,7 @@
                                             required="f.required" 
                                             fecha="bean[f.name]" 
                                             form="outerForm" /> 
-                                        <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-if="outerForm[f.name].$error.required">El campo es obligatorio</span>
                                     </div>
 
                                     <!------------------------------------------------->  

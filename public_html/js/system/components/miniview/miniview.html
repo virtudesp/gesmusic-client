@@ -1,16 +1,16 @@
 <div class="alert alert-success" role="alert">
     {{ct.nombre}}:
     <span ng-repeat="f in ct.fields.fields" class="text-left">
-        <span class="badge" ng-show="ct.bean[f.name] && f.type != 'foreign'">
+        <span class="badge" ng-if="ct.bean[f.name] && f.type != 'foreign'">
             <span class="label label-default" >{{f.longname}}:</span>        
             <!-- ----------------------------- -->
-            <span class="label label-primary" ng-show="f.type == 'id'"><b>{{ct.bean[f.name]}}</b></span>
-            <span class="label label-primary"  ng-show="f.type == 'textarea'" ng-bind-html="ct.bean[f.name] | breakFilter"></span>
-            <span class="label label-primary"  ng-show="f.type == 'date'">{{ct.bean[f.name]}}</span>
-            <span class="label label-primary"  ng-show="f.type == 'integer'">{{ct.bean[f.name]}}</span>
-            <span class="label label-primary"  ng-show="f.type == 'decimal'">{{ct.bean[f.name]}}</span>
-            <span class="label label-primary"  ng-show="f.type == 'text'">{{ct.bean[f.name]}}</span>
-            <span class="label label-primary"  ng-show="f.type == 'boolean'" ng-bind-html="ct.bean[f.name] | booleanizate"></span>
+            <span class="label label-primary" ng-if="f.type == 'id'"><b>{{ct.bean[f.name]}}</b></span>
+            <span class="label label-primary"  ng-if="f.type == 'textarea'" ng-bind-html="ct.bean[f.name] | breakFilter"></span>
+            <span class="label label-primary"  ng-if="f.type == 'date'">{{ct.bean[f.name]}}</span>
+            <span class="label label-primary"  ng-if="f.type == 'integer'">{{ct.bean[f.name]}}</span>
+            <span class="label label-primary"  ng-if="f.type == 'decimal'">{{ct.bean[f.name]}}</span>
+            <span class="label label-primary"  ng-if="f.type == 'text'">{{ct.bean[f.name]}}</span>
+            <span class="label label-primary"  ng-if="f.type == 'boolean'" ng-bind-html="ct.bean[f.name] | booleanizate"></span>
 
         </span>
     </span>  

@@ -34,14 +34,14 @@ THE SOFTWARE.
             <div class="row">
                 <div class="col-lg-12" ng-cloak>          
                     <div class="row">
-                        <div class="col-xs-12" ng-show="status">
+                        <div class="col-xs-12" ng-if="status">
                             <div class="alert alert-danger" role="alert">
                                 <h3 class="bg-danger">{{status}}</h3>                                
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12" ng-show="!status">
+                        <div class="col-xs-12" ng-if="!status">
                             <div role="tabpanel">
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active">
@@ -97,12 +97,12 @@ THE SOFTWARE.
                                     </div>              
                                 </div>
                             </div>
-                            <div id="datos" ng-show="!status">
+                            <div id="datos" ng-if="!status">
                                 <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
                                     <thead plistheaderspa></thead>
                                     <tbody>
                                         <tr ng-repeat="obj in page| filter:searchText">
-                                            <td ng-repeat="f in fields" ng-show="f.visible"  class="text-right">{{obj[f.name]}}</td>                       
+                                            <td ng-repeat="f in fields" ng-if="f.visible"  class="text-right">{{obj[f.name]}}</td>                       
                                             <td plistoperationbarspa></tdspa>
                                                 <button ng-click="count = count + 1;alert(count)" ng-init="count = 0">
                                         </tr>

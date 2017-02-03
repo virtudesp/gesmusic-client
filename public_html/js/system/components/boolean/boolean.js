@@ -18,7 +18,7 @@ moduloDirectivas.component("boolean", {
 
 /*lo que ponemos en el html que queremos utilizar el checkbox
  <!------------------------------------------------->
- <div ng-show="f.type == 'boolean'" class="form-group">
+ <div ng-if="f.type == 'boolean'" class="form-group">
  <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
  <boolean parametro="bean[f.name]"></boolean>
  </div>

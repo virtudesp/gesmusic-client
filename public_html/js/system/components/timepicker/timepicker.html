@@ -9,6 +9,6 @@
            datetimepicker
            />
 </div>
-<span class="help-block" ng-show="dtp.form[dtp.name].$error.required">El campo es obligatorio</span>
-<span class="help-block" ng-show="dtp.form[dtp.name].$error.valid">Fecha u hora incorrectas</span>
+<span class="help-block" ng-if="dtp.form[dtp.name].$error.required">El campo es obligatorio</span>
+<span class="help-block" ng-if="dtp.form[dtp.name].$error.valid">Fecha u hora incorrectas</span>
 

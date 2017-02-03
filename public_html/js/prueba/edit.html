@@ -34,36 +34,36 @@ THE SOFTWARE.
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="panel-body" ng-cloak>
                         <!--
-                        <div class="alert alert-success" role="alert" ng-show="debugging">
+                        <div class="alert alert-success" role="alert" ng-if="debugging">
                             <h4>Debug:</h4>
                             {{bean|json}}
                         </div>
                         -->
-                        <form name="outerForm" class="form-horizontal text-left"  ng-show="!status">
+                        <form name="outerForm" class="form-horizontal text-left"  ng-if="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'id'" class="form-group">
+                                <div ng-if="f.type == 'id'" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                     <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key>
                                 </div>
                                 <!------------------------------------------------->
-                                <div ng-show="f.type === 'textarea'" id="{{f.name}}-group" class="form-group"
+                                <div ng-if="f.type === 'textarea'" id="{{f.name}}-group" class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        <span ng-show="{{f.required}}">*</span>
+                                        <span ng-if="{{f.required}}">*</span>
                                         {{f.longname}}:
                                     </label>
                                     <div class="control col-sm-8">
                                         <textarea ng-model="bean[f.name]" class="form-control" id="{{f.name}}" name="{{f.name}}"
                                                   placeholder="{{f.name}}" ng-required="{{f.required}}" ng-pattern="f.pattern" rows="10">
                                         </textarea>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
+                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
                                 <div class="form-group"
-                                     ng-show="f.type == 'date'"
+                                     ng-if="f.type == 'date'"
 
                                      ng-class="{'has-error': (outerForm.fecha.$error.required ||
                                                              outerForm.fecha.$error.valid)
@@ -75,7 +75,7 @@ THE SOFTWARE.
                                 </div>
                                 <!------------------------------------------------->
                                 <div class="form-group"
-                                     ng-show="show_obj_episodio && (f.name == 'obj_episodio')"
+                                     ng-if="show_obj_episodio && (f.name == 'obj_episodio')"
                                      ng-class="{'has-error': (outerForm.obj_episodio.$error.required ||
                                                              outerForm.obj_episodio.$error.exists ||
                                                              outerForm.obj_episodio.$error.validatemin)}">
@@ -101,13 +101,13 @@ THE SOFTWARE.
                                                 <span>{{bean.obj_episodio.obj_tipo.descripcion}}</span>
                                             </span>
                                         </div>
-                                        <span class="help-block" ng-show="outerForm.obj_episodio.$error.required">El tipo de episodio es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm.obj_episodio.$error.validatemin">Debes elegir un tipo de episodio</span>
-                                        <span class="help-block" ng-show="outerForm.obj_episodio.$error.exists">El tipo de episodio no existe</span>
+                                        <span class="help-block" ng-if="outerForm.obj_episodio.$error.required">El tipo de episodio es obligatorio</span>
+                                        <span class="help-block" ng-if="outerForm.obj_episodio.$error.validatemin">Debes elegir un tipo de episodio</span>
+                                        <span class="help-block" ng-if="outerForm.obj_episodio.$error.exists">El tipo de episodio no existe</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'decimal'"
+                                <div ng-if="f.type == 'decimal'"
                                      id="{{f.name}}-group"
                                      class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
@@ -121,8 +121,8 @@ THE SOFTWARE.
                                             pattern="f.pattern"
                                             required="f.required">
                                         </componentenumero>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
+                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
@@ -136,12 +136,12 @@ THE SOFTWARE.
                                 </div>
                             </div>
                         </form>
-                        <div ng-show="status">
-                            <div class="alert alert-success" ng-show="response.status == 200">
+                        <div ng-if="status">
+                            <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
                                 <a ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
                             </div>
-                            <div class="alert alert-danger" ng-show="response.status != 200">
+                            <div class="alert alert-danger" ng-if="response.status != 200">
                                 <h2>{{status}}</h2>
                             </div>
                         </div>
