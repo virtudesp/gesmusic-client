@@ -183,11 +183,11 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         //------------
         $routeProvider.when('/episodio/view/:id', {templateUrl: 'js/episodio/view.html', controller: 'EpisodioViewController'});
         $routeProvider.when('/episodio/new/:id?', {templateUrl: 'js/episodio/new.html', controller: 'EpisodioNewController'});
-        $routeProvider.when('/episodio/newpaciente/:id_paciente', {templateUrl: 'js/episodio/new.html', controller: 'EpisodioNewController'});
+        $routeProvider.when('/episodio/newfrompaciente/:id_paciente', {templateUrl: 'js/episodio/newfrompaciente.html', controller: 'EpisodioNewFromPacienteController'});
         $routeProvider.when('/episodio/edit/:id', {templateUrl: 'js/episodio/edit.html', controller: 'EpisodioEditController'});
         $routeProvider.when('/episodio/remove/:id', {templateUrl: 'js/episodio/remove.html', controller: 'EpisodioRemoveController'});
         $routeProvider.when('/episodio/plist/:page?/:rpp?', {templateUrl: 'js/episodio/plist.html', controller: 'EpisodioPListController'});
-        $routeProvider.when('/episodio/plistpaciente/:id_paciente/:page?/:rpp?', {templateUrl: 'js/episodio/plist.html', controller: 'EpisodioPListController'});
+        $routeProvider.when('/episodio/plistfrompaciente/:id_paciente/:page?/:rpp?', {templateUrl: 'js/episodio/plistfrompaciente.html', controller: 'EpisodioPListFromPacienteController'});
         $routeProvider.when('/episodio/selection/:page?/:rpp?', {templateUrl: 'js/episodio/selection.html', controller: 'EpisodioSelectionController'});
         //------------
         $routeProvider.when('/tipo/view/:id', {templateUrl: 'js/tipo/view.html', controller: 'TipoViewController'});

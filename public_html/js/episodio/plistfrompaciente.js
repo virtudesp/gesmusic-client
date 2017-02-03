@@ -28,14 +28,14 @@
 
 'use strict';
 
-moduloEpisodio.controller('EpisodioPListController', ['$scope', '$routeParams', '$location', 'serverService', 'episodioService', '$uibModal',
+moduloEpisodio.controller('EpisodioPListFromPacienteController', ['$scope', '$routeParams', '$location', 'serverService', 'episodioService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, episodioService, $uibModal) {
         $scope.fields = episodioService.getFields();
         $scope.obtitle = episodioService.getObTitle();
         $scope.icon = episodioService.getIcon();
         $scope.ob = episodioService.getTitle();
-        $scope.title = "Listado de " + $scope.obtitle;
-        $scope.op = "plist";
+        
+        $scope.op = "plistfrompaciente";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
@@ -48,11 +48,48 @@ moduloEpisodio.controller('EpisodioPListController', ['$scope', '$routeParams', 
         $scope.filtervalue = "";
         $scope.filterParams = serverService.checkNull($routeParams.filter)
         $scope.orderParams = serverService.checkNull($routeParams.order)
-        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)      
+        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
         $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        function getDataFromServer() {          
+
+
+        //-------------------------------------------
+        $scope.id_paciente = serverService.checkNull($routeParams.id_paciente)
+        if ($scope.id_paciente) {
+            serverService.promise_getOne('paciente', $scope.id_paciente).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.bean = {};
+                        $scope.bean.obj_paciente = {};
+                        $scope.bean.obj_paciente = response.data.message;
+                        $scope.title = "Episodios para el/la paciente " + $scope.bean.obj_paciente.name + " " + $scope.bean.obj_paciente.primer_apellido + " " + $scope.bean.obj_paciente.segundo_apellido;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor";
+            });
+            $scope.url = $scope.ob + '/' + $scope.op + '/' + $scope.id_paciente;
+            $scope.urlnew = $scope.ob + '/newfrompaciente/' + +$scope.id_paciente;
+            if ($scope.filterExpression) {
+                $scope.filterExpression += "+and,id_paciente,equa," + $scope.id_paciente;
+            } else {
+                $scope.filterExpression = "and,id_paciente,equa," + $scope.id_paciente;
+            }
+        } else {
+            $scope.url = $scope.ob + '/' + $scope.op;
+            $scope.urlnew = $scope.ob + '/new';
+            $scope.title = "Listado de " + $scope.obtitle;
+        }
+        //-------------------------------------------
+
+
+        function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;
@@ -67,11 +104,11 @@ moduloEpisodio.controller('EpisodioPListController', ['$scope', '$routeParams', 
             }).then(function (response) {
                 if (response.status == 200) {
                     $scope.page = response.data.message;
-                    for(var i=0;i<$scope.page.length;i++){
+                    for (var i = 0; i < $scope.page.length; i++) {
                         $scope.fechas.push($scope.page[i].fecha);
                         $scope.importes.push($scope.page[i].importe);
                     }
-                    console.log($scope.importes+" "+$scope.fechas);
+                    console.log($scope.importes + " " + $scope.fechas);
                     $scope.status = "";
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
@@ -99,3 +136,5 @@ moduloEpisodio.controller('EpisodioPListController', ['$scope', '$routeParams', 
         };
         getDataFromServer();
     }]);
+
+

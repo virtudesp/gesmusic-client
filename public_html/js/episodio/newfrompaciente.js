@@ -28,21 +28,43 @@
 
 'use strict';
 
-moduloEpisodio.controller('EpisodioNewController', ['$scope', '$routeParams', '$location', 'serverService', 'episodioService', 'sharedSpaceService', '$filter', '$uibModal',
+moduloEpisodio.controller('EpisodioNewFromPacienteController', ['$scope', '$routeParams', '$location', 'serverService', 'episodioService', 'sharedSpaceService', '$filter', '$uibModal',
     function ($scope, $routeParams, $location, serverService, episodioService, sharedSpaceService, $filter, $uibModal) {
         $scope.fields = episodioService.getFields();
         $scope.obtitle = episodioService.getObTitle();
         $scope.icon = episodioService.getIcon();
         $scope.ob = episodioService.getTitle();
-        $scope.title = "Creando " + $scope.obtitle;
+        
         $scope.op = "plist";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
+        //----------------------------------------------------------------
         $scope.bean = {id: 0};
         $scope.bean.obj_importancia = {"id": null};
         $scope.bean.obj_servicio = {"id": null};
         $scope.bean.obj_tipo = {"id": null};
-        $scope.bean.obj_paciente = {"id": null};
+
+        if ($routeParams.id_paciente) {
+            $scope.bean.obj_paciente = {"id": $routeParams.id_paciente};
+            serverService.promise_getOne('paciente', $scope.bean.obj_paciente.id).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.bean.obj_paciente = response.data.message;
+                        $scope.title = "Creando " + $scope.obtitle + " para el paciente " + $scope.bean.obj_paciente.name + " " + $scope.bean.obj_paciente.primer_apellido + " " + $scope.bean.obj_paciente.segundo_apellido;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor";
+            });
+        } else {
+            $scope.bean.obj_paciente = {"id": null};
+        }
+
         $scope.bean.obj_medico = {"id": null};
         $scope.bean.obj_episodio = {"id": null};
         $scope.bean.obj_cargo = {"id": null};
