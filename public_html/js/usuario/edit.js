@@ -64,7 +64,10 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$routeParams', '$l
         $scope.save = function () {
             $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
             $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
-            if (!$scope.bean.obj_medico.id > 0) {
+            if ($scope.bean.obj_tipousuario.id <= 0) {
+                $scope.bean.obj_tipousuario.id = null;
+            }
+            if ($scope.bean.obj_medico.id <= 0) {
                 $scope.bean.obj_medico.id = null;
             }
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};

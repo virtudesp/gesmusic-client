@@ -44,7 +44,8 @@ THE SOFTWARE.
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                     <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key> 
                                 </div>
-                                <!------------------------------------------------->                            
+                                <!-------------------------------------------------> 
+                                {{outerForm[f.name].$error.required}}
                                 <div ng-show="f.type == 'text'" 
                                      id="{{f.name}}-group" 
                                      class="form-group" 
@@ -70,40 +71,17 @@ THE SOFTWARE.
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div class="form-group"                                 
-                                     ng-show="show_obj_tipousuario && (f.name == 'obj_tipousuario')"
-                                     ng-class="{'has-error': (outerForm.obj_tipousuario.$error.required ||
-                                                             outerForm.obj_tipousuario.$error.exists ||
-                                                             outerForm.obj_tipousuario.$error.validatemin)}"
-                                     ng-show="show_obj_tipousuario">                                                                                                                                   
-                                    <label class="col-sm-2 control-label" for="obj_tipousuario">Tipo de Usuario:</label>
-                                    <div class="control col-sm-3">
-                                        <div class="input-group foreign" id="obj_tipousuario_group">
-                                            <span class="input-group-addon" id="obj_tipousuario_button" ng-click="chooseOne('obj_tipousuario', 'tipousuario', 'TipousuarioSelectionController')">
-                                                <span class="glyphicon glyphicon-search">
-                                                </span>
-                                            </span>                                        
-                                            <input type="text" 
-                                                   ng-model-options="{debounce: 1000}" 
-                                                   ng-change="obj_tipousuario_change" 
-                                                   ng-model="bean.obj_tipousuario.id" 
-                                                   validatemin="1" 
-                                                   ng-required="true"  
-                                                   aria-describedby="basic-addon2" 
-                                                   class="form-control" 
-                                                   id="obj_tipousuario" 
-                                                   name="obj_tipousuario"
-                                                   size="5" 
-                                                   maxlength="5">                                        
-                                            <span class="input-group-addon">
-                                                <span>{{bean.obj_tipousuario.descripcion}}</span>
-                                            </span>                                       
-                                        </div>
-                                        <span class="help-block" ng-show="outerForm.obj_tipousuario.$error.required">El tipo de usuario es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm.obj_tipousuario.$error.validatemin">Debes elegir un tipo de usuario</span>
-                                        <span class="help-block" ng-show="outerForm.obj_tipousuario.$error.exists">El tipo de usuario no existe</span>
-                                    </div>
-                                </div> 
+                                <div ng-show="f.type == 'specific'" class="form-group">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                    <foreign-key class="col-md-4"
+                                                 name="f.name"
+                                                 required="f.required"
+                                                 reference="f.reference"
+                                                 description="f.desc"
+                                                 bean="bean[f.name]"
+                                                 form="outerForm">   
+                                    </foreign-key>
+                                </div>
 
 
                                 <!------------------------------------------------->
