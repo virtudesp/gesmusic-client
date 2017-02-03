@@ -28,8 +28,8 @@
 
 'use strict';
 
-moduloVia.controller('ViaSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService','viaService',
-    function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService,viaService) {
+moduloVia.controller('ViaSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'serverService', '$location', 'sharedSpaceService', 'viaService',
+    function ($scope, $modalInstance, $routeParams, serverService, $location, sharedSpaceService, viaService) {
         $scope.fields = viaService.getFields();
         $scope.obtitle = viaService.getObTitle();
         $scope.icon = viaService.getIcon();

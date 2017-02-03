@@ -34,9 +34,8 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$routeParams', '$l
         $scope.icon = usuarioService.getIcon();
         $scope.ob = usuarioService.getTitle();
         $scope.title = "Editando un " + $scope.obtitle;
-        $scope.op = "plist";
+        $scope.op = "edit";
         $scope.status = null;
-        $scope.error = true;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
         //---
@@ -64,7 +63,10 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$routeParams', '$l
         $scope.save = function () {
             $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
             $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
-            if (!$scope.bean.obj_medico.id > 0) {
+            if ($scope.bean.obj_tipousuario.id <= 0) {
+                $scope.bean.obj_tipousuario.id = null;
+            }
+            if ($scope.bean.obj_medico.id <= 0) {
                 $scope.bean.obj_medico.id = null;
             }
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
@@ -94,30 +96,30 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$routeParams', '$l
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
-            var modalInstance = $uibModal.open({
-                templateUrl: 'js/' + foreignObjectName + '/selection.html',
-                controller: contollerName,
-                size: 'lg'
-            }).result.then(function (modalResult) {
-                $scope.bean[nameForeign].id = modalResult;
-            });
-        };
-        $scope.$watch('bean.obj_tipousuario.id', function () {
-            if ($scope.bean) {
-                if ($scope.bean.obj_tipousuario.id) {
-                    serverService.promise_getOne('tipousuario', $scope.bean.obj_tipousuario.id).then(function (response) {
-                        var old_id = $scope.bean.obj_tipousuario.id;
-                        if (response.data.message.id != 0) {
-                            $scope.outerForm.obj_tipousuario.$setValidity('exists', true);
-                            $scope.bean.obj_tipousuario = response.data.message;
-                        } else {
-                            $scope.outerForm.obj_tipousuario.$setValidity('exists', false);
-                            //$scope.bean.obj_tipousuario.id = 0;
-                            $scope.bean.obj_tipousuario.id = old_id;
-                        }
-                    });
-                }
-            }
-        });
+//        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
+//            var modalInstance = $uibModal.open({
+//                templateUrl: 'js/' + foreignObjectName + '/selection.html',
+//                controller: contollerName,
+//                size: 'lg'
+//            }).result.then(function (modalResult) {
+//                $scope.bean[nameForeign].id = modalResult;
+//            });
+//        };
+//        $scope.$watch('bean.obj_tipousuario.id', function () {
+//            if ($scope.bean) {
+//                if ($scope.bean.obj_tipousuario.id) {
+//                    serverService.promise_getOne('tipousuario', $scope.bean.obj_tipousuario.id).then(function (response) {
+//                        var old_id = $scope.bean.obj_tipousuario.id;
+//                        if (response.data.message.id != 0) {
+//                            $scope.outerForm.obj_tipousuario.$setValidity('exists', true);
+//                            $scope.bean.obj_tipousuario = response.data.message;
+//                        } else {
+//                            $scope.outerForm.obj_tipousuario.$setValidity('exists', false);
+//                            //$scope.bean.obj_tipousuario.id = 0;
+//                            $scope.bean.obj_tipousuario.id = old_id;
+//                        }
+//                    });
+//                }
+//            }
+//        });
     }]);

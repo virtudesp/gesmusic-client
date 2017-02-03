@@ -2,8 +2,7 @@
 moduloDirectivas.component('cplistinfo', {
     restrict: 'E',
     bindings: {
-        ob: '<',
-        op: '<',
+        url: '<',
         numpage: '<',
         rpp: '<',
         registers: '<',
@@ -17,13 +16,13 @@ moduloDirectivas.component('cplistinfo', {
     controller: ['$location', function ($location) {
             var self = this;
             self.doresetorder = function () {
-                $location.url(self.ob + '/' + self.op + '/' + self.numpage + '/' + self.rpp).search('filter', self.filterparams).search('sfilter', self.sfilterparams);
+                $location.url(self.url + '/' + self.numpage + '/' + self.rpp).search('filter', self.filterparams).search('sfilter', self.sfilterparams);
                 return false;
             };
 
 
             self.doresetfilter = function () {
-                $location.url(self.ob + '/' + self.op + '/' + self.numpage + '/' + self.rpp).search('sfilter', self.sfilterparams).search('order', self.orderparams);
+                $location.url(self.url + '/' + self.numpage + '/' + self.rpp).search('sfilter', self.sfilterparams).search('order', self.orderparams);
                 return false;
             };
 

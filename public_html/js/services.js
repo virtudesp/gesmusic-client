@@ -203,8 +203,8 @@ moduloServicios
                     return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getpage&page=' + page + "&rpp=" + rpp + filter + order, 'GET', '');
                 },
                 promise_getAll: function (strClass, filter, order) {
-                    filter = (filter === undefined || filter === null) ? "": filter;
-                    order = (order === undefined || order === null) ? "": order;
+                    filter = (filter === undefined || filter === null) ? "" : filter;
+                    order = (order === undefined || order === null) ? "" : order;
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=getall' + filter + order, 'GET', '');
                 },
                 promise_getOne: function (strClass, id) {

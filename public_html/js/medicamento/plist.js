@@ -50,6 +50,7 @@ moduloMedicamento.controller('MedicamentoPListController', ['$scope', '$routePar
         $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
+        $scope.url = $scope.ob + '/' + $scope.op;
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {

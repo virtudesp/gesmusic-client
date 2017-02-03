@@ -59,11 +59,11 @@ moduloCargo.controller('CargoEditController', ['$scope', '$routeParams', '$locat
             $scope.status = "Error en la recepción de datos del servidor";
         });
         $scope.save = function () {
-           var arrinputdate = $scope.bean.date.split(" ");
-           var partes = arrinputdate[0].split("/");
-           var newDate = new Date(partes[2], partes[1] - 1, partes[0]);
-           $scope.bean.date = $filter('date')(newDate, "dd/MM/yyyy HH:mm");  
-           
+            var arrinputdate = $scope.bean.date.split(" ");
+            var partes = arrinputdate[0].split("/");
+            var newDate = new Date(partes[2], partes[1] - 1, partes[0]);
+            $scope.bean.date = $filter('date')(newDate, "dd/MM/yyyy HH:mm");
+
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

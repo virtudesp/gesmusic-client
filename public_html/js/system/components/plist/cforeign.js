@@ -5,13 +5,13 @@ moduloDirectivas.component('cforeign', {
         obf: '<',
         opf: '<',
         idf: '<',
-        descf: '<'      
+        descf: '<'
     },
     templateUrl: 'js/system/components/plist/cforeign.html',
     controllerAs: 'cf',
     controller: ['serverService', '$location', function (serverService, $location) {
             var self = this;
-           
+
         }]
 });
 

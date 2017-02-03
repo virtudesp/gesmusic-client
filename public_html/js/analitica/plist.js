@@ -52,12 +52,14 @@ moduloAnalitica.controller('AnaliticaPListController', ['$scope', '$routeParams'
         $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
+
+        $scope.url = $scope.ob + '/' + $scope.op;
         function getDataFromServer() {
-            
+
             if ($routeParams.id) {
                 $scope.filterExpression = 'and,id_episodio,equa,' + $routeParams.id;
             }
-            
+
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;
@@ -72,7 +74,7 @@ moduloAnalitica.controller('AnaliticaPListController', ['$scope', '$routeParams'
             }).then(function (response) {
                 if (response.status == 200) {
                     $scope.page = response.data.message;
-                    for(var i=0;i<$scope.page.length;i++){
+                    for (var i = 0; i < $scope.page.length; i++) {
                         $scope.fechas.push($scope.page[i].fecha_peticion);
                         $scope.prioridades.push($scope.page[i].obj_prioridad.id);
                     }

@@ -13,9 +13,9 @@ moduloDirectivas.component('manytomany', {
 
 function manyToMany(serverService, $uibModal) {
     var self = this;
-    
-    
-    self.open = function (id) {    
+
+
+    self.open = function (id) {
         var modalInstance = $uibModal.open({
             templateUrl: 'js/system/components/manytomany/modal.html',
             controller: 'mtmModal',

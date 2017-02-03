@@ -35,7 +35,7 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
         $scope.icon = usuarioService.getIcon();
         $scope.ob = usuarioService.getTitle();
         $scope.title = "Creando un nuevo " + $scope.obtitle;
-        $scope.op = "plist";
+        $scope.op = "new";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
@@ -88,29 +88,29 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
-            var modalInstance = $uibModal.open({
-                templateUrl: 'js/' + foreignObjectName + '/selection.html',
-                controller: contollerName,
-                size: 'lg'
-            }).result.then(function (modalResult) {
-                $scope.bean[nameForeign].id = modalResult;
-            });
-        };
-        $scope.$watch('bean.obj_tipousuario.id', function () {
-            if ($scope.bean) {
-                serverService.promise_getOne('tipousuario', $scope.bean.obj_tipousuario.id).then(function (response) {
-                    var old_id = $scope.bean.obj_tipousuario.id;
-                    $scope.bean.obj_tipousuario = response.data.message;
-                    if (response.data.message.id != 0) {
-                        $scope.outerForm.obj_tipousuario.$setValidity('exists', true);
-                    } else {
-                        $scope.outerForm.obj_tipousuario.$setValidity('exists', false);
-                        $scope.bean.obj_tipousuario.id = old_id;
-                    }
-                });
-            }
-        });
+//        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
+//            var modalInstance = $uibModal.open({
+//                templateUrl: 'js/' + foreignObjectName + '/selection.html',
+//                controller: contollerName,
+//                size: 'lg'
+//            }).result.then(function (modalResult) {
+//                $scope.bean[nameForeign].id = modalResult;
+//            });
+//        };
+//        $scope.$watch('bean.obj_tipousuario.id', function () {
+//            if ($scope.bean) {
+//                serverService.promise_getOne('tipousuario', $scope.bean.obj_tipousuario.id).then(function (response) {
+//                    var old_id = $scope.bean.obj_tipousuario.id;
+//                    $scope.bean.obj_tipousuario = response.data.message;
+//                    if (response.data.message.id != 0) {
+//                        $scope.outerForm.obj_tipousuario.$setValidity('exists', true);
+//                    } else {
+//                        $scope.outerForm.obj_tipousuario.$setValidity('exists', false);
+//                        $scope.bean.obj_tipousuario.id = old_id;
+//                    }
+//                });
+//            }
+//        });
 
     }]);
 

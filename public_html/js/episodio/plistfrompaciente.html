@@ -41,6 +41,11 @@ THE SOFTWARE.
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-xs-12" ng-show="id_paciente">
+                                <miniview id="id_paciente" nombre="'paciente'"></miniview>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-xs-12" ng-show="!status">
                                 <div role="tabpanel">
                                     <ul class="nav nav-tabs" role="tablist">
@@ -130,7 +135,7 @@ THE SOFTWARE.
                                             <div class="row">
                                                 <div class="col-md-12 text-center">
                                                     <p><br>
-                                                        <a class="btn btn-primary" href="{{ob}}/new">Crear un nuevo {{obtitle}}</a>
+                                                        <a class="btn btn-primary" href="{{urlnew}}">Crear un nuevo {{obtitle}}</a>
                                                     </p>
                                                 </div>
                                             </div>
@@ -142,78 +147,62 @@ THE SOFTWARE.
                                     <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
                                         <thead plistheader></thead>
                                         <tbody>
-
-                                            <tr ng-repeat="obj in page| filter:searchText">
+                                            <tr ng-repeat="obj in page | filter:searchText">
                                                 <td ng-repeat="f in fields" ng-show="f.visible"  class="text-right">
                                                     <div ng-show="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
                                                     <div ng-show="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
                                                     <div ng-show="f.visible && f.type == 'integer'" class="text-center">{{obj[f.name]}}</div>
                                                     <div ng-show="f.visible && f.type == 'decimal'" class="text-center">{{obj[f.name]}}</div>
                                                     <div ng-show="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
-                                                    <div ng-show="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>                                                  
+                                                    <div ng-show="f.visible && f.type == 'textarea'" class="text-left">{{obj[f.name]|clipString}}</div>
+                                                    <div ng-show="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
+                                                    <!------------------------------------------------>
+                                                    <div ng-show="f.visible && f.name == 'obj_importancia'" class="text-center"><a href="importancia/view/{{obj.obj_importancia.id}}">{{obj.obj_importancia.descripcion}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_servicio'" class="text-center"><a href="servicio/view/{{obj.obj_servicio.id}}">{{obj.obj_servicio.descripcion}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_tipo'" class="text-center"><a href="tipo/view/{{obj.obj_tipo.id}}">{{obj.obj_tipo.descripcion}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_paciente'" class="text-center"><a href="paciente/view/{{obj.obj_paciente.id}}">{{obj.obj_paciente.name}} {{obj.obj_paciente.primer_apellido}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_medico'" class="text-center"><a href="medico/view/{{obj.obj_medico.id}}">{{obj.obj_medico.id}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_episodio'" class="text-center"><a href="episodio/view/{{obj.obj_episodio.id}}">{{obj.obj_episodio.fecha| date:'fullDate'}}</a></div>
+                                                    <div ng-show="f.visible && f.name == 'obj_cargo'" class="text-center"><a href="cargo/view/{{obj.obj_cargo.id}}">{{obj.obj_cargo.date| date:'fullDate'}}</a></div>
                                                 </td>                       
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/view/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'medicamento', 'MedicamentoViewpopController', 'viewpop')">
-                                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/remove/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-remove"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'medicamento', 'MedicamentoRemovepopController', 'removepop')">
-                                                                <span class="glyphicon glyphicon-remove"></span>
-                                                            </a>
+
+                                                            <actions
+                                                                id="obj.id"
+                                                                name="ob"
+                                                                >                                                                  
+                                                            </actions>
+
+                                                            <div ng-repeat="t in fields" ng-show="t.type == 'specific'" class="btn-group">
+                                                                <bf-key
+                                                                    name="ob"
+                                                                    reference="t.reference"
+                                                                    bean="obj"
+                                                                    fname="t.longname"                                                                                                                              
+
+                                                                    >
+                                                                </bf-key>
+
+                                                            </div>
+
                                                         </div>
+                                                        <a class="btn btn-default btn-xs" href="prueba/plist/1/10?sfilter=and,id_episodio,equa,{{obj.id}}">
+                                                            <span class="glyphicon glyphicon-alert"></span>
+                                                        </a>
+                                                        <a class="btn btn-default btn-xs" href="analitica/plist/1/10?sfilter=and,id_episodio,equa,{{obj.id}}">
+                                                            <span class="glyphicon glyphicon-heart"></span>
+                                                        </a>
+                                                        <a class="btn btn-default btn-xs" href="diagnostico/plist/1/10?sfilter=and,id_episodio,equa,{{obj.id}}">
+                                                            <span class="glyphicon glyphicon-list-alt"></span>
+                                                        </a>
                                                     </div>
                                                 </td>
-                                            </tr> 
-                                            <!--
-                                            <tr ng-repeat="obj in page| filter:searchText">
-                                                <td ng-show="fields[0].visible" class="text-right">{{obj.id}}</td>
-                                                <td ng-show="fields[1].visible">{{obj.name}}</td>
-                                                <td ng-show="fields[2].visible">{{obj.surname}}</td>
-                                                <td ng-show="fields[3].visible">{{obj.login}}</td>
-                                                <td ng-show="fields[4].visible">{{obj.password}}</td> 
-                                                <td ng-show="fields[5].visible">{{obj.address}}</td>
-                                                <td ng-show="fields[6].visible">{{obj.city}}</td>
-                                                <td ng-show="fields[7].visible">{{obj.zip}}</td>
-                                                <td ng-show="fields[8].visible">{{obj.state}}</td>
-                                                <td ng-show="fields[9].visible">{{obj.country}}</td>                                                
-                                                <td ng-show="fields[10].visible">{{obj.email}}</td>
-                                                <td ng-show="fields[11].visible">{{obj.phone}}</td>
-                                                <td ng-show="fields[12].visible"><a href="medicamento/view/{{obj.obj_medicamento.id}}">{{obj.obj_medicamento.descripcion}}</a></td>
-                                                <td>
-                                                    <div class="btn-toolbar" role="toolbar">
-                                                        <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/view/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'user', 'UserViewpopController', 'viewpop')">
-                                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/remove/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-remove"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'user', 'UserRemovepopController', 'removepop')">
-                                                                <span class="glyphicon glyphicon-remove"></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            -->
+                                            </tr>                                   
                                         </tbody>
-                                    </table>            
+                                    </table>
+                                    <graficas afechas="fechas" aimportes='importes' fechahasta="20/10/2018" fechadesde="18/08/2016"></graficas>
                                 </div>
                             </div>                                
                         </div>  

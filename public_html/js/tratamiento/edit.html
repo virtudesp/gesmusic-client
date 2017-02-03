@@ -51,7 +51,7 @@ THE SOFTWARE.
                                  id="{{f.name}}-group"
                                  class="form-group"
                                  ng-class="{'has-error': (outerForm[f.name].$error.pattern) ||
-                                                             (outerForm[f.name].$error.required)}">
+                                             (outerForm[f.name].$error.required)}">
                                 <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
                                 <div class="control col-sm-8">
                                     <input ng-model="bean[f.name]"
@@ -88,7 +88,7 @@ THE SOFTWARE.
                                  id="{{f.name}}-group"
                                  class="form-group"
                                  ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
-                                                             (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
+                                             (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
                                 <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                 <div class="control col-sm-4">
                                     <componentenumero
@@ -107,9 +107,9 @@ THE SOFTWARE.
                                  ng-show="f.name == 'fecha_inicio'"
                                  id="fecha-group"
                                  ng-class="{'has-error': (outerForm.fecha_inicio.$error.required ||
-                                                             outerForm.fecha_inicio.$error.valid ||
-                                                             outerForm.fecha_fin.$error.ordenfechas)
-                                                             && !outerForm.fecha_inicio.$pristine}">
+                                             outerForm.fecha_inicio.$error.valid ||
+                                             outerForm.fecha_fin.$error.ordenfechas)
+                                             && !outerForm.fecha_inicio.$pristine}">
                                 <clabel wide="2" name="f.name" longname="f.longname" required="f.required" /> 
                                 <div class="control col-sm-3">
                                     <date-picker ng-show="f.type == 'date'" 
@@ -125,9 +125,9 @@ THE SOFTWARE.
                                  ng-show="f.name == 'fecha_fin'"
                                  id="fecha-group"
                                  ng-class="{'has-error': (outerForm.fecha_fin.$error.required ||
-                                                             outerForm.fecha_fin.$error.valid ||
-                                                             outerForm.fecha_fin.$error.ordenfechas)
-                                                             && !outerForm.fecha_fin.$pristine}">
+                                             outerForm.fecha_fin.$error.valid ||
+                                             outerForm.fecha_fin.$error.ordenfechas)
+                                             && !outerForm.fecha_fin.$pristine}">
                                 <clabel wide="2" name="f.name" longname="f.longname" required="f.required" /> 
                                 <div class="control col-sm-3">
                                     <date-picker ng-show="f.type == 'date'" 

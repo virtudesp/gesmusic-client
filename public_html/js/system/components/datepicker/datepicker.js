@@ -18,19 +18,16 @@ function datepickerCtrl(serverService) {
         // El único formato válido es dd/mm/aaaa
         if (strFecha.length != 10) {
             validity(false);
-        }
-        
-        else { 
-            var arrFecha = strFecha.split("/");            
+        } else {
+            var arrFecha = strFecha.split("/");
             if (arrFecha[0].length != 2 || arrFecha[1].length != 2 || arrFecha[2].length != 4) {
                 validity(false);
-            }             
-            var newDate = new Date(arrFecha[2], arrFecha[1] - 1, arrFecha[0]);            
+            }
+            var newDate = new Date(arrFecha[2], arrFecha[1] - 1, arrFecha[0]);
             if (newDate.getFullYear() == arrFecha[2] && newDate.getMonth() + 1 == arrFecha[1] && newDate.getDate() == arrFecha[0]) {
                 validity(true);
-            } 
-            else
-                validity(false);                
+            } else
+                validity(false);
         }
     };
 
