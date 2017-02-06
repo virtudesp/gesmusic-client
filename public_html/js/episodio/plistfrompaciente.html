@@ -147,7 +147,7 @@ THE SOFTWARE.
                                     <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
                                         <thead plistheader></thead>
                                         <tbody>
-                                            <tr ng-repeat="obj in page | filter:searchText">
+                                            <tr ng-repeat="obj in page| filter:searchText">
                                                 <td ng-repeat="f in fields" ng-if="f.visible"  class="text-right">
                                                     <div ng-if="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
                                                     <div ng-if="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
@@ -156,14 +156,22 @@ THE SOFTWARE.
                                                     <div ng-if="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                     <div ng-if="f.visible && f.type == 'textarea'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                     <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
-                                                    <!------------------------------------------------>
-                                                    <div ng-if="f.visible && f.name == 'obj_importancia'" class="text-center"><a href="importancia/view/{{obj.obj_importancia.id}}">{{obj.obj_importancia.descripcion}}</a></div>
-                                                    <div ng-if="f.visible && f.name == 'obj_servicio'" class="text-center"><a href="servicio/view/{{obj.obj_servicio.id}}">{{obj.obj_servicio.descripcion}}</a></div>
-                                                    <div ng-if="f.visible && f.name == 'obj_tipo'" class="text-center"><a href="tipo/view/{{obj.obj_tipo.id}}">{{obj.obj_tipo.descripcion}}</a></div>
-                                                    <div ng-if="f.visible && f.name == 'obj_paciente'" class="text-center"><a href="paciente/view/{{obj.obj_paciente.id}}">{{obj.obj_paciente.name}} {{obj.obj_paciente.primer_apellido}}</a></div>
-                                                    <div ng-if="f.visible && f.name == 'obj_medico'" class="text-center"><a href="medico/view/{{obj.obj_medico.id}}">{{obj.obj_medico.id}}</a></div>
-                                                    <div ng-if="f.visible && f.name == 'obj_episodio'" class="text-center"><a href="episodio/view/{{obj.obj_episodio.id}}">{{obj.obj_episodio.fecha| date:'fullDate'}}</a></div>
-                                                    <div ng-if="f.visible && f.name == 'obj_cargo'" class="text-center"><a href="cargo/view/{{obj.obj_cargo.id}}">{{obj.obj_cargo.date| date:'fullDate'}}</a></div>
+                                                    <div ng-if="f.visible && f.type == 'foreign'" class="text-left">
+                                                        <cforeign 
+                                                            obf="f.reference"
+                                                            opf="'view'"
+                                                            idf="obj[(f.name)].id"
+                                                            descf="obj[(f.name)][f.descforeign]|clipString">                                                                
+                                                        </cforeign>
+                                                        <bf-key
+                                                            name="ob"
+                                                            reference="f.reference"
+                                                            bean="obj"
+                                                            fname="f.longname"                                                                                                                              
+
+                                                            >
+                                                        </bf-key>
+                                                    </div> 
                                                 </td>                       
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
