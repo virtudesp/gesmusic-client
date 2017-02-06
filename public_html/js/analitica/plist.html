@@ -141,7 +141,7 @@ THE SOFTWARE.
                                     <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">
                                         <thead plistheader></thead>
                                         <tbody>
-                                            <tr ng-repeat="obj in page | filter:searchText">
+                                            <tr ng-repeat="obj in page| filter:searchText">
                                                 <td ng-repeat="f in fields" ng-if="f.visible"  class="text-right">
                                                     <div ng-if="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
                                                     <div ng-if="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
@@ -157,6 +157,14 @@ THE SOFTWARE.
                                                             idf="obj[(f.name)].id"
                                                             descf="obj[(f.name)][f.descforeign]|clipString">                                                                
                                                         </cforeign>
+                                                        <bf-key
+                                                            name="ob"
+                                                            reference="f.reference"
+                                                            bean="obj"
+                                                            fname="f.longname"                                                                                                                              
+
+                                                            >
+                                                        </bf-key>
                                                     </div>                                                   
                                                 </td>
                                                 <td>
