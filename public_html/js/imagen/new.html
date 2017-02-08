@@ -42,16 +42,18 @@ THE SOFTWARE.
                         <form name="outerForm" class="form-horizontal text-left"  ng-if="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->
-                                <div ng-if="f.type == 'id'" class="form-group">
+                                <div ng-if="f.type == 'id'" class="form-group" id="{{f.name}}-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key> 
+                                    <div class="control col-sm-3"> 
+                                        <key ide="bean[f.name]" name="f.name" disable="false"></key> 
+                                    </div>
                                 </div>
                                 <!------------------------------------------------->
                                 <div ng-if="f.type == 'text'"
                                      id="{{f.name}}-group"
                                      class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
-                                                             (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
+                                                 (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
                                         <span ng-if="{{f.required}}">*</span>
                                         {{f.longname}}:
@@ -76,8 +78,8 @@ THE SOFTWARE.
                                      ng-if="f.type == 'date'"
 
                                      ng-class="{'has-error': (outerForm.fecha.$error.required ||
-                                                             outerForm.fecha.$error.valid)
-                                                             && !outerForm.fecha.$pristine}">
+                                                 outerForm.fecha.$error.valid)
+                                                 && !outerForm.fecha.$pristine}">
                                     <label class="col-sm-2 control-label" for="fecha">Fecha y hora:</label>
                                     <div class="control col-sm-3">
                                         <date-time-picker name="f.name" form="outerForm" required="f.required" fecha="bean[f.name]"></date-time-picker>
@@ -87,9 +89,9 @@ THE SOFTWARE.
                                 <div class="form-group"
                                      ng-if="show_obj_tecnica && (f.name == 'obj_tecnica')"
                                      ng-class="{'has-error': (outerForm.obj_tecnica.$error.required ||
-                                                             outerForm.obj_tecnica.$error.exists ||
-                                                             outerForm.obj_tecnica.$error.validatemin)
-                                                             && !outerForm.obj_tecnica.$pristine}">
+                                                 outerForm.obj_tecnica.$error.exists ||
+                                                 outerForm.obj_tecnica.$error.validatemin)
+                                                 && !outerForm.obj_tecnica.$pristine}">
                                     <label class="col-sm-2 control-label" for="obj_tecnica">Técnica:</label>
                                     <div class="control col-sm-3">
                                         <div class="input-group foreign" id="obj_tecnica_group">
@@ -122,9 +124,9 @@ THE SOFTWARE.
                                 <div class="form-group"
                                      ng-if="show_obj_prueba && (f.name == 'obj_prueba')"
                                      ng-class="{'has-error': (outerForm.obj_prueba.$error.required ||
-                                                             outerForm.obj_prueba.$error.exists ||
-                                                             outerForm.obj_prueba.$error.validatemin)
-                                                             && !outerForm.obj_prueba.$pristine}">
+                                                 outerForm.obj_prueba.$error.exists ||
+                                                 outerForm.obj_prueba.$error.validatemin)
+                                                 && !outerForm.obj_prueba.$pristine}">
                                     <label class="col-sm-2 control-label" for="obj_prueba">Prueba:</label>
                                     <div class="control col-sm-5">
                                         <div class="input-group foreign" id="obj_prueba_group">

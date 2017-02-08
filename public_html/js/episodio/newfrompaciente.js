@@ -34,7 +34,7 @@ moduloEpisodio.controller('EpisodioNewFromPacienteController', ['$scope', '$rout
         $scope.obtitle = episodioService.getObTitle();
         $scope.icon = episodioService.getIcon();
         $scope.ob = episodioService.getTitle();
-        
+
         $scope.op = "plist";
         $scope.status = null;
         $scope.debugging = serverService.debugging();

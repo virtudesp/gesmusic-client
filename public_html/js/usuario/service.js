@@ -17,7 +17,7 @@ moduloUsuario.factory('usuarioService', ['serverService', function (serverServic
                     {name: "email", shortname: "Email", longname: "Email", visible: false, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("email"), help: serverService.getRegExpl("email")},
                     {name: "telefono", shortname: "Teléfono", longname: "Teléfono", visible: false, type: "text", required: false, maxlength: 255, pattern: serverService.getRegExpr("telefono"), help: serverService.getRegExpl("telefono")},
                     {name: "obj_tipousuario", shortname: "Tipo", longname: "Tipo de usuario", visible: true, type: "foreign", reference: "tipousuario", descforeign: "descripcion"},
-                    {name: "obj_medico", shortname: "Médico", longname: "Médico asociado", visible: true,type: "foreign", reference: "medico", descforeign: "id"}
+                    {name: "obj_medico", shortname: "Médico", longname: "Médico asociado", visible: true, type: "foreign", reference: "medico", descforeign: "id"}
                 ];
             },
             getIcon: function () {
