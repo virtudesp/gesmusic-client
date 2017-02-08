@@ -1,14 +1,11 @@
 moduloDirectivas.component("boolean", {
     templateUrl: 'js/system/components/boolean/boolean.html',
     controller: function boolean() {
-
-
-
     },
     controllerAs: 'bl',
     bindings: {
-        parametro: '='
-
+        link: '=',
+        name: '<'
     }
 
 
