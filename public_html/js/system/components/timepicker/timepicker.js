@@ -5,87 +5,26 @@ moduloDirectivas.component('dateTimePicker', {
     bindings: {
         name: '<',
         required: '<',
-        fecha: '=',
+        model: '=',
         form: '='
-
     }
-
-
 });
-
-
-
 function datetimepicker(serverService) {
-
     var self = this;
-
-
-
     self.change = function () {
-
-
-
-        var fechaCompleta = moment(self.fecha, "DD/MM/YYYY hh:mm");
-
+        var fechaCompleta = moment(self.model, "DD/MM/YYYY hh:mm");
         var dayA = moment("01/01/1970 00:00", "DD/MM/YYYY hh:mm");
-
         var dayB = moment("31/12/2099 23:59", "DD/MM/YYYY hh:mm");
-
-
-        var fechaHora = moment(self.fecha, "DD/MM/YYYY HH:mm", true).isValid();
-
-
-
+        var fechaHora = moment(self.model, "DD/MM/YYYY HH:mm", true).isValid();
         if ((fechaCompleta <= dayA || fechaCompleta >= dayB) || !fechaHora) {
-
             validity(false);
-
         } else {
-
             validity(true);
-
         }
-
-
-
     }
-
-
-
     var validity = function (isValid) {
         if (self.form) {
             self.form[self.name].$setValidity('valid', isValid);
         }
-
-
-
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

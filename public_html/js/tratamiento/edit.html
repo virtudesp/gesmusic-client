@@ -117,7 +117,7 @@ THE SOFTWARE.
                                     <date-picker ng-if="f.type == 'date'" 
                                                  name="f.name" 
                                                  required="f.required" 
-                                                 fecha="bean.fecha_inicio" 
+                                                 model="bean.fecha_inicio" 
                                                  form="outerForm"></date-picker>
                                     <span class="help-block" ng-if="outerForm.fecha_inicio.$error.ordenfechas">Fecha fin no puede ser menor que fecha inicio</span>
                                 </div>
@@ -135,7 +135,7 @@ THE SOFTWARE.
                                     <date-picker ng-if="f.type == 'date'" 
                                                  name="f.name" 
                                                  required="f.required" 
-                                                 fecha="bean.fecha_fin" 
+                                                 model="bean.fecha_fin" 
                                                  form="outerForm" /> 
                                     </date-picker> 
                                 </div>

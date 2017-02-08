@@ -7,9 +7,6 @@ moduloDirectivas.component("boolean", {
         model: '=',
         name: '<'
     }
-
-
-
 });
 
 
