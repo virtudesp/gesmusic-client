@@ -5,7 +5,7 @@ moduloDirectivas.component('datePicker', {
     bindings: {
         name: '<',
         required: '<',
-        fecha: '=',
+        model: '=',
         form: '='
     }
 });
@@ -14,7 +14,7 @@ function datepickerCtrl(serverService) {
     var self = this;
 
     self.change = function () {
-        var strFecha = self.fecha;
+        var strFecha = self.model;
         // El único formato válido es dd/mm/aaaa
         if (strFecha.length != 10) {
             validity(false);

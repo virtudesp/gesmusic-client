@@ -3,7 +3,7 @@ moduloDirectivas.component('key', {
     controllerAs: 'k',
     controller: key,
     bindings: {
-        ide: '=',
+        ide: '<',
         name: '<',
         disable: '<'
     }

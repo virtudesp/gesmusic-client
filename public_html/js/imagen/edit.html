@@ -34,26 +34,28 @@ THE SOFTWARE.
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="panel-body" ng-cloak>
                         <!--
-                        <div class="alert alert-success" role="alert" ng-show="debugging">
+                        <div class="alert alert-success" role="alert" ng-if="debugging">
                             <h4>Debug:</h4>
                             {{bean|json}}
                         </div>
                         -->
-                        <form name="outerForm" class="form-horizontal text-left"  ng-show="!status">
+                        <form name="outerForm" class="form-horizontal text-left"  ng-if="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'id'" class="form-group">
+                                <div ng-if="f.type == 'id'" class="form-group" id="{{f.name}}-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key>
+                                    <div class="control col-sm-3"> 
+                                        <key ide="bean[f.name]" name="f.name" disable="false"></key> 
+                                    </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'text'"
+                                <div ng-if="f.type == 'text'"
                                      id="{{f.name}}-group"
                                      class="form-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern) ||
-                                                             (outerForm[f.name].$error.required)}">
+                                                 (outerForm[f.name].$error.required)}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        <span ng-show="{{f.required}}">*</span>
+                                        <span ng-if="{{f.required}}">*</span>
                                         {{f.longname}}:
                                     </label>
                                     <div class="control col-sm-8">
@@ -67,28 +69,28 @@ THE SOFTWARE.
                                                maxlength="{{f.maxlength}}"
                                                ng-required="{{f.required}}"
                                                />
-                                        <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
+                                        <span class="help-block" ng-if="outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-if="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
                                 <div class="form-group"
-                                     ng-show="f.type == 'date'"
+                                     ng-if="f.type == 'date'"
 
                                      ng-class="{'has-error': (outerForm.fecha.$error.required ||
-                                                             outerForm.fecha.$error.valid)
-                                                             && !outerForm.fecha.$pristine}">
+                                                 outerForm.fecha.$error.valid)
+                                                 && !outerForm.fecha.$pristine}">
                                     <label class="col-sm-2 control-label" for="fecha">Fecha y hora:</label>
                                     <div class="control col-sm-3">
-                                        <date-time-picker name="f.name" form="outerForm" required="f.required" fecha="bean[f.name]"></date-time-picker>
+                                        <date-time-picker name="f.name" form="outerForm" required="f.required" model="bean[f.name]"></date-time-picker>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
                                 <div class="form-group"
-                                     ng-show="show_obj_tecnica && (f.name == 'obj_tecnica')"
+                                     ng-if="show_obj_tecnica && (f.name == 'obj_tecnica')"
                                      ng-class="{'has-error': (outerForm.obj_tecnica.$error.required ||
-                                                             outerForm.obj_tecnica.$error.exists ||
-                                                             outerForm.obj_tecnica.$error.validatemin)}">
+                                                 outerForm.obj_tecnica.$error.exists ||
+                                                 outerForm.obj_tecnica.$error.validatemin)}">
                                     <label class="col-sm-2 control-label" for="obj_tecnica">Tipo de tecnica:</label>
                                     <div class="control col-sm-3">
                                         <div class="input-group foreign" id="obj_tecnica_group">
@@ -112,17 +114,17 @@ THE SOFTWARE.
                                                 <span>{{bean.obj_tecnica.descripcion}}</span>
                                             </span>
                                         </div>
-                                        <span class="help-block" ng-show="outerForm.obj_tecnica.$error.required">El tipo de tecnica es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm.obj_tecnica.$error.validatemin">Debes elegir un tipo de tecnica</span>
-                                        <span class="help-block" ng-show="outerForm.obj_tecnica.$error.exists">El tipo de tecnica no existe</span>
+                                        <span class="help-block" ng-if="outerForm.obj_tecnica.$error.required">El tipo de tecnica es obligatorio</span>
+                                        <span class="help-block" ng-if="outerForm.obj_tecnica.$error.validatemin">Debes elegir un tipo de tecnica</span>
+                                        <span class="help-block" ng-if="outerForm.obj_tecnica.$error.exists">El tipo de tecnica no existe</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
                                 <div class="form-group"
-                                     ng-show="show_obj_prueba && (f.name == 'obj_prueba')"
+                                     ng-if="show_obj_prueba && (f.name == 'obj_prueba')"
                                      ng-class="{'has-error': (outerForm.obj_prueba.$error.required ||
-                                                             outerForm.obj_prueba.$error.exists ||
-                                                             outerForm.obj_prueba.$error.validatemin)}">
+                                                 outerForm.obj_prueba.$error.exists ||
+                                                 outerForm.obj_prueba.$error.validatemin)}">
                                     <label class="col-sm-2 control-label" for="obj_prueba">Tipo de prueba:</label>
                                     <div class="control col-sm-5">
                                         <div class="input-group foreign" id="obj_prueba_group">
@@ -145,9 +147,9 @@ THE SOFTWARE.
                                                 <span>{{bean.obj_prueba.informe|clipString}}</span>
                                             </span>
                                         </div>
-                                        <span class="help-block" ng-show="outerForm.obj_prueba.$error.required">El tipo de prueba es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm.obj_prueba.$error.validatemin">Debes elegir un tipo de prueba</span>
-                                        <span class="help-block" ng-show="outerForm.obj_prueba.$error.exists">El tipo de prueba no existe</span>
+                                        <span class="help-block" ng-if="outerForm.obj_prueba.$error.required">El tipo de prueba es obligatorio</span>
+                                        <span class="help-block" ng-if="outerForm.obj_prueba.$error.validatemin">Debes elegir un tipo de prueba</span>
+                                        <span class="help-block" ng-if="outerForm.obj_prueba.$error.exists">El tipo de prueba no existe</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
@@ -160,12 +162,12 @@ THE SOFTWARE.
                                 </div>
                             </div>
                         </form>
-                        <div ng-show="status">
-                            <div class="alert alert-success" ng-show="response.status == 200">
+                        <div ng-if="status">
+                            <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
                                 <a ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
                             </div>
-                            <div class="alert alert-danger" ng-show="response.status != 200">
+                            <div class="alert alert-danger" ng-if="response.status != 200">
                                 <h2>{{status}}</h2>
                             </div>
                         </div>

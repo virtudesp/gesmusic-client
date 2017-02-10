@@ -10,6 +10,7 @@ moduloDirectivas.component('texto', {
     bindings: {
         model: '=',
         name: '<',
+        longname: '<',
         pattern: '<',
         length: '<',
         required: '<'

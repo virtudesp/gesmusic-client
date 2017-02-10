@@ -33,75 +33,83 @@ THE SOFTWARE.
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="panel-body" ng-cloak>
-                        <div class="alert alert-success" role="alert" ng-show="debugging">
+                        <div class="alert alert-success" role="alert" ng-if="debugging">
                             <h4>Debug:</h4>
                             {{bean|json}}
                         </div>
-                        <form name="outerForm" class="form-horizontal text-left" ng-show="!status">
+                        <form name="outerForm" class="form-horizontal text-left" ng-if="!status">
                             <div class="row" ng-repeat="f in fields">
                                 <!------------------------------------------------->
 
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'id'" class="form-group">
+                                <div ng-if="f.type == 'id'" class="form-group" id="{{f.name}}-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key>
+                                    <div class="control col-sm-3"> 
+                                        <key ide="bean[f.name]" name="f.name" disable="false"></key> 
+                                    </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div ng-show="f.type === 'textarea'" id="{{f.name}}-group" class="form-group"
-                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
+                                <div ng-if="f.type === 'textarea'" id="{{f.name}}-group" class="form-group"
+                                     ng-class="{
+                                             'has-error'
+                                             : (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        <span ng-show="{{f.required}}">*</span>
+                                        <span ng-if="{{f.required}}">*</span>
                                         {{f.longname}}:
                                     </label>
                                     <div class="control col-sm-8">
                                         <textarea ng-model="bean[f.name]" class="form-control" id="{{f.name}}" name="{{f.name}}"
                                                   placeholder="{{f.name}}" ng-required="{{f.required}}" ng-pattern="f.pattern" rows="10">
                                         </textarea>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
+                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
                                 <div class="form-group"
-                                     ng-show="f.type == 'date'"
-
-                                     ng-class="{'has-error': (outerForm.fecha.$error.required ||
-                                                             outerForm.fecha.$error.valid)
-                                                             && !outerForm.fecha.$pristine}">
+                                     ng-if="f.type == 'date'"
+                                     ng-class="{
+                                             'has-error': (outerForm.fecha.$error.required ||
+                                                     outerForm.fecha.$error.valid)
+                                                     && !outerForm.fecha.$pristine}">
                                     <label class="col-sm-2 control-label" for="fecha">Fecha y hora:</label>
                                     <div class="control col-sm-3">
-                                        <date-time-picker name="f.name" form="outerForm" required="f.required" fecha="bean[f.name]"></date-time-picker>
+                                        <date-time-picker name="f.name" form="outerForm" required="f.required" model="bean[f.name]"></date-time-picker>
                                     </div>
                                 </div>
 
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'text'" id="{{f.name}}-group" class="form-group"
-                                     ng-class="{'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
+                                <div ng-if="f.type == 'text'" id="{{f.name}}-group" class="form-group"
+                                     ng-class="{
+                                             'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
-                                        <span ng-show="{{f.required}}">*</span> {{f.longname}}:
+                                        <span ng-if="{{f.required}}">*</span> {{f.longname}}:
                                     </label>
 
                                     <div class="control col-sm-8">
                                         <input ng-model="bean[f.name]" type="text" class="form-control" id="{{f.name}}" name="{{f.name}}" ng-pattern="f.pattern"
                                                placeholder="{{f.name}}" maxlength="{{f.maxlength}}" ng-required="{{f.required}}"/>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-show="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
+                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'boolean'" class="form-group">
+                                <div ng-if="f.type == 'boolean'" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <boolean parametro="bean[f.name]"></boolean>
+                                    <boolean 
+                                        model="bean[f.name]"
+                                        name="f.name">                                
+                                    </boolean>
                                 </div>
                                 <!------------------------------------------------->
-                                <!-- <div ng-show="f.type == 'specific' && (f.name=='obj_paciente' && !pacientefijado)" class="form-group"> -->
-                                <div ng-show="f.type == 'specific'" class="form-group">
+                                <!-- <div ng-if="f.type == 'specific' && (f.name=='obj_paciente' && !pacientefijado)" class="form-group"> -->
+                                <div ng-if="f.type == 'foreign'" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                     <foreign-key class="col-md-4"                                                 
                                                  name="f.name"
                                                  required="f.required"
                                                  reference="f.reference"
-                                                 description="f.desc"
+                                                 description="f.descforeign"
                                                  bean="bean[f.name]"
                                                  form="outerForm">   
                                     </foreign-key>
@@ -116,12 +124,12 @@ THE SOFTWARE.
                                 </div>
                             </div>
                         </form>
-                        <div ng-show="status">
-                            <div class="alert alert-success" ng-show="response.status == 200">
+                        <div ng-if="status">
+                            <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
                                 <a ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
                             </div>
-                            <div class="alert alert-danger" ng-show="response.status != 200">
+                            <div class="alert alert-danger" ng-if="response.status != 200">
                                 <h2>{{status}}</h2>
                             </div>
                         </div>

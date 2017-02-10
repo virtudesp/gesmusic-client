@@ -33,37 +33,43 @@ THE SOFTWARE.
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="panel-body" ng-cloak>
-                        <form name="outerForm" class="form-horizontal text-left"  ng-show="!status">
+                        <form name="outerForm" class="form-horizontal text-left"  ng-if="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->
-                                <div ng-show="f.type == 'id'" class="form-group">
+                                <div ng-if="f.type == 'id'" class="form-group" id="{{f.name}}-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <key class="col-md-3" ide="bean[f.name]" name="f.name" disable="false"></key> 
-                                </div>
-                                <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-show="f.name == 'date'"
-                                     id="fecha-group"
-                                     ng-class="{'has-error': (outerForm.date.$error.required ||
-                                                             outerForm.date.$error.valid)
-                                                             && !outerForm.date.$pristine}">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" /> 
-                                    <div class="control col-sm-3">
-                                        <date-picker ng-show="f.type == 'date'" 
-                                                     name="f.name" 
-                                                     required="f.required" 
-                                                     fecha="bean.date" 
-                                                     form="outerForm" /> 
-                                        <span class="help-block" ng-show="outerForm.date.$error.required">El campo es obligatorio</span>
+                                    <div class="control col-sm-3"> 
+                                        <key ide="bean[f.name]" name="f.name" disable="false"></key> 
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
                                 <div class="form-group"
-                                     ng-show="show_obj_documento && (f.name == 'obj_documento')"
-                                     ng-class="{'has-error': (outerForm.obj_documento.$error.required ||
-                                                             outerForm.obj_documento.$error.exists ||
-                                                             outerForm.obj_documento.$error.validatemin)}"
-                                     ng-show="show_obj_documento">
+                                     ng-if="f.name == 'date'"
+                                     id="fecha-group"
+                                     ng-class="{
+                                             'has-error': (outerForm.date.$error.required ||
+                                                     outerForm.date.$error.valid)
+                                                     && !outerForm.date.$pristine}">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" /> 
+                                    <div class="control col-sm-3">
+                                        <date-picker ng-if="f.type == 'date'" 
+                                                     name="f.name" 
+                                                     required="f.required" 
+                                                     model="bean.date" 
+                                                     form="outerForm" /> 
+                                        <span class="help-block" ng-if="outerForm.date.$error.required">El campo es obligatorio</span>
+                                    </div>
+                                </div>
+                                <!------------------------------------------------->
+                                <div class="form-group"
+                                     ng-if="show_obj_documento && (f.name == 'obj_documento')"
+                                     ng-class="{
+                                             'has-error'
+                                             : (outerForm.obj_documento.$error.required ||
+                                                     outerForm.obj_documento.$error.exists ||
+                                                     outerForm.obj_documento.$error.validatemin
+                                             )}"
+                                     ng-if="show_obj_documento">
                                     <label class="col-sm-2 control-label" for="obj_documento">Documento:</label>
                                     <div class="control col-sm-3">
                                         <div class="input-group foreign" id="obj_documento_group">
@@ -72,7 +78,9 @@ THE SOFTWARE.
                                                 </span>
                                             </span>
                                             <input type="text"
-                                                   ng-model-options="{debounce: 1000}"
+                                                   ng-model-options="{
+                                                               debounce: 1000
+                                                           }"
                                                    ng-change="obj_documento_change"
                                                    ng-model="bean.obj_documento.id"
                                                    validatemin="1"
@@ -87,9 +95,9 @@ THE SOFTWARE.
                                                 <span>{{bean.obj_documento.descripcion}}</span>
                                             </span>
                                         </div>
-                                        <span class="help-block" ng-show="outerForm.obj_documento.$error.required">El tipo de documento es obligatorio</span>
-                                        <span class="help-block" ng-show="outerForm.obj_documento.$error.validatemin">Debes elegir un documento</span>
-                                        <span class="help-block" ng-show="outerForm.obj_documento.$error.exists">El documento no existe</span>
+                                        <span class="help-block" ng-if="outerForm.obj_documento.$error.required">El tipo de documento es obligatorio</span>
+                                        <span class="help-block" ng-if="outerForm.obj_documento.$error.validatemin">Debes elegir un documento</span>
+                                        <span class="help-block" ng-if="outerForm.obj_documento.$error.exists">El documento no existe</span>
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
@@ -102,12 +110,12 @@ THE SOFTWARE.
                                 </div>
                             </div>
                         </form>
-                        <div ng-show="status">
-                            <div class="alert alert-success" ng-show="response.status == 200">
+                        <div ng-if="status">
+                            <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
                                 <a ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
                             </div>
-                            <div class="alert alert-danger" ng-show="response.status != 200">
+                            <div class="alert alert-danger" ng-if="response.status != 200">
                                 <h2>{{status}}</h2>
                             </div>
                         </div>

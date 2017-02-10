@@ -34,7 +34,7 @@ moduloEpisodio.controller('EpisodioPListFromPacienteController', ['$scope', '$ro
         $scope.obtitle = episodioService.getObTitle();
         $scope.icon = episodioService.getIcon();
         $scope.ob = episodioService.getTitle();
-        
+
         $scope.op = "plistfrompaciente";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
