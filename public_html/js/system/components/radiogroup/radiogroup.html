@@ -1,7 +1,9 @@
 <div ng-repeat="button in rg.radiobuttons" class="radio radio-info">
-    <input type="radio"
-           name="rg.tablereference"
-           required="rg.required"
-           ng-model="rg.selectedbutton"
-           value="{{button.id}}" />{{button[rg.field]| clipString}}
+    <label>
+        <input type="radio"
+               name="rg.tablereference"
+               required="rg.required"
+               ng-model="rg.selectedbutton"
+               value="{{button.id}}" />{{button[rg.field]| clipString}}
+    </label>
 </div>
