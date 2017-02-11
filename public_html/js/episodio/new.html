@@ -38,7 +38,7 @@ THE SOFTWARE.
                             {{bean|json}}
                         </div>
                         <form name="outerForm" class="form-horizontal text-left" ng-if="!status">
-                            <div class="row" ng-repeat="f in fields">
+                            <div ng-repeat="f in fields">
                                 <!------------------------------------------------->
 
                                 <!------------------------------------------------->
@@ -70,8 +70,8 @@ THE SOFTWARE.
                                      ng-if="f.type == 'date'"
                                      ng-class="{
                                              'has-error': (outerForm.fecha.$error.required ||
-                                                     outerForm.fecha.$error.valid)
-                                                     && !outerForm.fecha.$pristine}">
+                                                 outerForm.fecha.$error.valid)
+                                                 && !outerForm.fecha.$pristine}">
                                     <label class="col-sm-2 control-label" for="fecha">Fecha y hora:</label>
                                     <div class="control col-sm-3">
                                         <date-time-picker name="f.name" form="outerForm" required="f.required" model="bean[f.name]"></date-time-picker>
@@ -81,7 +81,8 @@ THE SOFTWARE.
                                 <!------------------------------------------------->
                                 <div ng-if="f.type == 'text'" id="{{f.name}}-group" class="form-group"
                                      ng-class="{
-                                             'has-error': (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
+                                             'has-error'
+                                                     : (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
                                     <label class="col-sm-2 control-label" for="{{f.name}}">
                                         <span ng-if="{{f.required}}">*</span> {{f.longname}}:
                                     </label>
@@ -103,25 +104,30 @@ THE SOFTWARE.
                                 </div>
                                 <!------------------------------------------------->
                                 <!-- <div ng-if="f.type == 'specific' && (f.name=='obj_paciente' && !pacientefijado)" class="form-group"> -->
-                                <div ng-if="f.type == 'foreign'" class="form-group">
+                                <div ng-if="f.type == 'foreign'" id="{{f.name}}-group" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <foreign-key class="col-md-4"                                                 
-                                                 name="f.name"
-                                                 required="f.required"
-                                                 reference="f.reference"
-                                                 description="f.descforeign"
-                                                 bean="bean[f.name]"
-                                                 form="outerForm">   
-                                    </foreign-key>
+                                    <div class="control col-sm-4">
+                                        <foreign-key 
+                                            bean="bean[f.name]"
+                                            form="outerForm"
+                                            name="f.name"                                                 
+                                            reference="f.reference"
+                                            description="f.descforeign"
+                                            required="f.required">   
+                                        </foreign-key>
+                                    </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div ng-if="f.name == 'obj_importancia'">
-                                    <radiogroup 
-                                        required="'true'"
-                                        selectedbutton="bean[f.name].id"
-                                        tablereference="'importancia'"
-                                        field="'descripcion'">
-                                    </radiogroup>
+                                <div ng-if="f.name == 'obj_importancia'" id="{{f.name}}-group" class="form-group">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                    <div class="control col-sm-5">
+                                        <radiogroup 
+                                            required="'true'"
+                                            selectedbutton="bean[f.name].id"
+                                            tablereference="'importancia'"
+                                            field="'descripcion'">
+                                        </radiogroup>
+                                    </div>
                                 </div>
                             </div>
                             <div class="control-group text-right">
