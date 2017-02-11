@@ -115,6 +115,14 @@ THE SOFTWARE.
                                     </foreign-key>
                                 </div>
                                 <!------------------------------------------------->
+                                <div ng-if="f.name == 'obj_importancia'">
+                                    <radiogroup 
+                                        required="'true'"
+                                        selectedbutton="bean[f.name].id"
+                                        tablereference="'importancia'"
+                                        field="'descripcion'">
+                                    </radiogroup>
+                                </div>
                             </div>
                             <div class="control-group text-right">
                                 <div class="controls">

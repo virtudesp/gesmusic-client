@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="form-group">
+        <clabel wide="2" name="rg.tablereference" longname="rg.tablereference" required="rg.required"></clabel>
+        <div class="radio control col-sm-2">
+            <div class="row" ng-repeat="button in rg.radiobuttons">
+                <div class="col-sm-12">
+                    <label>
+                        <input type="radio"
+                               name="rg.tablereference"
+                               required="rg.required"
+                               ng-model="rg.selectedbutton"
+                               value="{{button.id}}" />{{button[rg.field]| clipString}}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
