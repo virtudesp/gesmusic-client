@@ -16,6 +16,8 @@ moduloDirectivas.component('foreignKey', {
 function foreignkey(serverService, $uibModal) {
     var self = this;
 
+
+
     self.chooseOne = function () {
         var modalInstance = $uibModal.open({
             templateUrl: 'js/' + self.reference + '/selection.html',
@@ -26,6 +28,25 @@ function foreignkey(serverService, $uibModal) {
         });
     };
 
+//    this.$onChanges = function (changesObj) {
+//        self.change(self.bean.id);
+//    };
+
+//    self.$doCheck = function () {
+//        self.change(self.bean.id);
+//    };
+
+    var oldid = null;
+    self.$doCheck = function () {
+        if (oldid == self.bean.id) {
+            return
+        } else {
+            oldid = self.bean.id;
+            console.log("foreign: " + self.bean.id);
+            self.change(self.bean.id);
+        }
+    };
+
     self.change = function (id) {
         if (!self.required && (id <= 0 || id === "" || id === undefined)) {
             self.bean.id = null;
@@ -33,7 +54,7 @@ function foreignkey(serverService, $uibModal) {
             validity(true);
             return;
         }
-        if (self.bean) {
+        if (self.bean.id) {
             serverService.promise_getOne(self.reference, id).then(function (response) {
                 var old_id = id;
                 self.bean = response.data.message;

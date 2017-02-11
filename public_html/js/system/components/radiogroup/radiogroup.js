@@ -3,7 +3,7 @@ moduloDirectivas.component('radiogroup', {
     controllerAs: 'rg',
     bindings: {
         required: '<',
-        selectedbutton: '=',
+        bean: '=',
         tablereference: '<',
         field: '<'
     },
@@ -14,11 +14,25 @@ function radiogroup(serverService) {
     var self = this;
 
     this.$onInit = function () {
-        self.selected = {id: self.selectedbutton};
+        if (self.bean) {
+            self.selectedbutton = self.bean.id;
+        }
         serverService.promise_getAll(self.tablereference).then(function (response) {
             self.radiobuttons = response.data.message;
         }).catch(function (data) {
             console.log(data);
         });
     };
+
+    self.$doCheck = function () {
+        if (self.bean) {
+            if (self.selectedbutton != self.bean.id) {
+                serverService.promise_getOne(self.tablereference, self.selectedbutton).then(function (response) {
+                    self.bean = response.data.message;
+                }).catch(function (data) {
+                });
+            }
+        }
+    }
 }
+
