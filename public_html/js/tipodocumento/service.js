@@ -8,7 +8,7 @@ moduloTipodocumento.factory('tipodocumentoService', ['serverService', function (
                 ];
             },
             getIcon: function () {
-                return "fa-book";
+                return "fa-cart-plus";
             },
             getObTitle: function () {
                 return "tipo de documento";

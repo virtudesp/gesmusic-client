@@ -10,7 +10,7 @@ moduloDocumento.factory('documentoService', ['serverService', function (serverSe
                 ];
             },
             getIcon: function () {
-                return "fa fa-fw fa-book";
+                return "fa-money";
             },
             getObTitle: function () {
                 return "documento";

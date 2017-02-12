@@ -8,7 +8,7 @@ moduloTipodiagnostico.factory('tipodiagnosticoService', ['serverService', functi
                 ];
             },
             getIcon: function () {
-                return "fa-list-alt";
+                return "fa-commenting";
             },
             getObTitle: function () {
                 return "tipo de diagnóstico";

@@ -8,7 +8,7 @@ moduloPrioridad.factory('prioridadService', ['serverService', function (serverSe
                 ];
             },
             getIcon: function () {
-                return "fa fa-exclamation";
+                return "fa-arrows-v";
             },
             getObTitle: function () {
                 return "prioridad";
