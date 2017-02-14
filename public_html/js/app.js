@@ -27,7 +27,7 @@
 
 'use strict';
 //-------------
-var sisane = angular.module('myApp', [
+var gesmusic = angular.module('myApp', [
     'ngRoute',
     'Filters',
     'Services',
@@ -66,18 +66,18 @@ var sisane = angular.module('myApp', [
 ]);
 //-------------
 //---html5 mode off; setting up pushState needs server urlrewritting, so quitting...-------
-sisane.config(['$locationProvider', function ($locationProvider) {
+gesmusic.config(['$locationProvider', function ($locationProvider) {
         $locationProvider.html5Mode({
             //requireBase: false,
             enabled: true
         });
     }]);
 //-------------
-sisane.config(['$httpProvider', function ($httpProvider) {
+gesmusic.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;
     }]);
 //-------------
-sisane.config(['$routeProvider', function ($routeProvider) {
+gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
         //------------
         $routeProvider.when('/login', {templateUrl: 'js/system/login.html', controller: 'LoginController'});
@@ -311,7 +311,7 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
 //-------------
-sisane.run(function ($rootScope, $location, serverService, sessionService) {
+gesmusic.run(function ($rootScope, $location, serverService, sessionService) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         sessionService.setSessionInactive();
         sessionService.setUsername('');
