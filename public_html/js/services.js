@@ -340,6 +340,7 @@ moduloServicios
             'cargoService',
             'diagnosticoService',
             'documentoService',
+            'entidadService',
             'episodioService',
             'especialidadService',
             'imagenService',
@@ -351,6 +352,7 @@ moduloServicios
             'prioridadService',
             'pruebaService',
             'servicioService',
+//            'sociedadService',
             'tecnicaService',
             'tipoService',
             'tipodiagnosticoService',
@@ -369,6 +371,7 @@ moduloServicios
                     cargoService,
                     diagnosticoService,
                     documentoService,
+                    entidadService,
                     episodioService,
                     especialidadService,
                     imagenService,
@@ -380,6 +383,7 @@ moduloServicios
                     prioridadService,
                     pruebaService,
                     servicioService,
+//                    sociedadService,
                     tecnicaService,
                     tipoService,
                     tipodiagnosticoService,
@@ -400,6 +404,7 @@ moduloServicios
                         meta.cargo = ({'fields': cargoService.getFields(), 'name': cargoService.getTitle(), 'title': serverService.capitalizeWord(cargoService.getObTitle()), 'icon': cargoService.getIcon()});
                         meta.diagnostico = ({'fields': diagnosticoService.getFields(), 'name': diagnosticoService.getTitle(), 'title': serverService.capitalizeWord(diagnosticoService.getObTitle()), 'icon': diagnosticoService.getIcon()});
                         meta.documento = ({'fields': documentoService.getFields(), 'name': documentoService.getTitle(), 'title': serverService.capitalizeWord(documentoService.getObTitle()), 'icon': documentoService.getIcon()});
+                        meta.entidad = ({'fields': entidadService.getFields(), 'name': entidadService.getTitle(), 'title': serverService.capitalizeWord(entidadService.getObTitle()), 'icon': entidadService.getIcon()});
                         meta.episodio = ({'fields': episodioService.getFields(), 'name': episodioService.getTitle(), 'title': serverService.capitalizeWord(episodioService.getObTitle()), 'icon': episodioService.getIcon()});
                         meta.especialidad = ({'fields': especialidadService.getFields(), 'name': especialidadService.getTitle(), 'title': serverService.capitalizeWord(especialidadService.getObTitle()), 'icon': especialidadService.getIcon()});
                         meta.imagen = ({'fields': imagenService.getFields(), 'name': imagenService.getTitle(), 'title': serverService.capitalizeWord(imagenService.getObTitle()), 'icon': imagenService.getIcon()});
@@ -411,6 +416,7 @@ moduloServicios
                         meta.prioridad = ({'fields': prioridadService.getFields(), 'name': prioridadService.getTitle(), 'title': serverService.capitalizeWord(prioridadService.getObTitle()), 'icon': prioridadService.getIcon()});
                         meta.prueba = ({'fields': pruebaService.getFields(), 'name': pruebaService.getTitle(), 'title': serverService.capitalizeWord(pruebaService.getObTitle()), 'icon': pruebaService.getIcon()});
                         meta.servicio = ({'fields': servicioService.getFields(), 'name': servicioService.getTitle(), 'title': serverService.capitalizeWord(servicioService.getObTitle()), 'icon': servicioService.getIcon()});
+//                        meta.sociedad = ({'fields': sociedadService.getFields(), 'name': sociedadService.getTitle(), 'title': serverService.capitalizeWord(sociedadService.getObTitle()), 'icon': sociedadService.getIcon()});
                         meta.tecnica = ({'fields': tecnicaService.getFields(), 'name': tecnicaService.getTitle(), 'title': serverService.capitalizeWord(tecnicaService.getObTitle()), 'icon': tecnicaService.getIcon()});
                         meta.tipo = ({'fields': tipoService.getFields(), 'name': tipoService.getTitle(), 'title': serverService.capitalizeWord(tipoService.getObTitle()), 'icon': tipoService.getIcon()});
                         meta.tipodiagnostico = ({'fields': tipodiagnosticoService.getFields(), 'name': tipodiagnosticoService.getTitle(), 'title': serverService.capitalizeWord(tipodiagnosticoService.getObTitle()), 'icon': tipodiagnosticoService.getIcon()});

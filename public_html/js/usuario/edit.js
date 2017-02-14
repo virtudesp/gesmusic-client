@@ -42,9 +42,6 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$routeParams', '$l
         $scope.bean.obj_tipousuario = {"id": null};
         $scope.show_obj_tipousuario = true;
         //---
-        $scope.bean.obj_medico = {"id": null};
-        $scope.show_obj_medico = true;
-        //---
         $scope.id = $routeParams.id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
@@ -52,13 +49,13 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$routeParams', '$l
                     $scope.status = null;
                     $scope.bean = response.data.message;
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor";
+                    $scope.status = "Error en la recepción de datos del servidor1";
                 }
             } else {
-                $scope.status = "Error en la recepción de datos del servidor";
+                $scope.status = "Error en la recepción de datos del servidor2";
             }
         }).catch(function (data) {
-            $scope.status = "Error en la recepción de datos del servidor";
+            $scope.status = "Error en la recepción de datos del servidor3";
         });
         $scope.save = function () {
             $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
