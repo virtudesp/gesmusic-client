@@ -23,7 +23,7 @@ moduloServicios.factory('pacienteService', ['serverService', function (serverSer
                 ];
             },
             getIcon: function () {
-                return "fa-gift";
+                return "fa-wheelchair";
             },
             getObTitle: function () {
                 return "paciente";

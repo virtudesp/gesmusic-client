@@ -20,7 +20,7 @@
 #RewriteEngine On 
 #Options FollowSymLinks
 
-#RewriteBase /sisane-client/public_html
+#RewriteBase /gesmusic-client/public_html
 
 #RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteCond %{REQUEST_FILENAME} !-d
@@ -34,4 +34,4 @@ Options FollowSymLinks
   RewriteRule ^ - [L]
 
   # If the requested resource doesn't exist, use index.html
-  RewriteRule ^ /sisane-client/public_html/index.html
+  RewriteRule ^ /gesmusic-client/public_html/index.html

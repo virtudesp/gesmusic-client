@@ -1,4 +1,4 @@
-sisane.controller('IndexController', ['$scope', '$location', 'serverService', 'sessionService', 'metaService',
+gesmusic.controller('IndexController', ['$scope', '$location', 'serverService', 'sessionService', 'metaService',
     function ($scope, $location, serverService, sessionService, metaService) {
         $scope.username = "";
         $scope.isActive = function (viewLocation) {

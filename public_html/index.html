@@ -35,20 +35,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Rafael Aznar">
-        <title>sisane</title>
+        <title>gesmusic</title>
         <!-- see resetCSS  -->
-        <link href="/sisane-client/public_html/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="/sisane-client/public_html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
-        <link href="/sisane-client/public_html/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="/sisane-client/public_html/css/main/fonts/fonts.css" rel="stylesheet" type="text/css">
-        <link href="/sisane-client/public_html/vendor/jqueryui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-        <link href="/sisane-client/public_html/css/main/main.css" rel="stylesheet" type="text/css">
-        <link href="/sisane-client/public_html/vendor/jqueryuitimepicker/jquery-ui-timepicker-addon.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/gesmusic-client/public_html/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/gesmusic-client/public_html/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+        <link href="/gesmusic-client/public_html/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="/gesmusic-client/public_html/css/main/fonts/fonts.css" rel="stylesheet" type="text/css">
+        <link href="/gesmusic-client/public_html/vendor/jqueryui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+        <link href="/gesmusic-client/public_html/css/main/main.css" rel="stylesheet" type="text/css">
+        <link href="/gesmusic-client/public_html/vendor/jqueryuitimepicker/jquery-ui-timepicker-addon.min.css" rel="stylesheet" type="text/css"/>
         <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
         <!-- html5 mode off
-        <base href="/sisane/index.html" />
+        <base href="/gesmusic/index.html" />
         -->
-        <base href="/sisane-client/public_html/index.html" />
+        <base href="/gesmusic-client/public_html/index.html" />
     </head>
     <body style="font-family: Questrial, serif;">
         <!--[if lt IE 7]>
@@ -128,7 +128,7 @@
         <script src="js/system/components/item/item.js" type="text/javascript"></script>
         <script src="js/system/components/label/lbl.js" type="text/javascript"></script>
         <script src="js/system/components/datepicker/datepicker.js" type="text/javascript"></script>
-
+        <script src="js/system/components/radiogroup/radiogroup.js" type="text/javascript"></script>
 
         <script src="js/system/components/manytomany/manytomany.js" type="text/javascript"></script>
         <script src="js/system/components/manytomany/modalController.js" type="text/javascript"></script>
@@ -141,7 +141,17 @@
         <script src="js/system/components/timepicker/timepicker.js" type="text/javascript"></script>
         <script src="js/system/components/graficas/graficas.js" type="text/javascript"></script>
         <script src="js/system/components/miniview/miniview.js" type="text/javascript"></script>
-        
+                
+        <!-- ------------------------------- --> 
+        <script src="js/entidad/service.js" type="text/javascript"></script>
+        <script src="js/entidad/view.js" type="text/javascript"></script>
+        <script src="js/entidad/plist.js" type="text/javascript"></script>
+        <script src="js/entidad/edit.js" type="text/javascript"></script>
+        <script src="js/entidad/new.js" type="text/javascript"></script>
+        <script src="js/entidad/selection.js" type="text/javascript"></script>
+        <script src="js/entidad/remove.js" type="text/javascript"></script>
+        <script src="js/entidad/removepop.js" type="text/javascript"></script>
+        <script src="js/entidad/viewpop.js" type="text/javascript"></script>
         <!-- ------------------------------- --> 
         <script src="js/usuario/service.js" type="text/javascript"></script>
         <script src="js/usuario/view.js" type="text/javascript"></script>

@@ -2,17 +2,15 @@ moduloDirectivas.component('dropdown', {
     templateUrl: "js/system/components/dropdown/dropdown.html",
     controllerAs: 'dd',
     bindings: {
-        selectedoption: '=',
+        ide: '=',
         tablereference: '<',
-        descripcion: '<'
+        field: '<'
     },
     controller: dropdown
 });
 
 function dropdown(serverService) {
     var self = this;
-    self.selected = {id: self.selectedoption};
-    console.log(self.tablereference);
     this.$onInit = function () {
         serverService.promise_getAll(self.tablereference).then(function (response) {
             self.selections = response.data.message;
@@ -20,4 +18,8 @@ function dropdown(serverService) {
             console.log(data);
         });
     };
+    self.$doCheck = function () {
+        console.log("change dropdown");
+    }
 }
+

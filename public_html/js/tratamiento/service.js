@@ -15,7 +15,7 @@ moduloTratamiento.factory('tratamientoService', ['serverService', function (serv
                 ];
             },
             getIcon: function () {
-                return "fa fa-fw fa-align-left";
+                return "fa-eyedropper";
             },
             getObTitle: function () {
                 return "tratamiento";

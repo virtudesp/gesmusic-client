@@ -11,7 +11,7 @@ moduloServicios.factory('pruebaService', ['serverService', function (serverServi
                 ];
             },
             getIcon: function () {
-                return "fa fa-fw fa-exclamation-triangle";
+                return "fa-thermometer-half";
             },
             getObTitle: function () {
                 return "prueba";

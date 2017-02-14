@@ -61,6 +61,23 @@ THE SOFTWARE.
                                     </div>
                                 </div>  
                                 <!------------------------------------------------->
+                                <div class="form-group"
+                                     ng-if="f.type == 'date'"
+                                     id="fecha-group"
+                                     ng-class="{'has-error': (outerForm[f.name].$error.required ||
+                                                             outerForm[f.name].$error.valid)
+                                                             && !outerForm[f.name].$pristine}">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                    <div class="control col-sm-3">
+                                        <date-picker 
+                                            name="f.name" 
+                                            required="f.required" 
+                                            model="bean[f.name]" 
+                                            form="outerForm" > 
+                                        </date-picker>    
+                                    </div>
+                                </div>
+                                <!------------------------------------------------->
                                 <div ng-if="f.type == 'foreign'" id="{{f.name}}-group" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                     <div class="control col-sm-4">
@@ -79,7 +96,7 @@ THE SOFTWARE.
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de usuarios</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de entidades</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>

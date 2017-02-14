@@ -27,12 +27,13 @@
 
 'use strict';
 //-------------
-var sisane = angular.module('myApp', [
+var gesmusic = angular.module('myApp', [
     'ngRoute',
     'Filters',
     'Services',
     'Directives',
     'systemControllers',
+    'entidadControllers',
     'usuarioControllers',
     'tipousuarioControllers',
     'medicamentoControllers',
@@ -66,18 +67,18 @@ var sisane = angular.module('myApp', [
 ]);
 //-------------
 //---html5 mode off; setting up pushState needs server urlrewritting, so quitting...-------
-sisane.config(['$locationProvider', function ($locationProvider) {
+gesmusic.config(['$locationProvider', function ($locationProvider) {
         $locationProvider.html5Mode({
             //requireBase: false,
             enabled: true
         });
     }]);
 //-------------
-sisane.config(['$httpProvider', function ($httpProvider) {
+gesmusic.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.withCredentials = true;
     }]);
 //-------------
-sisane.config(['$routeProvider', function ($routeProvider) {
+gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
         //------------
         $routeProvider.when('/login', {templateUrl: 'js/system/login.html', controller: 'LoginController'});
@@ -85,6 +86,13 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/home', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
         $routeProvider.when('/license', {templateUrl: 'js/system/license.html', controller: 'LicenseController'});
         $routeProvider.when('/passchange', {templateUrl: 'js/system/passchange.html', controller: 'PasschangeController'});
+        //------------
+        $routeProvider.when('/entidad/view/:id', {templateUrl: 'js/entidad/view.html', controller: 'UsuarioViewController'});
+        $routeProvider.when('/entidad/new/:id?', {templateUrl: 'js/entidad/new.html', controller: 'UsuarioNewController'});
+        $routeProvider.when('/entidad/edit/:id', {templateUrl: 'js/entidad/edit.html', controller: 'UsuarioEditController'});
+        $routeProvider.when('/entidad/remove/:id', {templateUrl: 'js/entidad/remove.html', controller: 'UsuarioRemoveController'});
+        $routeProvider.when('/entidad/plist/:page?/:rpp?', {templateUrl: 'js/entidad/plist.html', controller: 'UsuarioPListController'});
+        $routeProvider.when('/entidad/selection/:page?/:rpp?', {templateUrl: 'js/entidad/selection.html', controller: 'UsuarioSelectionController'});
         //------------
         $routeProvider.when('/usuario/view/:id', {templateUrl: 'js/usuario/view.html', controller: 'UsuarioViewController'});
         $routeProvider.when('/usuario/new/:id?', {templateUrl: 'js/usuario/new.html', controller: 'UsuarioNewController'});
@@ -311,7 +319,7 @@ sisane.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
 //-------------
-sisane.run(function ($rootScope, $location, serverService, sessionService) {
+gesmusic.run(function ($rootScope, $location, serverService, sessionService) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         sessionService.setSessionInactive();
         sessionService.setUsername('');
@@ -343,6 +351,7 @@ sisane.run(function ($rootScope, $location, serverService, sessionService) {
 });
 //-------------
 var moduloSistema = angular.module('systemControllers', []);
+var moduloEntidad = angular.module('entidadControllers', []);
 var moduloUsuario = angular.module('usuarioControllers', []);
 var moduloPrioridad = angular.module('prioridadControllers', []);
 var moduloPosologia = angular.module('posologiaControllers', []);
