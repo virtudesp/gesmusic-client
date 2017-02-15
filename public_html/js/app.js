@@ -34,6 +34,7 @@ var gesmusic = angular.module('myApp', [
     'Directives',
     'systemControllers',
     'entidadControllers',
+    'sociedadControllers',
     'usuarioControllers',
     'tipousuarioControllers',
     'medicamentoControllers',
@@ -87,12 +88,19 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/license', {templateUrl: 'js/system/license.html', controller: 'LicenseController'});
         $routeProvider.when('/passchange', {templateUrl: 'js/system/passchange.html', controller: 'PasschangeController'});
         //------------
-        $routeProvider.when('/entidad/view/:id', {templateUrl: 'js/entidad/view.html', controller: 'UsuarioViewController'});
-        $routeProvider.when('/entidad/new/:id?', {templateUrl: 'js/entidad/new.html', controller: 'UsuarioNewController'});
-        $routeProvider.when('/entidad/edit/:id', {templateUrl: 'js/entidad/edit.html', controller: 'UsuarioEditController'});
-        $routeProvider.when('/entidad/remove/:id', {templateUrl: 'js/entidad/remove.html', controller: 'UsuarioRemoveController'});
-        $routeProvider.when('/entidad/plist/:page?/:rpp?', {templateUrl: 'js/entidad/plist.html', controller: 'UsuarioPListController'});
-        $routeProvider.when('/entidad/selection/:page?/:rpp?', {templateUrl: 'js/entidad/selection.html', controller: 'UsuarioSelectionController'});
+        $routeProvider.when('/entidad/view/:id', {templateUrl: 'js/entidad/view.html', controller: 'EntidadViewController'});
+        $routeProvider.when('/entidad/new/:id?', {templateUrl: 'js/entidad/new.html', controller: 'EntidadNewController'});
+        $routeProvider.when('/entidad/edit/:id', {templateUrl: 'js/entidad/edit.html', controller: 'EntidadEditController'});
+        $routeProvider.when('/entidad/remove/:id', {templateUrl: 'js/entidad/remove.html', controller: 'EntidadRemoveController'});
+        $routeProvider.when('/entidad/plist/:page?/:rpp?', {templateUrl: 'js/entidad/plist.html', controller: 'EntidadPListController'});
+        $routeProvider.when('/entidad/selection/:page?/:rpp?', {templateUrl: 'js/entidad/selection.html', controller: 'EntidadSelectionController'});
+        //------------        
+        $routeProvider.when('/sociedad/view/:id', {templateUrl: 'js/sociedad/view.html', controller: 'SociedadViewController'});
+        $routeProvider.when('/sociedad/new/:id?', {templateUrl: 'js/sociedad/new.html', controller: 'SociedadNewController'});
+        $routeProvider.when('/sociedad/edit/:id', {templateUrl: 'js/sociedad/edit.html', controller: 'SociedadEditController'});
+        $routeProvider.when('/sociedad/remove/:id', {templateUrl: 'js/sociedad/remove.html', controller: 'SociedadRemoveController'});
+        $routeProvider.when('/sociedad/plist/:page?/:rpp?', {templateUrl: 'js/sociedad/plist.html', controller: 'SociedadPListController'});
+        $routeProvider.when('/sociedad/selection/:page?/:rpp?', {templateUrl: 'js/sociedad/selection.html', controller: 'SociedadSelectionController'});
         //------------
         $routeProvider.when('/usuario/view/:id', {templateUrl: 'js/usuario/view.html', controller: 'UsuarioViewController'});
         $routeProvider.when('/usuario/new/:id?', {templateUrl: 'js/usuario/new.html', controller: 'UsuarioNewController'});
@@ -352,6 +360,7 @@ gesmusic.run(function ($rootScope, $location, serverService, sessionService) {
 //-------------
 var moduloSistema = angular.module('systemControllers', []);
 var moduloEntidad = angular.module('entidadControllers', []);
+var moduloSociedad = angular.module('sociedadControllers', []);
 var moduloUsuario = angular.module('usuarioControllers', []);
 var moduloPrioridad = angular.module('prioridadControllers', []);
 var moduloPosologia = angular.module('posologiaControllers', []);

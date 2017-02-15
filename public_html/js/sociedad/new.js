@@ -28,37 +28,20 @@
 
 'use strict';
 
-moduloEntidad.controller('EntidadNewController', ['$scope', '$routeParams', '$location', 'serverService', 'entidadService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, entidadService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = entidadService.getFields();
-        $scope.obtitle = entidadService.getObTitle();
-        $scope.icon = entidadService.getIcon();
-        $scope.ob = entidadService.getTitle();
+moduloSociedad.controller('SociedadNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sociedadService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, sociedadService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = sociedadService.getFields();
+        $scope.obtitle = sociedadService.getObTitle();
+        $scope.icon = sociedadService.getIcon();
+        $scope.ob = sociedadService.getTitle();
         $scope.title = "Creando una nueva " + $scope.obtitle;
         $scope.op = "new";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
-        //----
-        $scope.bean.obj_sociedad = {"id": 0};
-        if ($routeParams.id_sociedad) {
-            serverService.promise_getOne('sociedad', $routeParams.id_sociedad).then(function (response) {
-                if (response.data.message.id != 0) {
-                    $scope.bean.obj_sociedad = response.data.message;
-                    $scope.show_obj_sociedad = false;
-                    $scope.title = "Nueva entidad de la sociedad" + $scope.bean.obj_sociedad.description;
-                }
-            });
-        } else {
-            $scope.show_obj_sociedad = true;
-        }
+        $scope.bean.id = 0;
         //-----
         $scope.save = function () {
-            $scope.bean.fecha_alta = $filter('date')($scope.bean.fecha_alta, "dd/MM/yyyy");
-            $scope.bean.fecha_baja = $filter('date')($scope.bean.fecha_baja, "dd/MM/yyyy");
-            if ($scope.bean.obj_sociedad.id <= 0) {
-                $scope.bean.obj_sociedad.id = null;
-            }
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
