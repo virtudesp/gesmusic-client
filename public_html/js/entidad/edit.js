@@ -49,19 +49,22 @@ moduloEntidad.controller('EntidadEditController', ['$scope', '$routeParams', '$l
                     $scope.status = null;
                     $scope.bean = response.data.message;
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor";
+                    $scope.status = "Error en la recepción de datos del servidor1";
                 }
             } else {
-                $scope.status = "Error en la recepción de datos del servidor";
+                $scope.status = "Error en la recepción de datos del servidor2";
             }
         }).catch(function (data) {
-            $scope.status = "Error en la recepción de datos del servidor";
+            $scope.status = "Error en la recepción de datos del servidor3";
         });
         $scope.save = function () {
             $scope.bean.fecha_alta = $filter('date')($scope.bean.fecha_alta, "dd/MM/yyyy");
             $scope.bean.fecha_baja = $filter('date')($scope.bean.fecha_baja, "dd/MM/yyyy");
             if ($scope.bean.obj_sociedad.id <= 0) {
                 $scope.bean.obj_sociedad.id = null;
+            }
+            if ($scope.bean.obj_tipoentidad.id <= 0) {
+                $scope.bean.obj_tipoentidad.id = null;
             }
             
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};

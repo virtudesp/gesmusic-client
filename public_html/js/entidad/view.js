@@ -34,7 +34,7 @@ moduloEntidad.controller('EntidadViewController', ['$scope', '$routeParams', 'se
         $scope.obtitle = entidadService.getObTitle();
         $scope.icon = entidadService.getIcon();
         $scope.ob = entidadService.getTitle();
-        $scope.title = "Vista de " + $scope.obtitle;
+        $scope.title = "Vista de una " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

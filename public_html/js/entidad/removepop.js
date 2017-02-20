@@ -34,7 +34,7 @@ moduloEntidad.controller('EntidadRemovepopController', ['$scope', '$routeParams'
         $scope.obtitle = entidadService.getObTitle();
         $scope.icon = entidadService.getIcon();
         $scope.ob = entidadService.getTitle();
-        $scope.title = "Borrado de una" + $scope.obtitle;
+        $scope.title = "Borrado de una " + $scope.obtitle;
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();
@@ -45,13 +45,13 @@ moduloEntidad.controller('EntidadRemovepopController', ['$scope', '$routeParams'
                         $scope.status = null;
                         $scope.bean = response.data.message;
                     } else {
-                        $scope.status = "Error en la recepción de datos del servidor";
+                        $scope.status = "Error en la recepción de datos del servidor1";
                     }
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor";
+                    $scope.status = "Error en la recepción de datos del servidor2";
                 }
             }).catch(function (data) {
-                $scope.status = "Error en la recepción de datos del servidor";
+                $scope.status = "Error en la recepción de datos del servidor3";
             });
         }
         $scope.cancel = function () {

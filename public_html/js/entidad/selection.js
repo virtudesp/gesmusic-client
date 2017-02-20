@@ -33,7 +33,7 @@ moduloEntidad.controller('EntidadSelectionController', ['$scope', '$uibModalInst
         $scope.fields = entidadService.getFields();
         $scope.obtitle = entidadService.getObTitle();
         $scope.icon = entidadService.getIcon();
-        $scope.title = "Selección de una" + $scope.obtitle;
+        $scope.title = "Selección de una " + $scope.obtitle;
         $scope.ob = entidadService.getTitle();
         $scope.op = "selection";
         $scope.numpage = 1;

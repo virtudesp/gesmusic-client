@@ -34,7 +34,7 @@ moduloEntidad.controller('EntidadRemoveController', ['$scope', '$routeParams', '
         $scope.obtitle = entidadService.getObTitle();
         $scope.icon = entidadService.getIcon();
         $scope.ob = entidadService.getTitle();
-        $scope.title = "Borrado de " + $scope.obtitle;
+        $scope.title = "Borrado de una " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();
@@ -44,13 +44,13 @@ moduloEntidad.controller('EntidadRemoveController', ['$scope', '$routeParams', '
                     $scope.status = null;
                     $scope.bean = response.data.message;
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor";
+                    $scope.status = "Error en la recepción de datos del servidor1";
                 }
             } else {
-                $scope.status = "Error en la recepción de datos del servidor";
+                $scope.status = "Error en la recepción de datos del servidor2";
             }
         }).catch(function (data) {
-            $scope.status = "Error en la recepción de datos del servidor";
+            $scope.status = "Error en la recepción de datos del servidor3";
         });
         $scope.remove = function () {
             serverService.promise_removeOne($scope.ob, $scope.id).then(function (response) {
@@ -59,16 +59,16 @@ moduloEntidad.controller('EntidadRemoveController', ['$scope', '$routeParams', '
                         if (response.data.message == 1) {
                             $scope.status = "El registro " + $scope.obtitle + " se ha eliminado.";
                         } else {
-                            $scope.status = "Error en el borrado de datos del servidor";
+                            $scope.status = "Error en el borrado de datos del servidor1";
                         }
                     } else {
-                        $scope.status = "Error en la recepción de datos del servidor";
+                        $scope.status = "Error en la recepción de datos del servidor2";
                     }
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor";
+                    $scope.status = "Error en la recepción de datos del servidor3";
                 }
             }).catch(function (data) {
-                $scope.status = "Error en la recepción de datos del servidor";
+                $scope.status = "Error en la recepción de datos del servidor4";
             });
         }
         $scope.back = function () {

@@ -34,7 +34,7 @@ moduloEntidad.controller('EntidadPListController', ['$scope', '$routeParams', '$
         $scope.obtitle = entidadService.getObTitle();
         $scope.icon = entidadService.getIcon();
         $scope.ob = entidadService.getTitle();
-        $scope.title = "Listado de " + $scope.obtitle;
+        $scope.title = "Listado de " + $scope.obtitle + "es";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);

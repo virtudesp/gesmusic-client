@@ -53,11 +53,27 @@ moduloEntidad.controller('EntidadNewController', ['$scope', '$routeParams', '$lo
             $scope.show_obj_sociedad = true;
         }
         //-----
+        $scope.bean.obj_tipoentidad = {"id": 0};
+        if ($routeParams.id_tipoentidad) {
+            serverService.promise_getOne('tipoentidad', $routeParams.id_tipoentidad).then(function (response) {
+                if (response.data.message.id != 0) {
+                    $scope.bean.obj_tipoentidad = response.data.message;
+                    $scope.show_obj_tipoentidad = false;
+                    $scope.title = "Nueva entidad del tipo" + $scope.bean.obj_tipoentidad.description;
+                }
+            });
+        } else {
+            $scope.show_obj_tipoentidad = true;
+        }
+        //-----
         $scope.save = function () {
             $scope.bean.fecha_alta = $filter('date')($scope.bean.fecha_alta, "dd/MM/yyyy");
             $scope.bean.fecha_baja = $filter('date')($scope.bean.fecha_baja, "dd/MM/yyyy");
             if ($scope.bean.obj_sociedad.id <= 0) {
                 $scope.bean.obj_sociedad.id = null;
+            }
+            if ($scope.bean.obj_tipoentidad.id <= 0) {
+                $scope.bean.obj_tipoentidad.id = null;
             }
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
