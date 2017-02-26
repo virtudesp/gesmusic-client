@@ -28,12 +28,12 @@
 
 'use strict';
 
-moduloTipousuario.controller('TipousuarioViewController', ['$scope', '$routeParams', 'serverService', 'tipousuarioService', '$location',
-    function ($scope, $routeParams, serverService, tipousuarioService, $location) {
-        $scope.fields = tipousuarioService.getFields();
-        $scope.obtitle = tipousuarioService.getObTitle();
-        $scope.icon = tipousuarioService.getIcon();
-        $scope.ob = tipousuarioService.getTitle();
+moduloTipoentidad.controller('TipoentidadViewController', ['$scope', '$routeParams', 'serverService', 'tipoentidadService', '$location',
+    function ($scope, $routeParams, serverService, tipoentidadService, $location) {
+        $scope.fields = tipoentidadService.getFields();
+        $scope.obtitle = tipoentidadService.getObTitle();
+        $scope.icon = tipoentidadService.getIcon();
+        $scope.ob = tipoentidadService.getTitle();
         $scope.title = "Vista de un " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;

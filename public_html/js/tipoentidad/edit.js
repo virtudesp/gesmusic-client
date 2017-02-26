@@ -27,12 +27,12 @@
  */
 
 'use strict';
-moduloTipousuario.controller('TipousuarioEditController', ['$scope', '$routeParams', '$location', 'tipousuarioService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, tipousuarioService, serverService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = tipousuarioService.getFields();
-        $scope.obtitle = tipousuarioService.getObTitle();
-        $scope.icon = tipousuarioService.getIcon();
-        $scope.ob = tipousuarioService.getTitle();
+moduloTipoentidad.controller('TipoentidadEditController', ['$scope', '$routeParams', '$location', 'tipoentidadService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, tipoentidadService, serverService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = tipoentidadService.getFields();
+        $scope.obtitle = tipoentidadService.getObTitle();
+        $scope.icon = tipoentidadService.getIcon();
+        $scope.ob = tipoentidadService.getTitle();
         $scope.title = "Editando un " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;

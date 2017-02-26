@@ -28,12 +28,12 @@
 
 'use strict';
 
-moduloTipousuario.controller('TipousuarioPListController', ['$scope', '$routeParams', '$location', 'serverService', 'tipousuarioService', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, tipousuarioService, $uibModal) {
-        $scope.fields = tipousuarioService.getFields();
-        $scope.obtitle = tipousuarioService.getObTitle();
-        $scope.icon = tipousuarioService.getIcon();
-        $scope.ob = tipousuarioService.getTitle();
+moduloTipoentidad.controller('TipoentidadPListController', ['$scope', '$routeParams', '$location', 'serverService', 'tipoentidadService', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, tipoentidadService, $uibModal) {
+        $scope.fields = tipoentidadService.getFields();
+        $scope.obtitle = tipoentidadService.getObTitle();
+        $scope.icon = tipoentidadService.getIcon();
+        $scope.ob = tipoentidadService.getTitle();
         $scope.title = "Listado de " + $scope.obtitle;
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);

@@ -1,5 +1,5 @@
 'use strict';
-moduloTipousuario.factory('tipousuarioService', ['serverService', function (serverService) {
+moduloTipoentidad.factory('tipoentidadService', ['serverService', function (serverService) {
         return {
             getFields: function () {
                 return [
@@ -15,7 +15,7 @@ moduloTipousuario.factory('tipousuarioService', ['serverService', function (serv
                 return "tipo de usuario";
             },
             getTitle: function () {
-                return "tipousuario";
+                return "tipoentidad";
             }
         };
     }]);

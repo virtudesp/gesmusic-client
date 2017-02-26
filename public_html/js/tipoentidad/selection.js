@@ -28,13 +28,13 @@
 
 'use strict';
 
-moduloTipousuario.controller('TipousuarioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'tipousuarioService', 'serverService', '$location', 'sharedSpaceService',
-    function ($scope, $modalInstance, $routeParams, tipousuarioService, serverService, $location, sharedSpaceService) {
-        $scope.fields = tipousuarioService.getFields();
-        $scope.obtitle = tipousuarioService.getObTitle();
-        $scope.icon = tipousuarioService.getIcon();
+moduloTipoentidad.controller('TipoentidadSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'tipoentidadService', 'serverService', '$location', 'sharedSpaceService',
+    function ($scope, $modalInstance, $routeParams, tipoentidadService, serverService, $location, sharedSpaceService) {
+        $scope.fields = tipoentidadService.getFields();
+        $scope.obtitle = tipoentidadService.getObTitle();
+        $scope.icon = tipoentidadService.getIcon();
         $scope.title = "Selección de un " + $scope.obtitle;
-        $scope.ob = tipousuarioService.getTitle();
+        $scope.ob = tipoentidadService.getTitle();
         $scope.op = "selection";
         $scope.numpage = 1;
         $scope.rpp = 10;

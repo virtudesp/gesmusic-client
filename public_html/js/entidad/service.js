@@ -4,7 +4,7 @@ moduloEntidad.factory('entidadService', ['serverService', function (serverServic
             getFields: function () {
                 return [
                     {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "id"},
-                    {name: "numero", shortname: "Número", longname: "Número", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("numeroentidad"), help: serverService.getRegExpl("numeroentidad")},
+                    {name: "numero", shortname: "Número", longname: "Número", visible: true, type: "calculado", required: false, maxlength: 255, pattern: "", disabled:"disabled"},
                     {name: "nombre", shortname: "Nombre", longname: "Nombre", visible: true, type: "text", required: false, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},
                     {name: "apellidos", shortname: "Apellidos", longname: "Apellidos", visible: true, type: "text", required: false, maxlength: 255, pattern: serverService.getRegExpr("nombre"), help: serverService.getRegExpl("nombre")},
                     {name: "nif", shortname: "NIF", longname: "NIF", visible: true, type: "text"},
@@ -34,5 +34,3 @@ moduloEntidad.factory('entidadService', ['serverService', function (serverServic
             }
         };
     }]);
-
-

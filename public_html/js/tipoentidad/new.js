@@ -28,12 +28,12 @@
 
 'use strict';
 
-moduloTipousuario.controller('TipousuarioNewController', ['$scope', '$routeParams', '$location', 'serverService', 'tipousuarioService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, tipousuarioService, $filter, $uibModal) {
-        $scope.fields = tipousuarioService.getFields();
-        $scope.obtitle = tipousuarioService.getObTitle();
-        $scope.icon = tipousuarioService.getIcon();
-        $scope.ob = tipousuarioService.getTitle();
+moduloTipoentidad.controller('TipoentidadNewController', ['$scope', '$routeParams', '$location', 'serverService', 'tipoentidadService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, tipoentidadService, $filter, $uibModal) {
+        $scope.fields = tipoentidadService.getFields();
+        $scope.obtitle = tipoentidadService.getObTitle();
+        $scope.icon = tipoentidadService.getIcon();
+        $scope.ob = tipoentidadService.getTitle();
         $scope.title = "Creando un nuevo " + $scope.obtitle;
         $scope.op = "plist";
         $scope.status = null;

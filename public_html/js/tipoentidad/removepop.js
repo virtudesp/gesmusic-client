@@ -28,12 +28,12 @@
 'use strict';
 
 
-moduloTipousuario.controller('TipousuarioRemovepopController', ['$scope', '$routeParams', 'serverService', 'tipousuarioService', '$location', '$uibModalInstance', 'id',
-    function ($scope, $routeParams, serverService, tipousuarioService, $location, $uibModalInstance, id) {
-        $scope.fields = tipousuarioService.getFields();
-        $scope.obtitle = tipousuarioService.getObTitle();
-        $scope.icon = tipousuarioService.getIcon();
-        $scope.ob = tipousuarioService.getTitle();
+moduloTipoentidad.controller('TipoentidadRemovepopController', ['$scope', '$routeParams', 'serverService', 'tipoentidadService', '$location', '$uibModalInstance', 'id',
+    function ($scope, $routeParams, serverService, tipoentidadService, $location, $uibModalInstance, id) {
+        $scope.fields = tipoentidadService.getFields();
+        $scope.obtitle = tipoentidadService.getObTitle();
+        $scope.icon = tipoentidadService.getIcon();
+        $scope.ob = tipoentidadService.getTitle();
         $scope.title = "Borrado de " + $scope.obtitle;
         $scope.id = id;
         $scope.status = null;

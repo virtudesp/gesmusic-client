@@ -28,12 +28,12 @@
 
 'use strict';
 
-moduloTipousuario.controller('TipousuarioRemoveController', ['$scope', '$routeParams', '$location', 'serverService', 'tipousuarioService',
-    function ($scope, $routeParams, $location, serverService, tipousuarioService) {
-        $scope.fields = tipousuarioService.getFields();
-        $scope.obtitle = tipousuarioService.getObTitle();
-        $scope.icon = tipousuarioService.getIcon();
-        $scope.ob = tipousuarioService.getTitle();
+moduloTipoentidad.controller('TipoentidadRemoveController', ['$scope', '$routeParams', '$location', 'serverService', 'tipoentidadService',
+    function ($scope, $routeParams, $location, serverService, tipoentidadService) {
+        $scope.fields = tipoentidadService.getFields();
+        $scope.obtitle = tipoentidadService.getObTitle();
+        $scope.icon = tipoentidadService.getIcon();
+        $scope.ob = tipoentidadService.getTitle();
         $scope.title = "Borrado de un " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;

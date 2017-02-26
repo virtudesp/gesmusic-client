@@ -41,6 +41,8 @@ moduloEntidad.controller('EntidadEditController', ['$scope', '$routeParams', '$l
         //---
         $scope.bean.obj_sociedad = {"id": null};
         $scope.show_obj_sociedad = true;
+        $scope.bean.obj_tipoentidad = {"id": null};
+        $scope.show_obj_tipoentidad = true;
         //---
         $scope.id = $routeParams.id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
