@@ -43,7 +43,6 @@ moduloFiltros
                 return input[0] + ':' + input[1];
             };
         })
-
         .filter('clipString', function ($filter)
         {
             return function (input)
@@ -78,8 +77,6 @@ moduloFiltros
 
             };
         })
-
-
         .filter('booleanizate', function ($filter)
         {
             return function (input)
@@ -96,13 +93,29 @@ moduloFiltros
 
             };
         })
-        .filter('breakFilter', function () {
+        .filter('breakFilter', function ()
+        {
             return function (text) {
                 if (typeof text == 'string')
                     return text.replace(/\n/g, '<br />');
             };
         })
-
+        .filter('fechacorta', function ($filter)
+        {
+            return function (input) {
+                if (input == null || input == "" || input.length != 16)
+                {
+                    return "";
+                }
+                var arrSolofecha = input.split(" ");
+                var arr = arrSolofecha[0].split("/"); // formato dd/mm/aaaa
+                var mm = parseInt(arr[1]);
+                mm -= 1;
+                var newDate = new Date(arr[2], mm, arr[0]);
+                var formatedDate = $filter('date')(newDate, 'dd/MM/yyyy');
+                return formatedDate;
+            };
+        })
         .filter('fechaformateada', function ($filter)
         {
             return function (input) {
