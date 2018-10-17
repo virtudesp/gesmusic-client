@@ -50,6 +50,7 @@ moduloServicios
 //            ;
             return {
                 getAppUrl: function () {
+//                    return "http://localhost:80/gesmusic-server/json";
                     return "http://localhost:8081/gesmusic-server/json";
                     //return location.protocol + '//' + location.hostname + ':' + location.port + '/' + this.getAppName() + '/index.php';
                 },
