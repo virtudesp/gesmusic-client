@@ -40,61 +40,38 @@ THE SOFTWARE.
 <div id="navbar" class="navbar-collapse collapse" >
     <ul class="nav navbar-nav" id="appMenu">
         <li ng-class="{ active: isActive('/home')}"><a href="home">Home</a></li>
-        <!-- Personal sanitario ------------------------------------------- -->                
+        <!-- Sistema ------------------------------------------- -->   
         <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-icon-list-alt"></i>Personal sanitario<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">                
-                <li class="dropdown-header">Usuarios</li>
-                <li ng-class="{ active: isActive('/{{meta.usuario.name}}/plist')}"><a href="{{meta.usuario.name}}/plist"><i class="fa fa-fw {{meta.usuario.icon}}"></i>{{meta.usuario.title}}</a></li>
-                <li ng-class="{ active: isActive('/{{meta.tipousuario.name}}/plist')}"><a href="{{meta.tipousuario.name}}/plist"><i class="fa fa-fw {{meta.tipousuario.icon}}"></i>{{meta.tipousuario.title}}</a></li>                
-                <li class="divider"></li>                
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-icon-list-alt"></i>Administración<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Sistema</li>
+                <li ng-class="{ active: isActive('/{{meta.sociedad.name}}/plist')}"><a href="{{meta.sociedad.name}}/plist"><i class="fa fa-fw {{meta.sociedad.icon}}"></i>{{meta.sociedad.title}}</a></li> 
+                <li ng-class="{ active: isActive('/{{meta.usuario.name}}/plist')}"><a href="{{meta.usuario.name}}/plist"><i class="fa fa-fw {{meta.usuario.icon}}"></i>{{meta.usuario.title}}</a></li>       
+                <li ng-class="{ active: isActive('/{{meta.tipousuario.name}}/plist')}"><a href="{{meta.tipousuario.name}}/plist"><i class="fa fa-fw {{meta.tipousuario.icon}}"></i>{{meta.tipousuario.title}}</a></li>
+                <li ng-class="{ active: isActive('/{{meta.tipoentidad.name}}/plist')}"><a href="{{meta.tipoentidad.name}}/plist"><i class="fa fa-fw {{meta.tipoentidad.icon}}"></i>{{meta.tipoentidad.title}}</a></li>
+            </ul>
+        </li>
+        <!-- Entidades ------------------------------------------- -->                
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-icon-list-alt"></i>Miembros<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">                  
                 <li class="dropdown-header">Entidades</li>
                 <li ng-class="{ active: isActive('/{{meta.entidad.name}}/plist')}"><a href="{{meta.entidad.name}}/plist"><i class="fa fa-fw {{meta.entidad.icon}}"></i>{{meta.entidad.title}}</a></li>
-                <li class="dropdown-header">Medicos</li>                
-                <li ng-class="{ active: isActive('/{{meta.medico.name}}/plist')}"><a href="{{meta.medico.name}}/plist"><i class="fa fa-fw {{meta.medico.icon}}"></i>{{meta.medico.title}}</a></li>                
-                <li ng-class="{ active: isActive('/{{meta.especialidad.name}}/plist')}"><a href="{{meta.especialidad.name}}/plist"><i class="fa fa-fw {{meta.especialidad.icon}}"></i>{{meta.especialidad.title}}</a></li>                                
-                <!--
-                <li class="dropdown-header">Enfermeros</li>                
-                <li ng-class="{ active: isActive('/enfermero/plist')}"><a href="enfermero/plist"><i class="fa fa-fw fa-question-circle-o"></i>Enfermero/a</a></li>                                
-                -->
+                <li ng-class="{ active: isActive('/{{meta.rol.name}}/plist')}"><a href="{{meta.rol.name}}/plist"><i class="fa fa-fw {{meta.rol.icon}}"></i>{{meta.rol.title}}</a></li>
+                <li class="dropdown-header">Agrupaciones</li>                
+                <li ng-class="{ active: isActive('/{{meta.agrupacion.name}}/plist')}"><a href="{{meta.agrupacion.name}}/plist"><i class="fa fa-fw {{meta.agrupacion.icon}}"></i>{{meta.agrupacion.title}}</a></li>                
+                <li ng-class="{ active: isActive('/{{meta.elenco.name}}/plist')}"><a href="{{meta.elenco.name}}/plist"><i class="fa fa-fw {{meta.elenco.icon}}"></i>{{meta.elenco.title}}</a></li>                 
+                <li ng-class="{ active: isActive('/{{meta.acto.name}}/plist')}"><a href="{{meta.acto.name}}/plist"><i class="fa fa-fw {{meta.acto.icon}}"></i>{{meta.acto.title}}</a></li>               
+                <li ng-class="{ active: isActive('/{{meta.participa.name}}/plist')}"><a href="{{meta.participa.name}}/plist"><i class="fa fa-fw {{meta.participa.icon}}"></i>{{meta.participa.title}}</a></li>                              
             </ul>
         </li>
-        <!-- Farmacia ------------------------------------------- -->   
+        <!-- Archivo ------------------------------------------- -->   
         <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-icon-list-alt"></i>Farmacia<span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-icon-list-alt"></i>Archivo<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-                <li class="dropdown-header">Tratamientos</li>
-                <li ng-class="{ active: isActive('/{{meta.tratamiento.name}}/plist')}"><a href="{{meta.tratamiento.name}}/plist"><i class="fa fa-fw {{meta.tratamiento.icon}}"></i>{{meta.tratamiento.title}}</a></li>         
-                <li class="dropdown-header">Medicamentos</li>
-                <li ng-class="{ active: isActive('/{{meta.medicamento.name}}/plist')}"><a href="{{meta.medicamento.name}}/plist"><i class="fa fa-fw {{meta.medicamento.icon}}"></i>{{meta.medicamento.title}}</a></li>        
-                <li ng-class="{ active: isActive('/{{meta.posologia.name}}/plist')}"><a href="{{meta.posologia.name}}/plist"><i class="fa fa-fw {{meta.posologia.icon}}"></i>{{meta.posologia.title}}</a></li>
-                <li ng-class="{ active: isActive('/{{meta.via.name}}/plist')}"><a href="{{meta.via.name}}/plist"><i class="fa fa-fw {{meta.via.icon}}"></i>{{meta.via.title}}</a></li>
-            </ul>
-        </li>
-        <!-- Pruebas diganósticas ------------------------------------------- -->   
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-icon-list-alt"></i>Pruebas diganósticas<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li ng-class="{ active: isActive('/{{meta.prueba.name}}/plist')}"><a href="{{meta.prueba.name}}/plist"><i class="fa fa-fw {{meta.prueba.icon}}"></i>{{meta.prueba.title}}</a></li>
-                <li class="dropdown-header">Pruebas de imagen</li>                                
-                <li ng-class="{ active: isActive('/{{meta.imagen.name}}/plist')}"><a href="{{meta.imagen.name}}/plist"><i class="fa fa-fw {{meta.imagen.icon}}"></i>{{meta.imagen.title}}</a></li>
-                <li ng-class="{ active: isActive('/{{meta.zona.name}}/plist')}"><a href="{{meta.zona.name}}/plist"><i class="fa fa-fw {{meta.zona.icon}}"></i>{{meta.zona.title}}</a></li>
-                <li ng-class="{ active: isActive('/{{meta.tecnica.name}}/plist')}"><a href="{{meta.tecnica.name}}/plist"><i class="fa fa-fw {{meta.tecnica.icon}}"></i>{{meta.tecnica.title}}</a></li>      
-                <li ng-class="{ active: isActive('/{{meta.zonaimagen.name}}/plist')}"><a href="{{meta.zonaimagen.name}}/plist"><i class="fa fa-fw {{meta.zonaimagen.icon}}"></i>{{meta.zonaimagen.title}}</a></li>                    
-                <li class="dropdown-header">Pruebas analíticas</li>                
-                <li ng-class="{ active: isActive('/{{meta.analitica.name}}/plist')}"><a href="{{meta.analitica.name}}/plist"><i class="fa fa-fw {{meta.analitica.icon}}"></i>{{meta.analitica.title}}</a></li>
-                <li ng-class="{ active: isActive('/{{meta.anticoagulante.name}}/plist')}"><a href="{{meta.anticoagulante.name}}/plist"><i class="fa fa-fw {{meta.anticoagulante.icon}}"></i>{{meta.anticoagulante.title}}</a></li>
-                <li ng-class="{ active: isActive('/{{meta.prioridad.name}}/plist')}"><a href="{{meta.prioridad.name}}/plist"><i class="fa fa-fw {{meta.prioridad.icon}}"></i>{{meta.prioridad.title}}</a></li>
-                <li ng-class="{ active: isActive('/{{meta.tipomuestra.name}}/plist')}"><a href="{{meta.tipomuestra.name}}/plist"><i class="fa fa-fw {{meta.tipomuestra.icon}}"></i>{{meta.tipomuestra.title}}</a></li>          
-            </ul>
-        </li>
-        <!-- Gestión económica ------------------------------------------- -->   
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-icon-list-alt"></i>Gestión económica<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li ng-class="{ active: isActive('/{{meta.cargo.name}}/plist')}"><a href="{{meta.cargo.name}}/plist"><i class="fa fa-fw {{meta.cargo.icon}}"></i>{{meta.cargo.title}}</a></li>
-                <li ng-class="{ active: isActive('/{{meta.documento.name}}/plist')}"><a href="{{meta.documento.name}}/plist"><i class="fa fa-fw {{meta.documento.icon}}"></i>{{meta.documento.title}}</a></li>
-                <li ng-class="{ active: isActive('/{{meta.tipodocumento.name}}/plist')}"><a href="{{meta.tipodocumento.name}}/plist"><i class="fa fa-fw {{meta.tipodocumento.icon}}"></i>{{meta.tipodiagnostico.title}}</a></li>
+                <li ng-class="{ active: isActive('/{{meta.compositor.name}}/plist')}"><a href="{{meta.compositor.name}}/plist"><i class="fa fa-fw {{meta.compositor.icon}}"></i>{{meta.compositor.title}}</a></li>
+                <li ng-class="{ active: isActive('/{{meta.obra.name}}/plist')}"><a href="{{meta.obra.name}}/plist"><i class="fa fa-fw {{meta.obra.icon}}"></i>{{meta.obra.title}}</a></li>
+                <li ng-class="{ active: isActive('/{{meta.repertorio.name}}/plist')}"><a href="{{meta.repertorio.name}}/plist"><i class="fa fa-fw {{meta.repertorio.icon}}"></i>{{meta.repertorio.title}}</a></li>          
             </ul>
         </li>
         <li ng-class="{ active: isActive('/license')}"><a href="license"><i class="fa fa-icon-smile"></i>Licencia</a></li>
@@ -109,10 +86,6 @@ THE SOFTWARE.
             </a>
             <ul class="dropdown-menu dropdown">
                 <li ng-if="!isSessionActive()"><a href="login"><i class="fa fa-fw fa-user"></i> Login</a></li>
-                <!--
-                <li ng-if="isSessionActive()"><a href="#"><i class="fa fa-fw fa-user"></i> Perfil de usuario</a></li>
-                <li ng-if="isSessionActive()"><a href="#"><i class="fa fa-fw fa-gear"></i> Configuración</a></li>
-                -->
                 <li ng-if="isSessionActive()"><a href="passchange"><i class="fa fa-fw fa-key"></i> Cambio de contraseña</a></li>
                 <li ng-if="isSessionActive()" class="divider"></li>
                 <li ng-if="isSessionActive()" id="broth_logout"><a href="logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>

@@ -40,7 +40,7 @@ var gesmusic = angular.module('myApp', [
 //    'tipousuarioControllers',
     'ui.bootstrap',
     'ngSanitize',
-    'chart.js'
+//    'chart.js'
 ]);
 //-------------
 //---html5 mode off; setting up pushState needs server urlrewritting, so quitting...-------
