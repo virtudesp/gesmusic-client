@@ -32,11 +32,7 @@ THE SOFTWARE.
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
-                    <div class="panel-body" ng-cloak>
-                        <div class="alert alert-success" role="alert" ng-if="debugging">
-                            <h4>Debug:</h4>
-                            {{bean|json}}
-                        </div>                   
+                    <div class="panel-body" ng-cloak>                  
                         <form name="outerForm" class="form-horizontal text-left"  ng-if="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->       
@@ -93,7 +89,7 @@ THE SOFTWARE.
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de sociedades</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de compositores</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>
@@ -101,7 +97,8 @@ THE SOFTWARE.
                         <div ng-if="status">                        
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
+                                <a ng-href="{{ob}}/view/{{bean.id}}">Ver registro</a>
+                                <a class="btn btn-default" ng-click="plist()">Ir al listado de compositores</a>
                             </div>
                             <div class="alert alert-danger" ng-if="response.status != 200">
                                 <h2>{{status}}</h2>                             

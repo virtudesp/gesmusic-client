@@ -27,13 +27,13 @@
  */
 'use strict';
 
-moduloSociedad.controller('SociedadViewpopController', ['$scope', '$routeParams', 'serverService', 'sociedadService', '$location', '$uibModalInstance', 'id',
-    function ($scope, $routeParams, serverService, sociedadService, $location, $uibModalInstance, id) {
-        $scope.fields = sociedadService.getFields();
-        $scope.obtitle = sociedadService.getObTitle();
-        $scope.icon = sociedadService.getIcon();
-        $scope.ob = sociedadService.getTitle();
-        $scope.title = "Vista de " + $scope.obtitle;
+moduloCompositor.controller('CompositorViewpopController', ['$scope', '$routeParams', 'serverService', 'compositorService', '$location', '$uibModalInstance', 'id',
+    function ($scope, $routeParams, serverService, compositorService, $location, $uibModalInstance, id) {
+        $scope.fields = compositorService.getFields();
+        $scope.obtitle = compositorService.getObTitle();
+        $scope.icon = compositorService.getIcon();
+        $scope.ob = compositorService.getTitle();
+        $scope.title = "Vista de un " + $scope.obtitle;
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

@@ -67,6 +67,9 @@ moduloServicios
                         case "palabra":
                             return "No se pueden introducir números, solo palabras en minúscula";
                             break;
+                        case "usuario":
+                            return "Sólamente letras con o sin números";
+                            break;
                         case "codigopostal":
                             return "Se requieren 4 o 5 dígitos";
                             break;
@@ -80,7 +83,7 @@ moduloServicios
                             return  "Introduza una palabra de 5 a 16 caracteres alfanuméricos";
                             break;
                         case "password":
-                            return  "Introduzca palabra de al menos 8 caracteres con numeros y letras mayúsculas y minúsculas";
+                            return  "Introduzca  una palabra de al menos 5 caracteres con numeros y letras mayúsculas y minúsculas";
                             break;
                         case "integer":
                             return "Introduzca un número entero";
@@ -93,6 +96,9 @@ moduloServicios
                             break;
                         case "url":
                             return "Introduza una URL válida";
+                            break;
+                        case "inicial":
+                            return "Introduza una letra mayúscula";
                             break;
                         default:
                             return null;
@@ -120,7 +126,7 @@ moduloServicios
                             return  /^[a-z0-9_-]{5,16}$/;
                             break;
                         case "password":
-                            return  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+                            return  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{5,}$/;
                             break;
                         case "integer":
                             return new RegExp("-?[0-9]+", "g");
@@ -128,11 +134,17 @@ moduloServicios
                         case "decimal":
                             return /^\d+(?:\.\d{1,2})?$/;
                             break;
+                        case "usuario":
+                            return /^[a-zA-Z]+[0-9]*$/;
+                            break;
                         case "alpha-numeric":
                             return new RegExp("^[a-zA-Z0-9]+$", "g");
                             break;
                         case "url":
                             return new RegExp("(http://|ftp://)([\w-\.)(\.)([a-zA-Z]+)", "g");
+                            break;
+                        case "inicial":
+                            return new RegExp("^[A-Z]$", "g");
                             break;
                         default:
                             return null;
@@ -167,13 +179,15 @@ moduloServicios
                 },
                 //---------------------------------------
                 getLoginPromise: function (username, password) {
-                    password = forge_sha256(password).toUpperCase();
+//                    password = forge_sha256(password).toUpperCase();
                     return $http.get(this.getAppUrl() + '?ob=usuario&op=login&user=' + username + '&pass=' + password, 'GET', '');
+                    //?ob=usuario&op=login&user=cacun&pass=cacun
                 },
                 getPasswordChangePromise: function (oldpass, newpass) {
-                    var oldpassword = forge_sha256(oldpass).toUpperCase();
-                    var newpassword = forge_sha256(newpass).toUpperCase();
-                    return $http.get(this.getAppUrl() + '?ob=usuario&op=passchange&old=' + oldpassword + '&new=' + newpassword, 'GET', '');
+//                    var oldpassword = forge_sha256(oldpass).toUpperCase();
+//                    var newpassword = forge_sha256(newpass).toUpperCase();
+//                    return $http.get(this.getAppUrl() + '?ob=usuario&op=passchange&old=' + oldpassword + '&new=' + newpassword, 'GET', '');
+                    return $http.get(this.getAppUrl() + '?ob=usuario&op=passchange&old=' + oldpass + '&new=' + newpass, 'GET', '');
                 },
                 getLogoutPromise: function () {
                     return $http.get(this.getAppUrl() + '?ob=usuario&op=logout', 'GET', '');
@@ -336,27 +350,39 @@ moduloServicios
         })
         .factory('metaService', [
             'serverService',
-            'entidadService',
-            'tipoentidadService',
+            'miembroService',
+            'tipomiembroService',
+            'rolService',
             'sociedadService',
-//            'usuarioService',
-//            'tipousuarioService',
+            'compositorService',
+            'obraService',
+            'archivoService',
+            'usuarioService',
+            'tipousuarioService',
             function (
                     serverService,
-                    entidadService,
-                    tipoentidadService,
-                    sociedadService//,
-//                    usuarioService,
-//                    tipousuarioService
+                    miembroService,
+                    tipomiembroService,
+                    rolService,
+                    sociedadService,
+                    compositorService,
+                    obraService,
+                    archivoService,
+                    usuarioService,
+                    tipousuarioService
                     ) {
                 var meta = {};
                 return {
                     getMeta: function () {
-                        meta.entidad = ({'fields': entidadService.getFields(), 'name': entidadService.getTitle(), 'title': serverService.capitalizeWord(entidadService.getObTitle()), 'icon': entidadService.getIcon()});
-                        meta.tipoentidad = ({'fields': tipoentidadService.getFields(), 'name': tipoentidadService.getTitle(), 'title': serverService.capitalizeWord(tipoentidadService.getObTitle()), 'icon': tipoentidadService.getIcon()});
+                        meta.miembro = ({'fields': miembroService.getFields(), 'name': miembroService.getTitle(), 'title': serverService.capitalizeWord(miembroService.getObTitle()), 'icon': miembroService.getIcon()});
+                        meta.tipomiembro = ({'fields': tipomiembroService.getFields(), 'name': tipomiembroService.getTitle(), 'title': serverService.capitalizeWord(tipomiembroService.getObTitle()), 'icon': tipomiembroService.getIcon()});
+                        meta.rol = ({'fields': rolService.getFields(), 'name': rolService.getTitle(), 'title': serverService.capitalizeWord(rolService.getObTitle()), 'icon': rolService.getIcon()});
                         meta.sociedad = ({'fields': sociedadService.getFields(), 'name': sociedadService.getTitle(), 'title': serverService.capitalizeWord(sociedadService.getObTitle()), 'icon': sociedadService.getIcon()});
-//                        meta.usuario = ({'fields': usuarioService.getFields(), 'name': usuarioService.getTitle(), 'title': serverService.capitalizeWord(usuarioService.getObTitle()), 'icon': usuarioService.getIcon()});
-//                        meta.tipousuario = ({'fields': tipousuarioService.getFields(), 'name': tipousuarioService.getTitle(), 'title': serverService.capitalizeWord(tipousuarioService.getObTitle()), 'icon': tipousuarioService.getIcon()});
+                        meta.compositor = ({'fields': compositorService.getFields(), 'name': compositorService.getTitle(), 'title': serverService.capitalizeWord(compositorService.getObTitle()), 'icon': compositorService.getIcon()});
+                        meta.obra = ({'fields': obraService.getFields(), 'name': obraService.getTitle(), 'title': serverService.capitalizeWord(obraService.getObTitle()), 'icon': obraService.getIcon()});
+                        meta.archivo = ({'fields': archivoService.getFields(), 'name': archivoService.getTitle(), 'title': serverService.capitalizeWord(archivoService.getObTitle()), 'icon': archivoService.getIcon()});
+                        meta.usuario = ({'fields': usuarioService.getFields(), 'name': usuarioService.getTitle(), 'title': serverService.capitalizeWord(usuarioService.getObTitle()), 'icon': usuarioService.getIcon()});
+                        meta.tipousuario = ({'fields': tipousuarioService.getFields(), 'name': tipousuarioService.getTitle(), 'title': serverService.capitalizeWord(tipousuarioService.getObTitle()), 'icon': tipousuarioService.getIcon()});
                         return meta;
                     }
                 }

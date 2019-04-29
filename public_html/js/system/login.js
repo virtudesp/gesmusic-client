@@ -5,8 +5,10 @@ moduloSistema.controller('LoginController', ['$scope', '$routeParams', '$locatio
         $scope.icon = "fa-file-text-o";
         $scope.user = {};
         if (serverService.debugging()) {
-            $scope.user.username = 'rafael';
-            $scope.user.password = 'rafael';
+//            $scope.user.user = 'cacun';
+//            $scope.user.pass = 'cacun';
+            $scope.user.username = 'cacun';
+            $scope.user.password = 'cacun';
             //$scope.user.password = '79063E8037FFF16D297A1FE65136F1251126CDDB2CC9870ECF8D653835538E85';
         }
         $scope.login = function () {

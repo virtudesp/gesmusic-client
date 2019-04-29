@@ -28,13 +28,13 @@
 
 'use strict';
 
-moduloSociedad.controller('SociedadPListController', ['$scope', '$routeParams', '$location', 'serverService', 'sociedadService', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, sociedadService, $uibModal) {
-        $scope.fields = sociedadService.getFields();
-        $scope.obtitle = sociedadService.getObTitle();
-        $scope.icon = sociedadService.getIcon();
-        $scope.ob = sociedadService.getTitle();
-        $scope.title = "Listado de " + $scope.obtitle + "es musicales";
+moduloCompositor.controller('CompositorPListController', ['$scope', '$routeParams', '$location', 'serverService', 'compositorService', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, compositorService, $uibModal) {
+        $scope.fields = compositorService.getFields();
+        $scope.obtitle = compositorService.getObTitle();
+        $scope.icon = compositorService.getIcon();
+        $scope.ob = compositorService.getTitle();
+        $scope.title = "Listado de " + $scope.obtitle + "es";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);

@@ -62,13 +62,7 @@ THE SOFTWARE.
                                         <td ng-if="f.type == 'integer'">{{bean[f.name]}}</td>
                                         <td ng-if="f.type == 'decimal'">{{bean[f.name]}}</td>
                                         <td ng-if="f.type == 'text'">{{bean[f.name]}}</td>
-                                        <td ng-if="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td> 
-
-                                        <td ng-if="f.name.startsWith('obj_')">
-                                            <a href="{{f.reference}}/view/{{bean[f.name]['id']}}">
-                                                {{bean[f.name]["description"]}}
-                                            </a>
-                                        </td>                           
+                                        <td ng-if="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td>                            
                                     </tr>
                                 </tbody>
                             </table>  
@@ -85,6 +79,5 @@ THE SOFTWARE.
     </div>
 </div>     
 <div class="modal-footer">    
-    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     <div style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>        
 </div>

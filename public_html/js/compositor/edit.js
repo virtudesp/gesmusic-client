@@ -27,13 +27,13 @@
  */
 
 'use strict';
-moduloSociedad.controller('SociedadEditController', ['$scope', '$routeParams', '$location', 'sociedadService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, sociedadService, serverService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = sociedadService.getFields();
-        $scope.obtitle = sociedadService.getObTitle();
-        $scope.icon = sociedadService.getIcon();
-        $scope.ob = sociedadService.getTitle();
-        $scope.title = "Editando una " + $scope.obtitle;
+moduloCompositor.controller('CompositorEditController', ['$scope', '$routeParams', '$location', 'compositorService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, compositorService, serverService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = compositorService.getFields();
+        $scope.obtitle = compositorService.getObTitle();
+        $scope.icon = compositorService.getIcon();
+        $scope.ob = compositorService.getTitle();
+        $scope.title = "Editando un " + $scope.obtitle;
         $scope.op = "edit";
         $scope.status = null;
         $scope.debugging = serverService.debugging();

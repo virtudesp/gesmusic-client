@@ -34,7 +34,7 @@ moduloSociedad.controller('SociedadPListController', ['$scope', '$routeParams', 
         $scope.obtitle = sociedadService.getObTitle();
         $scope.icon = sociedadService.getIcon();
         $scope.ob = sociedadService.getTitle();
-        $scope.title = "Listado de " + $scope.obtitle + "es musicales";
+        $scope.title = "Datos de la Sociedad Musical";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);

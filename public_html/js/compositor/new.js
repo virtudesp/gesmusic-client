@@ -28,13 +28,13 @@
 
 'use strict';
 
-moduloSociedad.controller('SociedadNewController', ['$scope', '$routeParams', '$location', 'serverService', 'sociedadService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, sociedadService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = sociedadService.getFields();
-        $scope.obtitle = sociedadService.getObTitle();
-        $scope.icon = sociedadService.getIcon();
-        $scope.ob = sociedadService.getTitle();
-        $scope.title = "Creando una nueva " + $scope.obtitle;
+moduloCompositor.controller('CompositorNewController', ['$scope', '$routeParams', '$location', 'serverService', 'compositorService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, compositorService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = compositorService.getFields();
+        $scope.obtitle = compositorService.getObTitle();
+        $scope.icon = compositorService.getIcon();
+        $scope.ob = compositorService.getTitle();
+        $scope.title = "Creando un nuevo " + $scope.obtitle;
         $scope.op = "new";
         $scope.status = null;
         $scope.debugging = serverService.debugging();

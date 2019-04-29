@@ -28,13 +28,13 @@
 'use strict';
 
 
-moduloSociedad.controller('SociedadRemovepopController', ['$scope', '$routeParams', 'serverService', 'sociedadService', '$location', '$uibModalInstance', 'id',
-    function ($scope, $routeParams, serverService, sociedadService, $location, $uibModalInstance, id) {
-        $scope.fields = sociedadService.getFields();
-        $scope.obtitle = sociedadService.getObTitle();
-        $scope.icon = sociedadService.getIcon();
-        $scope.ob = sociedadService.getTitle();
-        $scope.title = "Borrado de una" + $scope.obtitle;
+moduloCompositor.controller('CompositorRemovepopController', ['$scope', '$routeParams', 'serverService', 'compositorService', '$location', '$uibModalInstance', 'id',
+    function ($scope, $routeParams, serverService, compositorService, $location, $uibModalInstance, id) {
+        $scope.fields = compositorService.getFields();
+        $scope.obtitle = compositorService.getObTitle();
+        $scope.icon = compositorService.getIcon();
+        $scope.ob = compositorService.getTitle();
+        $scope.title = "Borrado de un" + $scope.obtitle;
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

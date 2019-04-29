@@ -1,8 +1,8 @@
 <div id="{{fk.name}}_group" ng-class="['input-group','foreign','control',{'has-error': fk.form[fk.name].$error.exists}]">
-    <span class="input-group-addon" id="{{fk.name}}_button" ng-click="fk.chooseOne()">
+    <!--<span class="input-group-addon" id="{{fk.name}}_button" ng-click="fk.chooseOne()">
         <span class="glyphicon glyphicon-search">
         </span>
-    </span>                                        
+    </span>-->                                       
     <input type="text" 
            ng-model-options="{debounce: 1000}" 
            ng-model="fk.bean.id"
@@ -18,7 +18,7 @@
         <span>{{fk.desc}}</span>
     </span> 
 </div>
-<span class="help-block" ng-if="fk.form[fk.name].$error.exists">Debes elegir uno/a que exista</span>
+<!--<span class="help-block" ng-if="fk.form[fk.name].$error.exists">Debes elegir uno/a que exista</span>
 
 <!--
 <radiogroup 
