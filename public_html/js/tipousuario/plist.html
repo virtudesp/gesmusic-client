@@ -43,108 +43,50 @@ THE SOFTWARE.
                         <div class="row">
                             <div class="col-xs-12" ng-show="!status">
                                 <div role="tabpanel">
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li role="presentation" class="active">
-                                            <a data-target="#pane0" aria-controls="pane0" role="tab" data-toggle="tab" aria-expanded="false">Consulta</a>
-                                        </li>
-                                        <li role="presentation"><a data-target="#pane1" aria-controls="pane1" role="tab" data-toggle="tab" aria-expanded="true">Campos visibles</a></li>
-                                        <li role="presentation"><a data-target="#pane2" aria-controls="pane2" role="tab" data-toggle="tab">Filtro de servidor</a></li>
-                                        <li role="presentation"><a data-target="#pane3" aria-controls="pane3" role="tab" data-toggle="tab">Filtro de cliente</a></li>
-                                        <!--<li role="presentation"><a data-target="#pane4" aria-controls="pane4" role="tab" data-toggle="tab">Nueva {{obtitle}}</a></li>-->
-                                        <li role="presentation"><a href="{{ob}}/new">Nuevo {{obtitle}}</a></li>
-                                    </ul>
-                                    <div class="tab-content">
+                                    <div class="tab-content">                                           
                                         <div role="tabpanel" id="pane0" class="tab-pane fade active in">
-                                            <p></p>
                                             <div class="row">
-                                                <div class="col-lg-6  col-md-6 col-sm-8">                                                    
-                                                    <cplistinfo
-                                                        ob="ob"         
-                                                        op="op"         
-                                                        numpage="numpage"                                                       
-                                                        rpp="rpp"
-                                                        registers="registers"        
-                                                        orderParams="orderParams"
-                                                        filterParams="filterParams"
-                                                        sfilterParams="sfilterParams"
-                                                        searchText="searchText">
+                                                <div class="col-lg-6 col-md-6 col-sm-8 text-left"> 
+                                                    <cplistinfo url="url"         
+                                                                numpage="numpage"                                                       
+                                                                rpp="rpp"
+                                                                registers="registers"        
+                                                                orderparams="orderParams"
+                                                                filterparams="filterParams"
+                                                                sfilterparams="sfilterParams"
+                                                                searchtext="searchText">
                                                     </cplistinfo>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-12 text-center">
-                                                    <cplistpagination 
-                                                        ob="ob"         
-                                                        op="op"         
-                                                        numpage="numpage"          
-                                                        rpp="rpp"
-                                                        pages="pages"
-                                                        neighbourhood="neighbourhood"
-                                                        filterParams="filterParams"
-                                                        orderParams="orderParams"
-                                                        sfilterParams="sfilterParams">
+                                                    <cplistpagination url="url"         
+                                                                      numpage="numpage"          
+                                                                      rpp="rpp"
+                                                                      pages="pages"
+                                                                      neighbourhood="neighbourhood"
+                                                                      filterParams="filterParams"
+                                                                      orderParams="orderParams"
+                                                                      sfilterParams="sfilterParams">
                                                     </cplistpagination>
                                                 </div>
-                                                <div class="col-lg-3  col-md-3 col-sm-4 text-center">
-                                                    <cplistrpp
-                                                        ob="ob"         
-                                                        op="op"         
-                                                        numpage="numpage"          
-                                                        rpp="rpp"                                                       
-                                                        filterParams="filterParams"
-                                                        orderParams="orderParams"
-                                                        sfilterParams="sfilterParams">
+                                                <div class="col-lg-3  col-md-3 col-sm-4 text-left">
+                                                    <cplistrpp url="url"         
+                                                               numpage="numpage"          
+                                                               rpp="rpp"                                                       
+                                                               filterParams="filterParams"
+                                                               orderParams="orderParams"
+                                                               sfilterParams="sfilterParams">
                                                     </cplistrpp>
                                                 </div>
                                             </div>
-                                            <p></p>
                                         </div>
-                                        <div role="tabpanel" id="pane1" class="tab-pane fade">
-                                            <div class="row">
-                                                <div class="col-md-12 text-center">
-                                                    <p></p>   
-                                                    <plistvisiblefields></plistvisiblefields>
-                                                    <p></p>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2 text-left">
+                                            <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
+                                                <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">
+                                            </form>
                                         </div>
-                                        <div role="tabpanel" id="pane2" class="tab-pane fade">
-                                            <div class="row">  
-                                                <div class="col-md-12">
-                                                    <p></p>
-                                                    <cplistfilter
-                                                        ob="ob"         
-                                                        op="op"   
-                                                        fields="fields"
-                                                        rpp="rpp"
-                                                        numpage="numpage"                                                                       
-                                                        order="orderParams"
-                                                        filter="filterParams"
-                                                        sfilter="sfilterParams">
-                                                    </cplistfilter>  
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div role="tabpanel" id="pane3" class="tab-pane fade">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p></p>
-                                                    <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
-                                                        <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">
-                                                    </form>
-                                                    <p></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--<div role="tabpanel" id="pane4" class="tab-pane fade">
-                                            <div class="row">
-                                                <div class="col-md-12 text-center">
-                                                    <p><br>
-                                                        <a class="btn btn-primary" href="{{ob}}/new">Crear un nuevo {{obtitle}}</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>-->
                                     </div>
                                 </div>
+                                <p></p>
                                 <div id="datos" ng-show="!status">
                                     <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
                                         <thead plistheader></thead>
@@ -161,17 +103,14 @@ THE SOFTWARE.
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/view/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                                            <a class="btn btn-default btn-xs" href="{{ob}}/new">
+                                                                <span class="glyphicon glyphicon-plus"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'tipousuario', 'TipousuarioViewpopController', 'viewpop')">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
                                                                 <span class="glyphicon glyphicon-pencil"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/remove/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'tipousuario', 'TipousuarioRemovepopController', 'removepop')">
                                                                 <span class="glyphicon glyphicon-remove"></span>

@@ -4,7 +4,7 @@ moduloUsuario.factory('usuarioService', ['serverService', function (serverServic
             getFields: function () {
                 return [
                     {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "id"},
-                    {name: "username", shortname: "Nombre", longname: "Nombre", visible: true, type: "text", required: true, maxlength: 255, pattern: serverService.getRegExpr("usuario"), help: serverService.getRegExpl("usuario")},
+                    {name: "username", shortname: "Nombre", longname: "Nombre", visible: true, type: "text", required: true, maxlength: 255, pattern: ""},
                     {name: "userpass", shortname: "Contraseña", longname: "Contraseña", visible: false, type: "text", required: true, maxlength: 25, pattern: serverService.getRegExpr("password"), help: serverService.getRegExpl("password")},
                     {name: "obj_tipousuario", shortname: "Tipo", longname: "Tipo de usuario", visible: true, type: "foreign", reference: "tipousuario", descforeign: "tipousuario"}
                 ];

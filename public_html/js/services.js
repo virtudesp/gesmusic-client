@@ -126,7 +126,8 @@ moduloServicios
                             return  /^[a-z0-9_-]{5,16}$/;
                             break;
                         case "password":
-                            return  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{5,}$/;
+//                            return  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{5,}$/;
+                            return  /^.{5,16}$/;
                             break;
                         case "integer":
                             return new RegExp("-?[0-9]+", "g");

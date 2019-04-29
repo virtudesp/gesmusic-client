@@ -28,13 +28,13 @@
 
 'use strict';
 
-moduloTipousuario.controller('TipousuarioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'tipousuarioService', 'serverService', '$location', 'sharedSpaceService',
-    function ($scope, $modalInstance, $routeParams, tipousuarioService, serverService, $location, sharedSpaceService) {
-        $scope.fields = tipousuarioService.getFields();
-        $scope.obtitle = tipousuarioService.getObTitle();
-        $scope.icon = tipousuarioService.getIcon();
-        $scope.title = "Selección de " + $scope.obtitle;
-        $scope.ob = tipousuarioService.getTitle();
+moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'usuarioService', 'serverService', '$location', 'sharedSpaceService',
+    function ($scope, $modalInstance, $routeParams, usuarioService, serverService, $location, sharedSpaceService) {
+        $scope.fields = usuarioService.getFields();
+        $scope.obtitle = usuarioService.getObTitle();
+        $scope.icon = usuarioService.getIcon();
+        $scope.title = "Selección de un" + $scope.obtitle;
+        $scope.ob = usuarioService.getTitle();
         $scope.op = "selection";
         $scope.numpage = 1;
         $scope.rpp = 10;
@@ -53,7 +53,7 @@ moduloTipousuario.controller('TipousuarioSelectionController', ['$scope', '$uibM
         };
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
-        }
+        };
         function getData() {
             serverService.promise_getCount($scope.ob, $scope.filterParams).then(function (response) {
                 if (response.status == 200) {
@@ -64,19 +64,18 @@ moduloTipousuario.controller('TipousuarioSelectionController', ['$scope', '$uibM
                     }
                     return serverService.promise_getPage($scope.ob, $scope.rpp, $scope.numpage, $scope.filterParams, $scope.orderParams);
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor";
+                    $scope.status = "Error en la recepción de datos del servidor1";
                 }
             }).then(function (response) {
                 if (response.status == 200) {
                     $scope.page = response.data.message;
                     $scope.status = "";
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor";
+                    $scope.status = "Error en la recepción de datos del servidor2";
                 }
             }).catch(function (data) {
-                $scope.status = "Error en la recepción de datos del servidor";
+                $scope.status = "Error en la recepción de datos del servidor3";
             });
-
         }
         $scope.$on('filterSelectionEvent', function (event, data) {
             $scope.filterParams = data;
@@ -106,6 +105,5 @@ moduloTipousuario.controller('TipousuarioSelectionController', ['$scope', '$uibM
             $scope.closeForm(id);
             return false;
         };
-        //getData();
-        $scope.getData($scope.numpage);
+        getData();
     }]);
