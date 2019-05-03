@@ -78,11 +78,14 @@ THE SOFTWARE.
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-2 text-left">
+                                    <div class="tab-content">
+                                        <div class="col-md-2 text-right">
                                             <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
-                                                <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">
+                                                <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">                                                
                                             </form>
+                                        </div>
+                                        <div class="col-md-10 text-right">
+                                            <a class="btn btn-primary" href="{{ob}}/new">Nuevo registro</a>
                                         </div>
                                     </div>
                                 </div>
@@ -104,9 +107,6 @@ THE SOFTWARE.
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/new">
-                                                                <span class="glyphicon glyphicon-plus"></span>
-                                                            </a>
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'tipomiembro', 'TipomiembroViewpopController', 'viewpop')">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                                             </a>

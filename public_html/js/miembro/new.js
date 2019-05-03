@@ -46,7 +46,7 @@ moduloMiembro.controller('MiembroNewController', ['$scope', '$routeParams', '$lo
                 if (response.data.message.id != 0) {
                     $scope.bean.obj_tipomiembro = response.data.message;
                     $scope.show_obj_tipomiembro = false;
-                    $scope.title = "Nueva miembro del tipo" + $scope.bean.obj_tipomiembro.description;
+                    $scope.title = "Nuevo miembro del tipo" + $scope.bean.obj_tipomiembro.tipomiembro;
                 }
             });
         } else {

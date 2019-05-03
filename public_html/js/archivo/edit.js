@@ -33,7 +33,7 @@ moduloArchivo.controller('ArchivoEditController', ['$scope', '$routeParams', '$l
         $scope.obtitle = archivoService.getObTitle();
         $scope.icon = archivoService.getIcon();
         $scope.ob = archivoService.getTitle();
-        $scope.title = "Editando un registro del " + $scope.obtitle;
+        $scope.title = "Editando un registro del archivo";
         $scope.op = "edit";
         $scope.status = null;
         $scope.debugging = serverService.debugging();

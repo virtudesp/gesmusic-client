@@ -18,6 +18,11 @@ moduloArchivo.factory('archivoService', ['serverService', function (serverServic
             },
             getTitle: function () {
                 return "archivo";
+            },
+            getId: function () {
+                return [
+                    {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "id"}
+                ];    
             }
         };
     }]);

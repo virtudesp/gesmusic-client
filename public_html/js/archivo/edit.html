@@ -70,8 +70,7 @@ THE SOFTWARE.
                                                ng-pattern="f.pattern"
                                                placeholder="{{f.name}}"                                             
                                                maxlength="{{f.maxlength}}"                                                                                               
-                                               ng-required="{{f.required}}"                                                
-                                               />
+                                               ng-required="{{f.required}}"  />
                                         <span class="help-block" ng-show="outerForm[f.name].$error.required">El campo es obligatorio</span>
                                         <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
@@ -118,7 +117,7 @@ THE SOFTWARE.
                         <div ng-if="status">                        
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
+                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
                                 <a class="btn btn-default" ng-click="plist()">Ir al listado del {{obtitle}}</a>
                             </div>
                             <div class="alert alert-danger" ng-if="response.status != 200">

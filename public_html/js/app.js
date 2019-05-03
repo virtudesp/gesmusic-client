@@ -33,15 +33,18 @@ var gesmusic = angular.module('myApp', [
     'Services',
     'Directives',
     'systemControllers',
+    'actoControllers',
+    'agrupacionControllers',
+    'archivoControllers',
+    'compositorControllers',
+    'elencoControllers',
     'miembroControllers',
-    'tipomiembroControllers',
+    'obraControllers',
     'rolControllers',
     'sociedadControllers',
-    'compositorControllers',
-    'obraControllers',
-    'archivoControllers',
-    'usuarioControllers',
+    'tipomiembroControllers',
     'tipousuarioControllers',
+    'usuarioControllers',
     'ui.bootstrap',
     'ngSanitize',
 //    'chart.js'
@@ -68,6 +71,42 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/license', {templateUrl: 'js/system/license.html', controller: 'LicenseController'});
         $routeProvider.when('/passchange', {templateUrl: 'js/system/passchange.html', controller: 'PasschangeController'});
         //------------
+        $routeProvider.when('/acto/view/:id', {templateUrl: 'js/acto/view.html', controller: 'ActoViewController'});
+        $routeProvider.when('/acto/new/:id?', {templateUrl: 'js/acto/new.html', controller: 'ActoNewController'});
+        $routeProvider.when('/acto/edit/:id', {templateUrl: 'js/acto/edit.html', controller: 'ActoEditController'});
+        $routeProvider.when('/acto/remove/:id', {templateUrl: 'js/acto/remove.html', controller: 'ActoRemoveController'});
+        $routeProvider.when('/acto/plist/:page?/:rpp?', {templateUrl: 'js/acto/plist.html', controller: 'ActoPListController'});
+        $routeProvider.when('/acto/selection/:page?/:rpp?', {templateUrl: 'js/acto/selection.html', controller: 'ActoSelectionController'});
+        //------------
+        $routeProvider.when('/agrupacion/view/:id', {templateUrl: 'js/agrupacion/view.html', controller: 'AgrupacionViewController'});
+        $routeProvider.when('/agrupacion/new/:id?', {templateUrl: 'js/agrupacion/new.html', controller: 'AgrupacionNewController'});
+        $routeProvider.when('/agrupacion/edit/:id', {templateUrl: 'js/agrupacion/edit.html', controller: 'AgrupacionEditController'});
+        $routeProvider.when('/agrupacion/remove/:id', {templateUrl: 'js/agrupacion/remove.html', controller: 'AgrupacionRemoveController'});
+        $routeProvider.when('/agrupacion/plist/:page?/:rpp?', {templateUrl: 'js/agrupacion/plist.html', controller: 'AgrupacionPListController'});
+        $routeProvider.when('/agrupacion/selection/:page?/:rpp?', {templateUrl: 'js/agrupacion/selection.html', controller: 'AgrupacionSelectionController'});
+        //------------
+        $routeProvider.when('/archivo/view/:id', {templateUrl: 'js/archivo/view.html', controller: 'ArchivoViewController'});
+        $routeProvider.when('/archivo/new/:id?', {templateUrl: 'js/archivo/new.html', controller: 'ArchivoNewController'});
+        $routeProvider.when('/archivo/edit/:id', {templateUrl: 'js/archivo/edit.html', controller: 'ArchivoEditController'});
+        $routeProvider.when('/archivo/remove/:id', {templateUrl: 'js/archivo/remove.html', controller: 'ArchivoRemoveController'});
+        $routeProvider.when('/archivo/plist/:page?/:rpp?', {templateUrl: 'js/archivo/plist.html', controller: 'ArchivoPListController'});
+        $routeProvider.when('/archivo/selection/:page?/:rpp?', {templateUrl: 'js/archivo/selection.html', controller: 'ArchivoSelectionController'});
+        //------------
+        $routeProvider.when('/compositor/view/:id', {templateUrl: 'js/compositor/view.html', controller: 'CompositorViewController'});
+        $routeProvider.when('/compositor/new/:id?', {templateUrl: 'js/compositor/new.html', controller: 'CompositorNewController'});
+        $routeProvider.when('/compositor/edit/:id', {templateUrl: 'js/compositor/edit.html', controller: 'CompositorEditController'});
+        $routeProvider.when('/compositor/remove/:id', {templateUrl: 'js/compositor/remove.html', controller: 'CompositorRemoveController'});
+        $routeProvider.when('/compositor/plist/:page?/:rpp?', {templateUrl: 'js/compositor/plist.html', controller: 'CompositorPListController'});
+        $routeProvider.when('/compositor/selection/:page?/:rpp?', {templateUrl: 'js/compositor/selection.html', controller: 'CompositorSelectionController'});
+        $routeProvider.when('/compositor/obrasxcompositor/plist/:id?', {templateUrl: 'js/compositor/obrasxcompositor/plist.html', controller: 'ObrasXCompositorPListController'});
+        //------------
+        $routeProvider.when('/elenco/view/:id', {templateUrl: 'js/elenco/view.html', controller: 'ElencoViewController'});
+        $routeProvider.when('/elenco/new/:id?', {templateUrl: 'js/elenco/new.html', controller: 'ElencoNewController'});
+        $routeProvider.when('/elenco/edit/:id', {templateUrl: 'js/elenco/edit.html', controller: 'ElencoEditController'});
+        $routeProvider.when('/elenco/remove/:id', {templateUrl: 'js/elenco/remove.html', controller: 'ElencoRemoveController'});
+        $routeProvider.when('/elenco/plist/:page?/:rpp?', {templateUrl: 'js/elenco/plist.html', controller: 'ElencoPListController'});
+        $routeProvider.when('/elenco/selection/:page?/:rpp?', {templateUrl: 'js/elenco/selection.html', controller: 'ElencoSelectionController'});
+        //------------
         $routeProvider.when('/miembro/view/:id', {templateUrl: 'js/miembro/view.html', controller: 'MiembroViewController'});
         $routeProvider.when('/miembro/new/:id?', {templateUrl: 'js/miembro/new.html', controller: 'MiembroNewController'});
         $routeProvider.when('/miembro/edit/:id', {templateUrl: 'js/miembro/edit.html', controller: 'MiembroEditController'});
@@ -75,13 +114,13 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/miembro/plist/:page?/:rpp?', {templateUrl: 'js/miembro/plist.html', controller: 'MiembroPListController'});
         $routeProvider.when('/miembro/selection/:page?/:rpp?', {templateUrl: 'js/miembro/selection.html', controller: 'MiembroSelectionController'});
         //------------  
-        $routeProvider.when('/tipomiembro/view/:id', {templateUrl: 'js/tipomiembro/view.html', controller: 'TipomiembroViewController'});
-        $routeProvider.when('/tipomiembro/new/:id?', {templateUrl: 'js/tipomiembro/new.html', controller: 'TipomiembroNewController'});
-        $routeProvider.when('/tipomiembro/edit/:id', {templateUrl: 'js/tipomiembro/edit.html', controller: 'TipomiembroEditController'});
-        $routeProvider.when('/tipomiembro/remove/:id', {templateUrl: 'js/tipomiembro/remove.html', controller: 'TipomiembroRemoveController'});
-        $routeProvider.when('/tipomiembro/plist/:page?/:rpp?', {templateUrl: 'js/tipomiembro/plist.html', controller: 'TipomiembroPListController'});
-        $routeProvider.when('/tipomiembro/selection/:page?/:rpp?', {templateUrl: 'js/tipomiembro/selection.html', controller: 'TipomiembroSelectionController'});
-        //------------ 
+        $routeProvider.when('/obra/view/:id', {templateUrl: 'js/obra/view.html', controller: 'ObraViewController'});
+        $routeProvider.when('/obra/new/:id?', {templateUrl: 'js/obra/new.html', controller: 'ObraNewController'});
+        $routeProvider.when('/obra/edit/:id', {templateUrl: 'js/obra/edit.html', controller: 'ObraEditController'});
+        $routeProvider.when('/obra/remove/:id', {templateUrl: 'js/obra/remove.html', controller: 'ObraRemoveController'});
+        $routeProvider.when('/obra/plist/:page?/:rpp?', {templateUrl: 'js/obra/plist.html', controller: 'ObraPListController'});
+        $routeProvider.when('/obra/selection/:page?/:rpp?', {templateUrl: 'js/obra/selection.html', controller: 'ObraSelectionController'});
+        //------------
         $routeProvider.when('/rol/view/:id', {templateUrl: 'js/rol/view.html', controller: 'RolViewController'});
         $routeProvider.when('/rol/new/:id?', {templateUrl: 'js/rol/new.html', controller: 'RolNewController'});
         $routeProvider.when('/rol/edit/:id', {templateUrl: 'js/rol/edit.html', controller: 'RolEditController'});
@@ -96,29 +135,19 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/sociedad/plist/:page?/:rpp?', {templateUrl: 'js/sociedad/plist.html', controller: 'SociedadPListController'});
         $routeProvider.when('/sociedad/selection/:page?/:rpp?', {templateUrl: 'js/sociedad/selection.html', controller: 'SociedadSelectionController'});
         //------------
-        $routeProvider.when('/compositor/view/:id', {templateUrl: 'js/compositor/view.html', controller: 'CompositorViewController'});
-        $routeProvider.when('/compositor/new/:id?', {templateUrl: 'js/compositor/new.html', controller: 'CompositorNewController'});
-        $routeProvider.when('/compositor/edit/:id', {templateUrl: 'js/compositor/edit.html', controller: 'CompositorEditController'});
-        $routeProvider.when('/compositor/remove/:id', {templateUrl: 'js/compositor/remove.html', controller: 'CompositorRemoveController'});
-        $routeProvider.when('/compositor/plist/:page?/:rpp?', {templateUrl: 'js/compositor/plist.html', controller: 'CompositorPListController'});
-        $routeProvider.when('/compositor/selection/:page?/:rpp?', {templateUrl: 'js/compositor/selection.html', controller: 'CompositorSelectionController'});
-        $routeProvider.when('/compositor/obrasxcompositor/plist/:id?', {templateUrl: 'js/compositor/obrasxcompositor/plist.html', controller: 'ObrasXCompositorPListController'});
-        
-
-        //------------
-        $routeProvider.when('/obra/view/:id', {templateUrl: 'js/obra/view.html', controller: 'ObraViewController'});
-        $routeProvider.when('/obra/new/:id?', {templateUrl: 'js/obra/new.html', controller: 'ObraNewController'});
-        $routeProvider.when('/obra/edit/:id', {templateUrl: 'js/obra/edit.html', controller: 'ObraEditController'});
-        $routeProvider.when('/obra/remove/:id', {templateUrl: 'js/obra/remove.html', controller: 'ObraRemoveController'});
-        $routeProvider.when('/obra/plist/:page?/:rpp?', {templateUrl: 'js/obra/plist.html', controller: 'ObraPListController'});
-        $routeProvider.when('/obra/selection/:page?/:rpp?', {templateUrl: 'js/obra/selection.html', controller: 'ObraSelectionController'});
-        //------------
-        $routeProvider.when('/archivo/view/:id', {templateUrl: 'js/archivo/view.html', controller: 'ArchivoViewController'});
-        $routeProvider.when('/archivo/new/:id?', {templateUrl: 'js/archivo/new.html', controller: 'ArchivoNewController'});
-        $routeProvider.when('/archivo/edit/:id', {templateUrl: 'js/archivo/edit.html', controller: 'ArchivoEditController'});
-        $routeProvider.when('/archivo/remove/:id', {templateUrl: 'js/archivo/remove.html', controller: 'ArchivoRemoveController'});
-        $routeProvider.when('/archivo/plist/:page?/:rpp?', {templateUrl: 'js/archivo/plist.html', controller: 'ArchivoPListController'});
-        $routeProvider.when('/archivo/selection/:page?/:rpp?', {templateUrl: 'js/archivo/selection.html', controller: 'ArchivoSelectionController'});
+        $routeProvider.when('/tipomiembro/view/:id', {templateUrl: 'js/tipomiembro/view.html', controller: 'TipomiembroViewController'});
+        $routeProvider.when('/tipomiembro/new/:id?', {templateUrl: 'js/tipomiembro/new.html', controller: 'TipomiembroNewController'});
+        $routeProvider.when('/tipomiembro/edit/:id', {templateUrl: 'js/tipomiembro/edit.html', controller: 'TipomiembroEditController'});
+        $routeProvider.when('/tipomiembro/remove/:id', {templateUrl: 'js/tipomiembro/remove.html', controller: 'TipomiembroRemoveController'});
+        $routeProvider.when('/tipomiembro/plist/:page?/:rpp?', {templateUrl: 'js/tipomiembro/plist.html', controller: 'TipomiembroPListController'});
+        $routeProvider.when('/tipomiembro/selection/:page?/:rpp?', {templateUrl: 'js/tipomiembro/selection.html', controller: 'TipomiembroSelectionController'});
+        //------------ 
+        $routeProvider.when('/tipousuario/view/:id', {templateUrl: 'js/tipousuario/view.html', controller: 'TipousuarioViewController'});
+        $routeProvider.when('/tipousuario/new/:id?', {templateUrl: 'js/tipousuario/new.html', controller: 'TipousuarioNewController'});
+        $routeProvider.when('/tipousuario/edit/:id', {templateUrl: 'js/tipousuario/edit.html', controller: 'TipousuarioEditController'});
+        $routeProvider.when('/tipousuario/remove/:id', {templateUrl: 'js/tipousuario/remove.html', controller: 'TipousuarioRemoveController'});
+        $routeProvider.when('/tipousuario/plist/:page?/:rpp?', {templateUrl: 'js/tipousuario/plist.html', controller: 'TipousuarioPListController'});
+        $routeProvider.when('/tipousuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});
         //------------
         $routeProvider.when('/usuario/view/:id', {templateUrl: 'js/usuario/view.html', controller: 'UsuarioViewController'});
         $routeProvider.when('/usuario/new/:id?', {templateUrl: 'js/usuario/new.html', controller: 'UsuarioNewController'});
@@ -126,13 +155,6 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/usuario/remove/:id', {templateUrl: 'js/usuario/remove.html', controller: 'UsuarioRemoveController'});
         $routeProvider.when('/usuario/plist/:page?/:rpp?', {templateUrl: 'js/usuario/plist.html', controller: 'UsuarioPListController'});
         $routeProvider.when('/usuario/selection/:page?/:rpp?', {templateUrl: 'js/usuario/selection.html', controller: 'UsuarioSelectionController'});
-        //------------
-        $routeProvider.when('/tipousuario/view/:id', {templateUrl: 'js/tipousuario/view.html', controller: 'TipousuarioViewController'});
-        $routeProvider.when('/tipousuario/new/:id?', {templateUrl: 'js/tipousuario/new.html', controller: 'TipousuarioNewController'});
-        $routeProvider.when('/tipousuario/edit/:id', {templateUrl: 'js/tipousuario/edit.html', controller: 'TipousuarioEditController'});
-        $routeProvider.when('/tipousuario/remove/:id', {templateUrl: 'js/tipousuario/remove.html', controller: 'TipousuarioRemoveController'});
-        $routeProvider.when('/tipousuario/plist/:page?/:rpp?', {templateUrl: 'js/tipousuario/plist.html', controller: 'TipousuarioPListController'});
-        $routeProvider.when('/tipousuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});
         //------------
         $routeProvider.otherwise({redirectTo: '/'});
     }]);
@@ -169,15 +191,18 @@ gesmusic.run(function ($rootScope, $location, serverService, sessionService) {
 });
 //-------------
 var moduloSistema = angular.module('systemControllers', []);
+var moduloActo = angular.module('actoControllers', []);
+var moduloAgrupacion = angular.module('agrupacionControllers', []);
+var moduloArchivo = angular.module('archivoControllers', []);
+var moduloCompositor = angular.module('compositorControllers', []);
+var moduloElenco = angular.module('elencoControllers', []);
 var moduloMiembro = angular.module('miembroControllers', []);
-var moduloTipomiembro = angular.module('tipomiembroControllers', []);
+var moduloObra = angular.module('obraControllers', []);
 var moduloRol = angular.module('rolControllers', []);
 var moduloSociedad = angular.module('sociedadControllers', []);
-var moduloUsuario = angular.module('usuarioControllers', []);
+var moduloTipomiembro = angular.module('tipomiembroControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
-var moduloCompositor = angular.module('compositorControllers', []);
-var moduloObra = angular.module('obraControllers', []);
-var moduloArchivo = angular.module('archivoControllers', []);
+var moduloUsuario = angular.module('usuarioControllers', []);
 
 //-------------
 var moduloDirectivas = angular.module('Directives', []);

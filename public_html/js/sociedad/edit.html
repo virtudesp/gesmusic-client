@@ -92,7 +92,8 @@ THE SOFTWARE.
                             </div>
                             <div class="control-group text-right">
                                 <div class="controls">
-                                    <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
+                                    <!--<a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>-->
+                                    <a class="btn btn-primary" ng-click="save()" >Guardar</a>
                                     <a class="btn btn-default" ng-click="plist()">Ir al listado de sociedades</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
@@ -101,7 +102,8 @@ THE SOFTWARE.
                         <div ng-if="status">                        
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
+                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
+                                <a class="btn btn-default" ng-click="plist()">Ir al listado del {{obtitle}}</a>
                             </div>
                             <div class="alert alert-danger" ng-if="response.status != 200">
                                 <h2>{{status}}</h2>                             

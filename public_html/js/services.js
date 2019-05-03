@@ -65,7 +65,7 @@ moduloServicios
                             return "Las palabras deben comenzar con mayúsculas";
                             break;
                         case "palabra":
-                            return "No se pueden introducir números, solo palabras en minúscula";
+                            return "Admite letras, números y el guión (-)";
                             break;
                         case "usuario":
                             return "Sólamente letras con o sin números";
@@ -107,10 +107,11 @@ moduloServicios
                 getRegExpr: function (reg) {
                     switch (reg) {
                         case "nombre":
-                            return /^([A-Z]{1}[a-zñáéíóúàèò]+[\s]*)+$/;
+                            return /^([A-Za-z]{1,}[\s]?[a-zñáéíóúàèò]+[\s]*)+$/;
+//                            return /^([A-Z]{1}[a-zñáéíóúàèò]+[\s]*)+$/;
                             break;
                         case "palabra":
-                            return /^([a-z]{1}[a-zñáéíóúàèò]+[\s]*)+$/;
+                            return /^([a-zA-Z]+[a-zñáéíóúàèò]+[-|\d|\s\d]*[\s]*)+$/;
                             break;
                         case "codigopostal":
                             return /^\d{4,5}$/;
@@ -351,39 +352,48 @@ moduloServicios
         })
         .factory('metaService', [
             'serverService',
+            'actoService',
+            'agrupacionService',
+            'archivoService',
+            'compositorService',
+            'elencoService',
             'miembroService',
-            'tipomiembroService',
+            'obraService',
             'rolService',
             'sociedadService',
-            'compositorService',
-            'obraService',
-            'archivoService',
-            'usuarioService',
+            'tipomiembroService',
             'tipousuarioService',
+            'usuarioService',
             function (
                     serverService,
+                    actoService,
+                    agrupacionService,
+                    archivoService,
+                    compositorService,
+                    elencoService,
                     miembroService,
-                    tipomiembroService,
+                    obraService,
                     rolService,
                     sociedadService,
-                    compositorService,
-                    obraService,
-                    archivoService,
-                    usuarioService,
-                    tipousuarioService
+                    tipomiembroService,
+                    tipousuarioService,
+                    usuarioService
                     ) {
                 var meta = {};
                 return {
                     getMeta: function () {
+                        meta.acto = ({'fields': actoService.getFields(), 'name': actoService.getTitle(), 'title': serverService.capitalizeWord(actoService.getObTitle()), 'icon': actoService.getIcon()});
+                        meta.agrupacion = ({'fields': agrupacionService.getFields(), 'name': agrupacionService.getTitle(), 'title': serverService.capitalizeWord(agrupacionService.getObTitle()), 'icon': agrupacionService.getIcon()});
+                        meta.archivo = ({'fields': archivoService.getFields(), 'name': archivoService.getTitle(), 'title': serverService.capitalizeWord(archivoService.getObTitle()), 'icon': archivoService.getIcon()});
+                        meta.compositor = ({'fields': compositorService.getFields(), 'name': compositorService.getTitle(), 'title': serverService.capitalizeWord(compositorService.getObTitle()), 'icon': compositorService.getIcon()});
+                        meta.elenco = ({'fields': elencoService.getFields(), 'name': elencoService.getTitle(), 'title': serverService.capitalizeWord(elencoService.getObTitle()), 'icon': elencoService.getIcon()});
                         meta.miembro = ({'fields': miembroService.getFields(), 'name': miembroService.getTitle(), 'title': serverService.capitalizeWord(miembroService.getObTitle()), 'icon': miembroService.getIcon()});
-                        meta.tipomiembro = ({'fields': tipomiembroService.getFields(), 'name': tipomiembroService.getTitle(), 'title': serverService.capitalizeWord(tipomiembroService.getObTitle()), 'icon': tipomiembroService.getIcon()});
+                        meta.obra = ({'fields': obraService.getFields(), 'name': obraService.getTitle(), 'title': serverService.capitalizeWord(obraService.getObTitle()), 'icon': obraService.getIcon()});
                         meta.rol = ({'fields': rolService.getFields(), 'name': rolService.getTitle(), 'title': serverService.capitalizeWord(rolService.getObTitle()), 'icon': rolService.getIcon()});
                         meta.sociedad = ({'fields': sociedadService.getFields(), 'name': sociedadService.getTitle(), 'title': serverService.capitalizeWord(sociedadService.getObTitle()), 'icon': sociedadService.getIcon()});
-                        meta.compositor = ({'fields': compositorService.getFields(), 'name': compositorService.getTitle(), 'title': serverService.capitalizeWord(compositorService.getObTitle()), 'icon': compositorService.getIcon()});
-                        meta.obra = ({'fields': obraService.getFields(), 'name': obraService.getTitle(), 'title': serverService.capitalizeWord(obraService.getObTitle()), 'icon': obraService.getIcon()});
-                        meta.archivo = ({'fields': archivoService.getFields(), 'name': archivoService.getTitle(), 'title': serverService.capitalizeWord(archivoService.getObTitle()), 'icon': archivoService.getIcon()});
-                        meta.usuario = ({'fields': usuarioService.getFields(), 'name': usuarioService.getTitle(), 'title': serverService.capitalizeWord(usuarioService.getObTitle()), 'icon': usuarioService.getIcon()});
+                        meta.tipomiembro = ({'fields': tipomiembroService.getFields(), 'name': tipomiembroService.getTitle(), 'title': serverService.capitalizeWord(tipomiembroService.getObTitle()), 'icon': tipomiembroService.getIcon()});
                         meta.tipousuario = ({'fields': tipousuarioService.getFields(), 'name': tipousuarioService.getTitle(), 'title': serverService.capitalizeWord(tipousuarioService.getObTitle()), 'icon': tipousuarioService.getIcon()});
+                        meta.usuario = ({'fields': usuarioService.getFields(), 'name': usuarioService.getTitle(), 'title': serverService.capitalizeWord(usuarioService.getObTitle()), 'icon': usuarioService.getIcon()});
                         return meta;
                     }
                 }
