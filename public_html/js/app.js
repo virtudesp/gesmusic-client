@@ -98,7 +98,7 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/compositor/remove/:id', {templateUrl: 'js/compositor/remove.html', controller: 'CompositorRemoveController'});
         $routeProvider.when('/compositor/plist/:page?/:rpp?', {templateUrl: 'js/compositor/plist.html', controller: 'CompositorPListController'});
         $routeProvider.when('/compositor/selection/:page?/:rpp?', {templateUrl: 'js/compositor/selection.html', controller: 'CompositorSelectionController'});
-        $routeProvider.when('/compositor/obrasxcompositor/plist/:id?', {templateUrl: 'js/compositor/obrasxcompositor/plist.html', controller: 'ObrasXCompositorPListController'});
+        $routeProvider.when('/compositor/obrasxcompositor/plist/:id?/:nombre?/:apellidos?', {templateUrl: 'js/compositor/obrasxcompositor/plist.html', controller: 'ObrasXCompositorPListController'});
         //------------
         $routeProvider.when('/elenco/view/:id', {templateUrl: 'js/elenco/view.html', controller: 'ElencoViewController'});
         $routeProvider.when('/elenco/new/:id?', {templateUrl: 'js/elenco/new.html', controller: 'ElencoNewController'});
@@ -120,6 +120,9 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/obra/remove/:id', {templateUrl: 'js/obra/remove.html', controller: 'ObraRemoveController'});
         $routeProvider.when('/obra/plist/:page?/:rpp?', {templateUrl: 'js/obra/plist.html', controller: 'ObraPListController'});
         $routeProvider.when('/obra/selection/:page?/:rpp?', {templateUrl: 'js/obra/selection.html', controller: 'ObraSelectionController'});
+//        $routeProvider.when('/obra/obrasxcompositor/plist/:page?/:rpp?/:id?', {templateUrl: 'js/obra/obrasxcompositor/plist.html', controller: 'ObraPListController'});
+        //------------
+//        $routeProvider.when('/obrasxcompositor/plist/:page?/:rpp?/:id?', {templateUrl: 'js/obrasxcompositor/plist.html', controller: 'ObraPListController'});
         //------------
         $routeProvider.when('/rol/view/:id', {templateUrl: 'js/rol/view.html', controller: 'RolViewController'});
         $routeProvider.when('/rol/new/:id?', {templateUrl: 'js/rol/new.html', controller: 'RolNewController'});

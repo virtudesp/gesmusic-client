@@ -219,6 +219,19 @@ moduloServicios
                     }
                     return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getpage&page=' + page + "&rpp=" + rpp + filter + order, 'GET', '');
                 },
+                promise_getPageXId: function (strObject, id, rpp, page, filter, order) {
+                    if (filter) {
+                        filter = "&filter=" + filter;
+                    } else {
+                        filter = "";
+                    }
+                    if (order) {
+                        order = "&order=" + order;
+                    } else {
+                        order = "";
+                    }
+                    return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getpage&id=' + id + '&page=' + page + "&rpp=" + rpp + filter + order, 'GET', '');
+                },
                 promise_getAll: function (strClass, filter, order) {
                     filter = (filter === undefined || filter === null) ? "" : filter;
                     order = (order === undefined || order === null) ? "" : order;
