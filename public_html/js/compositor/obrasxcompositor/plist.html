@@ -78,21 +78,25 @@ THE SOFTWARE.
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-2 text-left">
+                                    <div class="tab-content">
+                                        <div class="col-md-2 text-right">
                                             <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
-                                                <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">
+                                                <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">                                                
                                             </form>
+                                        </div>
+                                        <div class="col-md-10 text-right">
+                                            <a class="btn btn-primary" href="{{url}}/{{compositor}}">Nueva obra</a>
+                                            <!--<a class="btn btn-primary" href="{{url}}/{{id}}/{{nombre}}/{{apellidos}}">Nueva obra</a>-->
+                                            <!--<a class="btn btn-primary" href="{{ob}}/new">Nueva obra</a>-->
                                         </div>
                                     </div>
                                 </div>
-
+                                </div>
                                 <div id="datos" ng-if="!status">
                                     <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
                                         <thead plistheader></thead>
                                         <tbody>
-
-                                            <tr ng-repeat="obj in page| filter:searchText">
+                                            <tr ng-repeat="obj in page | filter:searchText">
                                                 <td ng-repeat="f in fields" ng-if="f.visible"  class="text-right">
                                                     <div ng-if="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
                                                     <div ng-if="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
@@ -105,10 +109,7 @@ THE SOFTWARE.
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/new">
-                                                                <span class="glyphicon glyphicon-plus"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'compositor', 'CompositorViewpopController', 'viewpop')">
+                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'obra', 'ObraViewpopController', 'viewpop')">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
@@ -117,6 +118,9 @@ THE SOFTWARE.
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'compositor', 'CompositorRemovepopController', 'removepop')">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
+                                                            <!--<a class="btn btn-default btn-xs" href="{{url}}/{{compositor}}/{{nombre}}/{{apellidos}}">
+                                                                <span class="glyphicon glyphicon-plus"></span>
+                                                            </a>-->
                                                         </div>
                                                     </div>
                                                 </td>

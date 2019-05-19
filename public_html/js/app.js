@@ -93,11 +93,13 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/archivo/selection/:page?/:rpp?', {templateUrl: 'js/archivo/selection.html', controller: 'ArchivoSelectionController'});
         //------------
         $routeProvider.when('/compositor/view/:id', {templateUrl: 'js/compositor/view.html', controller: 'CompositorViewController'});
-        $routeProvider.when('/compositor/new/:id?', {templateUrl: 'js/compositor/new.html', controller: 'CompositorNewController'});
+        $routeProvider.when('/compositor/new/:id?/:edad?', {templateUrl: 'js/compositor/new.html', controller: 'CompositorNewController'});
         $routeProvider.when('/compositor/edit/:id', {templateUrl: 'js/compositor/edit.html', controller: 'CompositorEditController'});
         $routeProvider.when('/compositor/remove/:id', {templateUrl: 'js/compositor/remove.html', controller: 'CompositorRemoveController'});
         $routeProvider.when('/compositor/plist/:page?/:rpp?', {templateUrl: 'js/compositor/plist.html', controller: 'CompositorPListController'});
         $routeProvider.when('/compositor/selection/:page?/:rpp?', {templateUrl: 'js/compositor/selection.html', controller: 'CompositorSelectionController'});
+        // Controladores para obraXcompositor
+        $routeProvider.when('/compositor/obrasxcompositor/new/:id?', {templateUrl: 'js/compositor/obrasxcompositor/new.html', controller: 'ObrasXCompositorNewController'});
         $routeProvider.when('/compositor/obrasxcompositor/plist/:id?/:nombre?/:apellidos?', {templateUrl: 'js/compositor/obrasxcompositor/plist.html', controller: 'ObrasXCompositorPListController'});
         //------------
         $routeProvider.when('/elenco/view/:id', {templateUrl: 'js/elenco/view.html', controller: 'ElencoViewController'});
@@ -201,6 +203,8 @@ var moduloCompositor = angular.module('compositorControllers', []);
 var moduloElenco = angular.module('elencoControllers', []);
 var moduloMiembro = angular.module('miembroControllers', []);
 var moduloObra = angular.module('obraControllers', []);
+//------------
+//var moduloObrasXCompositor = angular.module('obraControllers', []);
 var moduloRol = angular.module('rolControllers', []);
 var moduloSociedad = angular.module('sociedadControllers', []);
 var moduloTipomiembro = angular.module('tipomiembroControllers', []);

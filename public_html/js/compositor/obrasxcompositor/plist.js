@@ -30,20 +30,17 @@
 
 moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParams', '$location', 'serverService', 'obraService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, obraService, $uibModal) {
-        
-        
         //datos del compositor
         $scope.id = $routeParams.id;
+        $scope.compositor = $routeParams.id;
         $scope.nombre = $routeParams.nombre;
-        $scope.apellidos = $routeParams.apellidos;
-        
-        //estamos mostrando obras del compositor id
-        
+        $scope.apellidos = $routeParams.apellidos; 
         $scope.fields = obraService.getFields();
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
-        $scope.ob = obraService.getTitle();
-//        $scope.ob = "obra/obrasxcompositor";
+        $scope.ob = obraService.getTitle();   
+//        $scope.ob = "compositor/obrasxcompositor";   
+        //estamos mostrando obras del compositor id 
         $scope.title = "Obras del compositor: " + $scope.nombre + " " + $scope.apellidos;
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
@@ -60,7 +57,7 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
         $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        $scope.url = "obrasxcompositor" + '/' + $scope.op;
+        $scope.url ="compositor/obrasxcompositor/new";// + $scope.compositor + "/" + $scope.nombre + "/" + $scope.apellidos;
         
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
@@ -70,7 +67,8 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
                     if ($scope.numpage > $scope.pages) {
                         $scope.numpage = $scope.pages;
                     }
-                    return serverService.promise_getPageXId($scope.ob, $scope.id, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
+//                    return serverService.promise_getPageXId($scope.ob, $scope.id, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
+                    return serverService.promise_getPageXId($scope.ob, $scope.compositor, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor1";
                 }

@@ -230,6 +230,7 @@ moduloServicios
                     } else {
                         order = "";
                     }
+                    // Aquí se establece que el método getpage. En el servidor, este método procesará el id seleccionado
                     return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getpage&id=' + id + '&page=' + page + "&rpp=" + rpp + filter + order, 'GET', '');
                 },
                 promise_getAll: function (strClass, filter, order) {
@@ -239,13 +240,19 @@ moduloServicios
                 },
                 promise_getOne: function (strClass, id) {
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=get&id=' + id, 'GET', '');
-                },
+                },             
                 promise_removeOne: function (strClass, id) {
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=remove&id=' + id, 'GET', '');
                 },
                 promise_setOne: function (strClass, jsonfile) {
                     $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=set', {params: jsonfile});
+                },
+                // relaciones 1:n para insertar un nuevo registro n de 1 proporcionando el id
+                // Aquí se establece que el método set. En el servidor, este método procesará el id seleccionado
+                promise_setOneXId: function (strClass, jsonfile) {
+                    $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
+                    return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=set&id=' + id, {params: jsonfile});
                 },
                 //--------
                 date_toDate: function (input) {
