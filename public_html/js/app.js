@@ -93,13 +93,16 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/archivo/selection/:page?/:rpp?', {templateUrl: 'js/archivo/selection.html', controller: 'ArchivoSelectionController'});
         //------------
         $routeProvider.when('/compositor/view/:id', {templateUrl: 'js/compositor/view.html', controller: 'CompositorViewController'});
-        $routeProvider.when('/compositor/new/:id?/:edad?', {templateUrl: 'js/compositor/new.html', controller: 'CompositorNewController'});
+        $routeProvider.when('/compositor/new/:id?', {templateUrl: 'js/compositor/new.html', controller: 'CompositorNewController'});
         $routeProvider.when('/compositor/edit/:id', {templateUrl: 'js/compositor/edit.html', controller: 'CompositorEditController'});
         $routeProvider.when('/compositor/remove/:id', {templateUrl: 'js/compositor/remove.html', controller: 'CompositorRemoveController'});
         $routeProvider.when('/compositor/plist/:page?/:rpp?', {templateUrl: 'js/compositor/plist.html', controller: 'CompositorPListController'});
         $routeProvider.when('/compositor/selection/:page?/:rpp?', {templateUrl: 'js/compositor/selection.html', controller: 'CompositorSelectionController'});
         // Controladores para obraXcompositor
-        $routeProvider.when('/compositor/obrasxcompositor/new/:id?', {templateUrl: 'js/compositor/obrasxcompositor/new.html', controller: 'ObrasXCompositorNewController'});
+        $routeProvider.when('/compositor/obrasxcompositor/view/:id?', {templateUrl: 'js/compositor/obrasxcompositor/view.html', controller: 'ObrasXCompositorViewpopController'});
+        $routeProvider.when('/compositor/obrasxcompositor/remove/:id?:foreign?/:nombre?/:apellidos?', {templateUrl: 'js/compositor/obrasxcompositor/remove.html', controller: 'ObrasXCompositorRemovepopController'});
+        $routeProvider.when('/compositor/obrasxcompositor/edit/:id?/:foreign?/:nombre?/:apellidos?', {templateUrl: 'js/compositor/obrasxcompositor/edit.html', controller: 'ObrasXCompositorEditController'});
+        $routeProvider.when('/compositor/obrasxcompositor/new/:foreign?/:nombre?/:apellidos?', {templateUrl: 'js/compositor/obrasxcompositor/new.html', controller: 'ObrasXCompositorNewController'});
         $routeProvider.when('/compositor/obrasxcompositor/plist/:id?/:nombre?/:apellidos?', {templateUrl: 'js/compositor/obrasxcompositor/plist.html', controller: 'ObrasXCompositorPListController'});
         //------------
         $routeProvider.when('/elenco/view/:id', {templateUrl: 'js/elenco/view.html', controller: 'ElencoViewController'});
@@ -122,9 +125,6 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/obra/remove/:id', {templateUrl: 'js/obra/remove.html', controller: 'ObraRemoveController'});
         $routeProvider.when('/obra/plist/:page?/:rpp?', {templateUrl: 'js/obra/plist.html', controller: 'ObraPListController'});
         $routeProvider.when('/obra/selection/:page?/:rpp?', {templateUrl: 'js/obra/selection.html', controller: 'ObraSelectionController'});
-//        $routeProvider.when('/obra/obrasxcompositor/plist/:page?/:rpp?/:id?', {templateUrl: 'js/obra/obrasxcompositor/plist.html', controller: 'ObraPListController'});
-        //------------
-//        $routeProvider.when('/obrasxcompositor/plist/:page?/:rpp?/:id?', {templateUrl: 'js/obrasxcompositor/plist.html', controller: 'ObraPListController'});
         //------------
         $routeProvider.when('/rol/view/:id', {templateUrl: 'js/rol/view.html', controller: 'RolViewController'});
         $routeProvider.when('/rol/new/:id?', {templateUrl: 'js/rol/new.html', controller: 'RolNewController'});

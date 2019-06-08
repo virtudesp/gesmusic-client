@@ -85,9 +85,7 @@ THE SOFTWARE.
                                             </form>
                                         </div>
                                         <div class="col-md-10 text-right">
-                                            <a class="btn btn-primary" href="{{url}}/{{compositor}}">Nueva obra</a>
-                                            <!--<a class="btn btn-primary" href="{{url}}/{{id}}/{{nombre}}/{{apellidos}}">Nueva obra</a>-->
-                                            <!--<a class="btn btn-primary" href="{{ob}}/new">Nueva obra</a>-->
+                                            <a class="btn btn-primary" href="{{urlnew}}/{{foreign}}/{{nombre}}/{{apellidos}}">Nueva obra</a>
                                         </div>
                                     </div>
                                 </div>
@@ -109,18 +107,15 @@ THE SOFTWARE.
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'obra', 'ObraViewpopController', 'viewpop')">
+                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'obrasxcompositor', 'ObrasXCompositorViewpopController', 'viewpop')">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                                             </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
+                                                            <a class="btn btn-default btn-xs" href="{{urledit}}/{{obj.id}}/{{foreign}}/{{nombre}}/{{apellidos}}">
                                                                 <span class="glyphicon glyphicon-pencil"></span>
                                                             </a>
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'compositor', 'CompositorRemovepopController', 'removepop')">
+                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'obrasxcompositor', 'ObrasXCompositorRemovepopController', 'removepop')">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
-                                                            <!--<a class="btn btn-default btn-xs" href="{{url}}/{{compositor}}/{{nombre}}/{{apellidos}}">
-                                                                <span class="glyphicon glyphicon-plus"></span>
-                                                            </a>-->
                                                         </div>
                                                     </div>
                                                 </td>

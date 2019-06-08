@@ -31,17 +31,16 @@
 moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParams', '$location', 'serverService', 'obraService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, obraService, $uibModal) {
         //datos del compositor
-        $scope.id = $routeParams.id;
-        $scope.compositor = $routeParams.id;
+//        $scope.id = $routeParams.id;
+        $scope.foreign = $routeParams.id;
         $scope.nombre = $routeParams.nombre;
         $scope.apellidos = $routeParams.apellidos; 
+        $scope.title = "Obras del compositor: " + $scope.nombre + " " + $scope.apellidos;
+        
         $scope.fields = obraService.getFields();
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();   
-//        $scope.ob = "compositor/obrasxcompositor";   
-        //estamos mostrando obras del compositor id 
-        $scope.title = "Obras del compositor: " + $scope.nombre + " " + $scope.apellidos;
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
@@ -56,19 +55,19 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
         $scope.sfilterParams = serverService.checkNull($routeParams.sfilter);
         $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
-        $scope.debugging = serverService.debugging();
-        $scope.url ="compositor/obrasxcompositor/new";// + $scope.compositor + "/" + $scope.nombre + "/" + $scope.apellidos;
+//        $scope.debugging = serverService.debugging();
+        $scope.urlnew ="compositor/obrasxcompositor/new";
+        $scope.urledit ="compositor/obrasxcompositor/edit";
         
         function getDataFromServer() {
-            serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
+            serverService.promise_getCountXId($scope.ob, $scope.foreign, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;
                     $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
                     if ($scope.numpage > $scope.pages) {
                         $scope.numpage = $scope.pages;
                     }
-//                    return serverService.promise_getPageXId($scope.ob, $scope.id, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
-                    return serverService.promise_getPageXId($scope.ob, $scope.compositor, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
+                    return serverService.promise_getPageXId($scope.ob, $scope.foreign, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor1";
                 }
@@ -83,24 +82,24 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
                 $scope.status = "Error en la recepción de datos del servidor3";
             });
         }
-//        $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
-//            var modalInstance = $uibModal.open({
-//                templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',
-//                controller: foreignContollerName,
-//                size: 'lg',
-//                resolve: {
-//                    id: function () {
-//                        return id;
-//                    }
-//                }
-//            }).result.then(function (modalResult) {
-//                if (modalResult) {
-//                    getDataFromServer();
-//                }
-//
-//            });
-//        }
-        ;
+        // Para el viewpop
+        $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
+            var modalInstance = $uibModal.open({
+                templateUrl: 'js/compositor/' + foreignObjectName + '/' + foreignViewName + '.html',
+                controller: foreignContollerName,
+                size: 'lg',
+                resolve: {
+                    id: function () {
+                        return id;
+                    }
+                }
+            }).result.then(function (modalResult) {
+                if (modalResult) {
+                    getDataFromServer();
+                }
+
+            });
+        };
         getDataFromServer();
     }]);
 

@@ -40,5 +40,4 @@ function actions(serverService, $uibModal)
 
         });
     };
-
 }

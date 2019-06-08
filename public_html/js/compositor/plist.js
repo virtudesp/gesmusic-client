@@ -50,7 +50,7 @@ moduloCompositor.controller('CompositorPListController', ['$scope', '$routeParam
         $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        $scope.url = "compositor/obrasxcompositor/plist";
+        $scope.urlplist = "compositor/obrasxcompositor/plist";
         
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {

@@ -25,41 +25,27 @@
  * THE SOFTWARE.
  * 
  */
-
 'use strict';
 
-moduloObra.controller('ObrasXCompositorNewController', ['$scope', '$routeParams', '$location', 'serverService', 'obraService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, obraService, sharedSpaceService, $filter, $uibModal) {
-        // datos del compositor
-        $scope.foreign = $routeParams.foreign;
-        $scope.nombre = $routeParams.nombre;
-        $scope.apellidos = $routeParams.apellidos;
-        $scope.urlplist ="compositor/obrasxcompositor/plist/" + $scope.foreign + "/" + $scope.nombre + "/" + $scope.apellidos;
-        //-------
+
+moduloObra.controller('ObrasXCompositorRemovepopController', ['$scope', '$routeParams', 'serverService', 'obraService', '$location', '$uibModalInstance', 'id',
+    function ($scope, $routeParams, serverService, obraService, $location, $uibModalInstance, id) {
         $scope.fields = obraService.getFields();
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();
-        $scope.title = "Nueva obra del compositor: " + $scope.nombre + " " + $scope.apellidos;
-        $scope.op = "new";
+        $scope.title = "Borrado de una obra"; // del compositor " + $scope.nombre + " " + $scope.apellidos;
+//        $scope.id = $routeParams.id;
+        $scope.id = id;
+        $scope.foreign = $routeParams.foreign;
         $scope.status = null;
 //        $scope.debugging = serverService.debugging();
-        $scope.bean = {};
-        $scope.bean.id = 0;
-        $scope.bean.id_compositor = $routeParams.foreign;  // añadido
-         
-        // siempre va a haber id_compositor       
-        $scope.bean.obj_compositor = {"id": $scope.foreign};
-        $scope.show_obj_compositor = true; 
-        //-----
-        $scope.save = function () {
-            var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
-            serverService.promise_setOneXId($scope.ob, $scope.foreign, jsonToSend).then(function (response) {
+        function getData() {
+            serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
-                        $scope.response = response;
-                        $scope.status = "El registro " + $scope.obtitle + " se ha creado con id = " + response.data.message;
-                        $scope.bean.id = response.data.message;
+                        $scope.status = null;
+                        $scope.bean = response.data.message;
                     } else {
                         $scope.status = "Error en la recepción de datos del servidor1";
                     }
@@ -69,17 +55,31 @@ moduloObra.controller('ObrasXCompositorNewController', ['$scope', '$routeParams'
             }).catch(function (data) {
                 $scope.status = "Error en la recepción de datos del servidor3";
             });
-            ;
-        };
-        $scope.back = function () {
-            window.history.back();
-        };
-        $scope.close = function () {
-            $location.path('/home');
-        };
-        $scope.plist = function () {
-//            $location.path('/' + $scope.ob + '/plist');
-            $location.path($scope.urlplist);
-        };
+        }
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        }
+        $scope.remove = function () {
+            serverService.promise_removeOne($scope.ob, $scope.id).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        if (response.data.message == 1) {
+                            $scope.status = "El registro " + $scope.obtitle + " se ha eliminado.";
+                            $uibModalInstance.close(true);
+                            getData();
+                            return false;
+                        } else {
+                            $scope.status = "Error en el borrado de datos del servidor 1";
+                        }
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor 2";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor 3";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor 4";
+            });
+        }
+        getData();
     }]);
-

@@ -206,6 +206,14 @@ moduloServicios
                     }
                     return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getcount' + filter, 'GET', '');
                 },
+                promise_getCountXId: function (strObject, id, filter) {
+                    if (filter) {
+                        filter = "&filter=" + filter;
+                    } else {
+                        filter = "";
+                    }
+                    return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getcount&id=' + id + filter, 'GET', '');
+                },
                 promise_getPage: function (strObject, rpp, page, filter, order) {
                     if (filter) {
                         filter = "&filter=" + filter;
@@ -240,7 +248,11 @@ moduloServicios
                 },
                 promise_getOne: function (strClass, id) {
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=get&id=' + id, 'GET', '');
-                },             
+                },
+                // relaciones 1:n ==> modificar un registro 
+                promise_getOneXId: function (strClass, id, foreign) {
+                    return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=get&id=' + id + '&foreign=' + foreign, 'GET', '');
+                },            
                 promise_removeOne: function (strClass, id) {
                     return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=remove&id=' + id, 'GET', '');
                 },
@@ -250,9 +262,13 @@ moduloServicios
                 },
                 // relaciones 1:n para insertar un nuevo registro n de 1 proporcionando el id
                 // Aquí se establece que el método set. En el servidor, este método procesará el id seleccionado
-                promise_setOneXId: function (strClass, jsonfile) {
+                promise_setOneXId: function (strClass, foreign, jsonfile) {
                     $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
-                    return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=set&id=' + id, {params: jsonfile});
+                    return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=set&foreign=' + foreign, {params: jsonfile});
+                },
+                promise_setOneXIdXForeign: function (strClass, id, foreign, jsonfile) {
+                    $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
+                    return $http.get(this.getAppUrl() + '?ob=' + strClass + '&op=set&id=' + id + '&foreign=' + foreign, {params: jsonfile});
                 },
                 //--------
                 date_toDate: function (input) {
