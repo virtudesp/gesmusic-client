@@ -30,17 +30,17 @@
 
 moduloCompositor.controller('CompositorNewController', ['$scope', '$routeParams', '$location', 'serverService', 'compositorService', 'sharedSpaceService', '$filter', '$uibModal',
     function ($scope, $routeParams, $location, serverService, compositorService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = compositorService.getFields();
+        $scope.fields = compositorService.getFields(true);
         $scope.obtitle = compositorService.getObTitle();
         $scope.icon = compositorService.getIcon();
         $scope.ob = compositorService.getTitle();
-        $scope.title = "Creando un nuevo " + $scope.obtitle;
+        $scope.title = "Creando una nuevo " + $scope.obtitle;
         $scope.op = "new";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
         $scope.bean.id = 0;
-        //-----
+        //----
         $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
@@ -68,6 +68,9 @@ moduloCompositor.controller('CompositorNewController', ['$scope', '$routeParams'
         };
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
+        };
+        $scope.reload = function () {
+            $location.reload(true);
         };
     }]);
 

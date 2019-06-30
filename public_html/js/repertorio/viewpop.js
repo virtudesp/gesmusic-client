@@ -27,13 +27,13 @@
  */
 'use strict';
 
-moduloElenco.controller('ElencoViewpopController', ['$scope', '$routeParams', 'serverService', 'elencoService', '$location', '$uibModalInstance', 'id',
-    function ($scope, $routeParams, serverService, elencoService, $location, $uibModalInstance, id) {
-        $scope.fields = elencoService.getFields();
-        $scope.obtitle = elencoService.getObTitle();
-        $scope.icon = elencoService.getIcon();
-        $scope.ob = elencoService.getTitle();
-        $scope.title = "Vista de un componente del " + $scope.obtitle;
+moduloRepertorio.controller('RepertorioViewpopController', ['$scope', '$routeParams', 'serverService', 'repertorioService', '$location', '$uibModalInstance', 'id',
+    function ($scope, $routeParams, serverService, repertorioService, $location, $uibModalInstance, id) {
+        $scope.fields = repertorioService.getFields(true);
+        $scope.obtitle = repertorioService.getObTitle();
+        $scope.icon = repertorioService.getIcon();
+        $scope.ob = repertorioService.getTitle();
+        $scope.title = "Vista de " + $scope.obtitle;
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

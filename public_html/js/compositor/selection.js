@@ -30,7 +30,7 @@
 
 moduloCompositor.controller('CompositorSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'compositorService', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $modalInstance, $routeParams, compositorService, serverService, $location, sharedSpaceService) {
-        $scope.fields = compositorService.getFields();
+        $scope.fields = compositorService.getFields(true);
         $scope.obtitle = compositorService.getObTitle();
         $scope.icon = compositorService.getIcon();
         $scope.title = "Selección de un" + $scope.obtitle;

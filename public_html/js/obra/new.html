@@ -106,6 +106,8 @@ THE SOFTWARE.
                                 <h2>{{status}}</h2>
                                 <a ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
                                 <a class="btn btn-default" ng-click="plist()">Ir al listado de obras</a>
+                                 <!---<a class="btn btn-default" ng-click="reload()">Nuevo Registro</a>-->
+                                <a class="btn btn-default" ng-href="javascript:location.reload()">Nuevo Registro</a>
                             </div>
                             <div class="alert alert-danger" ng-if="response.status != 200">
                                 <h2>{{status}}</h2>                             

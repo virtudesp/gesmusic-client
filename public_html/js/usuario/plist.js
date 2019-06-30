@@ -30,7 +30,7 @@
 
 moduloUsuario.controller('UsuarioPListController', ['$scope', '$routeParams', '$location', 'serverService', 'usuarioService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, usuarioService, $uibModal) {
-        $scope.fields = usuarioService.getFields();
+        $scope.fields = usuarioService.getFields(true);
         $scope.obtitle = usuarioService.getObTitle();
         $scope.icon = usuarioService.getIcon();
         $scope.ob = usuarioService.getTitle();

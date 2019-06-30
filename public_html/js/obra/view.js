@@ -30,7 +30,7 @@
 
 moduloObra.controller('ObraViewController', ['$scope', '$routeParams', 'serverService', 'obraService', '$location',
     function ($scope, $routeParams, serverService, obraService, $location) {
-        $scope.fields = obraService.getFields();
+        $scope.fields = obraService.getFields(true);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();

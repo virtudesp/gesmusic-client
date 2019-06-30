@@ -34,13 +34,15 @@ moduloObra.controller('ObrasXCompositorNewController', ['$scope', '$routeParams'
         $scope.foreign = $routeParams.foreign;
         $scope.nombre = $routeParams.nombre;
         $scope.apellidos = $routeParams.apellidos;
-        $scope.urlplist ="compositor/obrasxcompositor/plist/" + $scope.foreign + "/" + $scope.nombre + "/" + $scope.apellidos;
+        $scope.urlplist ="compositor/obrasxcompositor/plist/" + $scope.foreign;// + "/" + $scope.nombre + "/" + $scope.apellidos;
+//        $scope.urlplist ="obrasxcompositor/plist/" + $scope.foreign; // + "/" + $scope.nombre + "/" + $scope.apellidos;
         //-------
-        $scope.fields = obraService.getFields();
+        $scope.fields = obraService.getFields(false);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();
-        $scope.title = "Nueva obra del compositor: " + $scope.nombre + " " + $scope.apellidos;
+//        $scope.title = "Nueva obra del compositor: " + $scope.nombre + " " + $scope.apellidos;
+        $scope.title = "Nueva obra"; // del compositor: " + $scope.nombre + " " + $scope.apellidos;
         $scope.op = "new";
         $scope.status = null;
 //        $scope.debugging = serverService.debugging();

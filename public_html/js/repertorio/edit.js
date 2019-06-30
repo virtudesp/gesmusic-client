@@ -27,26 +27,20 @@
  */
 
 'use strict';
-moduloElenco.controller('ElencoEditController', ['$scope', '$routeParams', '$location', 'elencoService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, elencoService, serverService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = elencoService.getFields();
-        $scope.obtitle = elencoService.getObTitle();
-        $scope.icon = elencoService.getIcon();
-        $scope.ob = elencoService.getTitle();
-        $scope.title = "Editando un componente del " + $scope.obtitle;
+moduloRepertorio.controller('RepertorioEditController', ['$scope', '$routeParams', '$location', 'repertorioService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, repertorioService, serverService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = repertorioService.getFields(true);
+        $scope.obtitle = repertorioService.getObTitle();
+        $scope.icon = repertorioService.getIcon();
+        $scope.ob = repertorioService.getTitle();
+        $scope.title = "Editando una " + $scope.obtitle;
         $scope.op = "edit";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
         //---
-        $scope.bean.obj_miembro = {"id": null};
-        $scope.show_obj_miembro = true;
-        //---
-        $scope.bean.obj_agrupacion = {"id": null};
-        $scope.show_obj_agrupacion = true;
-        //---
-        $scope.bean.obj_rol = {"id": null};
-        $scope.show_obj_rol = true;
+        $scope.bean.obj_compositor = {"id": null};
+        $scope.obj_compositor = true;
         //---
         $scope.id = $routeParams.id;
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
@@ -63,16 +57,7 @@ moduloElenco.controller('ElencoEditController', ['$scope', '$routeParams', '$loc
         }).catch(function (data) {
             $scope.status = "Error en la recepción de datos del servidor3";
         });
-        $scope.save = function () { 
-            if ($scope.bean.obj_miembro.id <= 0) {
-                $scope.bean.obj_miembro.id = null;
-            }   
-            if ($scope.bean.obj_agrupacion.id <= 0) {
-                $scope.bean.obj_agrupacion.id = null;
-            }
-            if ($scope.bean.obj_rol.id <= 0) {
-                $scope.bean.obj_rol.id = null;
-            }        
+        $scope.save = function () {            
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

@@ -104,9 +104,6 @@ THE SOFTWARE.
                                                     <div ng-if="f.visible && f.type == 'calculado'" class="text-center">{{obj[f.name]}}</div>
                                                     <div ng-if="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                     <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
-                                                    <!------------------------------------------------>
-                                                    <div ng-if="f.visible && f.name == 'obj_obra' && obj.obj_obra.id > 0" class="text-center"><a href="obra/view/{{obj.obj_obra.id}}">{{obj.obj_obra.titulo}}</a></div>
-                                                    <!------------------------------------------------>
                                                 </td>                       
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
@@ -120,6 +117,8 @@ THE SOFTWARE.
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'acto', 'ActoRemovepopController', 'removepop')">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
+                                                            <a class="btn btn-default btn-xs" href="{{urlparticipa}}/{{obj.id}}">Participación</a>
+                                                            <a class="btn btn-default btn-xs" href="{{urlrepertorio}}/{{obj.id}}">Repertorio</a>
                                                         </div>
                                                     </div>
                                                 </td>

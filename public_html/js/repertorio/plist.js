@@ -28,38 +28,40 @@
 
 'use strict';
 
-moduloElenco.controller('ElencoPListController', ['$scope', '$routeParams', '$location', 'serverService', 'elencoService', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, elencoService, $uibModal) {
-        $scope.fields = elencoService.getFields();
-        $scope.obtitle = elencoService.getObTitle();
-        $scope.icon = elencoService.getIcon();
-        $scope.ob = elencoService.getTitle();
-        $scope.title = "Listado del " + $scope.obtitle;
+moduloRepertorio.controller('RepertorioPListController', ['$scope', '$routeParams', '$location', 'serverService', 'repertorioService', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, repertorioService, $uibModal) {
+        $scope.fields = repertorioService.getFields(true);
+        $scope.obtitle = repertorioService.getObTitle();
+        $scope.icon = repertorioService.getIcon();
+        $scope.ob = repertorioService.getTitle();
+        $scope.title = "Repertorio del acto: ";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
         $scope.order = "";
         $scope.ordervalue = "";
-        $scope.filter = "id";
-        $scope.filteroperator = "like";
-        $scope.filtervalue = "";
-        $scope.filterParams = serverService.checkNull($routeParams.filter);
-        $scope.orderParams = serverService.checkNull($routeParams.order);
-        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter);
-        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
+//        $scope.filter = "id";
+//        $scope.filteroperator = "like";
+//        $scope.filtervalue = "";
+//        $scope.filterParams = serverService.checkNull($routeParams.filter)
+//        $scope.orderParams = serverService.checkNull($routeParams.order)
+//        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
+//        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.url = $scope.ob + '/' + $scope.op;
+        $scope.listado = "repertorio";
+        $scope.id = $routeParams.id;
         function getDataFromServer() {
-            serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
+            serverService.promise_getCount($scope.ob, $scope.listado, $scope.id, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;
                     $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
                     if ($scope.numpage > $scope.pages) {
                         $scope.numpage = $scope.pages;
                     }
-                    return serverService.promise_getPage($scope.ob, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
+                    return serverService.promise_getPageXId($scope.ob, $scope.foreign, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor1";
                 }
@@ -88,8 +90,10 @@ moduloElenco.controller('ElencoPListController', ['$scope', '$routeParams', '$lo
                 if (modalResult) {
                     getDataFromServer();
                 }
+
             });
-        };
+        }
+        ;
         getDataFromServer();
     }]);
 

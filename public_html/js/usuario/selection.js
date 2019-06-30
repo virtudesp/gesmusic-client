@@ -30,7 +30,7 @@
 
 moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'usuarioService', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $modalInstance, $routeParams, usuarioService, serverService, $location, sharedSpaceService) {
-        $scope.fields = usuarioService.getFields();
+        $scope.fields = usuarioService.getFields(true);
         $scope.obtitle = usuarioService.getObTitle();
         $scope.icon = usuarioService.getIcon();
         $scope.title = "Selección de un" + $scope.obtitle;

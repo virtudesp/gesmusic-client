@@ -28,13 +28,13 @@
 
 'use strict';
 
-moduloElenco.controller('ElencoSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'elencoService', 'serverService', '$location', 'sharedSpaceService',
-    function ($scope, $modalInstance, $routeParams, elencoService, serverService, $location, sharedSpaceService) {
-        $scope.fields = elencoService.getFields();
-        $scope.obtitle = elencoService.getObTitle();
-        $scope.icon = elencoService.getIcon();
-        $scope.title = "Selección de un componente del " + $scope.obtitle;
-        $scope.ob = elencoService.getTitle();
+moduloRepertorio.controller('RepertorioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'repertorioService', 'serverService', '$location', 'sharedSpaceService',
+    function ($scope, $modalInstance, $routeParams, repertorioService, serverService, $location, sharedSpaceService) {
+        $scope.fields = repertorioService.getFields(true);
+        $scope.obtitle = repertorioService.getObTitle();
+        $scope.icon = repertorioService.getIcon();
+        $scope.title = "Selección de un" + $scope.obtitle;
+        $scope.ob = repertorioService.getTitle();
         $scope.op = "selection";
         $scope.numpage = 1;
         $scope.rpp = 10;
@@ -53,7 +53,7 @@ moduloElenco.controller('ElencoSelectionController', ['$scope', '$uibModalInstan
         };
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
-        };
+        }
         function getData() {
             serverService.promise_getCount($scope.ob, $scope.filterParams).then(function (response) {
                 if (response.status == 200) {
@@ -76,6 +76,7 @@ moduloElenco.controller('ElencoSelectionController', ['$scope', '$uibModalInstan
             }).catch(function (data) {
                 $scope.status = "Error en la recepción de datos del servidor3";
             });
+
         }
         $scope.$on('filterSelectionEvent', function (event, data) {
             $scope.filterParams = data;
@@ -104,6 +105,6 @@ moduloElenco.controller('ElencoSelectionController', ['$scope', '$uibModalInstan
         $scope.chooseOne = function (id) {
             $scope.closeForm(id);
             return false;
-        };
+        }
         getData();
     }]);

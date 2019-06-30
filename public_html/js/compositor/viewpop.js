@@ -29,7 +29,7 @@
 
 moduloCompositor.controller('CompositorViewpopController', ['$scope', '$routeParams', 'serverService', 'compositorService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, compositorService, $location, $uibModalInstance, id) {
-        $scope.fields = compositorService.getFields();
+        $scope.fields = compositorService.getFields(true);
         $scope.obtitle = compositorService.getObTitle();
         $scope.icon = compositorService.getIcon();
         $scope.ob = compositorService.getTitle();

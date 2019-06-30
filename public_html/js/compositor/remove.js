@@ -30,14 +30,15 @@
 
 moduloCompositor.controller('CompositorRemoveController', ['$scope', '$routeParams', '$location', 'serverService', 'compositorService',
     function ($scope, $routeParams, $location, serverService, compositorService) {
-        $scope.fields = compositorService.getFields();
+        $scope.fields = compositorService.getFields(true);
         $scope.obtitle = compositorService.getObTitle();
         $scope.icon = compositorService.getIcon();
         $scope.ob = compositorService.getTitle();
-        $scope.title = "Borrado de un " + $scope.obtitle;
+        $scope.title = "Borrando un" + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();
+        
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {

@@ -30,7 +30,7 @@
 
 moduloObra.controller('ObraRemoveController', ['$scope', '$routeParams', '$location', 'serverService', 'obraService',
     function ($scope, $routeParams, $location, serverService, obraService) {
-        $scope.fields = obraService.getFields();
+        $scope.fields = obraService.getFields(true);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();

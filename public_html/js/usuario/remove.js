@@ -30,7 +30,7 @@
 
 moduloUsuario.controller('UsuarioRemoveController', ['$scope', '$routeParams', '$location', 'serverService', 'usuarioService',
     function ($scope, $routeParams, $location, serverService, usuarioService) {
-        $scope.fields = usuarioService.getFields();
+        $scope.fields = usuarioService.getFields(true);
         $scope.obtitle = usuarioService.getObTitle();
         $scope.icon = usuarioService.getIcon();
         $scope.ob = usuarioService.getTitle();

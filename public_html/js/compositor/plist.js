@@ -30,7 +30,7 @@
 
 moduloCompositor.controller('CompositorPListController', ['$scope', '$routeParams', '$location', 'serverService', 'compositorService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, compositorService, $uibModal) {
-        $scope.fields = compositorService.getFields();
+        $scope.fields = compositorService.getFields(true);
         $scope.obtitle = compositorService.getObTitle();
         $scope.icon = compositorService.getIcon();
         $scope.ob = compositorService.getTitle();
@@ -51,6 +51,7 @@ moduloCompositor.controller('CompositorPListController', ['$scope', '$routeParam
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.urlplist = "compositor/obrasxcompositor/plist";
+        $scope.url = $scope.ob + '/' + $scope.op;
         
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {

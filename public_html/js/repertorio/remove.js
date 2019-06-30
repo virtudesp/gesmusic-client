@@ -28,13 +28,13 @@
 
 'use strict';
 
-moduloElenco.controller('ElencoRemoveController', ['$scope', '$routeParams', '$location', 'serverService', 'elencoService',
-    function ($scope, $routeParams, $location, serverService, elencoService) {
-        $scope.fields = elencoService.getFields();
-        $scope.obtitle = elencoService.getObTitle();
-        $scope.icon = elencoService.getIcon();
-        $scope.ob = elencoService.getTitle();
-        $scope.title = "Borrando un componente del " + $scope.obtitle;
+moduloRepertorio.controller('RepertorioRemoveController', ['$scope', '$routeParams', '$location', 'serverService', 'repertorioService',
+    function ($scope, $routeParams, $location, serverService, repertorioService) {
+        $scope.fields = repertorioService.getFields(true);
+        $scope.obtitle = repertorioService.getObTitle();
+        $scope.icon = repertorioService.getIcon();
+        $scope.ob = repertorioService.getTitle();
+        $scope.title = "Borrado de " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

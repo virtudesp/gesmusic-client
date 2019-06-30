@@ -29,7 +29,7 @@
 
 moduloObra.controller('ObraViewpopController', ['$scope', '$routeParams', 'serverService', 'obraService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, obraService, $location, $uibModalInstance, id) {
-        $scope.fields = obraService.getFields();
+        $scope.fields = obraService.getFields(true);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();

@@ -28,56 +28,30 @@
 
 'use strict';
 
-moduloElenco.controller('ElencoNewController', ['$scope', '$routeParams', '$location', 'serverService', 'elencoService', 'sharedSpaceService', '$filter', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, elencoService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = elencoService.getFields();
-        $scope.obtitle = elencoService.getObTitle();
-        $scope.icon = elencoService.getIcon();
-        $scope.ob = elencoService.getTitle();
-        $scope.title = "Creando un nuevo componente del " + $scope.obtitle;
+moduloRepertorio.controller('RepertorioNewController', ['$scope', '$routeParams', '$location', 'serverService', 'repertorioService', 'sharedSpaceService', '$filter', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, repertorioService, sharedSpaceService, $filter, $uibModal) {
+        $scope.fields = repertorioService.getFields(true);
+        $scope.obtitle = repertorioService.getObTitle();
+        $scope.icon = repertorioService.getIcon();
+        $scope.ob = repertorioService.getTitle();
+        $scope.title = "Creando una nueva " + $scope.obtitle;
         $scope.op = "new";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
-        //---
-        $scope.bean.obj_miembro = {"id": 0};
-        $scope.bean.obj_agrupacion = {"id": 0};
-        $scope.bean.obj_rol = {"id": 0};
-        //---
-        if ($routeParams.id_miembro) {
-            serverService.promise_getOne('miembro', $routeParams.id_miembro).then(function (response) {
+        $scope.bean.id = 0;
+        //----
+        $scope.bean.obj_compositor = {"id": 0};
+        if ($routeParams.id_compositor) {
+            serverService.promise_getOne('compositor', $routeParams.id_compositor).then(function (response) {
                 if (response.data.message.id != 0) {
-                    $scope.bean.obj_miembro = response.data.message;
-                    $scope.show_obj_miembro = false;
-                    $scope.title = "Nuevo componente del elenco: " + $scope.bean.obj_miembro.miembro;
+                    $scope.bean.obj_compositor = response.data.message;
+                    $scope.show_obj_compositor = false;
+                    $scope.title = "Nueva repertorio de " + $scope.bean.obj_compositor.nombre + $scope.bean.obj_compositor.apellidos;
                 }
             });
         } else {
-            $scope.show_obj_miembro = true;
-        }
-        //---
-        if ($routeParams.id_agrupacion) {
-            serverService.promise_getOne('agrupacion', $routeParams.id_agrupacion).then(function (response) {
-                if (response.data.message.id != 0) {
-                    $scope.bean.obj_agrupacion = response.data.message;
-                    $scope.show_obj_agrupacion = false;
-                    $scope.title = "Nuevo componente del elenco: " + $scope.bean.obj_agrupacion.agrupacion;
-                }
-            });
-        } else {
-            $scope.show_obj_agrupacion = true;
-        }
-        //---
-        if ($routeParams.id_rol) {
-            serverService.promise_getOne('rol', $routeParams.id_rol).then(function (response) {
-                if (response.data.message.id != 0) {
-                    $scope.bean.obj_rol = response.data.message;
-                    $scope.show_obj_rol = false;
-                    $scope.title = "Nuevo componente del elenco: " + $scope.bean.obj_rol.rol;
-                }
-            });
-        } else {
-            $scope.show_obj_rol = true;
+            $scope.show_obj_compositor = true;
         }
         //-----
         $scope.save = function () {
@@ -108,28 +82,5 @@ moduloElenco.controller('ElencoNewController', ['$scope', '$routeParams', '$loca
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-//        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
-//            var modalInstance = $uibModal.open({
-//                templateUrl: 'js/' + foreignObjectName + '/selection.html',
-//                controller: contollerName,
-//                size: 'lg'
-//            }).result.then(function (modalResult) {
-//                $scope.bean[nameForeign].id = modalResult;
-//            });
-//        };
-//        $scope.$watch('bean.obj_miembro.id', function () {
-//            if ($scope.bean) {
-//                serverService.promise_getOne('miembro', $scope.bean.obj_miembro.id).then(function (response) {
-//                    var old_id = $scope.bean.obj_miembro.id;
-//                    $scope.bean.obj_miembro = response.data.message;
-//                    if (response.data.message.id != 0) {
-//                        $scope.outerForm.obj_miembro.$setValidity('exists', true);
-//                    } else {
-//                        $scope.outerForm.obj_miembro.$setValidity('exists', false);
-//                        $scope.bean.obj_miembro.id = old_id;
-//                    }
-//                });
-//            }
-//        });
     }]);
 

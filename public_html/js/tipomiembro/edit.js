@@ -34,7 +34,7 @@ moduloTipomiembro.controller('TipomiembroEditController', ['$scope', '$routePara
         $scope.icon = tipomiembroService.getIcon();
         $scope.ob = tipomiembroService.getTitle();
         $scope.title = "Editando un " + $scope.obtitle;
-        $scope.op = "plist";
+        $scope.op = "edit";
         $scope.status = null;
         $scope.error = true;
         $scope.debugging = serverService.debugging();
@@ -55,8 +55,8 @@ moduloTipomiembro.controller('TipomiembroEditController', ['$scope', '$routePara
             $scope.status = "Error en la recepción de datos del servidor3";
         });
         $scope.save = function () {
-            $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
-            $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
+//            $scope.bean.creation = $filter('date')($scope.bean.creation, "dd/MM/yyyy");
+//            $scope.bean.modification = $filter('date')($scope.bean.modification, "dd/MM/yyyy");
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {

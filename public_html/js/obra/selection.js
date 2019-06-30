@@ -30,7 +30,7 @@
 
 moduloObra.controller('ObraSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'obraService', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $modalInstance, $routeParams, obraService, serverService, $location, sharedSpaceService) {
-        $scope.fields = obraService.getFields();
+        $scope.fields = obraService.getFields(true);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.title = "Selección de un" + $scope.obtitle;

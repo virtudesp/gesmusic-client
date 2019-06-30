@@ -29,7 +29,7 @@
 
 moduloUsuario.controller('UsuarioViewpopController', ['$scope', '$routeParams', 'serverService', 'usuarioService', '$location', '$uibModalInstance', 'id',
     function ($scope, $routeParams, serverService, usuarioService, $location, $uibModalInstance, id) {
-        $scope.fields = usuarioService.getFields();
+        $scope.fields = usuarioService.getFields(true);
         $scope.obtitle = usuarioService.getObTitle();
         $scope.icon = usuarioService.getIcon();
         $scope.ob = usuarioService.getTitle();

@@ -30,7 +30,7 @@
 
 moduloCompositor.controller('CompositorViewController', ['$scope', '$routeParams', 'serverService', 'compositorService', '$location',
     function ($scope, $routeParams, serverService, compositorService, $location) {
-        $scope.fields = compositorService.getFields();
+        $scope.fields = compositorService.getFields(true);
         $scope.obtitle = compositorService.getObTitle();
         $scope.icon = compositorService.getIcon();
         $scope.ob = compositorService.getTitle();
@@ -38,6 +38,7 @@ moduloCompositor.controller('CompositorViewController', ['$scope', '$routeParams
         $scope.id = $routeParams.id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();
+        
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {

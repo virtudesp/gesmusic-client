@@ -29,17 +29,17 @@
 'use strict';
 moduloCompositor.controller('CompositorEditController', ['$scope', '$routeParams', '$location', 'compositorService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
     function ($scope, $routeParams, $location, compositorService, serverService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = compositorService.getFields();
+        $scope.fields = compositorService.getFields(true);
         $scope.obtitle = compositorService.getObTitle();
         $scope.icon = compositorService.getIcon();
         $scope.ob = compositorService.getTitle();
-        $scope.title = "Editando un " + $scope.obtitle;
+        $scope.title = "Editando una " + $scope.obtitle;
         $scope.op = "edit";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
-        //---
         $scope.id = $routeParams.id;
+        
         serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {

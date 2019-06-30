@@ -28,13 +28,13 @@
 
 'use strict';
 
-moduloElenco.controller('ElencoViewController', ['$scope', '$routeParams', 'serverService', 'elencoService', '$location',
-    function ($scope, $routeParams, serverService, elencoService, $location) {
-        $scope.fields = elencoService.getFields();
-        $scope.obtitle = elencoService.getObTitle();
-        $scope.icon = elencoService.getIcon();
-        $scope.ob = elencoService.getTitle();
-        $scope.title = "Vista de un componente del " + $scope.obtitle;
+moduloRepertorio.controller('RepertorioViewController', ['$scope', '$routeParams', 'serverService', 'repertorioService', '$location',
+    function ($scope, $routeParams, serverService, repertorioService, $location) {
+        $scope.fields = repertorioService.getFields(true);
+        $scope.obtitle = repertorioService.getObTitle();
+        $scope.icon = repertorioService.getIcon();
+        $scope.ob = repertorioService.getTitle();
+        $scope.title = "Vista de " + $scope.obtitle;
         $scope.id = $routeParams.id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

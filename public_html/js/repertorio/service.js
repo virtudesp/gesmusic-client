@@ -1,22 +1,22 @@
 'use strict';
-moduloElenco.factory('elencoService', ['serverService', function (serverService) {
+moduloRepertorio.factory('repertorioService', ['serverService', function (serverService) {
         return {
             getFields: function () {
                 return [
-                    {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "id"},
-                    {name: "obj_miembro", shortname: "Miembro", longname: "Miembro", visible: true, type: "foreign", reference: "miembro", descforeign: "nombre"},
-                    {name: "obj_agrupacion", shortname: "Agrupación", longname: "Agrupación", visible: true, type: "foreign", reference: "agrupacion", descforeign: "agrupacion"},
-                    {name: "obj_rol", shortname: "Rol", longname: "Rol", visible: true, type: "foreign", reference: "rol", descforeign: "rol"}
+                    {name: "id", shortname: "ID", longname: "Identificador", visible: false, type: "id"},
+                    {name: "obj_acto", shortname: "Acto", longname: "Acto", visible: true, type: "foreign", reference: "acto", descforeign: "acto"},
+                    {name: "obj_obra", shortname: "Obra", longname: "Obra", visible: true, type: "foreign", reference: "obra", descforeign: "obra"},
+                    {name: "obj_agrupacion", shortname: "Agrupación", longname: "Agrupación", visible: true, type: "foreign", reference: "agrupacion", descforeign: "agrupacion"}
                 ];
             },
             getIcon: function () {
-                return "fa-users";
+                return "fa-music";
             },
             getObTitle: function () {
-                return "elenco";
+                return "repertorio";
             },
             getTitle: function () {
-                return "elenco";
+                return "repertorio";
             }
         };
     }]);

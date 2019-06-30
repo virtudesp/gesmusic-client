@@ -62,10 +62,8 @@ THE SOFTWARE.
                                         <td ng-if="f.type == 'integer'">{{bean[f.name]}}</td>
                                         <td ng-if="f.type == 'decimal'">{{bean[f.name]}}</td>
                                         <td ng-if="f.type == 'text'">{{bean[f.name]}}</td>
-                                        <td ng-if="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td>
-                                        <td ng-if="f.name == 'obj_miembro'">{{bean[f.name].miembro}}</td> 
-                                        <td ng-if="f.name == 'obj_agrupacion'">{{bean[f.name].agrupacion}}</td>
-                                        <td ng-if="f.name == 'obj_rol'">{{bean[f.name].rol}}</td>                          
+                                        <td ng-if="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td> 
+                                        <td ng-if="f.name.startsWith('obj_')">{{bean[f.name].nombre}} {{bean[f.name].apellidos}}</td>                            
                                     </tr>
                                 </tbody>
                             </table>  
@@ -80,4 +78,7 @@ THE SOFTWARE.
             </div>
         </div>
     </div>
-</div>  
+</div>     
+<div class="modal-footer">    
+    <div style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>        
+</div>

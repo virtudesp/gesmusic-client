@@ -29,7 +29,7 @@
 'use strict';
 moduloObra.controller('ObraEditController', ['$scope', '$routeParams', '$location', 'obraService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
     function ($scope, $routeParams, $location, obraService, serverService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = obraService.getFields();
+        $scope.fields = obraService.getFields(true);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();

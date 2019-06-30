@@ -34,7 +34,7 @@ moduloTipousuario.controller('TipousuarioPListController', ['$scope', '$routePar
         $scope.obtitle = tipousuarioService.getObTitle();
         $scope.icon = tipousuarioService.getIcon();
         $scope.ob = tipousuarioService.getTitle();
-        $scope.title = "Listado de " + $scope.obtitle;
+        $scope.title = "Listado de tipos de usuario";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
@@ -50,6 +50,8 @@ moduloTipousuario.controller('TipousuarioPListController', ['$scope', '$routePar
         $scope.filterExpression = serverService.checkEmptyString($routeParams.filter) + '+' + serverService.checkEmptyString($routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
+        $scope.url = $scope.ob + '/' + $scope.op;
+        $scope.urlplist = "tipousuario/usuariosxtipousuario/plist";
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {

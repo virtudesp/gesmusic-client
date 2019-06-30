@@ -33,14 +33,15 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
         //datos del compositor
 //        $scope.id = $routeParams.id;
         $scope.foreign = $routeParams.id;
-        $scope.nombre = $routeParams.nombre;
-        $scope.apellidos = $routeParams.apellidos; 
-        $scope.title = "Obras del compositor: " + $scope.nombre + " " + $scope.apellidos;
-        
-        $scope.fields = obraService.getFields();
+        $scope.nombre = "";//$routeParams.nombre;
+        $scope.apellidos = ""; //$routeParams.apellidos; 
+//        $scope.title = "Obras del compositor: " + $scope.nombre + " " + $scope.apellidos;
+        $scope.title = "Relación de obras";
+
+        $scope.fields = obraService.getFields(false);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
-        $scope.ob = obraService.getTitle();   
+        $scope.ob = obraService.getTitle();
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
@@ -55,11 +56,31 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
         $scope.sfilterParams = serverService.checkNull($routeParams.sfilter);
         $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
-//        $scope.debugging = serverService.debugging();
-        $scope.urlnew ="compositor/obrasxcompositor/new";
-        $scope.urledit ="compositor/obrasxcompositor/edit";
-        
+        $scope.debugging = serverService.debugging();
+        $scope.url = "compositor/" + $scope.ob + '/' + $scope.op;
+        $scope.urlnew = "compositor/obrasxcompositor/new";
+        $scope.urledit = "compositor/obrasxcompositor/edit";
+//        $scope.urlnew = "obrasxcompositor/new";
+//        $scope.urledit = "obrasxcompositor/edit";
+        $scope.urlplist = "compositor/plist";
+        $scope.bean = {};
+
         function getDataFromServer() {
+            serverService.promise_getOne($scope.ob, $scope.foreign).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.bean = response.data.message;
+                        $scope.title; // += $scope.bean.nombre + " " + $scope.bean.apellidos;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor11";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor22";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor33";
+            });
             serverService.promise_getCountXId($scope.ob, $scope.foreign, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;
@@ -86,6 +107,7 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
         $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'js/compositor/' + foreignObjectName + '/' + foreignViewName + '.html',
+//                templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',
                 controller: foreignContollerName,
                 size: 'lg',
                 resolve: {
@@ -101,6 +123,9 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
             });
         };
         getDataFromServer();
+        $scope.plist = function () {
+            $location.path($scope.urlplist);
+        };
     }]);
 
 

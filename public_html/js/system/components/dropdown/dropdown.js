@@ -20,6 +20,6 @@ function dropdown(serverService) {
     };
     self.$doCheck = function () {
         console.log("change dropdown");
-    }
+    };
 }
 

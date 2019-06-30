@@ -35,7 +35,7 @@ moduloObra.controller('ObrasXCompositorEditController', ['$scope', '$routeParams
         $scope.nombre = $routeParams.nombre;
         $scope.apellidos = $routeParams.apellidos;
         //-------
-        $scope.fields = obraService.getFields();
+        $scope.fields = obraService.getFields(false);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();
@@ -43,7 +43,8 @@ moduloObra.controller('ObrasXCompositorEditController', ['$scope', '$routeParams
         $scope.op = "edit";
         $scope.status = null;
 //        $scope.debugging = serverService.debugging();
-        $scope.urlplist ="compositor/obrasxcompositor/plist/" + $scope.foreign + "/" + $scope.nombre + "/" + $scope.apellidos;
+        $scope.urlplist ="compositor/obrasxcompositor/plist/" + $scope.foreign;// + "/" + $scope.nombre + "/" + $scope.apellidos;
+//        $scope.urlplist ="obrasxcompositor/plist/" + $scope.foreign;
         $scope.bean = {};
         $scope.bean.id = $routeParams.id;
         $scope.bean.id_compositor = $routeParams.foreign;  // añadido

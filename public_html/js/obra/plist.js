@@ -30,7 +30,7 @@
 
 moduloObra.controller('ObraPListController', ['$scope', '$routeParams', '$location', 'serverService', 'obraService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, obraService, $uibModal) {
-        $scope.fields = obraService.getFields();
+        $scope.fields = obraService.getFields(true);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();
@@ -74,23 +74,23 @@ moduloObra.controller('ObraPListController', ['$scope', '$routeParams', '$locati
                 $scope.status = "Error en la recepción de datos del servidor3";
             });
         }
-//        $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
-//            var modalInstance = $uibModal.open({
-//                templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',
-//                controller: foreignContollerName,
-//                size: 'lg',
-//                resolve: {
-//                    id: function () {
-//                        return id;
-//                    }
-//                }
-//            }).result.then(function (modalResult) {
-//                if (modalResult) {
-//                    getDataFromServer();
-//                }
-//
-//            });
-//        }
+        $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
+            var modalInstance = $uibModal.open({
+                templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',
+                controller: foreignContollerName,
+                size: 'lg',
+                resolve: {
+                    id: function () {
+                        return id;
+                    }
+                }
+            }).result.then(function (modalResult) {
+                if (modalResult) {
+                    getDataFromServer();
+                }
+
+            });
+        }
         ;
         getDataFromServer();
     }]);

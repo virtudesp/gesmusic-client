@@ -51,6 +51,9 @@ moduloActo.controller('ActoPListController', ['$scope', '$routeParams', '$locati
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.url = $scope.ob + '/' + $scope.op;
+        // urls para la relacion N:M --> participacion y repertorio
+        $scope.urlparticipa = 'participa/plist';
+        $scope.urlrepertorio = 'repertorio/plist';
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {

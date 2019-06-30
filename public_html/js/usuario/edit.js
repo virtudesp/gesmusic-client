@@ -29,7 +29,7 @@
 'use strict';
 moduloUsuario.controller('UsuarioEditController', ['$scope', '$routeParams', '$location', 'usuarioService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
     function ($scope, $routeParams, $location, usuarioService, serverService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = usuarioService.getFields();
+        $scope.fields = usuarioService.getFields(true);
         $scope.obtitle = usuarioService.getObTitle();
         $scope.icon = usuarioService.getIcon();
         $scope.ob = usuarioService.getTitle();

@@ -214,6 +214,14 @@ moduloServicios
                     }
                     return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getcount&id=' + id + filter, 'GET', '');
                 },
+                promise_getCountXlistado: function (strObject, id, listado, filter) {
+                    if (filter) {
+                        filter = "&filter=" + filter;
+                    } else {
+                        filter = "";
+                    }
+                    return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getcount&id=' + id + '&listado=' + listado + filter, 'GET', '');
+                },
                 promise_getPage: function (strObject, rpp, page, filter, order) {
                     if (filter) {
                         filter = "&filter=" + filter;
@@ -395,6 +403,8 @@ moduloServicios
             'elencoService',
             'miembroService',
             'obraService',
+            'participaService',
+//            'repertorioService',
             'rolService',
             'sociedadService',
             'tipomiembroService',
@@ -409,6 +419,8 @@ moduloServicios
                     elencoService,
                     miembroService,
                     obraService,
+                    participaService,
+//                    repertorioService,
                     rolService,
                     sociedadService,
                     tipomiembroService,
@@ -425,6 +437,8 @@ moduloServicios
                         meta.elenco = ({'fields': elencoService.getFields(), 'name': elencoService.getTitle(), 'title': serverService.capitalizeWord(elencoService.getObTitle()), 'icon': elencoService.getIcon()});
                         meta.miembro = ({'fields': miembroService.getFields(), 'name': miembroService.getTitle(), 'title': serverService.capitalizeWord(miembroService.getObTitle()), 'icon': miembroService.getIcon()});
                         meta.obra = ({'fields': obraService.getFields(), 'name': obraService.getTitle(), 'title': serverService.capitalizeWord(obraService.getObTitle()), 'icon': obraService.getIcon()});
+                        meta.participa = ({'fields': participaService.getFields(), 'name': participaService.getTitle(), 'title': serverService.capitalizeWord(participaService.getObTitle()), 'icon': participaService.getIcon()});
+//                        meta.repertorio = ({'fields': repertorioService.getFields(), 'name': repertorioService.getTitle(), 'title': serverService.capitalizeWord(repertorioService.getObTitle()), 'icon': repertorioService.getIcon()});
                         meta.rol = ({'fields': rolService.getFields(), 'name': rolService.getTitle(), 'title': serverService.capitalizeWord(rolService.getObTitle()), 'icon': rolService.getIcon()});
                         meta.sociedad = ({'fields': sociedadService.getFields(), 'name': sociedadService.getTitle(), 'title': serverService.capitalizeWord(sociedadService.getObTitle()), 'icon': sociedadService.getIcon()});
                         meta.tipomiembro = ({'fields': tipomiembroService.getFields(), 'name': tipomiembroService.getTitle(), 'title': serverService.capitalizeWord(tipomiembroService.getObTitle()), 'icon': tipomiembroService.getIcon()});

@@ -30,7 +30,7 @@
 
 moduloObra.controller('ObraNewController', ['$scope', '$routeParams', '$location', 'serverService', 'obraService', 'sharedSpaceService', '$filter', '$uibModal',
     function ($scope, $routeParams, $location, serverService, obraService, sharedSpaceService, $filter, $uibModal) {
-        $scope.fields = obraService.getFields();
+        $scope.fields = obraService.getFields(true);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();
@@ -81,6 +81,10 @@ moduloObra.controller('ObraNewController', ['$scope', '$routeParams', '$location
         };
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
+        };
+        $scope.reload = function () {
+//            $location.path('/' + $scope.ob + '/new');
+            $location.reload(true);
         };
     }]);
 
