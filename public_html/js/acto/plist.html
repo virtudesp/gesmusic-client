@@ -83,9 +83,14 @@ THE SOFTWARE.
                                             <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
                                                 <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">                                                
                                             </form>
+                                        </div>                      
+                                        <div ng-if="historial" class="alert alert-success" role="alert" >
+                                            <h4>Título: {{foreignbean.titulo}}</h4>
+                                            <h4>Subtítulo: {{foreignbean.subtitulo}}</h4>
+                                            <h4>Compositor:  {{foreignbean.obj_compositor.nombre}} {{foreignbean.obj_compositor.apellidos}}</h4>
                                         </div>
                                         <div class="col-md-10 text-right">
-                                            <a class="btn btn-primary" href="{{ob}}/new">Nuevo registro</a>
+                                            <a class="btn btn-primary" href="{{ob}}/new">Añadir acto</a>
                                         </div>
                                     </div>
                                 </div>
@@ -118,7 +123,6 @@ THE SOFTWARE.
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" href="{{urlparticipa}}/{{obj.id}}">Participación</a>
-                                                            <a class="btn btn-default btn-xs" href="{{urlrepertorio}}/{{obj.id}}">Repertorio</a>
                                                         </div>
                                                     </div>
                                                 </td>

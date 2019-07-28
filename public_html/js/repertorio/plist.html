@@ -43,49 +43,15 @@ THE SOFTWARE.
                         <div class="row">
                             <div class="col-xs-12" ng-if="!status">
                                 <div role="tabpanel">
-                                    <div class="tab-content">                                           
-                                        <div role="tabpanel" id="pane0" class="tab-pane fade active in">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-8 text-left"> 
-                                                    <cplistinfo url="url"         
-                                                                numpage="numpage"                                                       
-                                                                rpp="rpp"
-                                                                registers="registers"        
-                                                                orderparams="orderParams"
-                                                                filterparams="filterParams"
-                                                                sfilterparams="sfilterParams"
-                                                                searchtext="searchText">
-                                                    </cplistinfo>
-                                                    <cplistpagination url="url"         
-                                                                      numpage="numpage"          
-                                                                      rpp="rpp"
-                                                                      pages="pages"
-                                                                      neighbourhood="neighbourhood"
-                                                                      filterParams="filterParams"
-                                                                      orderParams="orderParams"
-                                                                      sfilterParams="sfilterParams">
-                                                    </cplistpagination>
-                                                </div>
-                                                <div class="col-lg-3  col-md-3 col-sm-4 text-left">
-                                                    <cplistrpp url="url"         
-                                                               numpage="numpage"          
-                                                               rpp="rpp"                                                       
-                                                               filterParams="filterParams"
-                                                               orderParams="orderParams"
-                                                               sfilterParams="sfilterParams">
-                                                    </cplistrpp>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-content">
-                                        <div class="col-md-2 text-right">
-                                            <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
-                                                <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">                                                
-                                            </form>
+                                    <div class="tab-content">                          
+                                        <div class="alert alert-success" role="alert" >
+                                            <h4>Agrupación: {{foreignbean2.agrupacion}}</h4>
+                                            <h4>Acto: {{foreignbean.nombre}}</h4>
+                                            <h4>Lugar: {{foreignbean.lugar}}</h4>
+                                            <h4>Fecha: {{foreignbean.fecha}}</h4>
                                         </div>
                                         <div class="col-md-10 text-right">
-                                            <a class="btn btn-primary" href="{{ob}}/new">Nuevo registro</a>
+                                            <a class="btn btn-primary" href="{{urlnew}}/{{foreign}}">Añadir obra</a>
                                         </div>
                                     </div>
                                 </div>

@@ -29,11 +29,14 @@
 'use strict';
 moduloParticipa.controller('ParticipaEditController', ['$scope', '$routeParams', '$location', 'participaService', 'serverService', 'sharedSpaceService', '$filter', '$uibModal',
     function ($scope, $routeParams, $location, participaService, serverService, sharedSpaceService, $filter, $uibModal) {
+        // parámetros en la url
+        $scope.id = $routeParams.id; // id de participa
+        $scope.foreign = $routeParams.foreign; // id del acto
         $scope.fields = participaService.getFields();
         $scope.obtitle = participaService.getObTitle();
         $scope.icon = participaService.getIcon();
         $scope.ob = participaService.getTitle();
-        $scope.title = "Editando un participa";
+        $scope.title = "Editando una participación";
         $scope.op = "edit";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
@@ -55,9 +58,8 @@ moduloParticipa.controller('ParticipaEditController', ['$scope', '$routeParams',
             $scope.status = "Error en la recepción de datos del servidor3";
         });
         $scope.save = function () {
-            $scope.bean.alta = $filter('date')($scope.bean.fecha_alta, "dd/MM/yyyy");
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
-            serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
+            serverService.promise_setOneXIdXForeign($scope.ob, $scope.id, $scope.foreign, jsonToSend).then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         $scope.response = response;

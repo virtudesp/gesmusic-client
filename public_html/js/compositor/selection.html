@@ -109,7 +109,7 @@ THE SOFTWARE.
                                                 <div ng-if="f.visible && f.type == 'decimal'" class="text-center">{{obj[f.name]}}</div>
                                                 <div ng-if="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                 <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
-                                                <div ng-if="f.visible && f.name == 'obj_compositor'" class="text-center">{{obj.obj_compositor.nombre}} {{obj.obj_compositor.apellidos}}</div>
+                                                <div ng-if="f.visible && f.name == 'obj_compositor'" class="text-center">{{obj.obj_compositor.nombre}} {{obj.obj_compositor.apellidos}}zzzz</div>
                                             </td> 
                                             <td plistoperationbarspa></td>
                                                 <button ng-click="count = count + 1;alert(count)" ng-init="count = 0">

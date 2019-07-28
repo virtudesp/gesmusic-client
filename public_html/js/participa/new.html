@@ -34,54 +34,14 @@ THE SOFTWARE.
                 <div class="panel panel-default">
                     <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="panel-body" ng-cloak>                   
-                        <form name="outerForm" class="form-horizontal text-left"  ng-if="!status">
-                            <div ng-repeat="f in fields">
-                                <!------------------------------------------------->       
-                                <div ng-if="f.type == 'id'" class="form-group" id="{{f.name}}-group">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <div class="control col-sm-3"> 
-                                        <key ide="bean[f.name]" name="f.name" disable="false"></key> 
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->       
-                                <div ng-if="f.type == 'calculado'" class="form-group" id="{{f.name}}-group">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <div class="control col-sm-3"> 
-                                        <texto ng-hide="f.name" model="bean[f.name]" name="f.name" ></texto> 
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->     
-                                <div ng-if="f.type == 'text'" id="{{f.name}}-group" class="form-group" 
-                                     ng-class="{
-                                                 'has-error':(outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
-                                                 (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)
-                                             }">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
-                                    <div class="control col-sm-8"> 
-                                        <texto model="bean[f.name]" name="f.name" longname="f.longname" pattern="f.pattern" length="f.maxlength" required="f.required"></texto>
-                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
-                                    </div>
-                                </div>  
-                                <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-if="f.type == 'date'"
-                                     id="fecha-group"
-                                     ng-class="{'has-error': (outerForm[f.name].$error.required ||
-                                                             outerForm[f.name].$error.valid)
-                                                             && !outerForm[f.name].$pristine}">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <div class="control col-sm-3">
-                                        <date-picker 
-                                            name="f.name" 
-                                            required="f.required" 
-                                            model="bean[f.name]" 
-                                            form="outerForm" > 
-                                        </date-picker>    
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->
-                                <div ng-if="f.type == 'foreign'" id="{{f.name}}-group" class="form-group">
+                        <form name="outerForm" class="form-horizontal text-left"  ng-if="!status">                            
+                            <div class="alert alert-success" role="alert" >
+                                <h4>Acto: {{foreignbean.nombre}}</h4>
+                                <h4>Lugar: {{foreignbean.lugar}}</h4>
+                                <h4>Fecha: {{foreignbean.fecha}}</h4>
+                            </div>
+                            <div ng-repeat="f in fields">      
+                                <div ng-if="f.flag == 'foreign'" id="{{f.name}}-group" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                     <div class="control col-sm-4">
                                         <foreign-key 
@@ -99,7 +59,7 @@ THE SOFTWARE.
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de participas</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de participantes</a>
                                     <a class="btn btn-default" ng-click="close()">Cerrar</a>
                                 </div>
                             </div>
@@ -108,8 +68,9 @@ THE SOFTWARE.
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
                                 <a ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
-                                <a class="btn btn-default" ng-click="plist()">Ir al listado de participas</a>
+                                <a class="btn btn-default" ng-click="plist()">Ir al listado de participantes</a>
                             </div>
+                            <script src="../acto/edit.js" type="text/javascript"></script>
                             <div class="alert alert-danger" ng-if="response.status != 200">
                                 <h2>{{status}}</h2>                             
                             </div>

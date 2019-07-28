@@ -34,48 +34,108 @@ moduloActo.controller('ActoPListController', ['$scope', '$routeParams', '$locati
         $scope.obtitle = actoService.getObTitle();
         $scope.icon = actoService.getIcon();
         $scope.ob = actoService.getTitle();
-        $scope.title = "Listado de actos";
+//        $scope.title = "Listado de actos";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
-        $scope.order = "";
-        $scope.ordervalue = "";
-        $scope.filter = "id";
-        $scope.filteroperator = "like";
-        $scope.filtervalue = "";
-        $scope.filterParams = serverService.checkNull($routeParams.filter)
-        $scope.orderParams = serverService.checkNull($routeParams.order)
-        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
-        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
+        {
+//        $scope.order = "";
+//        $scope.ordervalue = "";
+//        $scope.filter = "id";
+//        $scope.filteroperator = "like";
+//        $scope.filtervalue = "";
+//        $scope.filterParams = serverService.checkNull($routeParams.filter)
+//        $scope.orderParams = serverService.checkNull($routeParams.order)
+//        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
+//        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
+        }
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.url = $scope.ob + '/' + $scope.op;
-        // urls para la relacion N:M --> participacion y repertorio
+        // parámetro que viene en la url para el historial de actos de una obra
+        $scope.foreign = $routeParams.id;
+        // comodín para mostrar o no información de la obra en la cabecera
+        $scope.historial = false;
+        // Si no hay parámetro, se trata del listado normal de actos
+        if ($scope.foreign == null) {
+            $scope.title = "Listado de actos";
+        } else {
+            $scope.title = "Historial de interpretaciones";
+            $scope.foreignob = "acto";
+            $scope.historial = true;
+        }
+        // url para la relacion N:M --> participacion 
         $scope.urlparticipa = 'participa/plist';
-        $scope.urlrepertorio = 'repertorio/plist';
+        // Para guardar los datos de la obra y mostrarlos en la cabecera
+        $scope.foreignbean = {};
+        $scope.foreignbean.id = 0;
+        $scope.foreignob2 = "obra";
+        //---------------
         function getDataFromServer() {
-            serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
+            // obtener los datos de la obra
+            serverService.promise_getOne($scope.foreignob2, $scope.foreign).then(function (response) {
                 if (response.status == 200) {
-                    $scope.registers = response.data.message;
-                    $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
-                    if ($scope.numpage > $scope.pages) {
-                        $scope.numpage = $scope.pages;
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.foreignbean = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
                     }
-                    return serverService.promise_getPage($scope.ob, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
-                } else {
-                    $scope.status = "Error en la recepción de datos del servidor1";
-                }
-            }).then(function (response) {
-                if (response.status == 200) {
-                    $scope.page = response.data.message;
-                    $scope.status = "";
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor2";
                 }
             }).catch(function (data) {
                 $scope.status = "Error en la recepción de datos del servidor3";
             });
+            //-------            
+            if ($scope.foreign == null) {
+                // listado normal de actos
+                serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
+                    if (response.status == 200) {
+                        $scope.registers = response.data.message;
+                        $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
+                        if ($scope.numpage > $scope.pages) {
+                            $scope.numpage = $scope.pages;
+                        }
+                        return serverService.promise_getPage($scope.ob, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
+                    }
+                }).then(function (response) {
+                    if (response.status == 200) {
+                        $scope.page = response.data.message;
+                        $scope.status = "";
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor2";
+                    }
+                }).catch(function (data) {
+                    $scope.status = "Error en la recepción de datos del servidor3";
+                });
+            } else {
+                // historial de actos de una obra
+                serverService.promise_getCountXId($scope.foreignob, $scope.foreign, $scope.filterExpression).then(function (response) {
+                    if (response.status == 200) {
+                        $scope.registers = response.data.message;
+                        $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
+                        if ($scope.numpage > $scope.pages) {
+                            $scope.numpage = $scope.pages;
+                        }
+                        return serverService.promise_getPageXId($scope.foreignob, $scope.foreign, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
+                    }
+                }).then(function (response) {
+                    if (response.status == 200) {
+                        $scope.page = response.data.message;
+                        $scope.status = "";
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor2";
+                    }
+                }).catch(function (data) {
+                    $scope.status = "Error en la recepción de datos del servidor3";
+                });
+            }
         }
         $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
             var modalInstance = $uibModal.open({

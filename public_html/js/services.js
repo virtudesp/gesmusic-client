@@ -199,55 +199,43 @@ moduloServicios
                 },
                 //------------------------------------------------
                 promise_getCount: function (strObject, filter) {
-                    if (filter) {
-                        filter = "&filter=" + filter;
-                    } else {
-                        filter = "";
-                    }
+                    filter = (filter === undefined || filter === null) ? "" : filter;
                     return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getcount' + filter, 'GET', '');
                 },
                 promise_getCountXId: function (strObject, id, filter) {
-                    if (filter) {
-                        filter = "&filter=" + filter;
-                    } else {
-                        filter = "";
-                    }
+                    filter = (filter === undefined || filter === null) ? "" : filter;
                     return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getcount&id=' + id + filter, 'GET', '');
                 },
-                promise_getCountXlistado: function (strObject, id, listado, filter) {
-                    if (filter) {
-                        filter = "&filter=" + filter;
-                    } else {
-                        filter = "";
-                    }
-                    return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getcount&id=' + id + '&listado=' + listado + filter, 'GET', '');
+                promise_getCountXIdXForeign: function (strObject, id, foreign, filter) {
+                    filter = (filter === undefined || filter === null) ? "" : filter;
+                    return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getcount&id=' + id + '&foreign=' + foreign + filter, 'GET', '');
+                },
+                promise_getCountXForeignXForeign2: function (strObject, foreign, foreign2, filter) {
+                    filter = (filter === undefined || filter === null) ? "" : filter;
+                    return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getcount&foreign=' + foreign + '&foreign2=' + foreign2 + filter, 'GET', '');
                 },
                 promise_getPage: function (strObject, rpp, page, filter, order) {
-                    if (filter) {
-                        filter = "&filter=" + filter;
-                    } else {
-                        filter = "";
-                    }
-                    if (order) {
-                        order = "&order=" + order;
-                    } else {
-                        order = "";
-                    }
+                    filter = (filter === undefined || filter === null) ? "" : filter;
+                    order = (order === undefined || order === null) ? "" : order;
                     return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getpage&page=' + page + "&rpp=" + rpp + filter + order, 'GET', '');
                 },
-                promise_getPageXId: function (strObject, id, rpp, page, filter, order) {
-                    if (filter) {
-                        filter = "&filter=" + filter;
-                    } else {
-                        filter = "";
-                    }
-                    if (order) {
-                        order = "&order=" + order;
-                    } else {
-                        order = "";
-                    }
+                promise_getPageXId: function (strObject, id, rpp, page, filter, order) {                    
+                    filter = (filter === undefined || filter === null) ? "" : filter;
+                    order = (order === undefined || order === null) ? "" : order;
                     // Aquí se establece que el método getpage. En el servidor, este método procesará el id seleccionado
                     return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getpage&id=' + id + '&page=' + page + "&rpp=" + rpp + filter + order, 'GET', '');
+                },
+                promise_getPageXIdXForeign: function (strObject, id, foreign, rpp, page, filter, order) {                    
+                    filter = (filter === undefined || filter === null) ? "" : filter;
+                    order = (order === undefined || order === null) ? "" : order;
+                    // Aquí se establece que el método getpage. En el servidor, este método procesará el id seleccionado
+                    return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getpage&id=' + id + '&foreign=' + foreign + '&page=' + page + "&rpp=" + rpp + filter + order, 'GET', '');
+                },
+                promise_getPageXForeignXForeign2: function (strObject, foreign, foreign2, rpp, page, filter, order) {                    
+                    filter = (filter === undefined || filter === null) ? "" : filter;
+                    order = (order === undefined || order === null) ? "" : order;
+                    // Aquí se establece que el método getpage. En el servidor, este método procesará el id seleccionado
+                    return $http.get(this.getAppUrl() + '?ob=' + strObject + '&op=getpage&foreign=' + foreign + '&foreign2=' + foreign2 + '&page=' + page + "&rpp=" + rpp + filter + order, 'GET', '');
                 },
                 promise_getAll: function (strClass, filter, order) {
                     filter = (filter === undefined || filter === null) ? "" : filter;

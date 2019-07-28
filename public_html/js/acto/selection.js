@@ -28,13 +28,13 @@
 
 'use strict';
 
-moduloRepertorio.controller('RepertorioSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'repertorioService', 'serverService', '$location', 'sharedSpaceService',
-    function ($scope, $modalInstance, $routeParams, repertorioService, serverService, $location, sharedSpaceService) {
-        $scope.fields = repertorioService.getFields(true);
-        $scope.obtitle = repertorioService.getObTitle();
-        $scope.icon = repertorioService.getIcon();
+moduloActo.controller('ActoSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'actoService', 'serverService', '$location', 'sharedSpaceService',
+    function ($scope, $modalInstance, $routeParams, actoService, serverService, $location, sharedSpaceService) {
+        $scope.fields = actoService.getFields(true);
+        $scope.obtitle = actoService.getObTitle();
+        $scope.icon = actoService.getIcon();
         $scope.title = "Selección de un" + $scope.obtitle;
-        $scope.ob = repertorioService.getTitle();
+        $scope.ob = actoService.getTitle();
         $scope.op = "selection";
         $scope.numpage = 1;
         $scope.rpp = 10;
@@ -53,7 +53,7 @@ moduloRepertorio.controller('RepertorioSelectionController', ['$scope', '$uibMod
         };
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
-        }
+        };
         function getData() {
             serverService.promise_getCount($scope.ob, $scope.filterParams).then(function (response) {
                 if (response.status == 200) {
@@ -76,7 +76,6 @@ moduloRepertorio.controller('RepertorioSelectionController', ['$scope', '$uibMod
             }).catch(function (data) {
                 $scope.status = "Error en la recepción de datos del servidor3";
             });
-
         }
         $scope.$on('filterSelectionEvent', function (event, data) {
             $scope.filterParams = data;
@@ -105,6 +104,6 @@ moduloRepertorio.controller('RepertorioSelectionController', ['$scope', '$uibMod
         $scope.chooseOne = function (id) {
             $scope.closeForm(id);
             return false;
-        }
+        };
         getData();
     }]);

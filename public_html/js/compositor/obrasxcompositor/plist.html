@@ -43,7 +43,10 @@ THE SOFTWARE.
                         <div class="row">
                             <div class="col-xs-12" ng-if="!status">
                                 <div role="tabpanel">
-                                    <div class="tab-content">                                           
+                                    <div class="tab-content">                       
+                                        <div class="alert alert-success" role="alert" >
+                                            <h4>Compositor: {{foreignbean.nombre}} {{foreignbean.apellidos}}</h4>
+                                        </div>  
                                         <div role="tabpanel" id="pane0" class="tab-pane fade active in">
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-6 col-sm-8 text-left"> 
@@ -79,11 +82,11 @@ THE SOFTWARE.
                                         </div>
                                     </div>
                                     <div class="tab-content">
-                                        <div class="col-md-2 text-right">
+                                        <!--<div class="col-md-2 text-right">
                                             <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
                                                 <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">                                                
                                             </form>
-                                        </div>
+                                        </div>-->
                                         <div class="col-md-10 text-right">
                                             <a class="btn btn-primary" href="{{urlnew}}/{{foreign}}">Nueva obra</a>
                                         </div>

@@ -39,15 +39,15 @@ moduloObra.controller('ObraNewController', ['$scope', '$routeParams', '$location
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
-        $scope.bean.id = 0;
-        //----
+//        $scope.bean.id = 0;
         $scope.bean.obj_compositor = {"id": 0};
+        //----
         if ($routeParams.id_compositor) {
             serverService.promise_getOne('compositor', $routeParams.id_compositor).then(function (response) {
                 if (response.data.message.id != 0) {
                     $scope.bean.obj_compositor = response.data.message;
                     $scope.show_obj_compositor = false;
-                    $scope.title = "Nueva obra de " + $scope.bean.obj_compositor.nombre + $scope.bean.obj_compositor.apellidos;
+//                    $scope.title = "Nueva obra de " + $scope.bean.obj_compositor.nombre + $scope.bean.obj_compositor.apellidos;
                 }
             });
         } else {

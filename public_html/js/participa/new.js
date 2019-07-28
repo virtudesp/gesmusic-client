@@ -30,36 +30,45 @@
 
 moduloParticipa.controller('ParticipaNewController', ['$scope', '$routeParams', '$location', 'serverService', 'participaService', 'sharedSpaceService', '$filter', '$uibModal',
     function ($scope, $routeParams, $location, serverService, participaService, sharedSpaceService, $filter, $uibModal) {
+        // parámetro que viene en la url: id_acto
+        $scope.foreign = $routeParams.foreign;
+        $scope.urlplist = "participa/plist/" + $scope.foreign;
+        $scope.foreignob = "acto";
+        //-------
         $scope.fields = participaService.getFields();
         $scope.obtitle = participaService.getObTitle();
         $scope.icon = participaService.getIcon();
         $scope.ob = participaService.getTitle();
-        $scope.title = "Creando un nuevo participa";
+        $scope.title = "Añadiendo un participante";
         $scope.op = "new";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        $scope.bean = {};
-        //----
-        $scope.bean.obj_obra = {"id": 0};
-        if ($routeParams.id_obra) {
-            serverService.promise_getOne('obra', $routeParams.id_obra).then(function (response) {
-                if (response.data.message.id != 0) {
-                    $scope.bean.obj_obra = response.data.message;
-                    $scope.show_obj_obra = false;
-                    $scope.title = "Nuevo participa";
+        //------- Para guardar los datos del acto y mostrarlos en la cabecera
+        $scope.foreignbean = {};
+        $scope.foreignbean.id = 0;
+        serverService.promise_getOne($scope.foreignob, $scope.foreign).then(function (response) {
+            if (response.status == 200) {
+                if (response.data.status == 200) {
+                    $scope.status = null;
+                    $scope.foreignbean = response.data.message;
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor1";
                 }
-            });
-        } else {
-            $scope.show_obj_obra = true;
-        }
-        //-----
-        $scope.save = function () {
-            $scope.bean.alta = $filter('date')($scope.bean.fecha_alta, "dd/MM/yyyy");
-            if ($scope.bean.obj_obra.id <= 0) {
-                $scope.bean.obj_obra.id = null;
+            } else {
+                $scope.status = "Error en la recepción de datos del servidor2";
             }
+        }).catch(function (data) {
+            $scope.status = "Error en la recepción de datos del servidor3";
+        });
+        //-------
+        $scope.bean = {};
+        $scope.bean.id_acto = $routeParams.foreign;  // añadido
+        // siempre va a haber id_acto       
+        $scope.bean.obj_acto = {"id": $scope.foreign};
+        $scope.show_obj_acto = true; 
+        $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
-            serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
+            serverService.promise_setOneXId($scope.ob, $scope.foreign, jsonToSend).then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         $scope.response = response;
@@ -83,7 +92,7 @@ moduloParticipa.controller('ParticipaNewController', ['$scope', '$routeParams', 
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/' + $scope.ob + '/plist');
+            $location.path($scope.urlplist);
         };
     }]);
 

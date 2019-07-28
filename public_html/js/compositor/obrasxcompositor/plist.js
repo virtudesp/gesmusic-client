@@ -30,14 +30,7 @@
 
 moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParams', '$location', 'serverService', 'obraService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, obraService, $uibModal) {
-        //datos del compositor
-//        $scope.id = $routeParams.id;
-        $scope.foreign = $routeParams.id;
-        $scope.nombre = "";//$routeParams.nombre;
-        $scope.apellidos = ""; //$routeParams.apellidos; 
-//        $scope.title = "Obras del compositor: " + $scope.nombre + " " + $scope.apellidos;
         $scope.title = "Relación de obras";
-
         $scope.fields = obraService.getFields(false);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
@@ -46,44 +39,52 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
-        $scope.order = "";
-        $scope.ordervalue = "";
-        $scope.filter = "id";
-        $scope.filteroperator = "like";
-        $scope.filtervalue = "";
-        $scope.filterParams = serverService.checkNull($routeParams.filter);
-        $scope.orderParams = serverService.checkNull($routeParams.order);
-        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter);
-        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
+        {
+//        $scope.order = "";
+//        $scope.ordervalue = "";
+//        $scope.filter = "id";
+//        $scope.filteroperator = "like";
+//        $scope.filtervalue = "";
+//        $scope.filterParams = serverService.checkNull($routeParams.filter);
+//        $scope.orderParams = serverService.checkNull($routeParams.order);
+//        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter);
+//        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
+        }
         $scope.status = null;
         $scope.debugging = serverService.debugging();
+        // urls para la relación 1:N
         $scope.url = "compositor/" + $scope.ob + '/' + $scope.op;
         $scope.urlnew = "compositor/obrasxcompositor/new";
         $scope.urledit = "compositor/obrasxcompositor/edit";
-//        $scope.urlnew = "obrasxcompositor/new";
-//        $scope.urledit = "obrasxcompositor/edit";
+        // url para volver al listado de compositores
         $scope.urlplist = "compositor/plist";
         $scope.bean = {};
-
+        // id del compositor que viene en la url
+        $scope.foreign = $routeParams.id;
+        // Para guardar los datos del compositor y mostrarlos en la cabecera
+        $scope.foreignbean = {};
+        $scope.foreignbean.id = 0;
+        $scope.foreignob = "compositor";
+        //-------------
         function getDataFromServer() {
-            serverService.promise_getOne($scope.ob, $scope.foreign).then(function (response) {
+            // obtener los datos del compositor
+            serverService.promise_getOne($scope.foreignob, $scope.foreign).then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
                         $scope.status = null;
-                        $scope.bean = response.data.message;
-                        $scope.title; // += $scope.bean.nombre + " " + $scope.bean.apellidos;
+                        $scope.foreignbean = response.data.message;
                     } else {
-                        $scope.status = "Error en la recepción de datos del servidor11";
+                        $scope.status = "Error en la recepción de datos del servidor1";
                     }
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor22";
+                    $scope.status = "Error en la recepción de datos del servidor2";
                 }
             }).catch(function (data) {
-                $scope.status = "Error en la recepción de datos del servidor33";
+                $scope.status = "Error en la recepción de datos del servidor3";
             });
+            //-------
             serverService.promise_getCountXId($scope.ob, $scope.foreign, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
-                    $scope.registers = response.data.message;
                     $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
                     if ($scope.numpage > $scope.pages) {
                         $scope.numpage = $scope.pages;

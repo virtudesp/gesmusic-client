@@ -33,7 +33,7 @@ moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$uibModalInst
         $scope.fields = usuarioService.getFields(true);
         $scope.obtitle = usuarioService.getObTitle();
         $scope.icon = usuarioService.getIcon();
-        $scope.title = "Selección de un" + $scope.obtitle;
+        $scope.title = "Selección de un " + $scope.obtitle;
         $scope.ob = usuarioService.getTitle();
         $scope.op = "selection";
         $scope.numpage = 1;

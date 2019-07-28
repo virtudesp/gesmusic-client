@@ -30,17 +30,19 @@
 
 moduloRepertorio.controller('RepertorioPListController', ['$scope', '$routeParams', '$location', 'serverService', 'repertorioService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, repertorioService, $uibModal) {
-        $scope.fields = repertorioService.getFields(true);
+//        $scope.fields = repertorioService.getFields(true);
+        $scope.fields = repertorioService.getFieldsObra(true);
         $scope.obtitle = repertorioService.getObTitle();
         $scope.icon = repertorioService.getIcon();
         $scope.ob = repertorioService.getTitle();
-        $scope.title = "Repertorio del acto: ";
+        $scope.title = "Repertorio ";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
-        $scope.order = "";
-        $scope.ordervalue = "";
+        {
+//        $scope.order = "";
+//        $scope.ordervalue = "";
 //        $scope.filter = "id";
 //        $scope.filteroperator = "like";
 //        $scope.filtervalue = "";
@@ -48,20 +50,72 @@ moduloRepertorio.controller('RepertorioPListController', ['$scope', '$routeParam
 //        $scope.orderParams = serverService.checkNull($routeParams.order)
 //        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
 //        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
+        }
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.url = $scope.ob + '/' + $scope.op;
-        $scope.listado = "repertorio";
-        $scope.id = $routeParams.id;
+        // urls para la relacion N:M --> repertorio 
+//        $scope.urlrepertorio = 'repertorio/plist';
+        $scope.urlnew = "repertorio/new";
+        $scope.urledit = "repertorio/edit";
+        // url para volver al listado de actos
+        $scope.urlplist = "acto/plist";
+        // datos enviados en la url
+        $scope.foreign = $routeParams.foreign; // id del acto
+        $scope.foreign2 = $routeParams.foreign2; // id de la agrupación
+        // Para guardar los datos del acto y mostrarlos en la cabecera
+        $scope.foreignbean = {};
+        $scope.foreignbean.id = 0;
+        $scope.foreignob = "acto";
+        // Para guardar los datos de la agrupación y mostrarlos en la cabecera
+        $scope.foreignbean2 = {};
+        $scope.foreignbean2.id = 0;
+        $scope.foreignob2 = "agrupacion";
+        // Para guardar los datos de las obras
+        $scope.foreignbean3 = {};
+        $scope.foreignbean3.id = 0;
+        $scope.foreignob3 = "obra";
+        //------------- 
         function getDataFromServer() {
-            serverService.promise_getCount($scope.ob, $scope.listado, $scope.id, $scope.filterExpression).then(function (response) {
+            // obtener los datos del acto
+            serverService.promise_getOne($scope.foreignob, $scope.foreign).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.foreignbean = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor2";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor3";
+            });
+            // obtener los datos de la agrupación
+            serverService.promise_getOne($scope.foreignob2, $scope.foreign2).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.foreignbean2 = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor2";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor3";
+            });
+            // datos de las obras del repertorio
+            serverService.promise_getCountXForeignXForeign2($scope.ob, $scope.foreign, $scope.foreign2, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;
                     $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
                     if ($scope.numpage > $scope.pages) {
                         $scope.numpage = $scope.pages;
                     }
-                    return serverService.promise_getPageXId($scope.ob, $scope.foreign, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
+                    return serverService.promise_getPageXForeignXForeign2($scope.ob, $scope.foreign, $scope.foreign2, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor1";
                 }
@@ -76,24 +130,23 @@ moduloRepertorio.controller('RepertorioPListController', ['$scope', '$routeParam
                 $scope.status = "Error en la recepción de datos del servidor3";
             });
         }
-        $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
-            var modalInstance = $uibModal.open({
-                templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',
-                controller: foreignContollerName,
-                size: 'lg',
-                resolve: {
-                    id: function () {
-                        return id;
-                    }
-                }
-            }).result.then(function (modalResult) {
-                if (modalResult) {
-                    getDataFromServer();
-                }
-
-            });
-        }
-        ;
+//        $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
+//            var modalInstance = $uibModal.open({
+//                templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',
+//                controller: foreignContollerName,
+//                size: 'lg',
+//                resolve: {
+//                    id: function () {
+//                        return id;
+//                    }
+//                }
+//            }).result.then(function (modalResult) {
+//                if (modalResult) {
+//                    getDataFromServer();
+//                }
+//
+//            });
+//        };
         getDataFromServer();
     }]);
 

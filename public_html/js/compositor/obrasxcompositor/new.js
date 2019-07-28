@@ -32,8 +32,8 @@ moduloObra.controller('ObrasXCompositorNewController', ['$scope', '$routeParams'
     function ($scope, $routeParams, $location, serverService, obraService, sharedSpaceService, $filter, $uibModal) {
         // datos del compositor
         $scope.foreign = $routeParams.foreign;
-        $scope.nombre = $routeParams.nombre;
-        $scope.apellidos = $routeParams.apellidos;
+//        $scope.nombre = $routeParams.nombre;
+//        $scope.apellidos = $routeParams.apellidos;
         $scope.urlplist ="compositor/obrasxcompositor/plist/" + $scope.foreign;// + "/" + $scope.nombre + "/" + $scope.apellidos;
 //        $scope.urlplist ="obrasxcompositor/plist/" + $scope.foreign; // + "/" + $scope.nombre + "/" + $scope.apellidos;
         //-------

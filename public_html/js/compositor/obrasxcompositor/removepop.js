@@ -37,7 +37,7 @@ moduloObra.controller('ObrasXCompositorRemovepopController', ['$scope', '$routeP
         $scope.title = "Borrado de una obra"; // del compositor " + $scope.nombre + " " + $scope.apellidos;
 //        $scope.id = $routeParams.id;
         $scope.id = id;
-        $scope.foreign = $routeParams.foreign;
+//        $scope.foreign = $routeParams.foreign; // no se usa
         $scope.status = null;
 //        $scope.debugging = serverService.debugging();
         function getData() {

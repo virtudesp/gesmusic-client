@@ -61,8 +61,8 @@ THE SOFTWARE.
                                      ng-if="f.type == 'date'"
                                      id="fecha-group"
                                      ng-class="{'has-error': (outerForm[f.name].$error.required ||
-                                                             outerForm[f.name].$error.valid)
-                                                             && !outerForm[f.name].$pristine}">
+                                                         outerForm[f.name].$error.valid)
+                                                         && !outerForm[f.name].$pristine}">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                     <div class="control col-sm-3">
                                         <date-picker 
@@ -73,7 +73,7 @@ THE SOFTWARE.
                                         </date-picker>    
                                     </div>
                                 </div>
-                                <!------------------------------------------------->
+                                <!--------------------------------------------------->
                                 <div ng-if="f.type == 'foreign'" id="{{f.name}}-group" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                     <div class="control col-sm-4">
@@ -87,6 +87,36 @@ THE SOFTWARE.
                                         </foreign-key>
                                     </div>
                                 </div>
+                                <!------------------------------------------------->
+                                <!--<div ng-if="f.type == 'foreign'" id="{{f.name}}_group" 
+                                     ng-class="['input-group','foreign','control',{'has-error': outerForm[f.name].$error.exists}]">
+                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                    <div class="control col-sm-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="{{f.name}}_button" ng-click="f.chooseOne()">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>                                        
+                                            <input type="text" 
+                                                   ng-model-options="{debounce: 1000}" 
+                                                   ng-model="f.bean.id"
+                                                   ng-change="f.change(f.bean2.id)"
+                                                   validatemin="0" 
+                                                   ng-required="{{f.required}}"  
+                                                   aria-describedby="basic-addon2" 
+                                                   class="form-control" 
+                                                   id="{{f.name}}" 
+                                                   name="{{f.name}}"
+                                                   size="5" 
+                                                   maxlength="5">                                        
+                                            <span class="input-group-addon">
+                                                <span>{{f.desc}}</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="help-block" ng-show="outerForm[f.name].$error.exists">Debes elegir uno/a que exista</span>-->
+
+
                                 <!------------------------------------------------->
                             </div>
                             <div class="control-group text-right">

@@ -41,6 +41,7 @@ var gesmusic = angular.module('myApp', [
     'miembroControllers',
     'obraControllers',
     'participaControllers',
+    'repertorioControllers',
     'rolControllers',
     'sociedadControllers',
     'tipomiembroControllers',
@@ -76,7 +77,7 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/acto/new/:id?', {templateUrl: 'js/acto/new.html', controller: 'ActoNewController'});
         $routeProvider.when('/acto/edit/:id', {templateUrl: 'js/acto/edit.html', controller: 'ActoEditController'});
         $routeProvider.when('/acto/remove/:id', {templateUrl: 'js/acto/remove.html', controller: 'ActoRemoveController'});
-        $routeProvider.when('/acto/plist/:page?/:rpp?', {templateUrl: 'js/acto/plist.html', controller: 'ActoPListController'});
+        $routeProvider.when('/acto/plist/:id?/:page?/:rpp?', {templateUrl: 'js/acto/plist.html', controller: 'ActoPListController'});
         $routeProvider.when('/acto/selection/:page?/:rpp?', {templateUrl: 'js/acto/selection.html', controller: 'ActoSelectionController'});
         //------------
         $routeProvider.when('/agrupacion/view/:id', {templateUrl: 'js/agrupacion/view.html', controller: 'AgrupacionViewController'});
@@ -134,18 +135,17 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/obra/selection/:page?/:rpp?', {templateUrl: 'js/obra/selection.html', controller: 'ObraSelectionController'});
         //------------  
         $routeProvider.when('/participa/view/:id', {templateUrl: 'js/participa/view.html', controller: 'ParticipaViewController'});
-        $routeProvider.when('/participa/new/:id?', {templateUrl: 'js/participa/new.html', controller: 'ParticipaNewController'});
+        $routeProvider.when('/participa/new/:foreign?', {templateUrl: 'js/participa/new.html', controller: 'ParticipaNewController'});
         $routeProvider.when('/participa/edit/:id', {templateUrl: 'js/participa/edit.html', controller: 'ParticipaEditController'});
         $routeProvider.when('/participa/remove/:id', {templateUrl: 'js/participa/remove.html', controller: 'ParticipaRemoveController'});
         $routeProvider.when('/participa/plist/:id/:page?/:rpp?', {templateUrl: 'js/participa/plist.html', controller: 'ParticipaPListController'});
-        $routeProvider.when('/participa/selection/:page?/:rpp?', {templateUrl: 'js/participa/selection.html', controller: 'ParticipaSelectionController'});
         //------------
-//        $routeProvider.when('/repertorio/view/:id', {templateUrl: 'js/repertorio/view.html', controller: 'RepertorioViewController'});
-//        $routeProvider.when('/repertorio/new/:id?', {templateUrl: 'js/repertorio/new.html', controller: 'RepertorioNewController'});
-//        $routeProvider.when('/repertorio/edit/:id', {templateUrl: 'js/repertorio/edit.html', controller: 'RepertorioEditController'});
-//        $routeProvider.when('/repertorio/remove/:id', {templateUrl: 'js/repertorio/remove.html', controller: 'RepertorioRemoveController'});
-//        $routeProvider.when('/repertorio/plist/:id/:page?/:rpp?', {templateUrl: 'js/repertorio/plist.html', controller: 'RepertorioPListController'});
-//        $routeProvider.when('/repertorio/selection/:page?/:rpp?', {templateUrl: 'js/repertorio/selection.html', controller: 'RepertorioSelectionController'});
+        $routeProvider.when('/repertorio/view/:id', {templateUrl: 'js/repertorio/view.html', controller: 'RepertorioViewController'});
+        $routeProvider.when('/repertorio/new/:id?', {templateUrl: 'js/repertorio/new.html', controller: 'RepertorioNewController'});
+        $routeProvider.when('/repertorio/edit/:id', {templateUrl: 'js/repertorio/edit.html', controller: 'RepertorioEditController'});
+        $routeProvider.when('/repertorio/remove/:id/:foreign', {templateUrl: 'js/repertorio/remove.html', controller: 'RepertorioRemoveController'});
+        $routeProvider.when('/repertorio/plist/:foreign/:foreign2/:page?/:rpp?', {templateUrl: 'js/repertorio/plist.html', controller: 'RepertorioPListController'});
+        $routeProvider.when('/repertorio/selection/:page?/:rpp?', {templateUrl: 'js/repertorio/selection.html', controller: 'RepertorioSelectionController'});
         //------------
         $routeProvider.when('/rol/view/:id', {templateUrl: 'js/rol/view.html', controller: 'RolViewController'});
         $routeProvider.when('/rol/new/:id?', {templateUrl: 'js/rol/new.html', controller: 'RolNewController'});
@@ -237,7 +237,7 @@ var moduloElenco = angular.module('elencoControllers', []);
 var moduloMiembro = angular.module('miembroControllers', []);
 var moduloObra = angular.module('obraControllers', []);
 var moduloParticipa = angular.module('participaControllers', []);
-//var moduloRepertorio = angular.module('repertorioControllers', []);
+var moduloRepertorio = angular.module('repertorioControllers', []);
 //------------
 var moduloRol = angular.module('rolControllers', []);
 var moduloSociedad = angular.module('sociedadControllers', []);

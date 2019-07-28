@@ -38,10 +38,10 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
         $scope.op = "new";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
+        // para el select del tipusuario
         $scope.bean = {};
-        //---
-//        $scope.bean.id = 0;
-        
+//        $scope.bean2 = {};
+//        $scope.bean2.id = 0;
         //----
         $scope.bean.obj_tipousuario = {"id": 0};
         if ($routeParams.id_tipousuario) {
@@ -49,7 +49,6 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
                 if (response.data.message.id != 0) {
                     $scope.bean.obj_tipousuario = response.data.message;
                     $scope.show_obj_tipousuario = false;
-                    $scope.title = "Nuevo usuario del tipo " + $scope.bean.obj_tipousuario.tipousuario;
                 }
             });
         } else {
@@ -84,28 +83,57 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
         $scope.plist = function () {
             $location.path('/' + $scope.ob + '/plist');
         };
-//        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
+//
+//        $scope.chooseOne = function () {
 //            var modalInstance = $uibModal.open({
-//                templateUrl: 'js/' + foreignObjectName + '/selection.html',
-//                controller: contollerName,
+//                templateUrl: 'js/tipousuario/selection.html',
+//                controller: "TipousuarioSelectionController",
 //                size: 'lg'
 //            }).result.then(function (modalResult) {
-//                $scope.bean[nameForeign].id = modalResult;
+//                $scope.change(modalResult);
 //            });
 //        };
-//        $scope.$watch('bean.obj_tipousuario.id', function () {
-//            if ($scope.bean) {
-//                serverService.promise_getOne('tipousuario', $scope.bean.obj_tipousuario.id).then(function (response) {
-//                    var old_id = $scope.bean.obj_tipousuario.id;
-//                    $scope.bean.obj_tipousuario = response.data.message;
-//                    if (response.data.message.id != 0) {
-//                        $scope.outerForm.obj_tipousuario.$setValidity('exists', true);
+//
+//        $scope.change = function (id) {
+//            if (!$scope.required && (id <= 0 || id === "" || id === undefined)) {
+//                $scope.bean2.id = null;
+//
+//                validity(true);
+//                return;
+//            }
+//            if ($scope.bean2) {
+//                serverService.promise_getOne($scope.reference, id).then(function (response) {
+//                    var old_id = id;
+//                    $scope.bean2 = response.data.message;
+//                    if (response.data.message.id <= 0) {
+//                        validity(false);
+//                        $scope.bean2.id = old_id;
 //                    } else {
-//                        $scope.outerForm.obj_tipousuario.$setValidity('exists', false);
-//                        $scope.bean.obj_tipousuario.id = old_id;
+//
+//                        validity(true);
+//                        if (Array.isArray($scope.description)) {
+//
+//                            $scope.desc = "";
+//                            for (var d in $scope.description) {
+//                                $scope.desc += $scope.bean2[$scope.description[d]] + " ";
+//                            }
+//                        } else {
+//                            $scope.desc = $scope.bean2[$scope.description];
+//                        }
 //                    }
+//                }).catch(function (data) {
+//                    validity(false);
 //                });
 //            }
-//        });
+//        };
+//
+//        var validity = function (isValid) {
+//            if ($scope.form) {
+//                $scope.form[$scope.name].$setValidity('exists', isValid);
+//            }
+//        };
+//
+
+
     }]);
 

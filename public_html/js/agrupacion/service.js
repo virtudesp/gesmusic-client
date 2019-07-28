@@ -4,7 +4,7 @@ moduloAgrupacion.factory('agrupacionService', ['serverService', function (server
             getFields: function () {
                 return [
                     {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "id"},
-                    {name: "agrupacion", shortname: "Agrupacion", longname: "Agrupacion", visible: true, type: "text", required: true, maxlength: 255, pattern: ""}
+                    {name: "agrupacion", shortname: "Agrupación", longname: "Agrupación", visible: true, type: "text", required: true, maxlength: 255, pattern: ""}
                 ];
             },
             getIcon: function () {

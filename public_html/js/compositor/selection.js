@@ -105,6 +105,6 @@ moduloCompositor.controller('CompositorSelectionController', ['$scope', '$uibMod
         $scope.chooseOne = function (id) {
             $scope.closeForm(id);
             return false;
-        }
+        };
         getData();
     }]);

@@ -43,49 +43,15 @@ THE SOFTWARE.
                         <div class="row">
                             <div class="col-xs-12" ng-if="!status">
                                 <div role="tabpanel">
-                                    <div class="tab-content">                                           
-                                        <div role="tabpanel" id="pane0" class="tab-pane fade active in">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-8 text-left"> 
-                                                    <cplistinfo url="url"         
-                                                                numpage="numpage"                                                       
-                                                                rpp="rpp"
-                                                                registers="registers"        
-                                                                orderparams="orderParams"
-                                                                filterparams="filterParams"
-                                                                sfilterparams="sfilterParams"
-                                                                searchtext="searchText">
-                                                    </cplistinfo>
-                                                    <cplistpagination url="url"         
-                                                                      numpage="numpage"          
-                                                                      rpp="rpp"
-                                                                      pages="pages"
-                                                                      neighbourhood="neighbourhood"
-                                                                      filterParams="filterParams"
-                                                                      orderParams="orderParams"
-                                                                      sfilterParams="sfilterParams">
-                                                    </cplistpagination>
-                                                </div>
-                                                <div class="col-lg-3  col-md-3 col-sm-4 text-left">
-                                                    <cplistrpp url="url"         
-                                                               numpage="numpage"          
-                                                               rpp="rpp"                                                       
-                                                               filterParams="filterParams"
-                                                               orderParams="orderParams"
-                                                               sfilterParams="sfilterParams">
-                                                    </cplistrpp>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-content">
-                                        <div class="col-md-2 text-right">
-                                            <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
-                                                <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">                                                
-                                            </form>
+                                    <div class="tab-content">                       
+                                        <div class="alert alert-success" role="alert" >
+                                            <h4>Acto: {{foreignbean.nombre}}</h4>
+                                            <h4>Lugar: {{foreignbean.lugar}}</h4>
+                                            <h4>Fecha: {{foreignbean.fecha}}</h4>
                                         </div>
                                         <div class="col-md-10 text-right">
-                                            <a class="btn btn-primary" href="{{ob}}/new">Nuevo registro</a>
+                                            <a class="btn btn-primary" href="{{urlnew}}/{{foreign}}">Nuevo participante</a>
+                                        <p></p>
                                         </div>
                                     </div>
                                 </div>
@@ -97,28 +63,14 @@ THE SOFTWARE.
 
                                             <tr ng-repeat="obj in page| filter:searchText">
                                                 <td ng-repeat="f in fields" ng-if="f.visible"  class="text-right">
-                                                    <div ng-if="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
-                                                    <div ng-if="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]|fechacorta}}</div>
-                                                    <div ng-if="f.visible && f.type == 'integer'" class="text-center">{{obj[f.name]}}</div>
-                                                    <div ng-if="f.visible && f.type == 'decimal'" class="text-center">{{obj[f.name]}}</div>
-                                                    <div ng-if="f.visible && f.type == 'calculado'" class="text-center">{{obj[f.name]}}</div>
-                                                    <div ng-if="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
-                                                    <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
-                                                    <!------------------------------------------------>
                                                     <div ng-if="f.visible && f.name == 'obj_agrupacion' && obj.obj_agrupacion.id > 0" class="text-center">
-                                                        <a href="agrupacion/view/{{obj.obj_agrupacion.id}}">{{obj.obj_agrupacion.agrupacion}}</a>
+                                                        {{obj.obj_agrupacion.agrupacion}}
                                                     </div>
-                                                    <!------------------------------------------------>
                                                 </td>                       
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'participa', 'ParticipaViewpopController', 'viewpop')">
-                                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                            </a>
+                                                            <a class="btn btn-default btn-xs" href="{{urlrepertorio}}/{{obj.obj_acto.id}}/{{obj.obj_agrupacion.id}}">Repertorio</a>
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'participa', 'ParticipaRemovepopController', 'removepop')">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
@@ -128,7 +80,7 @@ THE SOFTWARE.
                                             </tr> 
                                         </tbody>
                                     </table>
-                                <div class="col-md-10 text-right"><a class="btn btn-default" ng-click="plist()">Volver al listado de actos</a></div>              
+                                    <div class="col-md-10 text-right"><a class="btn btn-default" ng-click="plist()">Volver al listado de actos</a></div>              
                                 </div>
                             </div>                                
                         </div>  

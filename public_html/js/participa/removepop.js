@@ -34,7 +34,7 @@ moduloParticipa.controller('ParticipaRemovepopController', ['$scope', '$routePar
         $scope.obtitle = participaService.getObTitle();
         $scope.icon = participaService.getIcon();
         $scope.ob = participaService.getTitle();
-        $scope.title = "Borrando un participa";
+        $scope.title = "Borrando una participación";
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();
