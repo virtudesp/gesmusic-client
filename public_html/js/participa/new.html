@@ -41,7 +41,7 @@ THE SOFTWARE.
                                 <h4>Fecha: {{foreignbean.fecha}}</h4>
                             </div>
                             <div ng-repeat="f in fields">      
-                                <div ng-if="f.flag == 'foreign'" id="{{f.name}}-group" class="form-group">
+                                <div ng-if="f.type == 'foreign'" id="{{f.name}}-group" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
                                     <div class="control col-sm-4">
                                         <foreign-key 

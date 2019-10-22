@@ -84,7 +84,7 @@ THE SOFTWARE.
                                                 <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">                                                
                                             </form>
                                         </div> -->                     
-                                        <div ng-if="historial" class="alert alert-success" role="alert" >
+                                        <div class="alert alert-success" role="alert" >
                                             <h4>Título: {{foreignbean.titulo}}</h4>
                                             <h4>Subtítulo: {{foreignbean.subtitulo}}</h4>
                                             <h4>Compositor:  {{foreignbean.obj_compositor.nombre}} {{foreignbean.obj_compositor.apellidos}}</h4>
@@ -128,7 +128,8 @@ THE SOFTWARE.
                                                 </td>
                                             </tr> 
                                         </tbody>
-                                    </table>            
+                                    </table>                        
+                                    <div class="col-md-10 text-right"><a class="btn btn-default" ng-click="plist()">Volver al listado de obras</a></div>            
                                 </div>
                             </div>                                
                         </div>  

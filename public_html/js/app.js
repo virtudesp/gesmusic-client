@@ -77,7 +77,8 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/acto/new/:id?', {templateUrl: 'js/acto/new.html', controller: 'ActoNewController'});
         $routeProvider.when('/acto/edit/:id', {templateUrl: 'js/acto/edit.html', controller: 'ActoEditController'});
         $routeProvider.when('/acto/remove/:id', {templateUrl: 'js/acto/remove.html', controller: 'ActoRemoveController'});
-        $routeProvider.when('/acto/plist/:id?/:page?/:rpp?', {templateUrl: 'js/acto/plist.html', controller: 'ActoPListController'});
+        $routeProvider.when('/acto/historial/:id', {templateUrl: 'js/acto/historial.html', controller: 'ActoHistorialController'});
+        $routeProvider.when('/acto/plist/:page?/:rpp?', {templateUrl: 'js/acto/plist.html', controller: 'ActoPListController'});
         $routeProvider.when('/acto/selection/:page?/:rpp?', {templateUrl: 'js/acto/selection.html', controller: 'ActoSelectionController'});
         //------------
         $routeProvider.when('/agrupacion/view/:id', {templateUrl: 'js/agrupacion/view.html', controller: 'AgrupacionViewController'});
@@ -106,23 +107,19 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/compositor/obrasxcompositor/edit/:id?/:foreign?', {templateUrl: 'js/compositor/obrasxcompositor/edit.html', controller: 'ObrasXCompositorEditController'});
         $routeProvider.when('/compositor/obrasxcompositor/new/:foreign?', {templateUrl: 'js/compositor/obrasxcompositor/new.html', controller: 'ObrasXCompositorNewController'});
         $routeProvider.when('/compositor/obrasxcompositor/plist/:id?', {templateUrl: 'js/compositor/obrasxcompositor/plist.html', controller: 'ObrasXCompositorPListController'});
-        // Controladores para obrasXcompositor
-//        $routeProvider.when('/obrasxcompositor/view/:id?', {templateUrl: 'js/obrasxcompositor/view.html', controller: 'ObrasXCompositorViewpopController'});
-//        $routeProvider.when('/obrasxcompositor/remove', {templateUrl: 'js/obrasxcompositor/remove.html', controller: 'ObrasXCompositorRemovepopController'});
-//        $routeProvider.when('/obrasxcompositor/edit/:id?/:foreign?', {templateUrl: 'js/obrasxcompositor/edit.html', controller: 'ObrasXCompositorEditController'});
-//        $routeProvider.when('/obrasxcompositor/new/:foreign?', {templateUrl: 'js/obrasxcompositor/new.html', controller: 'ObrasXCompositorNewController'});
-//        $routeProvider.when('/obrasxcompositor/plist/:id?', {templateUrl: 'js/obrasxcompositor/plist.html', controller: 'ObrasXCompositorPListController'});
         //------------
         $routeProvider.when('/elenco/view/:id', {templateUrl: 'js/elenco/view.html', controller: 'ElencoViewController'});
         $routeProvider.when('/elenco/new/:id?', {templateUrl: 'js/elenco/new.html', controller: 'ElencoNewController'});
         $routeProvider.when('/elenco/edit/:id', {templateUrl: 'js/elenco/edit.html', controller: 'ElencoEditController'});
         $routeProvider.when('/elenco/remove/:id', {templateUrl: 'js/elenco/remove.html', controller: 'ElencoRemoveController'});
-        $routeProvider.when('/elenco/plist/:page?/:rpp?', {templateUrl: 'js/elenco/plist.html', controller: 'ElencoPListController'});
+        $routeProvider.when('/elenco/chooser/:page?/:rpp?', {templateUrl: 'js/elenco/chooser.html', controller: 'ElencoChooserController'});
+        $routeProvider.when('/elenco/plist/:id/:page?/:rpp?', {templateUrl: 'js/elenco/plist.html', controller: 'ElencoPListController'});
         $routeProvider.when('/elenco/selection/:page?/:rpp?', {templateUrl: 'js/elenco/selection.html', controller: 'ElencoSelectionController'});
         //------------
         $routeProvider.when('/miembro/view/:id', {templateUrl: 'js/miembro/view.html', controller: 'MiembroViewController'});
         $routeProvider.when('/miembro/new/:id?', {templateUrl: 'js/miembro/new.html', controller: 'MiembroNewController'});
         $routeProvider.when('/miembro/edit/:id', {templateUrl: 'js/miembro/edit.html', controller: 'MiembroEditController'});
+        $routeProvider.when('/miembro/plistxtipo/:id?/:page?/:rpp?', {templateUrl: 'js/miembro/plistxtipo.html', controller: 'MiembroPlistXTipoController'});
         $routeProvider.when('/miembro/remove/:id', {templateUrl: 'js/miembro/remove.html', controller: 'MiembroRemoveController'});
         $routeProvider.when('/miembro/plist/:page?/:rpp?', {templateUrl: 'js/miembro/plist.html', controller: 'MiembroPListController'});
         $routeProvider.when('/miembro/selection/:page?/:rpp?', {templateUrl: 'js/miembro/selection.html', controller: 'MiembroSelectionController'});
@@ -141,7 +138,7 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/participa/plist/:id/:page?/:rpp?', {templateUrl: 'js/participa/plist.html', controller: 'ParticipaPListController'});
         //------------
         $routeProvider.when('/repertorio/view/:id', {templateUrl: 'js/repertorio/view.html', controller: 'RepertorioViewController'});
-        $routeProvider.when('/repertorio/new/:id?', {templateUrl: 'js/repertorio/new.html', controller: 'RepertorioNewController'});
+        $routeProvider.when('/repertorio/new/:foreign/:foreign2', {templateUrl: 'js/repertorio/new.html', controller: 'RepertorioNewController'});
         $routeProvider.when('/repertorio/edit/:id', {templateUrl: 'js/repertorio/edit.html', controller: 'RepertorioEditController'});
         $routeProvider.when('/repertorio/remove/:id/:foreign', {templateUrl: 'js/repertorio/remove.html', controller: 'RepertorioRemoveController'});
         $routeProvider.when('/repertorio/plist/:foreign/:foreign2/:page?/:rpp?', {templateUrl: 'js/repertorio/plist.html', controller: 'RepertorioPListController'});

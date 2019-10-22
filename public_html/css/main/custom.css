@@ -1,0 +1,112 @@
+
+body{
+    /*background-color: lightblue;
+   /* background-image: url("../../images/17.jpg"); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
+}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center{
+    font-family:'Roboto' !important;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    color: #052778;
+    font-style: black;
+}
+/* landing page and login  */
+.logo{
+    padding-top: 30px;
+}
+
+.bgimage{
+    height: 100%;
+    background-image: url("../../images/17.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: lightblue;
+}
+
+.loginform{
+    margin: 0 auto;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width:60%;
+}
+
+.bg-verde{
+    width: auto;
+    background-color: #1ABC9C;
+    color: #fff !important;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+.bg-verde:hover{
+    background-color: #052778;
+    color: #fff;
+}
+
+.uno{
+    margin-right: 3px;
+}
+.dos{
+    margin-right: 0px;
+}
+.azul{
+    color: #052778;
+}
+
+/*  home and sidebar   */
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #1ABC9C;
+    color: #fff !important;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff !important;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #052778;
+}
+
+.main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+

@@ -34,32 +34,31 @@ moduloElenco.controller('ElencoPListController', ['$scope', '$routeParams', '$lo
         $scope.obtitle = elencoService.getObTitle();
         $scope.icon = elencoService.getIcon();
         $scope.ob = elencoService.getTitle();
-        $scope.title = "Listado del " + $scope.obtitle;
         $scope.op = "plist";
+        $scope.title = "Elenco";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
-        $scope.order = "";
-        $scope.ordervalue = "";
-        $scope.filter = "id";
-        $scope.filteroperator = "like";
-        $scope.filtervalue = "";
-        $scope.filterParams = serverService.checkNull($routeParams.filter);
-        $scope.orderParams = serverService.checkNull($routeParams.order);
-        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter);
-        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        $scope.url = $scope.ob + '/' + $scope.op;
+        // parámetro que viene en la url: id_agrupacion
+        $scope.foreign = $routeParams.id;
+        $scope.foreignbean = {}; // Para guardar la información de la agrupación
+        $scope.foreignbean.id = 0;
+        $scope.foreignob = "agrupacion";
+        $scope.url = $scope.ob + '/' + $scope.op + '/' + $scope.id;
+        //------- 
         function getDataFromServer() {
-            serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
+            // Aquí se llega desde elenco.chooser al elegir una agrupación
+            // o desde el botón 'Ver elenco' de agrupacion.plist
+            serverService.promise_getCountXId($scope.ob, $scope.foreign, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.registers = response.data.message;
                     $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
                     if ($scope.numpage > $scope.pages) {
                         $scope.numpage = $scope.pages;
                     }
-                    return serverService.promise_getPage($scope.ob, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
+                    return serverService.promise_getPageXId($scope.ob, $scope.foreign, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor1";
                 }
@@ -73,7 +72,23 @@ moduloElenco.controller('ElencoPListController', ['$scope', '$routeParams', '$lo
             }).catch(function (data) {
                 $scope.status = "Error en la recepción de datos del servidor3";
             });
+            // obtener los datos de la agrupacion para la cabecera
+            serverService.promise_getOne($scope.foreignob, $scope.foreign).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.foreignbean = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor2";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor3";
+            });
         }
+        //----------
         $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',

@@ -75,6 +75,12 @@ moduloRepertorio.controller('RepertorioPListController', ['$scope', '$routeParam
         $scope.foreignbean3 = {};
         $scope.foreignbean3.id = 0;
         $scope.foreignob3 = "obra";
+        // url para el historial de actos de la obra
+        $scope.urlhistorial = 'acto/historial';
+        // urls de navegación
+        $scope.urlrepertorio = 'repertorio/plist';
+        $scope.urlparticipa = "participa/plist/";
+        $scope.urledit = "participa/edit";
         //------------- 
         function getDataFromServer() {
             // obtener los datos del acto
@@ -130,24 +136,13 @@ moduloRepertorio.controller('RepertorioPListController', ['$scope', '$routeParam
                 $scope.status = "Error en la recepción de datos del servidor3";
             });
         }
-//        $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
-//            var modalInstance = $uibModal.open({
-//                templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',
-//                controller: foreignContollerName,
-//                size: 'lg',
-//                resolve: {
-//                    id: function () {
-//                        return id;
-//                    }
-//                }
-//            }).result.then(function (modalResult) {
-//                if (modalResult) {
-//                    getDataFromServer();
-//                }
-//
-//            });
-//        };
         getDataFromServer();
+        $scope.back = function () {
+            window.history.back();
+        };
+        $scope.plistactos = function () {
+            $location.path('/acto/plist');
+        };
     }]);
 
 

@@ -51,11 +51,11 @@ THE SOFTWARE.
                                             <h4>Fecha: {{foreignbean.fecha}}</h4>
                                         </div>
                                         <div class="col-md-10 text-right">
-                                            <a class="btn btn-primary" href="{{urlnew}}/{{foreign}}">Añadir obra</a>
+                                            <a class="btn btn-primary" href="{{urlnew}}/{{foreign}}/{{foreign2}}">Añadir obra</a>
                                         </div>
                                     </div>
                                 </div>
-
+                                <p></p>
                                 <div id="datos" ng-if="!status">
                                     <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
                                         <thead plistheader></thead>
@@ -77,21 +77,20 @@ THE SOFTWARE.
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'repertorio', 'RepertorioViewpopController', 'viewpop')">
-                                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                            </a>
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'repertorio', 'RepertorioRemovepopController', 'removepop')">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
+                                                            <a class="btn btn-default btn-xs" href="{{urlhistorial}}/{{obj.id}}">Historial</a>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr> 
                                         </tbody>
-                                    </table>            
+                                    </table> 
+                                    <div class="col-md-10 text-right">
+                                        <a class="btn btn-default" ng-click="back()">Volver al acto</a>
+                                        <a class="btn btn-default" ng-click="plistactos()">Ir al listado de actos</a>
+                                    </div>            
                                 </div>
                             </div>                                
                         </div>  

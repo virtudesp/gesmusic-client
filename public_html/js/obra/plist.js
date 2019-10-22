@@ -40,20 +40,20 @@ moduloObra.controller('ObraPListController', ['$scope', '$routeParams', '$locati
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
-//        $scope.order = "";
-//        $scope.ordervalue = "";
-//        $scope.filter = "id";
-//        $scope.filteroperator = "like";
-//        $scope.filtervalue = "";
-//        $scope.filterParams = serverService.checkNull($routeParams.filter)
-//        $scope.orderParams = serverService.checkNull($routeParams.order)
-//        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
-//        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
+        $scope.order = "";
+        $scope.ordervalue = "";
+        $scope.filter = "id";
+        $scope.filteroperator = "like";
+        $scope.filtervalue = "";
+        $scope.filterParams = serverService.checkNull($routeParams.filter)
+        $scope.orderParams = serverService.checkNull($routeParams.order)
+        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
+        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.url = $scope.ob + '/' + $scope.op;
         // url para la relacion N:M --> historial
-        $scope.urlhistorial = 'acto/plist';
+        $scope.urlhistorial = 'acto/historial';
         //-----------
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
@@ -76,29 +76,7 @@ moduloObra.controller('ObraPListController', ['$scope', '$routeParams', '$locati
                 }
             }).catch(function (data) {
                 $scope.status = "Error en la recepción de datos del servidor3";
-            });
-            //---- Para obtener los actos -----
-//            serverService.promise_getCountXId($scope.foreignob, $scope.foreign, $scope.filterExpression).then(function (response) {
-//                if (response.status == 200) {
-//                    $scope.registers = response.data.message;
-//                    $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
-//                    if ($scope.numpage > $scope.pages) {
-//                        $scope.numpage = $scope.pages;
-//                    }
-//                    return serverService.promise_getPageXId($scope.foreignob, $scope.foreign, $scope.rpp, $scope.numpage, $scope.filterExpression, $routeParams.order);
-//                } else {
-//                    $scope.status = "Error en la recepción de datos del servidor1";
-//                }
-//            }).then(function (response) {
-//                if (response.status == 200) {
-//                    $scope.page = response.data.message;
-//                    $scope.status = "";
-//                } else {
-//                    $scope.status = "Error en la recepción de datos del servidor2";
-//                }
-//            }).catch(function (data) {
-//                $scope.status = "Error en la recepción de datos del servidor3";
-//            });
+            });            
         }
         $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
             var modalInstance = $uibModal.open({

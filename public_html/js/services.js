@@ -325,7 +325,11 @@ moduloServicios
                             return  this.checkEmptyString(sfilter);
                         }
                     }
-                }
+                },
+                setForeignId: function (value) {
+                    var id = value;
+                    return id;
+                },
             };
         })
         .factory('sharedSpaceService', function ($http) {

@@ -51,7 +51,8 @@ moduloTipomiembro.controller('TipomiembroPListController', ['$scope', '$routePar
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.url = $scope.ob + '/' + $scope.op;
-        $scope.urlplist = "tipomiembro/miembrosxtipomiembro/plist";
+//        $scope.urlplist = "tipomiembro/miembrosxtipomiembro/plist";
+        $scope.urlplistxtipo = "miembro/plistxtipo";
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {

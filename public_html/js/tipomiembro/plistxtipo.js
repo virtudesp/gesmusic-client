@@ -28,48 +28,29 @@
 
 'use strict';
 
-moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParams', '$location', 'serverService', 'obraService', '$uibModal',
-    function ($scope, $routeParams, $location, serverService, obraService, $uibModal) {
-        $scope.title = "Relación de obras";
-        $scope.fields = obraService.getFields(false);
-        $scope.obtitle = obraService.getObTitle();
-        $scope.icon = obraService.getIcon();
-        $scope.ob = obraService.getTitle();
+moduloMiembro.controller('MiembroPlistXTipoController', ['$scope', '$routeParams', '$location', 'serverService', 'miembroService', '$uibModal',
+    function ($scope, $routeParams, $location, serverService, miembroService, $uibModal) {
+        $scope.fields = miembroService.getFields();
+        $scope.obtitle = miembroService.getObTitle();
+        $scope.icon = miembroService.getIcon();
+        $scope.title = "Listado de miembros del tipo: ";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
-        {
-//        $scope.order = "";
-//        $scope.ordervalue = "";
-//        $scope.filter = "id";
-//        $scope.filteroperator = "like";
-//        $scope.filtervalue = "";
-//        $scope.filterParams = serverService.checkNull($routeParams.filter);
-//        $scope.orderParams = serverService.checkNull($routeParams.order);
-//        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter);
-//        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
-        }
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        // urls para la relación 1:N
-        $scope.url = "compositor/" + $scope.ob + '/' + $scope.op;
-        $scope.urlnew = "compositor/obrasxcompositor/new";
-        $scope.urledit = "compositor/obrasxcompositor/edit";
-        // url para volver al listado de compositores
-        $scope.urlplist = "compositor/plist";
-        $scope.bean = {};
-        // id del compositor que viene en la url
+//        $scope.url = $scope.ob + '/' + $scope.op;
+        //parámetro que viene en la url: id_tipomiembro
         $scope.foreign = $routeParams.id;
-        // Para guardar los datos del compositor y mostrarlos en la cabecera
+        $scope.ob = miembroService.getTitle();
+        $scope.urlplist = "miembro/plistxtipo";
+        // Para guardar los datos del tipomiembro y mostrarlos en la cabecera
         $scope.foreignbean = {};
         $scope.foreignbean.id = 0;
-        $scope.foreignob = "compositor";
-        // url para la relacion N:M --> historial
-        $scope.urlhistorial = 'acto/historial';
-        //-------------
+        $scope.foreignob = "tipomiembro";
         function getDataFromServer() {
-            // obtener los datos del compositor
+            // obtener los datos del tipomiembro
             serverService.promise_getOne($scope.foreignob, $scope.foreign).then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 200) {
@@ -83,10 +64,11 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
                 }
             }).catch(function (data) {
                 $scope.status = "Error en la recepción de datos del servidor3";
-            });
-            //-------
+            }); 
+            // miembros del tipo id
             serverService.promise_getCountXId($scope.ob, $scope.foreign, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
+                    $scope.registers = response.data.message;
                     $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);
                     if ($scope.numpage > $scope.pages) {
                         $scope.numpage = $scope.pages;
@@ -106,11 +88,10 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
                 $scope.status = "Error en la recepción de datos del servidor3";
             });
         }
-        // Para el viewpop
+        //--------------
         $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
             var modalInstance = $uibModal.open({
-                templateUrl: 'js/compositor/' + foreignObjectName + '/' + foreignViewName + '.html',
-//                templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',
+                templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',
                 controller: foreignContollerName,
                 size: 'lg',
                 resolve: {
@@ -126,9 +107,6 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
             });
         };
         getDataFromServer();
-        $scope.plist = function () {
-            $location.path($scope.urlplist);
-        };
     }]);
 
 

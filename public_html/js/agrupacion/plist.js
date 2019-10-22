@@ -39,18 +39,19 @@ moduloAgrupacion.controller('AgrupacionPListController', ['$scope', '$routeParam
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
-        $scope.order = "";
-        $scope.ordervalue = "";
-        $scope.filter = "id";
-        $scope.filteroperator = "like";
-        $scope.filtervalue = "";
-        $scope.filterParams = serverService.checkNull($routeParams.filter);
-        $scope.orderParams = serverService.checkNull($routeParams.order);
-        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter);
-        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
+//        $scope.order = "";
+//        $scope.ordervalue = "";
+//        $scope.filter = "id";
+//        $scope.filteroperator = "like";
+//        $scope.filtervalue = "";
+//        $scope.filterParams = serverService.checkNull($routeParams.filter);
+//        $scope.orderParams = serverService.checkNull($routeParams.order);
+//        $scope.sfilterParams = serverService.checkNull($routeParams.sfilter);
+//        $scope.filterExpression = serverService.getFilterExpression($routeParams.filter, $routeParams.sfilter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.url = $scope.ob + '/' + $scope.op;
+        $scope.urlelenco = "elenco/plist";
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {

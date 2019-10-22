@@ -33,7 +33,7 @@ moduloObra.controller('ObraSelectionController', ['$scope', '$uibModalInstance',
         $scope.fields = obraService.getFields(true);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
-        $scope.title = "Selección de un" + $scope.obtitle;
+        $scope.title = "Selección de una " + $scope.obtitle;
         $scope.ob = obraService.getTitle();
         $scope.op = "selection";
         $scope.numpage = 1;

@@ -34,26 +34,73 @@ moduloRepertorio.controller('RepertorioNewController', ['$scope', '$routeParams'
         $scope.obtitle = repertorioService.getObTitle();
         $scope.icon = repertorioService.getIcon();
         $scope.ob = repertorioService.getTitle();
-        $scope.title = "Creando una nueva " + $scope.obtitle;
+        $scope.title = "Añadir una obra al repertorio";
         $scope.op = "new";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
+        // datos enviados en la url
+        $scope.foreign = $routeParams.foreign; // id del acto
+        $scope.foreign2 = $routeParams.foreign2; // id de la agrupación
+        $scope.repertoriourl ="repertorio/plist/";// + $scope.foreign + '/' + $scope.foreign2;
+        $scope.url = $scope.ob + '/' + $scope.op + '/' + $scope.id;
+        // Para guardar los datos del acto y mostrarlos en la cabecera
+        $scope.foreignbean = {};
+        $scope.foreignbean.id = 0;
+        $scope.foreignob = "acto";   
+        //------- para guardar el nuevo registro del repertorio
         $scope.bean = {};
-        $scope.bean.id = 0;
-        //----
-        $scope.bean.obj_compositor = {"id": 0};
-        if ($routeParams.id_compositor) {
-            serverService.promise_getOne('compositor', $routeParams.id_compositor).then(function (response) {
+        $scope.bean.obj_acto = {"id": 0};
+        $scope.bean.obj_agrupacion = {"id": 0};
+        $scope.bean.obj_obra = {"id": 0};
+        // obtener los datos del acto
+        serverService.promise_getOne($scope.foreignob, $scope.foreign).then(function (response) {
+            if (response.status == 200) {
+                if (response.data.status == 200) {
+                    $scope.status = null;
+//                    $scope.foreignbean = response.data.message;
+                    $scope.bean.obj_acto = response.data.message;
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor1";
+                }
+            } else {
+                $scope.status = "Error en la recepción de datos del servidor2";
+            }
+        }).catch(function (data) {
+            $scope.status = "Error en la recepción de datos del servidor3";
+        });
+        // Para guardar los datos de la agrupación y mostrarlos en la cabecera
+        $scope.foreignbean2 = {};
+        $scope.foreignbean2.id = 0;
+        $scope.foreignob2 = "agrupacion";   
+        // obtener los datos de la agrupación
+        serverService.promise_getOne($scope.foreignob2, $scope.foreign2).then(function (response) {
+            if (response.status == 200) {
+                if (response.data.status == 200) {
+                    $scope.status = null;
+                    $scope.foreignbean2 = response.data.message;
+                    $scope.bean.obj_agrupacion = response.data.message;
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor1";
+                }
+            } else {
+                $scope.status = "Error en la recepción de datos del servidor2";
+            }
+        }).catch(function (data) {
+            $scope.status = "Error en la recepción de datos del servidor3";
+        });  
+        //----  para guardar la obra elegida
+        if ($routeParams.id_obra) {
+            serverService.promise_getOne('obra', $routeParams.id_obra).then(function (response) {
                 if (response.data.message.id != 0) {
-                    $scope.bean.obj_compositor = response.data.message;
-                    $scope.show_obj_compositor = false;
-                    $scope.title = "Nueva repertorio de " + $scope.bean.obj_compositor.nombre + $scope.bean.obj_compositor.apellidos;
+                    $scope.bean.obj_obra = response.data.message;
+                    $scope.show_obj_obra = false;
+                    $scope.title = "Nueva obra del repertorio";
                 }
             });
         } else {
-            $scope.show_obj_compositor = true;
+            $scope.show_obj_obra = true;
         }
-        //-----
+        //------- 
         $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {

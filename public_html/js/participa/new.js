@@ -60,12 +60,20 @@ moduloParticipa.controller('ParticipaNewController', ['$scope', '$routeParams', 
         }).catch(function (data) {
             $scope.status = "Error en la recepción de datos del servidor3";
         });
-        //-------
-        $scope.bean = {};
-        $scope.bean.id_acto = $routeParams.foreign;  // añadido
-        // siempre va a haber id_acto       
-        $scope.bean.obj_acto = {"id": $scope.foreign};
-        $scope.show_obj_acto = true; 
+        //------- guardar la agrupación seleccionada
+        $scope.bean = {};        
+        $scope.bean.obj_agrupacion = {"id": 0};
+        if ($routeParams.id_agrupacion) {
+            serverService.promise_getOne('agrupacion', $routeParams.id_agrupacion).then(function (response) {
+                if (response.data.message.id != 0) {
+                    $scope.bean.obj_agrupacion = response.data.message;
+                    $scope.show_obj_agrupacion = false;
+                    $scope.title = "Nuevo participante";
+                }
+            });
+        } else {
+            $scope.show_obj_agrupacion = true;
+        }
         $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOneXId($scope.ob, $scope.foreign, jsonToSend).then(function (response) {

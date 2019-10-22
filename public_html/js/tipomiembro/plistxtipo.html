@@ -31,12 +31,19 @@ THE SOFTWARE.
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
+                    <div class="panel-heading" style="font-family:Oswald , serif;">
+                        <div class="row">
+                            <div class="col-xs-9 text-left">
+                                <h1 id="broth_title">{{title}} {{foreignbean.tipomiembro}}</h1>
+                            </div>
+                            <div class="col-xs-3 text-right" id="broth_operationicon"><i class="fa {{icon}} fa-5x"></i></div>
+                        </div>
+                    </div>
                     <div class="panel-body" ng-cloak>
                         <div class="row">
                             <div class="col-xs-12" ng-if="status">
                                 <div class="alert alert-danger" role="alert">
-                                    <h3 class="bg-danger">{{status}}</h3>                            
+                                    <h3 class="bg-danger">{{status}}</h3>                                
                                 </div>
                             </div>
                         </div>
@@ -79,22 +86,17 @@ THE SOFTWARE.
                                         </div>
                                     </div>
                                     <div class="tab-content">
-                                        <!--<div class="col-md-2 text-right">
+                                        <div class="col-md-2 text-right">
                                             <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
                                                 <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">                                                
                                             </form>
-                                        </div> -->                     
-                                        <div ng-if="historial" class="alert alert-success" role="alert" >
-                                            <h4>Título: {{foreignbean.titulo}}</h4>
-                                            <h4>Subtítulo: {{foreignbean.subtitulo}}</h4>
-                                            <h4>Compositor:  {{foreignbean.obj_compositor.nombre}} {{foreignbean.obj_compositor.apellidos}}</h4>
                                         </div>
                                         <div class="col-md-10 text-right">
-                                            <a class="btn btn-primary" href="{{ob}}/new">Añadir acto</a>
+                                            <a class="btn btn-primary" href="{{ob}}/new">Nuevo registro</a>
                                         </div>
                                     </div>
                                 </div>
-                                <p></p>
+
                                 <div id="datos" ng-if="!status">
                                     <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
                                         <thead plistheader></thead>
@@ -103,26 +105,24 @@ THE SOFTWARE.
                                             <tr ng-repeat="obj in page| filter:searchText">
                                                 <td ng-repeat="f in fields" ng-if="f.visible"  class="text-right">
                                                     <div ng-if="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
-                                                    <div ng-if="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]|fechacorta}}</div>
+                                                    <div ng-if="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
                                                     <div ng-if="f.visible && f.type == 'integer'" class="text-center">{{obj[f.name]}}</div>
                                                     <div ng-if="f.visible && f.type == 'decimal'" class="text-center">{{obj[f.name]}}</div>
-                                                    <div ng-if="f.visible && f.type == 'calculado'" class="text-center">{{obj[f.name]}}</div>
                                                     <div ng-if="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
-                                                    <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
+                                                    <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>                                                  
                                                 </td>                       
                                                 <td>
                                                     <div class="btn-toolbar" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'acto', 'ActoViewpopController', 'viewpop')">
+                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'miembro', 'MiembroViewpopController', 'viewpop')">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
                                                                 <span class="glyphicon glyphicon-pencil"></span>
                                                             </a>
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'acto', 'ActoRemovepopController', 'removepop')">
+                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'miembro', 'MiembroRemovepopController', 'removepop')">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
-                                                            <a class="btn btn-default btn-xs" href="{{urlparticipa}}/{{obj.id}}">Participación</a>
                                                         </div>
                                                     </div>
                                                 </td>

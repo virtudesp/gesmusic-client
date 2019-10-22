@@ -39,7 +39,6 @@ moduloObra.controller('ObraNewController', ['$scope', '$routeParams', '$location
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.bean = {};
-//        $scope.bean.id = 0;
         $scope.bean.obj_compositor = {"id": 0};
         //----
         if ($routeParams.id_compositor) {
