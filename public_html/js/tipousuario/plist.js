@@ -47,7 +47,7 @@ moduloTipousuario.controller('TipousuarioPListController', ['$scope', '$routePar
         $scope.filterParams = serverService.checkNull($routeParams.filter)
         $scope.orderParams = serverService.checkNull($routeParams.order)
         $scope.sfilterParams = serverService.checkNull($routeParams.sfilter)
-        $scope.filterExpression = serverService.checkEmptyString($routeParams.filter) + '+' + serverService.checkEmptyString($routeParams.sfilter);
+        $scope.filterExpression = serverService.checkEmptyString($routeParams.filter);
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.url = $scope.ob + '/' + $scope.op;

@@ -33,7 +33,7 @@ moduloArchivo.controller('ArchivoViewpopController', ['$scope', '$routeParams', 
         $scope.obtitle = archivoService.getObTitle();
         $scope.icon = archivoService.getIcon();
         $scope.ob = archivoService.getTitle();
-        $scope.title = "Vista de un registro del " + $scope.obtitle;
+        $scope.title = "Datos de una obra del Archivo";
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

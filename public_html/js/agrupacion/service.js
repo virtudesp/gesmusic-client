@@ -8,7 +8,7 @@ moduloAgrupacion.factory('agrupacionService', ['serverService', function (server
                 ];
             },
             getIcon: function () {
-                return "fa-user";
+                return "fa-users";
             },
             getObTitle: function () {
                 return "agrupacion";

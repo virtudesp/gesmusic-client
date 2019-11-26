@@ -33,7 +33,7 @@ moduloAgrupacion.controller('AgrupacionViewpopController', ['$scope', '$routePar
         $scope.obtitle = agrupacionService.getObTitle();
         $scope.icon = agrupacionService.getIcon();
         $scope.ob = agrupacionService.getTitle();
-        $scope.title = "Vista de un " + $scope.obtitle;
+        $scope.title = "Datos de la Agrupación";
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

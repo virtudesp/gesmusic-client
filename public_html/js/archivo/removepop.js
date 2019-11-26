@@ -34,7 +34,7 @@ moduloArchivo.controller('ArchivoRemovepopController', ['$scope', '$routeParams'
         $scope.obtitle = archivoService.getObTitle();
         $scope.icon = archivoService.getIcon();
         $scope.ob = archivoService.getTitle();
-        $scope.title = "Borrado de un registro del " + $scope.obtitle;
+        $scope.title = "Borrar una obra del Archivo";
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

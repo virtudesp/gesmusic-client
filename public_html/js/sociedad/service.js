@@ -18,7 +18,7 @@ moduloSociedad.factory('sociedadService', ['serverService', function (serverServ
                 ];
             },
             getIcon: function () {
-                return "fa-user";
+                return "fa-users";
             },
             getObTitle: function () {
                 return "sociedad";

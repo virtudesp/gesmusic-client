@@ -29,93 +29,43 @@ THE SOFTWARE.
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
-                    <div class="panel-body" ng-cloak>
-                        <div class="row">
-                            <div class="col-xs-12" ng-if="status">
-                                <div class="alert alert-danger" role="alert">
-                                    <h3 class="bg-danger">{{status}}</h3>                                
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12" ng-if="!status">
-                                <!--<div role="tabpanel">
-                                    <div class="tab-content">                                           
-                                        <div role="tabpanel" id="pane0" class="tab-pane fade active in">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-8 text-left"> 
-                                                    <cplistinfo url="url"         
-                                                                numpage="numpage"                                                       
-                                                                rpp="rpp"
-                                                                registers="registers"        
-                                                                orderparams="orderParams"
-                                                                filterparams="filterParams"
-                                                                sfilterparams="sfilterParams"
-                                                                searchtext="searchText">
-                                                    </cplistinfo>
-                                                    <cplistpagination url="url"         
-                                                                      numpage="numpage"          
-                                                                      rpp="rpp"
-                                                                      pages="pages"
-                                                                      neighbourhood="neighbourhood"
-                                                                      filterParams="filterParams"
-                                                                      orderParams="orderParams"
-                                                                      sfilterParams="sfilterParams">
-                                                    </cplistpagination>
-                                                </div>
-                                                <div class="col-lg-3  col-md-3 col-sm-4 text-left">
-                                                    <cplistrpp url="url"         
-                                                               numpage="numpage"          
-                                                               rpp="rpp"                                                       
-                                                               filterParams="filterParams"
-                                                               orderParams="orderParams"
-                                                               sfilterParams="sfilterParams">
-                                                    </cplistrpp>
-                                                </div>
+            <div class="col-lg-12" ng-include="'js/system/menu.html'"></div>
+        </div>
+        <div class="card border-secondary mb-3">
+            <div class="p-2 center-block" >
+                <img src="images/logo_smbm.jpg" width="595" height="200" alt="SOCIETAT MUSICAL BARRI DE MALILLA">
+            </div>
+            <div class="card-body" ng-cloak> 
+                <div class="row-fluid" ng-if="!status">
+                    <div ng-repeat="obj in page| filter:searchText">
+                        <table class="table table-bordered table-responsive-sm">
+                            <caption>DATOS DE LA SOCIEDAD</caption>
+                            <tbody>
+                                <tr ng-repeat="f in fields" class="text-left">
+                                    <td class="table-info" ng-if="f.type == 'text'">{{f.longname}}</td>
+                                    <td ng-if="f.type == 'text'">{{obj[f.name]}}</td> 
+                                </tr> 
+                                <tr class="text-right">
+                                    <td colspan="2">
+                                        <div class="btn-toolbar" role="toolbar">
+                                            <div class="btn-group">
+                                                <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'sociedad', 'SociedadViewpopController', 'viewpop')">
+                                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                                </a>
+                                                <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </a>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>-->
-                                <div id="datos" ng-if="!status">
-                                    <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
-                                        <thead plistheader></thead>
-                                        <tbody>
-                                            <tr ng-repeat="obj in page| filter:searchText">
-                                                <td ng-repeat="f in fields" ng-if="f.visible"  class="text-right">
-                                                    <div ng-if="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
-                                                    <div ng-if="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
-                                                    <div ng-if="f.visible && f.type == 'integer'" class="text-center">{{obj[f.name]}}</div>
-                                                    <div ng-if="f.visible && f.type == 'decimal'" class="text-center">{{obj[f.name]}}</div>
-                                                    <div ng-if="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
-                                                    <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
-                                                    <!------------------------------------------------>
-                                                </td>                       
-                                                <td>
-                                                    <div class="btn-toolbar" role="toolbar">
-                                                        <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'sociedad', 'SociedadViewpopController', 'viewpop')">
-                                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr> 
-                                        </tbody>
-                                    </table>            
-                                </div>
-                            </div>                                
-                        </div>  
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
                 </div>
             </div>
         </div>
+        <div class="card-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
     </div>     
 </div>
 

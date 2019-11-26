@@ -28,91 +28,59 @@ THE SOFTWARE.
 
 <div id="wrapper">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
-                    <div class="panel-body" ng-cloak>
-                        <div class="alert alert-success" role="alert" ng-if="debugging">
-                            <h4>Debug:</h4>
-                            {{bean|json}}
-                        </div>                   
-                        <form name="outerForm" class="form-horizontal text-left"  ng-if="!status">
-                            <div ng-repeat="f in fields">
-                                <!------------------------------------------------->       
-                                <div ng-if="f.type == 'id'" class="form-group" id="{{f.name}}-group">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <div class="control col-sm-3"> 
-                                        <key ide="bean[f.name]" name="f.name" disable="false"></key> 
-                                    </div>
-                                </div>
-                                <!-------------------------------------------------> 
-                                <div ng-if="f.type == 'text'" id="{{f.name}}-group" class="form-group" 
-                                     ng-class="{
-                                                 'has-error':(outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
-                                                         (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)
-                                             }">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
-                                    <div class="control col-sm-8"> 
-                                        <texto model="bean[f.name]" name="f.name" longname="f.longname" pattern="f.pattern" length="f.maxlength" required="f.required"></texto>
-                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
-                                        <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
-                                    </div>
-                                </div>  
-                                <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-if="f.type == 'date'"
-                                     id="fecha-group"
-                                     ng-class="{'has-error': (outerForm[f.name].$error.required ||
-                                                             outerForm[f.name].$error.valid)
-                                                             && !outerForm[f.name].$pristine}">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <div class="control col-sm-3">
-                                        <date-picker 
-                                            name="f.name" 
-                                            required="f.required" 
-                                            model="bean[f.name]" 
-                                            form="outerForm" > 
-                                        </date-picker>    
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->
-                                <div ng-if="f.type == 'foreign'" class="form-group">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <foreign-key class="col-md-4"
-                                                 bean="bean[f.name]"
-                                                 form="outerForm"
-                                                 name="f.name"                                                 
-                                                 reference="f.reference"
-                                                 description="f.descforeign"
-                                                 required="f.required">   
-                                    </foreign-key>
-                                </div>
-                                <!-------------------------------------------------> 
-                            </div>
-                            <div class="control-group text-right">
-                                <div class="controls">
-                                    <!--<a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>-->
-                                    <a class="btn btn-primary" ng-click="save()" >Guardar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de sociedades</a>
-                                    <a class="btn btn-default" ng-click="close()">Cerrar</a>
-                                </div>
-                            </div>
-                        </form>
-                        <div ng-if="status">                        
-                            <div class="alert alert-success" ng-if="response.status == 200">
-                                <h2>{{status}}</h2>
-                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
-                                <a class="btn btn-default" ng-click="plist()">Ir al listado del {{obtitle}}</a>
-                            </div>
-                            <div class="alert alert-danger" ng-if="response.status != 200">
-                                <h2>{{status}}</h2>                             
+        <div class="card">
+            <div class="card-header" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
+            <div class="card-body" ng-cloak>
+                <!-- <div class="alert alert-success" role="alert" ng-if="debugging">
+                     <h4>Debug:</h4>
+                     {{bean|json}}
+                 </div> -->                  
+                <form name="outerForm" class="form-horizontal text-left"  ng-if="!status">
+                    <div ng-repeat="f in fields">
+                        <!------------------------------------------------->       
+                        <div ng-if="f.type == 'id'" class="form-group" id="{{f.name}}-group">
+                            <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                            <div class="control col-sm-3"> 
+                                <key ide="bean[f.name]" name="f.name" disabled></key> 
                             </div>
                         </div>
+                        <!-------------------------------------------------> 
+                        <div ng-if="f.type == 'text'" 
+                             id="{{f.name}}-group" 
+                             class="form-group" 
+                             ng-class="{'has-error':(outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
+                                         (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
+                            <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
+                            <div class="control col-sm-8"> 
+                                <texto model="bean[f.name]" name="f.name" longname="f.longname" pattern="f.pattern" length="f.maxlength" required="f.required"></texto>
+                                <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.required">El campo es obligatorio</span>
+                                <span class="help-block" ng-if="!outerForm[f.name].$pristine && outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
+                            </div>
+                        </div>  
+                        <!-------------------------------------------------> 
                     </div>
-                    <div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
+                    <div class="text-right">
+                     <!---<div class="control-group text-right">
+                        <div class="controls">--> 
+                            <!--<a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>-->
+                            <a class="btn btn-primary" ng-click="save()" >Guardar</a>
+                            <a class="btn btn-default" ng-click="back()">Volver</a>&nbsp;
+                            <a class="btn btn-default" ng-click="close()">Inicio</a>
+                         <!---</div>--> 
+                    </div>
+                </form>
+                <div ng-if="status">                        
+                    <div class="alert alert-success" ng-if="response.status == 200">
+                        <h2>{{status}}</h2>
+                        <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver datos de la Sociedad</a>
+                        <a class="btn btn-default" ng-click="close()">Inicio</a>
+                    </div>
+                    <div class="alert alert-danger" ng-if="response.status != 200">
+                        <h2>{{status}}</h2>                             
+                    </div>
                 </div>
             </div>
+            <div class="card-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
         </div>
-    </div>     
+    </div>
 </div>

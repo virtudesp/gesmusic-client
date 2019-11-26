@@ -10,10 +10,10 @@
 <div id="container" class="container">
   <div class="row" ng-controller="DataTablesCtrl">
     <div class="col-lg-6 col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">Chart Data</div>
-        <div class="panel-body">
-          <table class="table table-responsive table-condensed">
+      <div class="card">
+        <div class="card-header">Chart Data</div>
+        <div class="card-body">
+          <table class="table table-responsive table-sm">
             <tr>
               <th ng-repeat="label in labels">{{label}}</th>
             </tr>
@@ -26,9 +26,9 @@
       </div>
     </div>
     <div class="col-lg-6 col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">Reactive Chart</div>
-        <div class="panel-body">
+      <div class="card">
+        <div class="card-header">Reactive Chart</div>
+        <div class="card-body">
           <canvas id="tables" class="chart chart-line" chart-data="data" chart-labels="labels"></canvas>
         </div>
       </div>

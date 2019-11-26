@@ -30,7 +30,7 @@ body { padding-top: 50px; }
   z-index: 500;
 }
 
-.panel-heading {
+.card-header {
   font-weight: bold;
 }
 

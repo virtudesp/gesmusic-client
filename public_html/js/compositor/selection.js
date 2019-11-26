@@ -31,9 +31,10 @@
 moduloCompositor.controller('CompositorSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'compositorService', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $modalInstance, $routeParams, compositorService, serverService, $location, sharedSpaceService) {
         $scope.fields = compositorService.getFields(true);
+        $scope.fields2 = compositorService.getFields2(true);
         $scope.obtitle = compositorService.getObTitle();
         $scope.icon = compositorService.getIcon();
-        $scope.title = "Selección de un" + $scope.obtitle;
+        $scope.title = "Selección de un " + $scope.obtitle;
         $scope.ob = compositorService.getTitle();
         $scope.op = "selection";
         $scope.numpage = 1;
@@ -47,7 +48,7 @@ moduloCompositor.controller('CompositorSelectionController', ['$scope', '$uibMod
         $scope.orderParams = null;
         $scope.filterParams = null;
         $scope.status = null;
-        $scope.debugging = serverService.debugging();
+//        $scope.debugging = serverService.debugging();
         $scope.closeForm = function (id) {
             $modalInstance.close(id);
         };

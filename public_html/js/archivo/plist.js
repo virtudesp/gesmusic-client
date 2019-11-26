@@ -34,7 +34,7 @@ moduloArchivo.controller('ArchivoPListController', ['$scope', '$routeParams', '$
         $scope.obtitle = archivoService.getObTitle();
         $scope.icon = archivoService.getIcon();
         $scope.ob = archivoService.getTitle();
-        $scope.title = "Listado de registros del " + $scope.obtitle;
+        $scope.title = "Listado de obras del Archivo";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
         $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
@@ -51,6 +51,7 @@ moduloArchivo.controller('ArchivoPListController', ['$scope', '$routeParams', '$
         $scope.status = null;
         $scope.debugging = serverService.debugging();
         $scope.url = $scope.ob + '/' + $scope.op;
+        
         function getDataFromServer() {
             serverService.promise_getCount($scope.ob, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {

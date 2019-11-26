@@ -34,7 +34,7 @@ moduloAgrupacion.controller('AgrupacionRemovepopController', ['$scope', '$routeP
         $scope.obtitle = agrupacionService.getObTitle();
         $scope.icon = agrupacionService.getIcon();
         $scope.ob = agrupacionService.getTitle();
-        $scope.title = "Borrado de un " + $scope.obtitle;
+        $scope.title = "Borrar una Agrupación";
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

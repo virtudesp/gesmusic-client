@@ -34,10 +34,10 @@ moduloAgrupacion.controller('AgrupacionNewController', ['$scope', '$routeParams'
         $scope.obtitle = agrupacionService.getObTitle();
         $scope.icon = agrupacionService.getIcon();
         $scope.ob = agrupacionService.getTitle();
-        $scope.title = "Creando un nuevo " + $scope.obtitle;
+        $scope.title = "Añadir una Agrupación";
         $scope.op = "new";
         $scope.status = null;
-        $scope.debugging = serverService.debugging();
+//        $scope.debugging = serverService.debugging();
         $scope.bean = {};
         //-----
         $scope.save = function () {

@@ -33,7 +33,7 @@ moduloSociedad.controller('SociedadViewpopController', ['$scope', '$routeParams'
         $scope.obtitle = sociedadService.getObTitle();
         $scope.icon = sociedadService.getIcon();
         $scope.ob = sociedadService.getTitle();
-        $scope.title = "Vista de " + $scope.obtitle;
+        $scope.title = "Datos de la Sociedad";
         $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();

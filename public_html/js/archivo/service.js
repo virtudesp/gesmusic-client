@@ -3,8 +3,9 @@ moduloArchivo.factory('archivoService', ['serverService', function (serverServic
         return {
             getFields: function () {
                 return [
-                    {name: "id", shortname: "ID", longname: "Identificador", visible: true, type: "id"},
+                    {name: "id", shortname: "ID", longname: "Número", visible: true, type: "id"},
                     {name: "obj_obra", shortname: "Obra", longname: "Obra", visible: true, type: "foreign", reference: "obra", descforeign: "titulo"},
+                    {name: "obj_compositor", shortname: "Compositor", longname: "Compositor", visible: true, type: "foreign", reference: "compositor", descforeign: "compositor"},
                     {name: "alta", shortname: "Alta", longname: "Fecha de alta", visible: true, type: "date", required: false, pattern: ""},
                     {name: "arreglo", shortname: "Arreglo", longname: "Arreglo", visible: true, type: "text", required: false, maxlength: 255},
                     {name: "origen", shortname: "Origen", longname: "Origen", visible: true, type: "text", required: false, maxlength: 255}

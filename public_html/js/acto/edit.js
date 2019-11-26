@@ -36,7 +36,7 @@ moduloActo.controller('ActoEditController', ['$scope', '$routeParams', '$locatio
         $scope.title = "Editando un acto";
         $scope.op = "edit";
         $scope.status = null;
-        $scope.debugging = serverService.debugging();
+//        $scope.debugging = serverService.debugging();
         $scope.bean = {};
         //---
         $scope.id = $routeParams.id;

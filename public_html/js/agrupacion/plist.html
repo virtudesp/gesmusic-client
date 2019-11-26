@@ -29,10 +29,13 @@ THE SOFTWARE.
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12" ng-include="'js/system/menu.html'"></div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
-                    <div class="panel-body" ng-cloak>
+                <div class="card">
+                    <div class="card-header" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
+                    <div class="card-body" ng-cloak>
                         <div class="row">
                             <div class="col-xs-12" ng-if="status">
                                 <div class="alert alert-danger" role="alert">
@@ -78,20 +81,24 @@ THE SOFTWARE.
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-content">
-                                        <div class="col-md-2 text-right">
-                                            <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
-                                                <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">                                                
-                                            </form>
-                                        </div>
-                                        <div class="col-md-10 text-right">
-                                            <a class="btn btn-primary" href="{{ob}}/new">Nuevo registro</a>
+                                    <div class="row">
+                                        <div class="col-md-6 text-right">
+                                            <form role="form" action="Controller" method="post">
+                                                <input class="form-control" 
+                                                       name="filtervalue" 
+                                                       type="text" size="20" 
+                                                       maxlength="50" value="" width="50" 
+                                                       placeholder="Buscar" ng-model="searchText">                                                
+                                            </form>      
+                                        </div>                             
+                                        <div class="col-md-6 text-right">
+                                            <a class="btn btn-primary" href="{{ob}}/new">Añadir Agrupación</a>
                                         </div>
                                     </div>
                                 </div>
                                 <p></p>
                                 <div id="datos" ng-if="!status">
-                                    <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">                                
+                                    <table class="table table-bordered table-hover table-striped table-sm">                                
                                         <thead plistheader></thead>
                                         <tbody>
                                             <tr ng-repeat="obj in page| filter:searchText">
@@ -127,7 +134,7 @@ THE SOFTWARE.
                             </div>                                
                         </div>  
                     </div>
-                    <div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
+                    <div class="card-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
                 </div>
             </div>
         </div>

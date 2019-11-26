@@ -33,7 +33,7 @@ moduloAgrupacion.controller('AgrupacionEditController', ['$scope', '$routeParams
         $scope.obtitle = agrupacionService.getObTitle();
         $scope.icon = agrupacionService.getIcon();
         $scope.ob = agrupacionService.getTitle();
-        $scope.title = "Editando un " + $scope.obtitle;
+        $scope.title = "Editar una Agrupación";
         $scope.op = "edit";
         $scope.status = null;
         $scope.debugging = serverService.debugging();

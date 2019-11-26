@@ -34,7 +34,7 @@ moduloArchivo.controller('ArchivoNewController', ['$scope', '$routeParams', '$lo
         $scope.obtitle = archivoService.getObTitle();
         $scope.icon = archivoService.getIcon();
         $scope.ob = archivoService.getTitle();
-        $scope.title = "Creando un nuevo registro del " + $scope.obtitle;
+        $scope.title = "Añadir una obra al Archivo";
         $scope.op = "new";
         $scope.status = null;
         $scope.debugging = serverService.debugging();

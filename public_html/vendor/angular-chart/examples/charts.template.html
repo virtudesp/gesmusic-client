@@ -156,9 +156,9 @@
       </div>
       <div class="row">
         <div class="col-lg-6 col-sm-12" id="line-chart" ng-controller="LineCtrl">
-          <div class="panel panel-default">
-            <div class="panel-heading">Line Chart</div>
-            <div class="panel-body">
+          <div class="card">
+            <div class="card-header">Line Chart</div>
+            <div class="card-body">
               <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels"
                       chart-click="onClick" chart-hover="onHover" chart-series="series" chart-options="options"
                       chart-dataset-override="datasetOverride"></canvas>
@@ -263,9 +263,9 @@ chart-dataset-override=&quot;datasetOverride&quot; chart-click=&quot;onClick&quo
           </tabset>
         </div>
         <div class="col-lg-6 col-sm-12" id="bar-chart" ng-controller="BarCtrl">
-          <div class="panel panel-default">
-            <div class="panel-heading">Bar Chart</div>
-            <div class="panel-body">
+          <div class="card">
+            <div class="card-header">Bar Chart</div>
+            <div class="card-body">
               <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels"
                       chart-series="series" chart-options="options"></canvas>
             </div>
@@ -274,9 +274,9 @@ chart-dataset-override=&quot;datasetOverride&quot; chart-click=&quot;onClick&quo
       </div>
       <div class="row">
         <div class="col-lg-6 col-sm-12" id="doughnut-chart" ng-controller="DoughnutCtrl">
-          <div class="panel panel-default">
-            <div class="panel-heading">Doughnut Chart</div>
-            <div class="panel-body">
+          <div class="card">
+            <div class="card-header">Doughnut Chart</div>
+            <div class="card-body">
               <canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-data="data"
                       chart-labels="labels"></canvas>
             </div>
@@ -350,9 +350,9 @@ chart-dataset-override=&quot;datasetOverride&quot; chart-click=&quot;onClick&quo
           </tabset>
         </div>
         <div class="col-lg-6 col-sm-12" id="radar-chart" ng-controller="RadarCtrl">
-          <div class="panel panel-default">
-            <div class="panel-heading">Radar Chart</div>
-            <div class="panel-body">
+          <div class="card">
+            <div class="card-header">Radar Chart</div>
+            <div class="card-body">
               <canvas id="area" class="chart chart-radar" chart-data="data"
                       chart-labels="labels" chart-options="options" chart-click="onClick"></canvas>
             </div>
@@ -361,9 +361,9 @@ chart-dataset-override=&quot;datasetOverride&quot; chart-click=&quot;onClick&quo
       </div>
       <div class="row">
         <div class="col-lg-6 col-sm-12" id="pie-chart" ng-controller="PieCtrl">
-          <div class="panel panel-default">
-            <div class="panel-heading">Pie Chart</div>
-            <div class="panel-body">
+          <div class="card">
+            <div class="card-header">Pie Chart</div>
+            <div class="card-body">
               <canvas id="pie" class="chart chart-pie chart-xs" chart-data="data"
                       chart-labels="labels" chart-options="options"></canvas>
             </div>
@@ -432,9 +432,9 @@ chart-dataset-override=&quot;datasetOverride&quot; chart-click=&quot;onClick&quo
           </tabset>
         </div>
         <div class="col-lg-6 col-sm-12" id="polar area-chart" ng-controller="PolarAreaCtrl">
-          <div class="panel panel-default">
-            <div class="panel-heading">Polar Area Chart</div>
-            <div class="panel-body">
+          <div class="card">
+            <div class="card-header">Polar Area Chart</div>
+            <div class="card-body">
               <canvas id="polar" class="chart chart-polar-area" chart-data="data"
                       chart-labels="labels" chart-options="options"></canvas>
             </div>
@@ -443,9 +443,9 @@ chart-dataset-override=&quot;datasetOverride&quot; chart-click=&quot;onClick&quo
       </div>
       <div class="row">
         <div class="col-lg-6 col-sm-12" id="horizontal bar-chart" ng-controller="BarCtrl">
-          <div class="panel panel-default">
-            <div class="panel-heading">Horizontal Bar Chart</div>
-            <div class="panel-body">
+          <div class="card">
+            <div class="card-header">Horizontal Bar Chart</div>
+            <div class="card-body">
               <canvas id="horizontal" class="chart chart-horizontal-bar" chart-data="data"
                       chart-labels="labels"></canvas>
             </div>
@@ -537,9 +537,9 @@ chart-dataset-override=&quot;datasetOverride&quot; chart-click=&quot;onClick&quo
           </tabset>
         </div>
         <div class="col-lg-6 col-sm-12" id="bubble-chart" ng-controller="BubbleCtrl">
-          <div class="panel panel-default">
-            <div class="panel-heading">Bubble Chart</div>
-            <div class="panel-body">
+          <div class="card">
+            <div class="card-header">Bubble Chart</div>
+            <div class="card-body">
               <canvas id="bubble" class="chart chart-bubble" chart-data="data" chart-options="options"></canvas>
             </div>
           </div>
@@ -547,9 +547,9 @@ chart-dataset-override=&quot;datasetOverride&quot; chart-click=&quot;onClick&quo
       </div>
       <div class="row">
         <div class="col-lg-6 col-sm-12" id="base-chart" ng-controller="BaseCtrl">
-          <div class="panel panel-default">
-            <div class="panel-heading">Dynamic Chart</div>
-            <div class="panel-body">
+          <div class="card">
+            <div class="card-header">Dynamic Chart</div>
+            <div class="card-body">
               <canvas id="base" class="chart chart-base" chart-type="type" chart-data="data"
                       chart-labels="labels"></canvas>
             </div>
@@ -597,19 +597,19 @@ chart-dataset-override=&quot;datasetOverride&quot; chart-click=&quot;onClick&quo
       </div>
       <div class="row" ng-controller="DataTablesCtrl">
         <div class="col-lg-6 col-sm-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">Reactive Chart</div>
-            <div class="panel-body">
+          <div class="card">
+            <div class="card-header">Reactive Chart</div>
+            <div class="card-body">
               <canvas id="tables" class="chart chart-line" chart-data="data" chart-options="options"
                       chart-labels="labels" chart-colors="colors"></canvas>
             </div>
           </div>
         </div>
         <div class="col-lg-6 col-sm-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">Chart Data</div>
-            <div class="panel-body">
-              <table class="table table-responsive table-condensed table-striped">
+          <div class="card">
+            <div class="card-header">Chart Data</div>
+            <div class="card-body">
+              <table class="table table-responsive table-sm table-striped">
                 <tr>
                   <th ng-repeat="label in labels">{{label}}</th>
                 </tr>
@@ -667,9 +667,9 @@ chart-dataset-override=&quot;datasetOverride&quot; chart-click=&quot;onClick&quo
           </tabset>
         </div>
         <div class="col-lg-6 col-sm-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">Bar line Chart</div>
-            <div class="panel-body">
+          <div class="card">
+            <div class="card-header">Bar line Chart</div>
+            <div class="card-body">
               <canvas class="chart chart-bar" chart-data="data" chart-labels="labels"
                       chart-colors="colors" chart-dataset-override="datasetOverride"></canvas>
             </div>
