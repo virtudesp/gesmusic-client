@@ -1,7 +1,7 @@
 'use strict';
 moduloSistema.controller('LogoutController', ['$scope', '$routeParams', '$location', 'serverService', 'sessionService',
     function ($scope, $routeParams, $location, serverService, sessionService) {
-        $scope.title = "Bye";
+        $scope.title = "Hasta pronto";
         $scope.icon = "fa-sign-out";
         serverService.getLogoutPromise().then(function (response) {
             if (response.status == 200) {
@@ -9,7 +9,7 @@ moduloSistema.controller('LogoutController', ['$scope', '$routeParams', '$locati
                     sessionService.setSessionInactive();
                     sessionService.setUsername('');
                     $scope.status = "Has salido del sistema";
-                    //$location.path('home');
+                    $location.path('login');
                 } else {
                     $scope.status = "Error en la recepción de datos del servidor";
                 }

@@ -30,7 +30,7 @@
 
 moduloMiembro.controller('MiembroSelectionController', ['$scope', '$uibModalInstance', '$routeParams', 'miembroService', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $modalInstance, $routeParams, miembroService, serverService, $location, sharedSpaceService) {
-        $scope.fields = miembroService.getFields();
+        $scope.fields = miembroService.getFields2();
         $scope.obtitle = miembroService.getObTitle();
         $scope.icon = miembroService.getIcon();
         $scope.title = "Selección de un " + $scope.obtitle;
@@ -105,6 +105,6 @@ moduloMiembro.controller('MiembroSelectionController', ['$scope', '$uibModalInst
         $scope.chooseOne = function (id) {
             $scope.closeForm(id);
             return false;
-        }
+        };
         getData();
     }]);

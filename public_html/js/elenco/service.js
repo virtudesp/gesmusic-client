@@ -4,7 +4,7 @@ moduloElenco.factory('elencoService', ['serverService', function (serverService)
             getFields: function () {
                 return [
                     {name: "id", shortname: "ID", longname: "Identificador", visible: false, type: "id"},
-                    {name: "obj_miembro", shortname: "Miembro", longname: "Miembro", visible: true, type: "foreign", reference: "miembro", descforeign: "nombre"},
+                    {name: "obj_miembro", shortname: "Miembro", longname: "Miembro", visible: true, type: "foreign", reference: "miembro", descforeign: ["nombre","apellidos"]},
                     {name: "obj_agrupacion", shortname: "Agrupación", longname: "Agrupación", visible: false, type: "foreign", reference: "agrupacion", descforeign: "agrupacion"},
                     {name: "obj_rol", shortname: "Rol", longname: "Rol", visible: true, type: "foreign", reference: "rol", descforeign: "rol"}
                 ];

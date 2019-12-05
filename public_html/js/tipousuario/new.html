@@ -29,6 +29,9 @@ THE SOFTWARE.
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12" ng-include="'js/system/menu.html'"></div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
@@ -90,7 +93,7 @@ THE SOFTWARE.
                         <div ng-show="status">                        
                             <div class="alert alert-success" ng-show="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
+                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
                                 <a class="btn btn-default" ng-click="plist()">Ir al listado de {{obtitle}}</a>
                             </div>
                             <div class="alert alert-danger" ng-show="response.status != 200">

@@ -32,39 +32,61 @@ moduloObra.controller('ObrasXCompositorEditController', ['$scope', '$routeParams
         // parámetros en la url
         $scope.id = $routeParams.id; // id de la obra
         $scope.foreign = $routeParams.foreign; // id del compositor
-        $scope.nombre = $routeParams.nombre;
-        $scope.apellidos = $routeParams.apellidos;
+//        $scope.nombre = $routeParams.nombre;
+//        $scope.apellidos = $routeParams.apellidos;
         //-------
         $scope.fields = obraService.getFields(false);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();
-        $scope.title = "Editando una obra del compositor: " + $scope.nombre + " " + $scope.apellidos;
+        $scope.title = "Editando una obra";// del compositor: " + $scope.nombre + " " + $scope.apellidos;
         $scope.op = "edit";
         $scope.status = null;
 //        $scope.debugging = serverService.debugging();
-        $scope.urlplist ="compositor/obrasxcompositor/plist/" + $scope.foreign;// + "/" + $scope.nombre + "/" + $scope.apellidos;
+        $scope.urlplist = "compositor/obrasxcompositor/plist/" + $scope.foreign;// + "/" + $scope.nombre + "/" + $scope.apellidos;
 //        $scope.urlplist ="obrasxcompositor/plist/" + $scope.foreign;
         $scope.bean = {};
         $scope.bean.id = $routeParams.id;
         $scope.bean.id_compositor = $routeParams.foreign;  // añadido
-        //--- Obtenemos los datos de la obra
-        serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
-            if (response.status == 200) {
-                if (response.data.status == 200) {
-                    $scope.status = null;
-                    $scope.bean = response.data.message;
+        // Para guardar los datos del compositor y mostrarlos en la cabecera
+        $scope.foreignbean = {};
+        $scope.foreignbean.id = 0;
+        $scope.foreignob = "compositor";
+        //-------
+        function getDataFromServer() {
+            // obtener los datos del compositor
+            serverService.promise_getOne($scope.foreignob, $scope.foreign).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.foreignbean = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
+                    }
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor1";
+                    $scope.status = "Error en la recepción de datos del servidor2";
                 }
-            } else {
-                $scope.status = "Error en la recepción de datos del servidor2";
-            }
-        }).catch(function (data) {
-            $scope.status = "Error en la recepción de datos del servidor3";
-        });
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor3";
+            });
+            //--- Obtenemos los datos de la obra
+            serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.bean = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor2";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor3";
+            });
+        }
         // Guardamos los cambios
-        $scope.save = function () {            
+        $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOneXIdXForeign($scope.ob, $scope.id, $scope.foreign, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -83,6 +105,7 @@ moduloObra.controller('ObrasXCompositorEditController', ['$scope', '$routeParams
             });
             ;
         };
+        getDataFromServer();
         $scope.back = function () {
             window.history.back();
         };

@@ -30,22 +30,21 @@
 
 moduloMiembro.controller('MiembroPlistXTipoController', ['$scope', '$routeParams', '$location', 'serverService', 'miembroService', '$uibModal',
     function ($scope, $routeParams, $location, serverService, miembroService, $uibModal) {
-        $scope.fields = miembroService.getFields();
+        $scope.fields = miembroService.getFields2();
         $scope.obtitle = miembroService.getObTitle();
         $scope.icon = miembroService.getIcon();
-        $scope.title = "Listado de miembros del tipo: ";
+        $scope.title = "Listado de miembros";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
-        $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
+        $scope.rpp = serverService.checkDefault(25, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-//        $scope.url = $scope.ob + '/' + $scope.op;
-        //parámetro que viene en la url: id_tipomiembro
-        $scope.foreign = $routeParams.id;
         $scope.ob = miembroService.getTitle();
 //        $scope.urlplist = "miembro/plistxtipo";
-        $scope.url = "miembro/plistxtipo/" + $scope.foreign;
+//        $scope.url = "miembro/plistxtipo/" + $scope.foreign;
+        //parámetro que viene en la url: id_tipomiembro
+        $scope.foreign = $routeParams.id;
         // Para guardar los datos del tipomiembro y mostrarlos en la cabecera
         $scope.foreignbean = {};
         $scope.foreignbean.id = 0;

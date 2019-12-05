@@ -37,7 +37,7 @@ moduloActo.controller('ActoPListController', ['$scope', '$routeParams', '$locati
         $scope.title = "Listado de actos";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
-        $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
+        $scope.rpp = serverService.checkDefault(25, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
         $scope.status = null;
         $scope.debugging = serverService.debugging();

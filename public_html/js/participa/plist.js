@@ -37,7 +37,7 @@ moduloParticipa.controller('ParticipaPListController', ['$scope', '$routeParams'
         $scope.title = "Participación en acto";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
-        $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
+        $scope.rpp = serverService.checkDefault(25, $routeParams.rpp);
         {
 //        $scope.neighbourhood = serverService.getGlobalNeighbourhood();
 //        $scope.order = "";

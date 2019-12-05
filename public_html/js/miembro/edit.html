@@ -29,6 +29,9 @@ THE SOFTWARE.
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12" ng-include="'js/system/menu.html'"></div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
@@ -39,7 +42,7 @@ THE SOFTWARE.
                                 <div ng-show="f.type == 'id'" 
                                      id="{{f.name}}-group" 
                                      class="form-group">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
+                                    <label class="col-sm-2 control-label" for="{{f.name}}" style="font-size: 14px;">
                                         {{f.longname}}:
                                     </label>
                                     <div class="control col-sm-3">
@@ -110,7 +113,7 @@ THE SOFTWARE.
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de miembroes</a>
+                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de miembros</a>
                                     <a class="btn btn-default" ng-click="close()">Inicio</a>
                                 </div>
                             </div>
@@ -118,8 +121,8 @@ THE SOFTWARE.
                         <div ng-if="status">                        
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
-                                <a class="btn btn-default" ng-click="plist()">Ir al listado de {{obtitle}}</a>
+                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
+                                <a class="btn btn-default" ng-click="plist()">Ir al listado de miembros</a>
                             </div>
                             <div class="alert alert-danger" ng-if="response.status != 200">
                                 <h2>{{status}}</h2>                             

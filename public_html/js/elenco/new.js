@@ -33,17 +33,15 @@ moduloElenco.controller('ElencoNewController', ['$scope', '$routeParams', '$loca
         $scope.fields = elencoService.getFields();
         $scope.obtitle = elencoService.getObTitle();
         $scope.icon = elencoService.getIcon();
-        $scope.ob = elencoService.getTitle();
-        $scope.title = "Creando un nuevo componente del " + $scope.obtitle;
+        $scope.ob = elencoService.getTitle(); //elenco
+//        $scope.title = "Nuevo miembro de la agrupación";
         $scope.op = "new";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
+        //// para los campos miembro y rol
         $scope.bean = {};
         //---
         $scope.bean.obj_miembro = {"id": 0};
-        $scope.bean.obj_agrupacion = {"id": 0};
-        $scope.bean.obj_rol = {"id": 0};
-        //---
         if ($routeParams.id_miembro) {
             serverService.promise_getOne('miembro', $routeParams.id_miembro).then(function (response) {
                 if (response.data.message.id != 0) {
@@ -56,18 +54,7 @@ moduloElenco.controller('ElencoNewController', ['$scope', '$routeParams', '$loca
             $scope.show_obj_miembro = true;
         }
         //---
-        if ($routeParams.id_agrupacion) {
-            serverService.promise_getOne('agrupacion', $routeParams.id_agrupacion).then(function (response) {
-                if (response.data.message.id != 0) {
-                    $scope.bean.obj_agrupacion = response.data.message;
-                    $scope.show_obj_agrupacion = false;
-                    $scope.title = "Nuevo componente del elenco: " + $scope.bean.obj_agrupacion.agrupacion;
-                }
-            });
-        } else {
-            $scope.show_obj_agrupacion = true;
-        }
-        //---
+        $scope.bean.obj_rol = {"id": 0};
         if ($routeParams.id_rol) {
             serverService.promise_getOne('rol', $routeParams.id_rol).then(function (response) {
                 if (response.data.message.id != 0) {
@@ -79,6 +66,26 @@ moduloElenco.controller('ElencoNewController', ['$scope', '$routeParams', '$loca
         } else {
             $scope.show_obj_rol = true;
         }
+        //---
+        // id de la agrupación que viene como parámetro
+        $scope.foreign = $routeParams.id;
+        $scope.foreignbean = {};
+        $scope.foreignbean.id = 0;
+        serverService.promise_getOne('agrupacion', $scope.foreign).then(function (response) {
+            if (response.status == 200) {
+                if (response.data.status == 200) {
+                    $scope.status = null;
+                    $scope.foreignbean = response.data.message;
+                    $scope.title = "Nuevo miembro de la " + $scope.foreignbean.agrupacion;
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor1";
+                }
+            } else {
+                $scope.status = "Error en la recepción de datos del servidor2";
+            }
+        }).catch(function (data) {
+            $scope.status = "Error en la recepción de datos del servidor3";
+        });//               
         //-----
         $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
@@ -106,7 +113,8 @@ moduloElenco.controller('ElencoNewController', ['$scope', '$routeParams', '$loca
             $location.path('/home');
         };
         $scope.plist = function () {
-            $location.path('/' + $scope.ob + '/plist');
+            window.history.back();
+//            $location.path('/elenco/plist');
         };
 //        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
 //            var modalInstance = $uibModal.open({

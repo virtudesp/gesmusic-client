@@ -34,13 +34,16 @@ THE SOFTWARE.
                     <div class="card-header" style="font-family:Oswald , serif;">
                         <div class="row">
                             <div class="col-xs-9 text-left">
-                                <h1 id="broth_title">{{title}} {{foreignbean.tipomiembro}}</h1>
+                                <h1 id="broth_title">{{title}}</h1>
                             </div>
                             <div class="col-xs-3 text-right" id="broth_operationicon"><i class="fa {{icon}} fa-5x"></i></div>
                         </div>
                     </div>
                     <div class="card-body" ng-cloak>
-                        <div class="row">
+                        <div class="row">                         
+                            <div class="alert alert-success" role="alert" >
+                                <h4>Tipomiembro: {{foreignbean.tipomiembro}}</h4>
+                            </div>
                             <div class="col-xs-12" ng-if="status">
                                 <div class="alert alert-danger" role="alert">
                                     <h3 class="bg-danger">{{status}}</h3>                                

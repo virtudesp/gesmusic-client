@@ -30,6 +30,9 @@ THE SOFTWARE.
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12" ng-include="'js/system/menu.html'"></div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
@@ -84,7 +87,7 @@ THE SOFTWARE.
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>
-                                    <a class="btn btn-default" ng-click="{{repertoriourl}}/{{bean.obj_acto.nombre}}/{{bean.obj_agrupacion.id}}">Ir al listado de repertorios</a>
+                                    <a class="btn btn-default" ng-click="back()">Ir al repertorio</a>
                                     <a class="btn btn-default" ng-click="close()">Inicio</a>
                                 </div>
                             </div>
@@ -92,8 +95,8 @@ THE SOFTWARE.
                         <div ng-if="status">                        
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
-                                <a class="btn btn-default" ng-click="back()">Ir al listado de repertorios</a>
+                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
+                                <a class="btn btn-default" ng-click="back()">Ir al repertorio</a>
                             </div>
                             <div class="alert alert-danger" ng-if="response.status != 200">
                                 <h2>{{status}}</h2>                             

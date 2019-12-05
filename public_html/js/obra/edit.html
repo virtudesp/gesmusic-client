@@ -29,14 +29,13 @@ THE SOFTWARE.
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12" ng-include="'js/system/menu.html'"></div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
-                    <div class="card-body" ng-cloak>
-                        <div class="alert alert-success" role="alert" ng-if="debugging">
-                            <h4>Debug:</h4>
-                            {{bean|json}}
-                        </div>                   
+                    <div class="card-body" ng-cloak>                  
                         <form name="outerForm" class="form-horizontal text-left"  ng-if="!status">
                             <div ng-repeat="f in fields">
                                 <!------------------------------------------------->       
@@ -99,7 +98,7 @@ THE SOFTWARE.
                         <div ng-if="status">                        
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
+                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
                                 <a class="btn btn-default" ng-click="plist()">Ir al listado de obras</a>
                             </div>
                             <div class="alert alert-danger" ng-if="response.status != 200">

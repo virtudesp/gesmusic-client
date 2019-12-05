@@ -101,6 +101,7 @@ moduloElenco.controller('ElencoSelectionController', ['$scope', '$uibModalInstan
             $scope.filterParams = null;
             getData();
         });
+        
         $scope.chooseOne = function (id) {
             $scope.closeForm(id);
             return false;

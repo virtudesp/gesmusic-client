@@ -13,8 +13,8 @@ moduloRepertorio.factory('repertorioService', ['serverService', function (server
                 return [
                     {name: "id", shortname: "ID", longname: "Identificador", visible: false, type: "id"},
                     {name: "titulo", shortname: "Título", longname: "Título", visible: true, type: "text", required: true, maxlength: 255},
-                    {name: "subtitulo", shortname: "Subtítulo", longname: "Subtítulo", visible: true, type: "text", required: false, maxlength: 255, pattern: serverService.getRegExpr("nombre")},
-                    {name: "notas", shortname: "Notas", longname: "Notas", visible: true, type: "text", required: false, maxlength: 9999},
+//                    {name: "subtitulo", shortname: "Subtítulo", longname: "Subtítulo", visible: true, type: "text", required: false, maxlength: 255, pattern: serverService.getRegExpr("nombre")},
+//                    {name: "notas", shortname: "Notas", longname: "Notas", visible: true, type: "text", required: false, maxlength: 9999},
                     {name: "obj_compositor", shortname: "Compositor", longname: "Compositor", visible: flag, type: "foreign", reference: "compositor", descforeign: "compositor"}
                 ];
             },

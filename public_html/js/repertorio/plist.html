@@ -29,6 +29,9 @@ THE SOFTWARE.
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12" ng-include="'js/system/menu.html'"></div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
@@ -50,8 +53,17 @@ THE SOFTWARE.
                                             <h4>Lugar: {{foreignbean.lugar}}</h4>
                                             <h4>Fecha: {{foreignbean.fecha}}</h4>
                                         </div>
-                                        <div class="col-md-10 text-right">
-                                            <a class="btn btn-primary" href="{{urlnew}}/{{foreign}}/{{foreign2}}">Añadir obra</a>
+                                        <div class="row">
+                                            <div class="col-md-6 text-right">
+                                                <form role="form" action="Controller" method="post">
+                                                    <input class="form-control" name="filtervalue" 
+                                                           type="text" size="20" maxlength="50" value="" 
+                                                           width="50" placeholder="Buscar" ng-model="searchText">                                                
+                                                </form>      
+                                            </div>                             
+                                            <div class="col-md-6 text-right">
+                                                <a class="btn btn-primary" href="{{ob}}/new">Añadir obra</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +92,8 @@ THE SOFTWARE.
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'repertorio', 'RepertorioRemovepopController', 'removepop')">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
-                                                            <a class="btn btn-default btn-xs" href="{{urlhistorial}}/{{obj.id}}">Historial</a>
+                                                            <a class="btn btn-default btn-xs" href="acto/historial/{{obj.id}}">Historial</a>
+                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'obra', 'ObraViewpopController', 'viewpop')">Ver obra</a>
                                                         </div>
                                                     </div>
                                                 </td>

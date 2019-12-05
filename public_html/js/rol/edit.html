@@ -29,6 +29,9 @@ THE SOFTWARE.
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12" ng-include="'js/system/menu.html'"></div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
@@ -76,7 +79,6 @@ THE SOFTWARE.
                                         <span class="help-block" ng-show="outerForm[f.name].$error.pattern">El campo no tiene formato adecuado: {{f.help}}</span>
                                     </div>
                                 </div>
-                                <!------------------------------------------------->
                             </div>
                             <div class="control-group text-right">
                                 <div class="controls">
@@ -89,7 +91,7 @@ THE SOFTWARE.
                         <div ng-if="status">                        
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
+                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
                                 <a class="btn btn-default" ng-click="plist()">Ir al listado de {{obtitle}}</a>
                             </div>
                             <div class="alert alert-danger" ng-if="response.status != 200">

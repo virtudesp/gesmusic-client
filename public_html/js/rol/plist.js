@@ -37,7 +37,7 @@ moduloRol.controller('RolPListController', ['$scope', '$routeParams', '$location
         $scope.title = "Listado de " + $scope.obtitle + "es";
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
-        $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
+        $scope.rpp = serverService.checkDefault(25, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
         $scope.order = "";
         $scope.ordervalue = "";
@@ -92,6 +92,9 @@ moduloRol.controller('RolPListController', ['$scope', '$routeParams', '$location
             });
         };
         getDataFromServer();
+        $scope.close = function () {
+            $location.path('/home');
+        };
     }]);
 
 

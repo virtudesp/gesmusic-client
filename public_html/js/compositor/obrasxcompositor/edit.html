@@ -29,13 +29,15 @@ THE SOFTWARE.
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12" ng-include="'js/system/menu.html'"></div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
                     <div class="card-body" ng-cloak>
                         <div class="alert alert-success" role="alert" ng-if="debugging">
-                            <h4>Debug:</h4>
-                            {{bean|json}}
+                            <h4>Compositor: {{foreignbean.nombre}} {{foreignbean.apellidos}}</h4>
                         </div>                   
                         <form name="outerForm" class="form-horizontal text-left"  ng-if="!status">
                             <div ng-repeat="f in fields">
@@ -50,7 +52,7 @@ THE SOFTWARE.
                                 <div ng-if="f.type == 'text'" id="{{f.name}}-group" class="form-group" 
                                      ng-class="{
                                                  'has-error':(outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
-                                                         (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)
+                                                 (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)
                                              }">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required" />  
                                     <div class="control col-sm-8"> 
@@ -58,33 +60,15 @@ THE SOFTWARE.
                                     </div>
                                 </div>  
                                 <!------------------------------------------------->
-                                <div class="form-group"
-                                     ng-if="f.type == 'date'"
-                                     id="fecha-group"
-                                     ng-class="{'has-error': (outerForm[f.name].$error.required ||
-                                                             outerForm[f.name].$error.valid)
-                                                             && !outerForm[f.name].$pristine}">
+                                <div ng-if="f.type == 'foreign'" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <div class="control col-sm-3">
-                                        <date-picker 
-                                            name="f.name" 
-                                            required="f.required" 
-                                            model="bean[f.name]" 
-                                            form="outerForm" > 
-                                        </date-picker>    
-                                    </div>
-                                </div>
-                                <!------------------------------------------------->
-                                <!--<div ng-if="f.type == 'foreign'" class="form-group">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
-                                    <foreign-key class="col-sm-5"
-                                                 bean="bean[f.name]"
-                                                 form="outerForm"
-                                                 name="f.name"                                                 
-                                                 reference="f.reference"
-                                                 description="f.descforeign"
-                                                 required="f.required">   
-                                    </foreign-key>
+                                    <div class="control col-sm-8"> 
+                                        <input type="text" class="form-control" 
+                                               id="{{f.name}}-group" name="{{f.name}}" 
+                                               ng-pattern="txt.pattern" 
+                                               placeholder="{{foreignbean.nombre}} {{foreignbean.apellidos}}" 
+                                               maxlength="{{f.length}}" disabled="disabled" />
+                                    </div> 
                                 </div>
                                 <!-------------------------------------------------> 
                             </div>
@@ -99,7 +83,7 @@ THE SOFTWARE.
                         <div ng-if="status">                        
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
+                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
                                 <!--<a class="btn btn-default btn-xs" href="{{urlplist}}/{{volver}}"></a>-->
                                 <a class="btn btn-default" ng-click="plist()">Volver al listado de obras</a>
                             </div>

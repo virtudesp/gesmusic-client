@@ -29,6 +29,9 @@ THE SOFTWARE.
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12" ng-include="'js/system/menu.html'"></div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
@@ -78,61 +81,57 @@ THE SOFTWARE.
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-content">
-                                        <div class="col-md-2 text-right">
-                                            <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
-                                                <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">                                                
-                                            </form>
+                                    <div class="row">
+                                        <div class="col-md-6 text-right">
+                                            <form role="form" action="Controller" method="post">
+                                                <input class="form-control" name="filtervalue" 
+                                                       type="text" size="20" maxlength="50" value="" 
+                                                       width="50" placeholder="Buscar" ng-model="searchText">                                                
+                                            </form>      
+                                        </div>                             
+                                        <div class="col-md-6 text-right">
+                                            <a class="btn btn-primary" href="{{ob}}/new">Nuevo tipo de miembro</a>
                                         </div>
-                                        <div class="col-md-10 text-right">
-                                            <a class="btn btn-primary" href="{{ob}}/new">Nuevo registro</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="datos" ng-if="!status">
-                                    <table class="table table-responsive table-bordered table-hover table-striped table-sm">                                
-                                        <thead plistheader></thead>
-                                        <tbody>
-
-                                            <tr ng-repeat="obj in page| filter:searchText">
-                                                <td ng-repeat="f in fields" ng-if="f.visible"  class="text-right">
-                                                    <div ng-if="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
-                                                    <div ng-if="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
-                                                    <div ng-if="f.visible && f.type == 'integer'" class="text-center">{{obj[f.name]}}</div>
-                                                    <div ng-if="f.visible && f.type == 'decimal'" class="text-center">{{obj[f.name]}}</div>
-                                                    <div ng-if="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
-                                                    <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>                                                  
-                                                </td>                       
-                                                <td>
-                                                    <div class="btn-toolbar" role="toolbar">
-                                                        <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'tipomiembro', 'TipomiembroViewpopController', 'viewpop')">
-                                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
-                                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'tipomiembro', 'TipomiembroRemovepopController', 'removepop')">
-                                                                <span class="glyphicon glyphicon-remove"></span>
-                                                            </a>
-                                                            <a class="btn btn-default btn-xs" href="{{urlplistxtipo}}/{{obj.id}}">Ver miembros</a>
+                                    </div><br>
+                                    <div id="datos" ng-if="!status">
+                                        <table class="table table-bordered table-hover table-striped table-sm">                                
+                                            <thead plistheader></thead>
+                                            <tbody>
+                                                <tr ng-repeat="obj in page| filter:searchText">
+                                                    <td ng-repeat="f in fields" ng-if="f.visible"  class="text-right">
+                                                        <div ng-if="f.visible && f.type == 'id'"><b>{{obj[f.name]}}</b></div>
+                                                        <div ng-if="f.visible && f.type == 'date'" class="text-center">{{obj[f.name]}}</div>
+                                                        <div ng-if="f.visible && f.type == 'integer'" class="text-center">{{obj[f.name]}}</div>
+                                                        <div ng-if="f.visible && f.type == 'decimal'" class="text-center">{{obj[f.name]}}</div>
+                                                        <div ng-if="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
+                                                        <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>                                                  
+                                                    </td>                       
+                                                    <td>
+                                                        <div class="btn-toolbar" role="toolbar">
+                                                            <div class="btn-group">
+                                                                <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
+                                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                                </a>
+                                                                <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'tipomiembro', 'TipomiembroRemovepopController', 'removepop')">
+                                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                                </a>
+                                                                <a class="btn btn-default btn-xs" href="miembro/plistxtipo/{{obj.id}}">Ver miembros</a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                            </tr> 
-                                        </tbody>
-                                    </table>            
-                                </div>
-                            </div>                                
-                        </div>  
+                                                    </td>
+                                                </tr> 
+                                            </tbody>
+                                        </table>            
+                                    </div>
+                                </div>                                
+                            </div>  
+                        </div>
+                        <div class="card-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
                     </div>
-                    <div class="card-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
                 </div>
             </div>
-        </div>
-    </div>     
-</div>
+        </div>     
+    </div>
 
 
 

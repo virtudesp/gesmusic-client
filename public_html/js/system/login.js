@@ -5,11 +5,8 @@ moduloSistema.controller('LoginController', ['$scope', '$routeParams', '$locatio
         $scope.icon = "fa-file-text-o";
         $scope.user = {};
         if (serverService.debugging()) {
-//            $scope.user.user = 'cacun';
-//            $scope.user.pass = 'cacun';
             $scope.user.username = 'cacun';
             $scope.user.password = 'cacun';
-            //$scope.user.password = '79063E8037FFF16D297A1FE65136F1251126CDDB2CC9870ECF8D653835538E85';
         }
         $scope.login = function () {
             serverService.getLoginPromise($scope.user.username, $scope.user.password).then(function (response) {
@@ -17,6 +14,7 @@ moduloSistema.controller('LoginController', ['$scope', '$routeParams', '$locatio
                     sessionService.setSessionActive();
                     sessionService.setUsername(response.data.message.login);
                     sessionService.setId(response.data.message.id);
+                    $scope.username = sessionService.getUsername(response.data.message.login);
                     $location.path('home');
                 } else {
                     sessionService.setSessionInactive();

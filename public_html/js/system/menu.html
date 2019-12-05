@@ -30,12 +30,9 @@ THE SOFTWARE.
     <nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller="IndexController"> 
         <div class="container-fluid">  
             <a class="navbar-brand" href="#">
-                <img src="images/icon3.png" width="40" height="40" class="d-inline-block align-middle" alt="GESMUSIC">
+                <img src="images/logo.png" width="99" height="38" class="d-inline-block align-middle" alt="GESMUSIC">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="container-fluid collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="container-fluid collapse navbar-collapse" style="font-size: 14px" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="col-md-auto nav-item " ng-class="{ active: isActive('/home')}"><a class="nav-link" href="home">Home</a></li>
                     <!-- Sistema ------------------------------------------- -->
@@ -81,19 +78,8 @@ THE SOFTWARE.
                         </div>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-user"></i>
-                            <span id="broth_username_id" ng-if="isSessionActive()">{{username}}</span>            
-                        </a>
-                        <ul class="dropdown-menu dropdown">
-                            <li ng-if="!isSessionActive()"><a href="login"><i class="fa fa-fw fa-user"></i> Login</a></li>
-                            <li ng-if="isSessionActive()"><a href="passchange"><i class="fa fa-fw fa-key"></i> Cambio de contraseña</a></li>
-                            <li ng-if="isSessionActive()" class="divider"></li>
-                            <li ng-if="isSessionActive()" id="broth_logout"><a href="logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>
-                        </ul>
-                    </li>
+                <ul class="nav navbar-nav navbar-right">                    
+                    <li ng-if="isSessionActive()" id="broth_logout"><a href="logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>
                 </ul>
             </div>
         </div>

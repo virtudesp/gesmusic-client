@@ -29,6 +29,9 @@ THE SOFTWARE.
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-12" ng-include="'js/system/menu.html'"></div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
@@ -78,14 +81,16 @@ THE SOFTWARE.
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-content">
-                                        <div class="col-md-2 text-right">
-                                            <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
-                                                <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Buscar" ng-model="searchText">                                                
-                                            </form>
-                                        </div>
-                                        <div class="col-md-10 text-right">
-                                            <a class="btn btn-primary" href="{{ob}}/new">Nuevo registro</a>
+                                    <div class="row">
+                                        <div class="col-md-6 text-right">
+                                            <form role="form" action="Controller" method="post">
+                                                <input class="form-control" name="filtervalue" 
+                                                       type="text" size="20" maxlength="50" value="" 
+                                                       width="50" placeholder="Buscar" ng-model="searchText">                                                
+                                            </form>      
+                                        </div>                             
+                                        <div class="col-md-6 text-right">
+                                            <a class="btn btn-primary" href="{{ob}}/new">Nuevo rol</a>
                                         </div>
                                     </div>
                                 </div>
@@ -107,9 +112,6 @@ THE SOFTWARE.
                                                 <td class="text-center">
                                                     <div class="btn-toolbar text-center" role="toolbar">
                                                         <div class="btn-group">
-                                                            <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'rol', 'RolViewpopController', 'viewpop')">
-                                                                <span class="glyphicon glyphicon-eye-open"></span>
-                                                            </a>
                                                             <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
                                                                 <span class="glyphicon glyphicon-pencil"></span>
                                                             </a>
@@ -122,6 +124,11 @@ THE SOFTWARE.
                                             </tr> 
                                         </tbody>
                                     </table>            
+                                </div>
+                                <div class="control-group text-right">
+                                    <div class="controls">
+                                        <a class="btn btn-default" ng-click="close()">Inicio</a>
+                                    </div>
                                 </div>
                             </div>                                
                         </div>  

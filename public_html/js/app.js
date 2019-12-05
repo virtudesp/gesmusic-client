@@ -70,6 +70,8 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/login', {templateUrl: 'js/system/login.html', controller: 'LoginController'});
         $routeProvider.when('/logout', {templateUrl: 'js/system/logout.html', controller: 'LogoutController'});
         $routeProvider.when('/home', {templateUrl: 'js/system/home.html', controller: 'HomeController'});
+//        $routeProvider.when('/home2', {templateUrl: 'js/system/home2.html', controller: 'HomeController'});
+//        $routeProvider.when('/bridge', {templateUrl: 'js/system/bridge.html', controller: 'HomeController'});
         $routeProvider.when('/license', {templateUrl: 'js/system/license.html', controller: 'LicenseController'});
         $routeProvider.when('/passchange', {templateUrl: 'js/system/passchange.html', controller: 'PasschangeController'});
         //------------
@@ -119,7 +121,7 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/miembro/view/:id', {templateUrl: 'js/miembro/view.html', controller: 'MiembroViewController'});
         $routeProvider.when('/miembro/new/:id?', {templateUrl: 'js/miembro/new.html', controller: 'MiembroNewController'});
         $routeProvider.when('/miembro/edit/:id', {templateUrl: 'js/miembro/edit.html', controller: 'MiembroEditController'});
-        $routeProvider.when('/miembro/plistxtipo/:id?/:page?/:rpp?', {templateUrl: 'js/miembro/plistxtipo.html', controller: 'MiembroPlistXTipoController'});
+        $routeProvider.when('/miembro/plistxtipo/:id/:page?/:rpp?', {templateUrl: 'js/miembro/plistxtipo.html', controller: 'MiembroPlistXTipoController'});
         $routeProvider.when('/miembro/remove/:id', {templateUrl: 'js/miembro/remove.html', controller: 'MiembroRemoveController'});
         $routeProvider.when('/miembro/plist/:page?/:rpp?', {templateUrl: 'js/miembro/plist.html', controller: 'MiembroPListController'});
         $routeProvider.when('/miembro/selection/:page?/:rpp?', {templateUrl: 'js/miembro/selection.html', controller: 'MiembroSelectionController'});
@@ -178,11 +180,11 @@ gesmusic.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/tipousuario/plist/:page?/:rpp?', {templateUrl: 'js/tipousuario/plist.html', controller: 'TipousuarioPListController'});
         $routeProvider.when('/tipousuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'TipousuarioSelectionController'});
         // Controladores para usuariosxtipousuario
-        $routeProvider.when('/tipousuario/usuariosxtipousuario/view', {templateUrl: 'js/tipousuario/usuariosxtipousuario/view.html', controller: 'UsuariosXTipousuarioViewpopController'});
-        $routeProvider.when('/tipousuario/usuariosxtipousuario/remove', {templateUrl: 'js/tipousuario/usuariosxtipousuario/remove.html', controller: 'UsuariosXTipousuarioRemovepopController'});
-        $routeProvider.when('/tipousuario/usuariosxtipousuario/edit/:id?/:foreign?/:tipousuario?', {templateUrl: 'js/tipousuario/usuariosxtipousuario/edit.html', controller: 'UsuariosXTipousuarioEditController'});
-        $routeProvider.when('/tipousuario/usuariosxtipousuario/new/:foreign?/:tipousuario?', {templateUrl: 'js/tipousuario/usuariosxtipousuario/new.html', controller: 'UsuariosXTipousuarioNewController'});
-        $routeProvider.when('/tipousuario/usuariosxtipousuario/plist/:id?', {templateUrl: 'js/tipousuario/usuariosxtipousuario/plist.html', controller: 'UsuariosXTipousuarioPListController'});
+        $routeProvider.when('/usuariosxtipousuario/view', {templateUrl: 'js/usuariosxtipousuario/view.html', controller: 'UsuariosXTipousuarioViewpopController'});
+        $routeProvider.when('/usuariosxtipousuario/remove', {templateUrl: 'js/usuariosxtipousuario/remove.html', controller: 'UsuariosXTipousuarioRemovepopController'});
+        $routeProvider.when('/usuariosxtipousuario/edit/:id?/:foreign?/:tipousuario?', {templateUrl: 'js/usuariosxtipousuario/edit.html', controller: 'UsuariosXTipousuarioEditController'});
+        $routeProvider.when('/usuariosxtipousuario/new/:foreign?/:tipousuario?', {templateUrl: 'js/usuariosxtipousuario/new.html', controller: 'UsuariosXTipousuarioNewController'});
+        $routeProvider.when('/usuariosxtipousuario/plist/:id', {templateUrl: 'js/usuariosxtipousuario/plist.html', controller: 'UsuariosXTipousuarioPListController'});
         //------------
         $routeProvider.when('/usuario/view/:id', {templateUrl: 'js/usuario/view.html', controller: 'UsuarioViewController'});
         $routeProvider.when('/usuario/new/:id?', {templateUrl: 'js/usuario/new.html', controller: 'UsuarioNewController'});
@@ -241,6 +243,7 @@ var moduloSociedad = angular.module('sociedadControllers', []);
 var moduloTipomiembro = angular.module('tipomiembroControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloUsuario = angular.module('usuarioControllers', []);
+var moduloUsuariosXTipousuario = angular.module('usuariosxtipousuariosControllers', []);
 
 //-------------
 var moduloDirectivas = angular.module('Directives', []);

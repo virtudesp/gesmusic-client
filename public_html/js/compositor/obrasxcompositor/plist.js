@@ -37,7 +37,7 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
         $scope.ob = obraService.getTitle();
         $scope.op = "plist";
         $scope.numpage = serverService.checkDefault(1, $routeParams.page);
-        $scope.rpp = serverService.checkDefault(10, $routeParams.rpp);
+        $scope.rpp = serverService.checkDefault(25, $routeParams.rpp);
         $scope.neighbourhood = serverService.getGlobalNeighbourhood();
         {
 //        $scope.order = "";
@@ -59,15 +59,30 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
         // url para volver al listado de compositores
         $scope.urlplist = "compositor/plist";
         $scope.bean = {};
-        // id del compositor que viene en la url
-        $scope.foreign = $routeParams.id;
         // Para guardar los datos del compositor y mostrarlos en la cabecera
+        $scope.foreign = $routeParams.id;
         $scope.foreignbean = {};
         $scope.foreignbean.id = 0;
         $scope.foreignob = "compositor";
         // url para la relacion N:M --> historial
         $scope.urlhistorial = 'acto/historial';
         //-------------
+            // obtener los datos del compositor
+            serverService.promise_getOne($scope.foreignob, $scope.foreign).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.foreignbean = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor2";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor3";
+            });
+            //-------
         function getDataFromServer() {
             // obtener los datos del compositor
             serverService.promise_getOne($scope.foreignob, $scope.foreign).then(function (response) {
