@@ -93,7 +93,7 @@ THE SOFTWARE.
                             </div><br>
                         </div>
                         <div id="datos" ng-if="!status">
-                            <table class="table table-responsive table-bordered table-hover table-striped table-sm">                                
+                            <table class="table table-bordered table-hover table-striped table-sm"  style="font-size: 14px;">                                
                                 <thead plistheader></thead>
                                 <tbody>
                                     <tr ng-repeat="obj in page| filter:searchText">
@@ -118,7 +118,7 @@ THE SOFTWARE.
                                                     <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'acto', 'ActoRemovepopController', 'removepop')">
                                                         <span class="glyphicon glyphicon-remove"></span>
                                                     </a>
-                                                    <a class="btn btn-default btn-xs" href="{{urlparticipa}}/{{obj.id}}">Participación</a>
+                                                    <a class="btn btn-default btn-xs" href="participa/plist/{{obj.id}}">Participación</a>
                                                 </div>
                                             </div>
                                         </td>

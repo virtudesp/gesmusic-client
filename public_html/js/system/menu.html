@@ -27,7 +27,7 @@ THE SOFTWARE.
 
 -->
 <div id="wrapper">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller="IndexController"> 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size: 14px;" ng-controller="IndexController"> 
         <div class="container-fluid">  
             <a class="navbar-brand" href="#">
                 <img src="images/logo.png" width="99" height="38" class="d-inline-block align-middle" alt="GESMUSIC">
@@ -38,42 +38,41 @@ THE SOFTWARE.
                     <!-- Sistema ------------------------------------------- -->
                     <li class="col-md-auto nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-icon-list-alt"></i>Administración
+                            Administración
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <ul>
-                                <li ng-class="{ active: isActive('/sociedad/plist')}"><a href="sociedad/plist"><i class="fa fa-fw fa-users"></i>Sociedad</a></li> 
-                                <li ng-class="{ active: isActive('/usuario/plist')}"><a href="usuario/plist"><i class="fa fa-fw fa-user"></i>Usuario</a></li>       
-                                <li ng-class="{ active: isActive('/tipousuario/plist')}"><a href="tipousuario/plist"><i class="fa fa-fw fa-user-o"></i>Tipo de usuario</a></li>
-                                <li ng-class="{ active: isActive('/tipomiembro/plist')}"><a href="tipomiembro/plist"><i class="fa fa-fw fa-list-ul"></i>Tipo de miembro</a></li>
+                                <li ng-class="{ active: isActive('/sociedad/plist')}"><a href="sociedad/plist">Sociedad</a></li> 
+                                <li ng-class="{ active: isActive('/usuario/plist')}"><a href="usuario/plist">Usuario</a></li>       
+                                <li ng-class="{ active: isActive('/tipousuario/plist')}"><a href="tipousuario/plist">Tipo de usuario</a></li>
+                                <li ng-class="{ active: isActive('/tipomiembro/plist')}"><a href="tipomiembro/plist">Tipo de miembro</a></li>
                             </ul>
                         </div>
                     </li>
                     <!-- Miembros ------------------------------------------- -->                
                     <li class="col-md-auto nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-icon-list-alt"></i>Miembros
+                            Miembros
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <ul>
-                                <li ng-class="{ active: isActive('/miembro/plist')}"><a href="miembro/plist"><i class="fa fa-fw fa-user"></i>Miembro</a></li>
-                                <li ng-class="{ active: isActive('/rol/plist')}"><a href="rol/plist"><i class="fa fa-fw fa-user"></i>Rol</a></li>
-                                <li ng-class="{ active: isActive('/agrupacion/plist')}"><a href="agrupacion/plist"><i class="fa fa-fw fa-users"></i>Agrupación</a></li>                               
-
+                                <li ng-class="{ active: isActive('/miembro/plist')}"><a href="miembro/plist">Miembro</a></li>
+                                <li ng-class="{ active: isActive('/rol/plist')}"><a href="rol/plist">Rol</a></li>
+                                <li ng-class="{ active: isActive('/agrupacion/plist')}"><a href="agrupacion/plist">Agrupación</a></li> 
                             </ul>
                         </div>
                     </li>
                     <!-- Archivo ------------------------------------------- -->                
                     <li class="col-md-auto nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-icon-list-alt"></i>Música
+                            Música
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <ul> 
-                                <li ng-class="{ active: isActive('/compositor/plist')}"><a href="compositor/plist"><i class="fa fa-fw fa-music"></i>Compositor</a></li>
-                                <li ng-class="{ active: isActive('/obra/plist')}"><a href="obra/plist"><i class="fa fa-fw fa-music"></i>Obra</a></li>
-                                <li ng-class="{ active: isActive('/archivo/plist')}"><a href="archivo/plist"><i class="fa fa-fw fa-archive"></i>Archivo</a></li>  
-                                <li ng-class="{ active: isActive('/acto/plist')}"><a href="acto/plist"><i class="fa fa-fw fa-bookmark"></i>Acto</a></li>           
+                                <li ng-class="{ active: isActive('/compositor/plist')}"><a href="compositor/plist">Compositor</a></li>
+                                <li ng-class="{ active: isActive('/obra/plist')}"><a href="obra/plist">Obra</a></li>
+                                <li ng-class="{ active: isActive('/archivo/plist')}"><a href="archivo/plist">Archivo</a></li>  
+                                <li ng-class="{ active: isActive('/acto/plist')}"><a href="acto/plist">Acto</a></li>           
                             </ul>
                         </div>
                     </li>

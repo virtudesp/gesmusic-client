@@ -42,7 +42,7 @@ THE SOFTWARE.
                                 <div ng-show="f.type == 'id'" 
                                      id="{{f.name}}-group" 
                                      class="form-group">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
+                                    <label class="col-sm-2 control-label" for="{{f.name}}" style="font-size: 14px;">
                                         {{f.longname}}:
                                     </label>
                                     <div class="control col-sm-3">
@@ -61,7 +61,7 @@ THE SOFTWARE.
                                      class="form-group" 
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern && !outerForm[f.name].$pristine) ||
                                                              (outerForm[f.name].$error.required && !outerForm[f.name].$pristine)}">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
+                                    <label class="col-sm-2 control-label" for="{{f.name}}" style="font-size: 14px;">
                                         <span ng-show="{{f.required}}">*</span>
                                         {{f.longname}}:
                                     </label>

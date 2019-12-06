@@ -33,7 +33,7 @@ moduloCompositor.controller('CompositorEditController', ['$scope', '$routeParams
         $scope.obtitle = compositorService.getObTitle();
         $scope.icon = compositorService.getIcon();
         $scope.ob = compositorService.getTitle();
-        $scope.title = "Editando una " + $scope.obtitle;
+        $scope.title = "Datos del compositor";
         $scope.op = "edit";
         $scope.status = null;
         $scope.debugging = serverService.debugging();

@@ -34,7 +34,7 @@ moduloCompositor.controller('CompositorNewController', ['$scope', '$routeParams'
         $scope.obtitle = compositorService.getObTitle();
         $scope.icon = compositorService.getIcon();
         $scope.ob = compositorService.getTitle();
-        $scope.title = "Creando una nuevo " + $scope.obtitle;
+        $scope.title = "Nuevo compositor";
         $scope.op = "new";
         $scope.status = null;
         $scope.debugging = serverService.debugging();

@@ -42,7 +42,7 @@ THE SOFTWARE.
                                 <div ng-show="f.type == 'id'" 
                                      id="{{f.name}}-group" 
                                      class="form-group">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}" style="font-size: 14px;">
+                                    <label class="col-sm-2 control-label" for="{{f.name}}" style="font-size: 14px;" style="font-size: 14px;">
                                         {{f.longname}}:
                                     </label>
                                     <div class="control col-sm-3">
@@ -60,7 +60,7 @@ THE SOFTWARE.
                                      class="form-group" 
                                      ng-class="{'has-error': (outerForm[f.name].$error.pattern) ||
                                                              (outerForm[f.name].$error.required)}">
-                                    <label class="col-sm-2 control-label" for="{{f.name}}">
+                                    <label class="col-sm-2 control-label" for="{{f.name}}" style="font-size: 14px;">
                                         <span ng-show="{{f.required}}">*</span>
                                         {{f.longname}}:
                                     </label>
@@ -86,7 +86,7 @@ THE SOFTWARE.
                                      ng-class="{'has-error': (outerForm[f.name].$error.required ||
                                                              outerForm[f.name].$error.valid)
                                                              && !outerForm[f.name].$pristine}">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                    <clabel wide="2" name="f.name" longname="f.longname"   required="f.required"></clabel>
                                     <div class="control col-sm-3">
                                         <date-picker 
                                             name="f.name" 
@@ -98,7 +98,7 @@ THE SOFTWARE.
                                 </div>
                                 <!------------------------------------------------->
                                 <div ng-if="f.type == 'foreign'" class="form-group">
-                                    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                    <clabel wide="2" name="f.name" longname="f.longname"  required="f.required"></clabel>
                                     <foreign-key class="col-sm-5"
                                                  bean="bean[f.name]"
                                                  form="outerForm"

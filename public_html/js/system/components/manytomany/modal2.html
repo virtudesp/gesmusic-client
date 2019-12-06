@@ -20,7 +20,7 @@
 
                                     <!------------------------------------------------->       
                                     <div ng-if="f.type == 'id'" class="form-group" id="{{f.name}}-group">
-                                        <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                        <clabel wide="2" name="f.name" longname="f.longname"   required="f.required"></clabel>
                                         <div class="control col-sm-3"> 
                                             <key ide="bean[f.name]" name="f.name" disable="false"></key> 
                                         </div>
@@ -29,7 +29,7 @@
                                     <!------------------------------------------------->
 
                                     <div ng-if="f.type == 'decimal'" class="form-group">
-                                        <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                        <clabel wide="2" name="f.name" longname="f.longname"   required="f.required"></clabel>
                                         <componentenumero 
                                             class="col-md-3" 
                                             decimalnumber="bean[f.name]" 
@@ -45,7 +45,7 @@
                                          ng-class="{
                                                  'has-error'
                                                  : (outerForm[f.name].$error.pattern || outerForm[f.name].$error.required) && !outerForm[f.name].$pristine}">
-                                        <label class="col-sm-2 control-label" for="{{f.name}}">
+                                        <label class="col-sm-2 control-label" for="{{f.name}}" style="font-size: 14px;">
                                             <span ng-if="{{f.required}}">*</span>
                                             {{f.longname}}:
                                         </label>                                 
@@ -59,7 +59,7 @@
                                     </div>
                                     <!------------------------------------------------->
                                     <div ng-if="f.type == 'text'" class="form-group">
-                                        <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                        <clabel wide="2" name="f.name" longname="f.longname"   required="f.required"></clabel>
                                         <texto 
                                             class="col-md-3" 
                                             model="bean[f.name]" 
@@ -71,7 +71,7 @@
                                     </div>
                                     <!------------------------------------------------->
                                     <div ng-if="f.type == 'boolean'" class="form-group">
-                                        <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                        <clabel wide="2" name="f.name" longname="f.longname"   required="f.required"></clabel>
                                         <boolean 
                                             model="bean[f.name]"
                                             name="f.name">                                
@@ -79,7 +79,7 @@
                                     </div>
                                     <!------------------------------------------------->
                                     <div ng-if="f.type == 'specific'" class="form-group">
-                                        <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+                                        <clabel wide="2" name="f.name" longname="f.longname"   required="f.required"></clabel>
                                         <foreign-key class="col-md-4"
                                                      name="f.name"
                                                      required="f.required"

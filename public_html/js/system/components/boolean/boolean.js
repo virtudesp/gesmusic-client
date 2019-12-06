@@ -13,7 +13,7 @@ moduloDirectivas.component("boolean", {
 /*
  * template use
 <div ng-if="f.type == 'boolean'" class="form-group">
-    <clabel wide="2" name="f.name" longname="f.longname" required="f.required"></clabel>
+    <clabel wide="2" name="f.name" longname="f.longname"   required="f.required"></clabel>
     <boolean 
         model="bean[f.name]"
         name="f.name">                                
