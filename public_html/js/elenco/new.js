@@ -1,10 +1,10 @@
 /* 
- * Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
+ * Copyright (c) 2019 by Virtudes Planells Tatay
  * 
  * sisane: The stunning micro-library that helps you to develop easily 
  *             AJAX web applications by using Angular.js 1.x & sisane-server
  * sisane is distributed under the MIT License (MIT)
- * Sources at https://github.com/rafaelaznar/
+ * Sources at https://github.com/virtudesp/
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -116,28 +116,5 @@ moduloElenco.controller('ElencoNewController', ['$scope', '$routeParams', '$loca
             window.history.back();
 //            $location.path('/elenco/plist');
         };
-//        $scope.chooseOne = function (nameForeign, foreignObjectName, contollerName) {
-//            var modalInstance = $uibModal.open({
-//                templateUrl: 'js/' + foreignObjectName + '/selection.html',
-//                controller: contollerName,
-//                size: 'lg'
-//            }).result.then(function (modalResult) {
-//                $scope.bean[nameForeign].id = modalResult;
-//            });
-//        };
-//        $scope.$watch('bean.obj_miembro.id', function () {
-//            if ($scope.bean) {
-//                serverService.promise_getOne('miembro', $scope.bean.obj_miembro.id).then(function (response) {
-//                    var old_id = $scope.bean.obj_miembro.id;
-//                    $scope.bean.obj_miembro = response.data.message;
-//                    if (response.data.message.id != 0) {
-//                        $scope.outerForm.obj_miembro.$setValidity('exists', true);
-//                    } else {
-//                        $scope.outerForm.obj_miembro.$setValidity('exists', false);
-//                        $scope.bean.obj_miembro.id = old_id;
-//                    }
-//                });
-//            }
-//        });
     }]);
 

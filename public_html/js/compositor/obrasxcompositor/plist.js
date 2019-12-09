@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
+ * Copyright (c) 2019 by Virtudes Planells Tatay
  *
  * sisane: The stunning micro-library that helps you to develop easily
  *             AJAX web applications by using Angular.js 1.x & sisane-server
  * sisane is distributed under the MIT License (MIT)
- * Sources at https://github.com/rafaelaznar/
+ * Sources at https://github.com/virtudesp/
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -125,7 +125,6 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
         $scope.pop = function (id, foreignObjectName, foreignContollerName, foreignViewName) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'js/compositor/' + foreignObjectName + '/' + foreignViewName + '.html',
-//                templateUrl: 'js/' + foreignObjectName + '/' + foreignViewName + '.html',
                 controller: foreignContollerName,
                 size: 'lg',
                 resolve: {
