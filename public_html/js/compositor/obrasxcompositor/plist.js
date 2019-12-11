@@ -66,22 +66,6 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
         $scope.foreignob = "compositor";
         // url para la relacion N:M --> historial
         $scope.urlhistorial = 'acto/historial';
-        //-------------
-            // obtener los datos del compositor
-            serverService.promise_getOne($scope.foreignob, $scope.foreign).then(function (response) {
-                if (response.status == 200) {
-                    if (response.data.status == 200) {
-                        $scope.status = null;
-                        $scope.foreignbean = response.data.message;
-                    } else {
-                        $scope.status = "Error en la recepción de datos del servidor1";
-                    }
-                } else {
-                    $scope.status = "Error en la recepción de datos del servidor2";
-                }
-            }).catch(function (data) {
-                $scope.status = "Error en la recepción de datos del servidor3";
-            });
             //-------
         function getDataFromServer() {
             // obtener los datos del compositor
@@ -99,7 +83,7 @@ moduloObra.controller('ObrasXCompositorPListController', ['$scope', '$routeParam
             }).catch(function (data) {
                 $scope.status = "Error en la recepción de datos del servidor3";
             });
-            //-------
+            //------- obtener las obra de ese compositor
             serverService.promise_getCountXId($scope.ob, $scope.foreign, $scope.filterExpression).then(function (response) {
                 if (response.status == 200) {
                     $scope.pages = serverService.calculatePages($scope.rpp, $scope.registers);

@@ -62,7 +62,7 @@ THE SOFTWARE.
                                         <td ng-if="f.type == 'text'">{{bean[f.name]}}</td>
                                         <td ng-if="f.type == 'boolean'" ng-bind-html="bean[f.name] | booleanizate"></td>
                                         <td ng-if="f.name == 'obj_obra'">{{bean[f.name].titulo}}</td>  
-                                        <td ng-if="f.name == 'obj_compositor'">{{bean[f.name].nombre}} {{bean[f.name].apellidos}}</td>
+                                        <td ng-if="f.name == 'obj_compositor'">{{bean[f.name].obj_compositor.nombre}} {{bean[f.name].obj_compositor.apellidos}}</td>
                                     </tr>                                                                                                           
                                 </tbody>
                             </table>  

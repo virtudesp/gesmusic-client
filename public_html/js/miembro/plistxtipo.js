@@ -43,9 +43,8 @@ moduloMiembro.controller('MiembroPlistXTipoController', ['$scope', '$routeParams
         $scope.ob = miembroService.getTitle();
 //        $scope.urlplist = "miembro/plistxtipo";
 //        $scope.url = "miembro/plistxtipo/" + $scope.foreign;
-        //parámetro que viene en la url: id_tipomiembro
-        $scope.foreign = $routeParams.id;
         // Para guardar los datos del tipomiembro y mostrarlos en la cabecera
+        $scope.foreign = $routeParams.id;
         $scope.foreignbean = {};
         $scope.foreignbean.id = 0;
         $scope.foreignob = "tipomiembro";

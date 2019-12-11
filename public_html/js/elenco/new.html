@@ -83,7 +83,7 @@ THE SOFTWARE.
                         <div ng-if="status">                        
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver el nuevo registro</a>
+                                <a class="btn btn-default" ng-href="{{ob}}/viewpop/{{bean.id}}">Ver el nuevo registro</a>
                                 <a class="btn btn-default" ng-click="plist()">Ir al listado del elenco</a>
                             </div>
                             <div class="alert alert-danger" ng-if="response.status != 200">

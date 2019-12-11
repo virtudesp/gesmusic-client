@@ -40,10 +40,10 @@ THE SOFTWARE.
                     <div ng-repeat="obj in page| filter:searchText">
                         <table class="table table-bordered table-responsive-sm">
                             <caption>DATOS DE LA SOCIEDAD</caption>
-                            <tbody>
-                                <tr ng-repeat="f in fields" class="text-left">
+                            <tbody> 
+                                <tr ng-repeat="f in fields" ng-if="f.visible" class="text-left">
                                     <td class="table-info" ng-if="f.type == 'text'">{{f.longname}}</td>
-                                    <td ng-if="f.type == 'text'">{{obj[f.name]}}</td> 
+                                    <td ng-if="f.visible" style="font-size: 14px;">{{obj[f.name]}}</td> 
                                 </tr> 
                                 <tr class="text-right">
                                     <td colspan="2">
@@ -65,7 +65,6 @@ THE SOFTWARE.
                 </div>
             </div>
         </div>
-        <div class="card-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
     </div>     
 </div>
 

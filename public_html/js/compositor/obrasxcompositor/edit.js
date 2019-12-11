@@ -31,24 +31,20 @@ moduloObra.controller('ObrasXCompositorEditController', ['$scope', '$routeParams
     function ($scope, $routeParams, $location, obraService, serverService, sharedSpaceService, $filter, $uibModal) {
         // parámetros en la url
         $scope.id = $routeParams.id; // id de la obra
-        $scope.foreign = $routeParams.foreign; // id del compositor
-//        $scope.nombre = $routeParams.nombre;
-//        $scope.apellidos = $routeParams.apellidos;
         //-------
         $scope.fields = obraService.getFields(false);
         $scope.obtitle = obraService.getObTitle();
         $scope.icon = obraService.getIcon();
         $scope.ob = obraService.getTitle();
-        $scope.title = "Editando una obra";// del compositor: " + $scope.nombre + " " + $scope.apellidos;
+        $scope.title = "Editando una obra";
         $scope.op = "edit";
         $scope.status = null;
-//        $scope.debugging = serverService.debugging();
-        $scope.urlplist = "compositor/obrasxcompositor/plist/" + $scope.foreign;// + "/" + $scope.nombre + "/" + $scope.apellidos;
-//        $scope.urlplist ="obrasxcompositor/plist/" + $scope.foreign;
+        $scope.urlplist = "compositor/obrasxcompositor/plist/" + $scope.foreign;
+        // para los datos de la obra
         $scope.bean = {};
         $scope.bean.id = $routeParams.id;
-        $scope.bean.id_compositor = $routeParams.foreign;  // añadido
         // Para guardar los datos del compositor y mostrarlos en la cabecera
+        $scope.foreign = $routeParams.foreign; // id del compositor
         $scope.foreignbean = {};
         $scope.foreignbean.id = 0;
         $scope.foreignob = "compositor";

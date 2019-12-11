@@ -113,11 +113,10 @@ THE SOFTWARE.
                                                     <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
                                                     <!------------------------------------------------>
                                                     <div ng-if="f.visible && f.name == 'obj_obra' && obj.obj_obra.id > 0" class="text-center">
-                                                        <a ng-click="pop(obj.id, 'obra', 'ObraViewpopController', 'viewpop')">{{obj.obj_obra.titulo}}</a>
+                                                        <a ng-click="pop(obj.obj_obra.id, 'obra', 'ObraViewpopController', 'viewpop')">{{obj.obj_obra.titulo}}</a>
                                                     </div>
-                                                    <!------------------------------------------------>
                                                     <div ng-if="f.visible && f.name == 'obj_compositor' && obj.obj_compositor.id > 0" class="text-center">
-                                                        <a ng-click="pop(obj.id, 'compositor', 'CompositorViewpopController', 'viewpop')">{{obj.obj_compositor.nombre}} {{obj.obj_compositor.apellidos}}</a>
+                                                        <a ng-click="pop(obj.obj_compositor.id, 'compositor', 'CompositorViewpopController', 'viewpop')">{{obj.obj_compositor.nombre}} {{obj.obj_compositor.apellidos}}</a>
                                                     </div>
                                                     <!------------------------------------------------>
                                                 </td>                       

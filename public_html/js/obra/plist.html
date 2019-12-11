@@ -108,7 +108,7 @@ THE SOFTWARE.
                                                     <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
                                                     <!------------------------------------------------>
                                                     <div ng-if="f.visible && f.name == 'obj_compositor' && obj.obj_compositor.id > 0" class="text-center">
-                                                        <a href="compositor/view/{{obj.obj_compositor.id}}">{{obj.obj_compositor.nombre}} {{obj.obj_compositor.apellidos}}</a>
+                                                        <a ng-click="pop(obj.id, 'compositor', 'CompositorViewpopController', 'viewpop')">{{obj.obj_compositor.nombre}} {{obj.obj_compositor.apellidos}}</a>
                                                     </div>
                                                     <!------------------------------------------------>
                                                 </td>                       
@@ -118,7 +118,7 @@ THE SOFTWARE.
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'obra', 'ObraViewpopController', 'viewpop')">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                                             </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
+                                                            <a class="btn btn-default btn-xs" href="obra/edit/{{obj.id}}/{{obj.obj_compositor.id}}">
                                                                 <span class="glyphicon glyphicon-pencil"></span>
                                                             </a>
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'obra', 'ObraRemovepopController', 'removepop')">

@@ -106,6 +106,9 @@ moduloElenco.controller('ElencoPListController', ['$scope', '$routeParams', '$lo
             });
         };
         getDataFromServer();
+        $scope.back = function () {
+            window.history.back();
+        };
     }]);
 
 

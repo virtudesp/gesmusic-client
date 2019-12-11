@@ -37,27 +37,51 @@ moduloObra.controller('ObraEditController', ['$scope', '$routeParams', '$locatio
         $scope.op = "edit";
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        $scope.bean = {};
+        // Para guardar los datos del compositor
+        $scope.foreign = $routeParams.foreign; // id del compositor
+        $scope.foreignbean = {};
+        $scope.foreignbean.id = 0;
+        $scope.foreignob = "compositor";
         //---
-        $scope.bean.obj_compositor = {"id": null};
-        $scope.obj_compositor = true;
+//        $scope.bean.obj_compositor = {"id": null};
+//        $scope.obj_compositor = true;
         //---
         $scope.id = $routeParams.id;
-        serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
-            if (response.status == 200) {
-                if (response.data.status == 200) {
-                    $scope.status = null;
-                    $scope.bean = response.data.message;
+        $scope.bean = {};
+        //-------
+        function getDataFromServer() {
+            // obtener los datos del compositor
+            serverService.promise_getOne($scope.foreignob, $scope.foreign).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.foreignbean = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
+                    }
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor1";
+                    $scope.status = "Error en la recepción de datos del servidor2";
                 }
-            } else {
-                $scope.status = "Error en la recepción de datos del servidor2";
-            }
-        }).catch(function (data) {
-            $scope.status = "Error en la recepción de datos del servidor3";
-        });
-        $scope.save = function () {            
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor3";
+            });
+            //--- Obtener los datos de la obra
+            serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.bean = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
+                    }
+                } else {
+                    $scope.status = "Error en la recepción de datos del servidor2";
+                }
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor3";
+            });
+        }
+        $scope.save = function () {
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -76,6 +100,7 @@ moduloObra.controller('ObraEditController', ['$scope', '$routeParams', '$locatio
             });
             ;
         };
+        getDataFromServer();
         $scope.back = function () {
             window.history.back();
         };

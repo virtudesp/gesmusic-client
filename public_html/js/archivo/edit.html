@@ -96,16 +96,25 @@ THE SOFTWARE.
                                     </div>
                                 </div>
                                 <!------------------------------------------------->
-                                <div ng-if="f.type == 'foreign'" class="form-group">
+                                <div ng-if="f.name == 'obj_obra'" class="form-group">
                                     <clabel wide="2" name="f.name" longname="f.longname"   required="f.required"></clabel>
-                                    <foreign-key class="col-sm-5"
-                                                 bean="bean[f.name]"
-                                                 form="outerForm"
-                                                 name="f.name"                                                 
-                                                 reference="f.reference"
-                                                 description="f.descforeign"
-                                                 required="f.required">   
-                                    </foreign-key>
+                                    <div class="control col-sm-8"> 
+                                        <input type="text" class="form-control" 
+                                               id="{{f.name}}-group" name="{{f.name}}" 
+                                               ng-pattern="txt.pattern" 
+                                               placeholder="{{bean.obj_obra.titulo}}" 
+                                               maxlength="{{f.length}}" disabled="disabled" />
+                                    </div> 
+                                </div>
+                                <div ng-if="f.name == 'obj_compositor'" class="form-group">
+                                    <clabel wide="2" name="f.name" longname="f.longname"   required="f.required"></clabel>
+                                    <div class="control col-sm-8"> 
+                                        <input type="text" class="form-control" 
+                                               id="{{f.name}}-group" name="{{f.name}}" 
+                                               ng-pattern="txt.pattern" 
+                                               placeholder="{{bean.obj_compositor.nombre}} {{bean.obj_compositor.apellidos}}" 
+                                               maxlength="{{f.length}}" disabled="disabled" />
+                                    </div> 
                                 </div>
                                 <!-------------------------------------------------> 
                             </div>
@@ -120,7 +129,7 @@ THE SOFTWARE.
                         <div ng-if="status">                        
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver {{obtitle}}</a>
+                                <a class="btn btn-default" ng-href="{{ob}}/viewpop/{{bean.id}}">Ver {{obtitle}}</a>
                                 <a class="btn btn-default" ng-click="plist()">Ir al listado del {{obtitle}}</a>
                             </div>
                             <div class="alert alert-danger" ng-if="response.status != 200">

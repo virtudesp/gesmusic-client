@@ -43,26 +43,29 @@ moduloArchivo.controller('ArchivoEditController', ['$scope', '$routeParams', '$l
         $scope.show_obj_obra = true;
         //---
         $scope.id = $routeParams.id;
-        serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
-            if (response.status == 200) {
-                if (response.data.status == 200) {
-                    $scope.status = null;
-                    $scope.bean = response.data.message;
+        //-------
+        function getDataFromServer() {
+            serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 200) {
+                        $scope.status = null;
+                        $scope.bean = response.data.message;
+                    } else {
+                        $scope.status = "Error en la recepción de datos del servidor1";
+                    }
                 } else {
-                    $scope.status = "Error en la recepción de datos del servidor1";
+                    $scope.status = "Error en la recepción de datos del servidor2";
                 }
-            } else {
-                $scope.status = "Error en la recepción de datos del servidor2";
-            }
-        }).catch(function (data) {
-            $scope.status = "Error en la recepción de datos del servidor3";
-        });
+            }).catch(function (data) {
+                $scope.status = "Error en la recepción de datos del servidor3";
+            });
+        }
         $scope.save = function () {
             $scope.bean.alta = $filter('date')($scope.bean.fecha_alta, "dd/MM/yyyy");
             if ($scope.bean.obj_obra.id <= 0) {
                 $scope.bean.obj_obra.id = null;
             }
-            
+
             var jsonToSend = {json: JSON.stringify(serverService.array_identificarArray($scope.bean))};
             serverService.promise_setOne($scope.ob, jsonToSend).then(function (response) {
                 if (response.status == 200) {
@@ -81,6 +84,7 @@ moduloArchivo.controller('ArchivoEditController', ['$scope', '$routeParams', '$l
             });
             ;
         };
+        getDataFromServer();
         $scope.back = function () {
             window.history.back();
         };

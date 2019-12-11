@@ -96,11 +96,11 @@ THE SOFTWARE.
                                         <tbody>
                                             <tr ng-repeat="obj in page| filter:searchText">
                                                 <td ng-repeat="f in fields" ng-if="f.visible" class="text-right">
-                                                    <div ng-if="f.visible && f.name == 'obj_miembro' && obj.obj_miembro.id > 0" class="text-center">
-                                                        <a href="miembro/view/{{obj.obj_miembro.id}}">{{obj.obj_miembro.nombre}} {{obj.obj_miembro.apellidos}}</a>
+                                                    <div ng-if="f.visible && f.name == 'obj_miembro' && obj.obj_miembro.id > 0" class="text-left">
+                                                        <a href="miembro/viewpop/{{obj.obj_miembro.id}}">{{obj.obj_miembro.nombre}} {{obj.obj_miembro.apellidos}}</a>
                                                     </div>
                                                     <div ng-if="f.visible && f.name == 'obj_rol' && obj.obj_rol.id > 0" class="text-center">
-                                                        <a href="rol/view/{{obj.obj_rol.id}}">{{obj.obj_rol.rol}}</a>
+                                                        <a href="rol/viewpop/{{obj.obj_rol.id}}">{{obj.obj_rol.rol}}</a>
                                                     </div>
                                                 </td>                       
                                                 <td class="text-center">
@@ -109,9 +109,9 @@ THE SOFTWARE.
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'elenco', 'ElencoViewpopController', 'viewpop')">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>
                                                             </a>
-                                                            <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
+                                                           <!-- <a class="btn btn-default btn-xs" href="{{ob}}/edit/{{obj.id}}">
                                                                 <span class="glyphicon glyphicon-pencil"></span>
-                                                            </a>
+                                                            </a>-->
                                                             <a class="btn btn-default btn-xs" ng-click="pop(obj.id, 'elenco', 'ElencoRemovepopController', 'removepop')">
                                                                 <span class="glyphicon glyphicon-remove"></span>
                                                             </a>
@@ -120,7 +120,8 @@ THE SOFTWARE.
                                                 </td>
                                             </tr> 
                                         </tbody>
-                                    </table>            
+                                    </table>
+                                <div class="col-md-10 text-right"><a class="btn btn-default" ng-click="back()">Volver al listado de agrupaciones</a></div>              
                                 </div>
                             </div>                                
                         </div>  

@@ -75,7 +75,7 @@ THE SOFTWARE.
                             <div class="control-group text-right">
                                 <div class="controls">
                                     <a class="btn btn-primary" ng-click="save()" ng-disabled="!outerForm.$valid">Guardar</a>                                    
-                                    <a class="btn btn-default" ng-click="plist()">Ir al listado de obras</a>
+                                    <a class="btn btn-default" ng-click="back()">Ir al listado de obras</a>
                                     <a class="btn btn-default" ng-click="close()">Inicio</a>
                                 </div>
                             </div>
@@ -83,9 +83,9 @@ THE SOFTWARE.
                         <div ng-if="status">                        
                             <div class="alert alert-success" ng-if="response.status == 200">
                                 <h2>{{status}}</h2>
-                                <a class="btn btn-default" ng-href="{{ob}}/view/{{bean.id}}">Ver el registro</a>
+                                <a class="btn btn-default" ng-href="{{ob}}/viewpop/{{bean.id}}">Ver el registro</a>
                                 <!--<a class="btn btn-default btn-xs" href="{{urlplist}}/{{volver}}"></a>-->
-                                <a class="btn btn-default" ng-click="plist()">Volver al listado de obras</a>
+                                <a class="btn btn-default" ng-click="back()">Volver al listado de obras</a>
                             </div>
                             <div class="alert alert-danger" ng-if="response.status != 200">
                                 <h2>{{status}}</h2>                             

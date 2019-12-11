@@ -33,11 +33,11 @@ moduloCompositor.controller('CompositorViewpopController', ['$scope', '$routePar
         $scope.obtitle = compositorService.getObTitle();
         $scope.icon = compositorService.getIcon();
         $scope.ob = compositorService.getTitle();
-        $scope.title = "Vista de un " + $scope.obtitle;
-        $scope.id = id;
+        $scope.title = "Datos del compositor";
+//        $scope.id = id;
         $scope.status = null;
         $scope.debugging = serverService.debugging();
-        serverService.promise_getOne($scope.ob, $scope.id).then(function (response) {
+        serverService.promise_getOne($scope.ob, id).then(function (response) {
             if (response.status == 200) {
                 if (response.data.status == 200) {
                     $scope.status = null;

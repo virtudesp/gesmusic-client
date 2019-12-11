@@ -109,7 +109,7 @@ THE SOFTWARE.
                                                     <div ng-if="f.visible && f.type == 'text'" class="text-left">{{obj[f.name]|clipString}}</div>
                                                     <div ng-if="f.visible && f.type == 'boolean'" class="text-center" ng-bind-html="obj[f.name] | booleanizate"></div>
                                                     <!------------------------------------------------>
-                                                    <div ng-if="f.visible && f.name == 'obj_tipomiembro' && obj.obj_tipomiembro.id > 0" class="text-center"><a href="tipomiembro/view/{{obj.obj_tipomiembro.id}}">{{obj.obj_tipomiembro.tipomiembro}}</a></div>
+                                                    <div ng-if="f.visible && f.name == 'obj_tipomiembro' && obj.obj_tipomiembro.id > 0" class="text-center">{{obj.obj_tipomiembro.tipomiembro}}</div>
                                                     <div ng-if="f.visible && f.name == 'obj_tipomiembro' && obj.obj_tipomiembro.id == 0" class="text-center" ng-bind-html="false | booleanizate"></div>
                                                     <!------------------------------------------------>
                                                 </td>                       
